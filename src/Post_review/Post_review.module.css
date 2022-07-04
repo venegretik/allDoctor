@@ -1,0 +1,119 @@
+.Doctor_avatar_img {
+    width: 132px;
+    margin-right: 40px;
+}
+
+.Doctor_avatar_img img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.black {
+    color: black !important;
+}
+
+.gray {
+    color: #8B9BAB;
+}
+
+.Doctor_avatar_info ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.Doctor_info h2 {
+    font-size: 24px;
+}
+
+.Doctor_info p {
+    font-size: 14px;
+}
+
+.Doctor_info {
+    display: flex;
+    color: #FFFFFF;
+    max-width: 335px;
+    flex-direction: column;
+}
+
+.Staj {
+    margin-top: 8px;
+}
+
+.Review_full {
+    margin-left: 35px;
+    margin-right: 35px;
+}
+
+.Review_title {
+    margin-top: 69px;
+}
+
+.Doctor_infos {
+    margin-top: 37px;
+    display: flex;
+    margin-bottom: 36px;
+}
+
+.Grade {
+    max-width: 564px;
+}
+
+.Grade ul li {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Grade ul li b {
+    font-size: 24px;
+}
+
+.Doctor_avatar_info {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.Doctor_avatar_info ul {
+    width: 130px;
+}
+
+.Doctor_avatar_info ul li img {
+    width: 20px;
+}
+
+.Rewiew_add {
+    margin-top: 36px;
+}
+
+.select_consultation p {
+    font-size: 24px;
+    margin-bottom: 13px;
+}
+
+.select_consultation input {
+    width: 570px;
+    height: 167px;
+    border: 1px solid #EAF2FF;
+    border-radius: 16px;
+}
+
+.select_margin {
+    margin-top: 24px;
+}
+
+.otziv {
+    margin-top: 41px;
+    margin-bottom: 59px;
+}
+
+.otziv button {
+    padding: 22px 41px;
+    background: #407BFF;
+    border-radius: 16px;
+    border: 0px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}

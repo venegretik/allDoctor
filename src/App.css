@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Exo&display=swap');
+body {
+  font-family: 'Exo', sans-serif;
+}
+
+*{
+  margin: 0px;
+  padding: 0px;
+  outline: 0px;
+  box-sizing: border-box;
+}
+.Container{
+  margin-left: auto;
+  max-width: 1260px;
+}
