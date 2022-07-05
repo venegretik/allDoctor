@@ -4,7 +4,7 @@ const instance = axios.create({
     baseURL:'https://api.telemed.dev-h.ru/v1/'
     
 })
-export const Config_api ={
+export const Config_api = {
     Config(){
         axios.get(`https://api.telemed.dev-h.ru/v1/config`).then(
             response=>{

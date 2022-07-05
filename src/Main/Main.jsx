@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Main.module.css';
 import star from '../img/Rating_Star.png'
-import { NavLink } from 'react-router-dom';
+import { link } from 'react-router-dom';
 import My_Doctor from '../My_Doctor/My_Doctor';
 import { Route } from 'react-router';
 const Main = () => {
@@ -105,7 +105,7 @@ const Main = () => {
                 <section className={s.medicine + " " + s.container}>
                     <h2 className={s.medicine_title + " " + s.Font_size40}>Разделы медицины</h2>
                     <div className={s.medicine_cards}>
-                        <NavLink to="/Doctor_list">
+                        <link to="doctor-list">
                             <div className={s.card_item}>
                                 <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt="" />
                                 <div className={s.card_text_wrapper}>
@@ -113,7 +113,7 @@ const Main = () => {
                                     <div className={s.card_subtitle}>Специалист по кожным заболеваниям</div>
                                 </div>
                             </div>
-                        </ NavLink>
+                        </ link>
 
                     </div>
                 </section>
