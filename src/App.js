@@ -2,7 +2,7 @@ import './App.css';
 import Header from "./Header/Header";
 import Footer from './Footer/Footer';
 import Login from './Login/Login'
-import { Route } from 'react-router';
+import { Route, Routes } from 'react-router';
 import Main from './Main/Main'
 import My_Doctor from './My_Doctor/My_Doctor'
 import Post_rewiew from './Post_review/Post_review';
@@ -14,10 +14,12 @@ function App() {
     <div>
       <div className='Container'>
         <Header/>
-        <Route path='/Main' render={() => <Main />} />
-        <Route path='/Consultation' render={() => <Consultation />} />
-        <Route path='/My_Doctor' render={() => <My_Doctor />} />
-        <Route path='Main/Doctor_list' render={() => <Doctor_list />} />
+        <Routes>
+          <Route path='/Main' render={() => <Main />} />
+          <Route path='/Consultation' render={() => <Consultation />} />
+          <Route path='/My_Doctor' render={() => <My_Doctor />} />
+          <Route path='Main/Doctor_list' render={() => <Doctor_list />} />
+        </Routes>
         <Login />
       </div>
     </div>
