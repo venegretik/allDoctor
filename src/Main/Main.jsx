@@ -104,7 +104,7 @@ const Main = () => {
         <section className={s.medicine + " " + s.container}>
           <h2 className={s.medicine_title + " " + s.Font_size40}>Разделы медицины</h2>
           <div className={s.medicine_cards}>
-            <Link to="doctor-list">
+            <Link to="/doctor-list">
               <div className={s.card_item}>
                 <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt=""/>
                 <div className={s.card_text_wrapper}>
