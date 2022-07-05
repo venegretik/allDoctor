@@ -11,7 +11,7 @@ import Consultation from './Consultation/Consultation';
 import Doctor_list from './Doctor_list/Doctor_list'
 import {Layout} from "./Layout/Layout";
 
-
+//проверка
 function App() {
   return (
     <>
