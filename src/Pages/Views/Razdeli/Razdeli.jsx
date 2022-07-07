@@ -9,7 +9,7 @@ const Razdeli = () => {
                 <input type="text" placeholder="Поиск по разделам" className={s.Register_form} />
             </div>
             <div className={s.medicine_cards}>
-                <NavLink to="/Doctor_list">
+                <NavLink to="/DoctorList">
                     <div className={s.card_item}>
                         <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt="" />
                         <div className={s.card_text_wrapper}>
@@ -18,7 +18,7 @@ const Razdeli = () => {
                         </div>
                     </div>
                 </ NavLink>
-                <NavLink to="/Doctor_list">
+                <NavLink to="/DoctorList">
                     <div className={s.card_item}>
                         <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt="" />
                         <div className={s.card_text_wrapper}>
@@ -27,7 +27,7 @@ const Razdeli = () => {
                         </div>
                     </div>
                 </ NavLink>
-                <NavLink to="/Doctor_list">
+                <NavLink to="/DoctorList">
                     <div className={s.card_item}>
                         <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt="" />
                         <div className={s.card_text_wrapper}>

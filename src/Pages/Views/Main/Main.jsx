@@ -2,8 +2,6 @@ import React from "react";
 import s from './Main.module.css';
 import star from '../../../img/Rating_Star.png'
 import { Link } from 'react-router-dom';
-import { connect } from "react-redux";
-import { LoginAuthThunkCreator } from "../../../base/LoginReducer";
 const Main = (props) => {
   console.log(props.message)
   return (
@@ -115,7 +113,6 @@ const Main = (props) => {
                 </div>
               </div>
             </Link>
-
           </div>
         </section>
       </div>
@@ -123,20 +120,4 @@ const Main = (props) => {
 
   )
 }
-let mapStateToProps = (state) => {//В connect всегда первым пишеться mapStateToProps,
-  //иначе в mapDispatchToProps вернёться state, а в mapStateToProps dispatch   
-  return {
-      message: state.login.reducer
-  }
-}
-
-let mapDispatchToProps = (dispatch) => {//понимает что такое диспатч с помощью встроеной функции, 
-  //также важно в какой последовательности написаны функции в connect   
-  return {
-    LoginAuthThunkCreator:() =>{
-      dispatch(LoginAuthThunkCreator());
-    }
-  }
-}
-const Main_Container = connect(mapStateToProps, mapDispatchToProps)(Main);
-export default Main_Container;
+export default Main;

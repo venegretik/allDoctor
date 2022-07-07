@@ -12,13 +12,15 @@ const Header = () => {
     <div className={s.Header_container}>
       <header className={s.Header_full}>
         <div className={s.Header_logo}>
-          <img src={logo} alt=""/>
+          <Link to={'/'}>
+            <img src={logo} alt=""/>
+          </Link>
         </div>
         <div className={s.Header_nav}>
           <nav>
             <ul>
               <li>
-                <Link to="/">Главная</ Link>
+                <Link to="main">Главная</ Link>
               </li>
               <li>
                 <Link to="consultation">Мои записи</ Link>

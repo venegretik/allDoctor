@@ -1,62 +1,44 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import './App.css';
 import {Route, Routes} from 'react-router';
 import {Layout} from "./Pages/Layout/Layout";
-import My_Profile from "./Pages/Views/My_Profile/My_Profile";
-import Doctor_list from "./Pages/Views/Doctor_list/Doctor_list";
+import {MyProfile} from "./Pages/Views/My_Profile/MyProfile";
+import {DoctorList} from "./Pages/Views/Doctor_list/DoctorList";
 import Consultation from "./Pages/Views/Consultation/Consultation";
-import My_Doctor from "./Pages/Views/My_Doctor/My_Doctor";
+import {MyDoctor} from "./Pages/Views/My_Doctor/MyDoctor";
 import Register from "./Pages/Views/Register/Register";
 import Login from "./Pages/Views/Login/Login";
-import {connect} from 'react-redux/es/exports'
-import {LoginAuthThunkCreator} from "./base/LoginReducer";
+import {useDispatch, useSelector} from 'react-redux/es/exports'
 import {Preloader} from "./Components/Preloader/Preloader";
+import {Landing} from "./Pages/Views/Landing/landing";
+import Main from "./Pages/Views/Main/Main";
+import {axiosConfig} from "./base/asyncActions/getConfig";
 
+function App() {
 
-function App(props) {
-
-  useEffect(() => {
-    setTimeout(() => {
-      props.LoginAuthThunkCreator()
-    }, 2000)
-  }, [])
-
-  const loading = props.config.response.status,
-        config = props.config.response;
+  const dispatch = useDispatch();
+  const config = useSelector(state => state.config.config)
+  const loading = useSelector(state => state.config.loading)
+  window.onload(() => {
+    dispatch(axiosConfig())
+  })
+  console.log(config)
   return (
     <>
-      {
-        !loading
-          ?
-          <Preloader/>
-          :
-          <Routes>
-            <Route path={'/'} element={<Layout/>}>
-              <Route index element={<My_Profile/>}/>
-              <Route path={'doctor-list'} element={<Doctor_list/>}/>
-              <Route path={'consultation'} element={<Consultation/>}/>
-              <Route path={'my-doctor'} element={<My_Doctor/>}/>
-              <Route path={'register'} element={<Register/>}/>
-              <Route path={'login'} element={<Login/>}/>
-            </Route>
-          </Routes>
-      }
+      {!loading && <Preloader/>}
+      <Routes>
+        <Route path={'/'} element={<Layout/>}>
+          <Route index element={<Landing />} />
+          <Route path={'main'} element={<Main />} />
+          <Route path={'profile'} element={<MyProfile/>}/>
+          <Route path={'doctor-list'} element={<DoctorList/>}/>
+          <Route path={'consultation'} element={<Consultation/>}/>
+          <Route path={'my-doctor'} element={<MyDoctor/>}/>
+          <Route path={'register'} element={<Register/>}/>
+          <Route path={'login'} element={<Login/>}/>
+        </Route>
+      </Routes>
     </>
   );
 }
-
-let mapStateToProps = (state) => {
-  return {
-    message: state.login.status,
-    config: state.login
-  }
-}
-let mapDispatchToProps = (dispatch) => {
-  return {
-    LoginAuthThunkCreator: () => {
-      dispatch(LoginAuthThunkCreator());
-    }
-  }
-}
-const App_Container = connect(mapStateToProps, mapDispatchToProps)(App);
-export default App_Container;
+export default App;

@@ -2,7 +2,7 @@ import React from "react";
 import s from './Doctor_list.module.css';
 import star from '../../../img/Rating_Star.png';
 
-const Doctor_list = () => {
+const DoctorList = () => {
   return (
     <section className={s.Doctor_list}>
       <div className={s.Skill}>
@@ -61,4 +61,4 @@ const Doctor_list = () => {
 
   );
 }
-export default Doctor_list;
+export {DoctorList}

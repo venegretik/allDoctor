@@ -1,11 +1,12 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import {reducer as formReducer} from 'redux-form'
 import thunkMiddleware from 'redux-thunk';
-import LoginReducer from './LoginReducer'
-let reducers = combineReducers({
+import {configReducer} from "./Reducers/configReducer";
+
+
+const reducers = combineReducers({
     form: formReducer,
-    login:LoginReducer
+    config: configReducer
 });
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
-window.store = store;
-export default store;
+
+export const store = createStore(reducers, applyMiddleware(thunkMiddleware));

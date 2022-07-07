@@ -1,7 +1,7 @@
 import React from "react";
 import s from './My_Doctor.module.css';
 import star from '../../../img/Rating_Star.png';
-const My_Doctor = () => {
+const MyDoctor = () => {
     return (
         <div>
             <div className={s.Doctor}>
@@ -37,4 +37,4 @@ const My_Doctor = () => {
         </div>
     )
 }
-export default My_Doctor;
+export {MyDoctor};
