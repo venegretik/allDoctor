@@ -1,0 +1,68 @@
+.Utility_Check_video{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    background: #2E373D;
+    border-radius: 16px;
+}
+.Utility_full{
+    padding-left: 75px;
+}
+.Utility_text p{
+    margin: 12px 0px;
+}
+.Utility_configuration_video{
+    display: flex;
+    flex-direction: column;
+    max-width: 241px;
+}
+.Utility_configuration_volume{
+    max-width: 241px;
+    display: flex;
+    flex-direction: column;
+}
+.Utility_configuration_volume input{
+    margin-top: 15px;
+}
+.Utility_configuration_video input{
+    margin-top: 15px;
+}
+.Utility_Check_video_content{
+        flex-direction: column;
+        align-items: center;
+}
+.Utility_Check_video_content button {
+    background: #407BFF;
+    border-radius: 16px;
+    width: 240px;
+    height: 60px;
+    margin-top: 25px;
+    border: 0px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    padding: 22px 36px;
+}
+.Utility_configuration_full{
+
+}
+.check_volume{
+    margin-bottom: 20px;
+}
+.Utility_configuration_video{
+    margin-right: 18px;
+}
+.Utility_configuration{
+    display: flex;
+}
+.Utility_configuration p{
+    margin-bottom: 14px;
+}
+.Utility_volume p{
+    margin-top: 20px;
+    margin-bottom: 14px;
+}

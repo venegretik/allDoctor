@@ -1,0 +1,32 @@
+.Chat_list ul li {
+    background: #F6AE2D;
+    border-radius: 16px;
+    padding: 4px 15px;
+}
+.Chat_list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Chat_list ul {
+    display: flex;
+    list-style: none;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.Chat_full {
+    max-width: 400px;
+}
+
+.Chat_list button {
+    padding: 20.5px 66px;
+    background: #407BFF;
+    border-radius: 16px;
+    margin-top: 40px;
+    letter-spacing: 2px;
+    border: 0px;
+    color: #ffffff;
+    text-transform: uppercase;
+}

@@ -5,7 +5,7 @@ import pen from '../../../img/pen.png'
 import Balance from './Balance/Balance'
 import Med_Cart from "./Med_Cart/Med_Cart";
 import Result from "./Result/Result";
-
+import Utility from "./Utility/Utility";
 const My_Profile = () => {
     return (
         <div className={s.My_Profile}>
@@ -34,7 +34,7 @@ const My_Profile = () => {
                     </li>
                 </ul>
             </div>
-            <Result />
+            <Utility />
         </div>
     )
 }
