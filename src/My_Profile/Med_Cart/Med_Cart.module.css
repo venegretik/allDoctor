@@ -1,0 +1,30 @@
+.Med_Cart ul li{
+    padding-bottom: 10px;
+}
+.Med_Cart ul{
+    max-width: 510px;
+}
+.Med_Cart{
+    margin-left: 85px;
+    margin-left: 50px;
+}
+.Med_Cart_Title{
+    margin-bottom: 16px;
+}
+.Med_Cart_Text{
+    margin-top: 11px;
+}
+.Med_Cart_table td{
+    border: 1px solid black;
+    text-align: center;
+    padding: 15px 5px;
+}
+.Med_Cart_table th{
+    padding: 15px 5px;
+    border: 1px solid black;
+}
+.Med_Cart_table table{
+    border-collapse: collapse;
+    max-width: 619px;
+    height: 125px;
+}

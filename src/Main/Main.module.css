@@ -105,7 +105,7 @@
     display: flex;
     justify-content: center;
     border-radius: 15px;
-    height: 40px;
+    max-height: 40px;
     padding-left: 16px;
     color: black;
     background-color: #FFFFFF;
@@ -114,7 +114,7 @@
 .Data_consultation p {
     font-weight: 400;
     font-size: 16px;
-    margin-top: -4px;
+    line-height: 16px;
 }
 
 .medicine {
@@ -122,11 +122,11 @@
     padding-bottom: 150px;
 }
 
-.medicine_title{
+.medicine_title {
     font-weight: 700;
     font-size: 40px;
     line-height: 53px;
-    text-align: center!important;
+    text-align: center !important;
     color: #2E373D;
     margin-bottom: 27px;
 }
@@ -134,7 +134,7 @@
 .medicine_cards {
     display: flex;
     gap: 30px;
-    justify-content:space-around ;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -175,7 +175,7 @@
 .Data_time p {
     font-weight: 400;
     font-size: 16px;
-    margin-top: -4px;
+    line-height: 16px;
 }
 
 .Data_time {
@@ -254,6 +254,7 @@
     .Doctor_cart {
         width: 280px;
     }
+
     .Doctor_avatar_info p {
         display: none;
     }
@@ -270,15 +271,13 @@
         margin-right: 10px;
     }
 
-    
+
     .Font_size24 {
         font-family: 'Exo', sans-serif;
         font-size: 14px !important;
         font-weight: 700 !important;
         line-height: 19px !important;
         letter-spacing: 0px !important;
-        text-align: left;
-
     }
 
     .Font_size40 {
@@ -287,7 +286,6 @@
         font-weight: 700 !important;
         line-height: 53px !important;
         letter-spacing: 0px !important;
-        text-align: left;
 
     }
 
@@ -297,7 +295,6 @@
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
-        text-align: left;
     }
 
     .Font_size16 {
@@ -306,14 +303,19 @@
         font-weight: 400 !important;
         line-height: 13px !important;
         letter-spacing: 0px !important;
-        text-align: left;
 
     }
+
+    .Data_consultation p {
+        text-align: center;
+        height: 14px;
+    }
+
     .Injoy {
         width: 240px;
         padding: 20.5px 37.5px;
         border: 0px;
-        margin-left: -80px;
+        margin-left: -70px;
         background-color: #F6AE2D;
         outline: 0px;
         letter-spacing: 2px;
@@ -322,9 +324,11 @@
         cursor: pointer;
         border-radius: 16px;
     }
-    .Doctor_avatar{
+
+    .Doctor_avatar {
         width: 80px;
     }
+
     .Doctor_info {
         width: 180px;
     }

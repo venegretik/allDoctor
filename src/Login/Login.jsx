@@ -8,7 +8,7 @@ const Form_Login = (props) => {
     return (
         <form action="">
             <h3>Войти</h3>
-            <Field component={inputValidate} name={"MessageInput"} placeholder="Номер телефона" />
+            <Field component={inputValidate} name={"MessageInput"} el_type="input" placeholder="Номер телефона" />
             <button>Получить код</button>
         </form>
     )
@@ -35,8 +35,6 @@ const Login = () => {
                     </div>
                 </div>
                 <div className={s.Login_form}>
-
-
                     <MessangerformRedux />
                 </div>
 

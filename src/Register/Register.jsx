@@ -1,5 +1,7 @@
 import React from "react";
 import s from './register.module.css';
+import Checkbox from "../Components/Checkbox/Checkbox";
+import Radio_button from "../Components/Radio_button/Radio_button";
 const Register = () => {
     return (
         <div className={s.Register_wrapper}>
@@ -13,18 +15,12 @@ const Register = () => {
                     <input type="text" placeholder="Отчество" />
                     <div className={s.Register_male}>
                         <p>Пол</p>
-                        <input type="radio" id="Register_radio1" name="radio-group" checked />
-                        <label htmlFor="Register_radio1">Мужчина</label>
-                        <input type="radio" id="Register_radio2" name="radio-group" />
-                        <label htmlFor="Register_radio2">Женщина</label>
+                        <Radio_button text={"Мужчина"}/>
+                        <Radio_button text={"Женщина"}/>
                     </div>
                     <input type="text" placeholder="Дата рождения" />
                     <input type="text" placeholder="Электронная почта" />
-
-                    <div className={s.Register_checkbox}>
-                        <input type="checkbox" id="Register_checkbox" className={s.custom_checkbox}/>
-                        <label htmlFor="Register_checkbox">Я принимаю условия пользовательского соглашения и даю своё согласие на обработку персональных данных</label>
-                    </div>
+                    <Checkbox />
                     <button>Готово</button>
                 </form>
             </div>

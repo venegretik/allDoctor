@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Лендинг</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Noto Sans', sans-serif;
+      font-style: normal;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body,
+    main {
+      height: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0px 15px;
+    }
+
+    .slide_section {
+      position: relative;
+      height: 100%;
+      max-height: 640px;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background-size: cover;
+      background-position: center center;
+      background: #fff;
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+      max-height: fit-content;
+    }
+
+    .slide_wrap {
+      position: relative;
+      display: flex;
+      width: 100%;
+      max-height: 415px;
+      height: 100%;
+      justify-content: space-between;
+    }
+
+    .orange_link {
+      background: #F6AE2D;
+      border-radius: 16px;
+      padding: 20px 76px;
+      max-width: fit-content;
+      display: block;
+      transition-duration: 0.7s;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 19px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #2E373D;
+    }
+
+    .orange_link:hover {
+      background: #E99A0C;
+    }
+
+    .slide_block {
+      display: flex;
+      flex-direction: column;
+      max-width: 650px;
+      text-align: left;
+
+    }
+
+    .blue_slide-title {
+      font-weight: 900;
+      font-size: 70px;
+      line-height: 70px;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .blue_slide-subtitle {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      color: #FFFFFF;
+      margin-bottom: 22px;
+    }
+
+    .swiper-wrapper {
+      max-height: 640px;
+    }
+
+    .swiper-pagination-bullet {
+      background-color: #79A2E2;
+      width: 10px;
+      height: 10px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #F6AE2D;
+    }
+
+    .slide_subtitle {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 53px;
+      color: #2E373D;
+      margin-bottom: 21px;
+      max-width: 420px;
+    }
+
+    .slide_subtitle-small {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 32px;
+      color: #2E373D;
+      margin-bottom: 32px;
+      max-width: 570px;
+      width: 100%;
+    }
+
+    .medicine {
+      padding-top: 64px;
+      padding-bottom: 150px;
+    }
+
+    .medicine_title {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 53px;
+      color: #2E373D;
+      margin-bottom: 27px;
+    }
+
+    .medicine_cards {
+      display: flex;
+      gap: 30px;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+
+    .card_item {
+      background: #EAF2FF;
+      border-radius: 8px;
+      max-width: 270px;
+      width: 100%;
+    }
+
+    .card_item img {
+      max-width: 270px;
+      display: block;
+      margin: 0 auto;
+      height: 136px;
+    }
+
+    .card_title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 28px;
+      color: #2E373D;
+      margin-bottom: 11px;
+      margin-top: 25px;
+    }
+
+    .card_subtitle {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 21px;
+      color: #2E373D;
+    }
+
+    .card_text-wrapper {
+      padding: 0 30px 50px 30px;
+    }
+
+    @media (max-width:680px) {
+      .blue_slide-title {
+        font-weight: 900;
+        font-size: 34px;
+        line-height: 70px;
+        color: #FFFFFF;
+        margin-bottom: 8px;
+      }
+      .slide_wrap{
+        flex-direction: column;
+      }
+      .swiper-slide{
+        align-items: flex-start;
+      }
+      .slide_wrap img{
+        width: 70%!important;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .blue_slide-subtitle {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        color: #FFFFFF;
+        margin-bottom: 22px;
+      }
+
+      .blue_slide-subtitle {
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 32px;
+        color: #FFFFFF;
+        margin-bottom: 22px;
+      }
+      .slide_subtitle {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 53px;
+      color: #2E373D;
+      margin-bottom: 21px;
+      max-width: 420px;
+    }
+      .slide_block {
+        display: flex;
+        flex-direction: column;
+        max-width: 650px;
+        align-items: center;
+        text-align: left;
+
+      }
+      .slide_block img{
+        width: 240px;
+
+      }
+      
+    }
+  </style>
+</head>
+<!-- https://api.telemed.dev-h.ru/images/ -->
+
+<body>
+  <main>
+    <section class="slide_section">
+      <!-- Swiper -->
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="slide_wrap container">
+              <div class="slide_block">
+                <img width="320px" height="110px" style="margin-bottom: 50px"
+                  src="https://api.telemed.dev-h.ru/images/ui/logo_full.svg" alt="">
+                <p class="slide_subtitle">Получите первую консультацию уже сегодня</p>
+                <a class="orange_link" href="/login">Войти</a>
+              </div>
+              <img style="width: 100%; max-width: 500px" class="slide_image-1"
+                src="https://api.telemed.dev-h.ru/images/ui/main_phone.png" alt="">
+            </div>
+          </div>
+
+          <div style="background-color: #226CE0" class="swiper-slide">
+            <div class="slide_wrap container">
+              <div class="slide_block blue_slide">
+                <h1 class="blue_slide-title">Онлайн-консультации с врачами</h1>
+                <p class="blue_slide-subtitle">Консультируйтесь с опытными врачами, а не с форумами народной медицины.
+                </p>
+                <a class="orange_link" href="/login">Войти</a>
+              </div>
+              <img class="slide_image-2" src="https://api.telemed.dev-h.ru/images/ui/main_hand.png" alt="">
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <div class="slide_wrap container">
+              <div class="slide_block">
+                <img width="320px" height="110px" style="margin-bottom: 50px"
+                  src="https://api.telemed.dev-h.ru/images/ui/logo_full.svg" alt="">
+                <p class="slide_subtitle-small">Консультируйтесь с опытными врачами, а не с форумами народной
+                  медицины.</p>
+                <a class="orange_link" href="/login">Начать</a>
+              </div>
+              <img style="position: absolute; right: 0;" class="slide_image-3"
+                src="https://api.telemed.dev-h.ru/images/ui/main_telka.png" alt="">
+            </div>
+          </div>
+
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <section class="medicine container">
+      <h2 class="medicine_title">Популярные разделы медицины</h2>
+      <div class="medicine_cards">
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/pediatr.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Педиатр</div>
+            <div class="card_subtitle">Специалист для детей
+            </div>
+            и подростков
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/terapevt.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Терапевт</div>
+            <div class="card_subtitle">Специалист общего профиля</div>
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/ginekolog.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Гинеколог</div>
+            <div class="card_subtitle">Женские заболевания</div>
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Дерматолог</div>
+            <div class="card_subtitle">Специалист по кожным заболеваниям</div>
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/allergolog_immunolog.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Аллерголог-имунолог</div>
+            <div class="card_subtitle">Нарушение иммунной системы</div>
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/gastoenterolog.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Гастроэнтеролог</div>
+            <div class="card_subtitle">Специалист по проблемам пищеварения</div>
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/psiholog.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Психолог</div>
+            <div class="card_subtitle">Специалист по психологическому благополучию</div>
+          </div>
+        </div>
+        <div class="card_item">
+          <img src="https://api.telemed.dev-h.ru/images/icons/departments/endocrinolog.svg" alt="">
+          <div class="card_text-wrapper">
+            <div class="card_title">Эндокринолог</div>
+            <div class="card_subtitle">Гормональные нарушения</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      autoplay: {
+        delay: 150000,
+        disableOnInteraction: false,
+      },
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+    });
+  </script>
+</body>
+
+</html>

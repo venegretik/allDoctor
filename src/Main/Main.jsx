@@ -1,9 +1,11 @@
 import React from "react";
 import s from './Main.module.css';
 import star from '../img/Rating_Star.png'
-import {Link} from 'react-router-dom';
-
-const Main = () => {
+import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+import { LoginAuthThunkCreator } from "../base/LoginReducer";
+const Main = (props) => {
+  console.log(props.message)
   return (
     <div>
       <div className={s.Container}>
@@ -14,15 +16,15 @@ const Main = () => {
             </div>
             <div className={s.Doctor_avatar}>
               <div className={s.Doctor_avatar_img}>
-                <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt=""/>
+                <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
               </div>
               <div className={s.Doctor_avatar_info}>
                 <ul>
-                  <li><img src={star} alt=""/></li>
-                  <li><img src={star} alt=""/></li>
-                  <li><img src={star} alt=""/></li>
-                  <li><img src={star} alt=""/></li>
-                  <li><img src={star} alt=""/></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
+                  <li><img src={star} alt="" /></li>
                 </ul>
                 <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
                 <p className={s.Font_size14}>28 отзывов</p>
@@ -34,15 +36,15 @@ const Main = () => {
               <p className={s.Font_size14}>Стаж 12 лет • Врач высшей категории</p>
               <div className={s.Data}>
                 <div className={s.Data_consultation}>
-                  <img src="" alt=""/>
+                  <img src="" alt="" />
                   <p className={s.Font_size16}>12.07.22</p>
                 </div>
                 <div className={s.Data_time}>
-                  <img src="" alt=""/>
+                  <img src="" alt="" />
                   <p className={s.Font_size16}>09:30</p>
                 </div>
               </div>
-              <button className={s.Injoy}>Присоединиться</button>
+              <button className={s.Injoy}  onClick={props.LoginAuthThunkCreator}>Присоединиться</button>
             </div>
           </div>
         </section>
@@ -55,15 +57,15 @@ const Main = () => {
               <div className={s.Doctor}>
                 <div className={s.Doctor_avatar}>
                   <div className={s.Doctor_avatar_img}>
-                    <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt=""/>
+                    <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
                   </div>
                   <div className={s.Doctor_avatar_info + " " + s.black}>
                     <ul>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
                     </ul>
                     <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
                     <p className={s.Font_size14}>28 отзывов</p>
@@ -78,15 +80,15 @@ const Main = () => {
               <div className={s.Doctor}>
                 <div className={s.Doctor_avatar}>
                   <div className={s.Doctor_avatar_img}>
-                    <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt=""/>
+                    <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
                   </div>
                   <div className={s.Doctor_avatar_info + " " + s.black}>
                     <ul>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
-                      <li><img src={star} alt=""/></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
+                      <li><img src={star} alt="" /></li>
                     </ul>
                     <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
                     <p className={s.Font_size14}>28 отзывов</p>
@@ -106,7 +108,7 @@ const Main = () => {
           <div className={s.medicine_cards}>
             <Link to="/doctor-list">
               <div className={s.card_item}>
-                <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt=""/>
+                <img src="https://api.telemed.dev-h.ru/images/icons/departments/dermatolog.svg" alt="" />
                 <div className={s.card_text_wrapper}>
                   <div className={s.card_title}>Дерматолог</div>
                   <div className={s.card_subtitle}>Специалист по кожным заболеваниям</div>
@@ -121,4 +123,20 @@ const Main = () => {
 
   )
 }
-export default Main;
+let mapStateToProps = (state) => {//В connect всегда первым пишеться mapStateToProps,
+  //иначе в mapDispatchToProps вернёться state, а в mapStateToProps dispatch   
+  return {
+      message: state.login.reducer
+  }
+}
+
+let mapDispatchToProps = (dispatch) => {//понимает что такое диспатч с помощью встроеной функции, 
+  //также важно в какой последовательности написаны функции в connect   
+  return {
+    LoginAuthThunkCreator:() =>{
+      dispatch(LoginAuthThunkCreator());
+    }
+  }
+}
+const Main_Container = connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main_Container;
