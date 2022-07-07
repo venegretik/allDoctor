@@ -1,9 +1,8 @@
 import React from "react";
 import './Select.css';
 const Select_custom = (props) => {
-
     return (
-        <div onClick={SetStyle} id="Select-hide">
+        <div id="Select-hide">
             <h1>Select</h1>
             <div id="Select-menu">
                 <input type="radio" name="main-categories" id="_1234" value="1234" />

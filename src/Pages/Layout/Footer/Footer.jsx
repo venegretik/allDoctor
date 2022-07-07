@@ -1,11 +1,11 @@
 import React from "react";
 import s from './Footer.module.css';
-import logo from '../img/logo-white.svg';
-import Doctor from '../img/Doctor_icon.png';
-import Note from '../img/note_icon.png';
-import Chat from '../img/Chat_icon.png';
-import Home from '../img/Home_icon.png';
-import Prof from '../img/Profile_icon.png'
+import logo from '../../../img/logo-white.svg';
+import Doctor from '../../../img/Doctor_icon.png';
+import Note from '../../../img/note_icon.png';
+import Chat from '../../../img/Chat_icon.png';
+import Home from '../../../img/Home_icon.png';
+import Prof from '../../../img/Profile_icon.png'
 const Footer = () => {
     return (
         <section>

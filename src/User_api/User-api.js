@@ -1,16 +1,15 @@
 import axios from "axios";
+const url = 'https://api.telemed.dev-h.ru/v1/';
 
 const instance = axios.create({
   withCredentials: true,
   baseURL: 'https://api.telemed.dev-h.ru/v1/',
-  data:{
-    platform:"desctop"
+  data: {
+    platform: "desctop"
   }
-
 })
 export const Config_api = {
-  Config() {
- return axios.get(`https://api.telemed.dev-h.ru/v1/config`).then(
+  Config() { return axios.get(`https://api.telemed.dev-h.ru/v1/config`).then(
       response => {
         return response.data
       }

@@ -1,11 +1,11 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import logo from '../img/logo.png';
-import message_img from '../img/coolicon.png';
-import arrow from '../img/arrow.png';
-import avatar from '../img/avatar.png';
 import s from './Header.module.css';
-import arrow_back from '../img/arrow-back.png';
+import logo from '../../../img/logo.png'
+import avatar from '../../../img/avatar.png'
+import arrow from '../../../img/arrow.png'
+import arrow_back from '../../../img/arrow-back.png'
+import message_img from '../../../img/pen.png'
 
 const Header = () => {
   return (

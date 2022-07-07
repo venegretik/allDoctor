@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Post_review.module.css';
-import star from '../img/Rating_Star.png';
+import star from '../../../img/Rating_Star.png';
 const Post_rewiew = () => {
     return (
         <div className={s.Review_full}>

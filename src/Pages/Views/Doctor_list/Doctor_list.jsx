@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Doctor_list.module.css';
-import star from '../img/Rating_Star.png';
+import star from '../../../img/Rating_Star.png';
 
 const Doctor_list = () => {
   return (

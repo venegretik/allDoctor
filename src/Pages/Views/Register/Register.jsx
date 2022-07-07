@@ -1,7 +1,7 @@
 import React from "react";
 import s from './register.module.css';
-import Checkbox from "../Components/Checkbox/Checkbox";
-import Radio_button from "../Components/Radio_button/Radio_button";
+import Checkbox from "../../../Components/Checkbox/Checkbox";
+import Radio_button from "../../../Components/Radio_button/Radio_button";
 const Register = () => {
     return (
         <div className={s.Register_wrapper}>

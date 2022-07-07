@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Balance.module.css';
-import pen from '../../img/pen.png'
+import pen from '../../../../img/pen.png'
 const Balance = () => {
     return (
         <div className={s.Balance}>

@@ -1,8 +1,8 @@
 import React from "react";
-import logo from '../img/logo.png'
+import logo from '../../../img/logo.png'
 import s from './login.module.css'
 import { Field, reduxForm } from "redux-form";
-import ElementCreate from "../Components/Input/Input_custom";
+import ElementCreate from "../../../Components/Input/Input_custom";
 const inputValidate = ElementCreate("input");
 const Form_Login = (props) => {
     return (

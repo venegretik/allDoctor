@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Consultation.module.css';
-import star from '../img/Rating_Star.png';
-import Download from '../img/Download.png'
+import star from '../../../img/Rating_Star.png';
+import Download from '../../../img/Download.png'
 const Consultation = () => {
     return (
 
