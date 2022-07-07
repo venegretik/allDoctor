@@ -1,10 +1,16 @@
-import React from "react";
+import React from 'react';
+import './preloader.css'
 
-const Preloader = (props) => {
-    return(
-        <div>
-            Load...
+const Preloader = () => {
+  return (
+    <>
+      <div className='preloader_body'>
+        <div className="lds-heart">
+          <div></div>
         </div>
-    )
-}
-export default Preloader;
+      </div>
+    </>
+  );
+};
+
+export {Preloader};

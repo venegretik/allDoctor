@@ -1,9 +1,9 @@
 import React from "react";
 import s from './Main.module.css';
-import star from '../img/Rating_Star.png'
+import star from '../../../img/Rating_Star.png'
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { LoginAuthThunkCreator } from "../base/LoginReducer";
+import { LoginAuthThunkCreator } from "../../../base/LoginReducer";
 const Main = (props) => {
   console.log(props.message)
   return (
