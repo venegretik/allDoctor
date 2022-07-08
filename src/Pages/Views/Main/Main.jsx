@@ -3,7 +3,6 @@ import s from './Main.module.css';
 import star from '../../../img/Rating_Star.png'
 import { Link } from 'react-router-dom';
 const Main = (props) => {
-  console.log(props.message)
   return (
     <div>
       <div className={s.Container}>
