@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import './App.css';
 import {Route, Routes} from 'react-router';
 import {Layout} from "./Pages/Layout/Layout";
@@ -15,21 +15,23 @@ import Main from "./Pages/Views/Main/Main";
 import {axiosConfig} from "./base/asyncActions/getConfig";
 
 function App() {
-
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const config = useSelector(state => state.config.config)
   const loading = useSelector(state => state.config.loading)
-  window.onload(() => {
-    dispatch(axiosConfig())
-  })
-  console.log(config)
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(axiosConfig())
+    }, 2000)
+  }, [])
+  console.log(module)
   return (
     <>
+
       {!loading && <Preloader/>}
       <Routes>
         <Route path={'/'} element={<Layout/>}>
-          <Route index element={<Landing />} />
-          <Route path={'main'} element={<Main />} />
+          <Route index element={<Landing/>}/>
+          <Route path={'main'} element={<Main/>}/>
           <Route path={'profile'} element={<MyProfile/>}/>
           <Route path={'doctor-list'} element={<DoctorList/>}/>
           <Route path={'consultation'} element={<Consultation/>}/>
@@ -38,7 +40,9 @@ function App() {
           <Route path={'login'} element={<Login/>}/>
         </Route>
       </Routes>
+
     </>
   );
 }
+
 export default App;
