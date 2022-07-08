@@ -1,5 +1,5 @@
 import axios from "axios";
-import {getConfigAction, getAuthAction} from "../Reducers/configReducer";
+import { getConfigAction, getAuthAction } from "../Reducers/configReducer";
 
 const url = 'https://api.telemed.dev-h.ru/v1/';
 
@@ -10,20 +10,21 @@ export const axiosConfig = () => {
   }
 }
 
-export const axiosAuth = (number,code) => {
+export const axiosAuth = (number, code) => {
   return async function (dispatch) {//стрелочная функция
-    if(!code){
+    if (!code) {
       const response = await axios.get(`${url}auth?phone=${number}`)
-      dispatch(getAuthAction(number, '', response.data.status))
+      dispatch(getAuthAction(number, response.data.status))
     }
-    else{
-      const response = await axios.get(`${url}auth?phone=${number}&code=${code}`).then(response =>{
-       if(response.data.status == true){
+    else {
+      const response = await axios.get(`${url}auth?phone=${number}&code=${code}`).then(response => {
+        if (response.data.status == true) {
           localStorage.setItem('token', response.data.token);
-          console.log(response.data.token)
-       }
-    });
-      dispatch(getAuthAction(number, code, false, response.data.is_new_user))
+          console.log(response.data.is_new_user)
+          dispatch(getAuthAction(number, false, response.data.is_new_user))
+        }
+      });
     }
   }
 }
+

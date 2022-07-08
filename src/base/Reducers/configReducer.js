@@ -14,11 +14,12 @@ export const configReducer = (state = defaultState, action) => {
     case GET_CONFIG:
       return { ...state, config: action.payload, loading: true }
     case GET_AUTH:
-      return { ...state, number_send: action.number_send }
+      return { ...state, number_send: action.number_send,is_new_user: action.is_new_user }
+    
     default:
       return state;
   }
 }
 
 export const getConfigAction = (payload) => ({ type: GET_CONFIG, payload })
-export const getAuthAction = (number, code, number_send, is_new_user) => ({ type: GET_AUTH, number, code, number_send, is_new_user })
+export const getAuthAction = (number, number_send, is_new_user) => ({ type: GET_AUTH, number, number_send, is_new_user })
