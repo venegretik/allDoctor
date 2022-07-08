@@ -30,7 +30,7 @@
     background: #FFFFFF;
     border: 2px solid #EAF2FF;
     border-radius: 16px;
-    width: 399px;
+    width: 100%;
     height: 60px;
 }
 
@@ -58,7 +58,12 @@
     align-items: center;
     user-select: none;
 }
-
+.Input_friend{
+    max-width: 400px;
+}
+.Referal{
+    max-width: 400px;
+}
 .custom_checkbox+label::before {
     content: '';
     width: 1em;
@@ -86,7 +91,7 @@
     background: #FFFFFF;
     border: 2px solid #EAF2FF;
     border-radius: 16px;
-    width: 399px;
+    width: 100%;
     height: 60px;
     margin-bottom: 70px;
 }
@@ -100,4 +105,54 @@
 }
 .History_content_text b{
     margin-right: 30px;
+}
+@media (max-width: 630px) {
+    .Balance{
+        margin-left: 0px;
+    }
+    .Balance_add input {
+        background: #FFFFFF;
+        border: 2px solid #EAF2FF;
+        border-radius: 16px;
+        margin-right: 20px;
+        width: 130px;
+        height: 40px;
+    }
+    .History_title h1{
+        font-size: 16px;
+    }
+    .History_content p{
+        font-size: 10px;
+    }
+    .History_content_text b{
+        margin-right: 20px;
+        font-size: 14px;
+    }
+    .Referal_title h1{
+        font-size: 16px;
+    }
+    .Referal_title{
+        margin-bottom: 0px;
+    }
+    .History_data{
+        font-size: 14px;
+    }
+    .Referal input{
+        height: 40px;
+    }
+    .Input_friend input{
+        height: 40px;
+    }
+    .Balance_title h1{
+        font-size: 16px;
+    }
+    .Balance button{
+        padding: 13.5px 23.5px;
+        width: 130px;
+        font-size: 10px;
+        height: 40px;
+    }
+    .Balance_add input{
+        height: 40px;
+    }
 }

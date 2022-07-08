@@ -7,7 +7,7 @@ import {DoctorList} from "./Pages/Views/Doctor_list/DoctorList";
 import Consultation from "./Pages/Views/Consultation/Consultation";
 import {MyDoctor} from "./Pages/Views/My_Doctor/MyDoctor";
 import Register from "./Pages/Views/Register/Register";
-import Login from "./Pages/Views/Login/Login";
+import Login_Con from './Pages/Views/Login/Login_container';
 import {useDispatch, useSelector} from 'react-redux/es/exports'
 import {Preloader} from "./Components/Preloader/Preloader";
 import {Landing} from "./Pages/Views/Landing/landing";
@@ -37,7 +37,7 @@ function App() {
           <Route path={'consultation'} element={<Consultation/>}/>
           <Route path={'my-doctor'} element={<MyDoctor/>}/>
           <Route path={'register'} element={<Register/>}/>
-          <Route path={'login'} element={<Login/>}/>
+          <Route path={'login'} element={<Login_Con/>}/>
         </Route>
       </Routes>
 

@@ -6,7 +6,9 @@ const Consultation = () => {
     return (
 
         <div className={s.My_consultation}>
-            
+            <div className={s.Consultation_title}>
+                <h1>Предстоящая консультация</h1>
+            </div>
             <section>
                 <div className={s.Doctor_cart}>
                     <div className={s.Cart_close}>

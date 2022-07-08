@@ -4,8 +4,8 @@ import pen from '../../../../img/pen.png'
 const Balance = () => {
     return (
         <div className={s.Balance}>
-            <div>
-                <span><h1>Баланс: 2400₽</h1></span>
+            <div className={s.Balance_title}>
+                <h1>Баланс: 2400₽</h1>
             </div>
             <div className={s.Balance_add}>
                 <input type="text" name="" id="" />

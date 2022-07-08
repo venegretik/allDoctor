@@ -6,9 +6,12 @@ import ElementCreate from "../../../Components/Input/Input_custom";
 const inputValidate = ElementCreate("input");
 const Form_Login = (props) => {
     return (
-        <form action="">
+        <form onSubmit={props.handleSubmit}>
             <h3>Войти</h3>
-            <Field component={inputValidate} name={"MessageInput"} el_type="input" placeholder="Номер телефона" />
+            <Field component={inputValidate} name={"NumberInput"} el_type="input" placeholder="Номер телефона" />
+            {props.number_send &&(
+                <Field component={inputValidate} name={"CodeInput"} el_type="input" placeholder="Номер телефона" />
+            )}
             <button>Получить код</button>
         </form>
     )
@@ -16,7 +19,11 @@ const Form_Login = (props) => {
 const MessangerformRedux = reduxForm({
     form: 'MessageForm'
 })(Form_Login);
-const Login = () => {
+const Login = (props) => {
+    const onSubmit = (formData) => {
+        props.axiosAuth(formData.NumberInput,formData.CodeInput)
+    }
+    
     return (
         <div className={s.Login_wrapper}>
             <div className={s.Login_full}>
@@ -35,7 +42,7 @@ const Login = () => {
                     </div>
                 </div>
                 <div className={s.Login_form}>
-                    <MessangerformRedux />
+                    <MessangerformRedux onSubmit={onSubmit} {...props}/>
                 </div>
 
             </div>
