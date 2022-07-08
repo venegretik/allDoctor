@@ -7,7 +7,8 @@ const LoginContainer = (props) =>{
 }
 let mapStateToProps = (state) => {
     return{
-        number_send: state.config.number_send
+        number_send: state.config.number_send,
+        is_new_user: state.config.is_new_user
     }
 }
 let mapDispatchToProps = (dispatch) => {

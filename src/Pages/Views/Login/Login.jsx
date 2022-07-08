@@ -1,6 +1,7 @@
 import React from "react";
 import logo from '../../../img/logo.png'
 import s from './login.module.css'
+import { Navigate } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import ElementCreate from "../../../Components/Input/Input_custom";
 const inputValidate = ElementCreate("input");
@@ -17,7 +18,7 @@ const Form_Login = (props) => {
     )
 }
 const MessangerformRedux = reduxForm({
-    form: 'MessageForm'
+    form: 'LoginForm'
 })(Form_Login);
 const Login = (props) => {
     const onSubmit = (formData) => {
@@ -25,6 +26,9 @@ const Login = (props) => {
     }
     
     return (
+        <>
+        {props.is_new_user ? <Navigate to="/register"/> 
+        :
         <div className={s.Login_wrapper}>
             <div className={s.Login_full}>
                 <div className={s.Login_content}>
@@ -47,6 +51,9 @@ const Login = (props) => {
 
             </div>
         </div>
+        }
+        </>
+        
     );
 }
 
