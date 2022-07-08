@@ -18,5 +18,5 @@ let mapDispatchToProps = (dispatch) => {
         }
     }
 }
-const Login_Con = connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
-export default Login_Con
+const LoginCon = connect(mapStateToProps, mapDispatchToProps)(LoginContainer);
+export default LoginCon;

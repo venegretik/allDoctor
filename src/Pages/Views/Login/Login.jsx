@@ -4,14 +4,17 @@ import s from './login.module.css'
 import { Navigate } from "react-router-dom";
 import { Field, reduxForm } from "redux-form";
 import ElementCreate from "../../../Components/Input/Input_custom";
+import { maxLenghtCreate,requered } from "../../../base/Validators/validation";
+const maxLenght11 = maxLenghtCreate(11);
+const maxLenght4 = maxLenghtCreate(4);
 const inputValidate = ElementCreate("input");
 const Form_Login = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <h3>Войти</h3>
-            <Field component={inputValidate} name={"NumberInput"} el_type="input" placeholder="Номер телефона" />
+            <Field component={inputValidate} name={"NumberInput"} el_type="input" placeholder="Номер телефона" validate={[requered, maxLenght11]}/>
             {props.number_send &&(
-                <Field component={inputValidate} name={"CodeInput"} el_type="input" placeholder="Номер телефона" />
+                <Field component={inputValidate} name={"CodeInput"} el_type="input" placeholder="Код подтверждения" validate={[requered, maxLenght4]} />
             )}
             <button>Получить код</button>
         </form>
@@ -21,13 +24,15 @@ const MessangerformRedux = reduxForm({
     form: 'LoginForm'
 })(Form_Login);
 const Login = (props) => {
+    const token = localStorage.getItem('token');
     const onSubmit = (formData) => {
         props.axiosAuth(formData.NumberInput,formData.CodeInput)
     }
-    
     return (
         <>
-        {props.is_new_user ? <Navigate to="/register"/> 
+        {token ? <Navigate to="/Main"/> 
+        :
+        props.is_new_user ? <Navigate to="/register"/> 
         :
         <div className={s.Login_wrapper}>
             <div className={s.Login_full}>
