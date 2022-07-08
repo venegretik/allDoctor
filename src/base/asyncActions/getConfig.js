@@ -14,10 +14,10 @@ export const axiosAuth = (number, code) => {
   return async function (dispatch) {//стрелочная функция
 
     if (!code) {
-      const response = await axios.get(`${url}auth?phone=${number}`)
+      const response = await axios.get(`${defaultUrl}auth?phone=${number}`)
       dispatch(getAuthAction(number, response.data.status))
     } else {
-      const response = await axios.get(`${url}auth?phone=${number}&code=${code}`)
+      const response = await axios.get(`${defaultUrl}auth?phone=${number}&code=${code}`)
       if (response.data.status) {
         localStorage.setItem('token', response.data.token);
         console.log(response.data.is_new_user)
