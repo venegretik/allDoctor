@@ -24,6 +24,7 @@ function App() {
     }, 2000)
   }, [])
 
+  console.log(config)
   return (
     <>
       {!loading

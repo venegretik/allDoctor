@@ -1,63 +1,37 @@
 import React from "react";
-import {Link} from 'react-router-dom';
-import s from './Header.module.css';
-import logo from '../../../img/logo.png'
-import avatar from '../../../img/avatar.png'
-import arrow from '../../../img/arrow.png'
-import arrow_back from '../../../img/arrow-back.png'
-import message_img from '../../../img/pen.png'
+import {NavLink, Link} from "react-router-dom";
+import s from "./Header.module.css";
+import logo from "../../../img/logo.png";
+import arrow_back from "../../../img/arrow-back.png";
+import {UserMenu} from "./UserMenu/UserMenu";
 
 const Header = () => {
   return (
     <div className={s.Header_container}>
       <header className={s.Header_full}>
         <div className={s.Header_logo}>
-          <Link to={'/'}>
+          <Link to={"/"}>
             <img src={logo} alt=""/>
           </Link>
         </div>
         <div className={s.Header_nav}>
           <nav>
-            <ul>
-              <li>
-                <Link to="main">Главная</ Link>
-              </li>
-              <li>
-                <Link to="consultation">Мои записи</ Link>
-              </li>
-              <li>
-                <Link to="my-doctor">Мои врачи</ Link>
-              </li>
-            </ul>
+            <NavLink className={({isActive}) => isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink} to="main">Главная</NavLink>
+            <NavLink className={({isActive}) => isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink} to="consultation">Мои записи</NavLink>
+            <NavLink className={({isActive}) => isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink} to="my-doctor">Мои врачи</NavLink>
           </nav>
         </div>
-        <div className={s.jare}>
-          <div className={s.Header_profile}>
-            <div className="Profile_logo">
-              <img src={message_img} alt=""/>
-            </div>
-            <div className={s.Profile_text}>
-              <div className="Profile_avatar">
-                <img src={avatar} alt=""/>
-              </div>
-              <div className={s.Profile_menu}>
-                <p>Смирнов В. В.</p>
-                <img src={arrow} alt=""/>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <UserMenu/>
       </header>
       <div className={s.Menu_mobile}>
-        <div className={s.Menu_mobile_back}>
+        <Link to={"main"} className={s.Menu_mobile_back}>
           <img src={arrow_back} alt=""/>
-        </div>
+        </Link>
         <div className={s.Menu_mobile_title}>
           <h1>Главная</h1>
         </div>
       </div>
     </div>
   );
-}
+};
 export default Header;

@@ -1,4 +1,3 @@
-
 const defaultState = {
   config: null,
   loading: false,

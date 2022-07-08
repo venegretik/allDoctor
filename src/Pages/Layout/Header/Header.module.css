@@ -18,41 +18,39 @@
 .Header_nav{
     width: 30.09%;
 }
-.Header_nav nav ul{
+.Header_nav nav{
     display: flex;
     width: 100%;
 }
-.Header_nav nav ul li{
+.navLi:hover{
+    border-color: #407BFF;
+}
+.Menu_mobile{
+    display: none;
+}
+.navLink{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8B9BAB;
+    text-decoration: none;
     width: 33%;
     display: flex;
     border-bottom: 4px solid #EAF2FF;
     justify-content: center;
     padding-top: 18px;
     padding-bottom: 14px;
+    transition-duration: 0.5s;
 }
-.Header_profile{
-    display: flex;
-
-    align-items: center;
-    align-self: flex-end;
+.navLink:hover{
+    color: #2E373D;
+    border-color: #407BFF;
 }
-.Profile_text{
-    margin-left: 20px;
-    display: flex;
-}
-.Profile_menu{
-    align-items: center;
-    display: flex;
-}
-.Profile_menu img{
-    width: 16px;
-    height: 9px;
-}
-.jare{
-    margin-left: auto;
-}
-.Menu_mobile{
-    display: none;
+.headerActiveLink{
+    color: #2E373D;
+    border-color: #407BFF;
 }
 @media(max-width:980px){
     .Header_logo{
