@@ -10,6 +10,7 @@ import Register from "./Pages/Views/Register/Register";
 import Login_Con from './Pages/Views/Login/Login_container';
 import {useDispatch, useSelector} from 'react-redux/es/exports'
 import {Preloader} from "./Components/Preloader/Preloader";
+import {LandingLoader} from "./Pages/Views/Landing/LandingLoader";
 import {Landing} from "./Pages/Views/Landing/landing";
 import Main from "./Pages/Views/Main/Main";
 import {axiosConfig} from "./base/asyncActions/getConfig";
@@ -32,7 +33,11 @@ function App() {
           <Preloader/>
         :
         <Routes>
-          <Route index element={<Landing html={config.module.landing.html}/>}/>
+          <Route index element={
+            <LandingLoader>
+              <Landing html={config.module.landing.html}/>
+            </LandingLoader>
+          }/>
           <Route path={'/'} element={<Layout/>}>
             <Route path={'main'} element={<Main/>}/>
             <Route path={'profile'} element={<MyProfile/>}/>
