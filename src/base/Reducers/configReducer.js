@@ -2,7 +2,8 @@
 const defaultState = {
   config: null,
   loading: false,
-  number_send: false
+  number_send: false,
+  is_new_user: false
 }
 
 const GET_CONFIG = 'GET_CONFIG';
@@ -20,4 +21,4 @@ export const configReducer = (state = defaultState, action) => {
 }
 
 export const getConfigAction = (payload) => ({ type: GET_CONFIG, payload })
-export const getAuthAction = (number, code, number_send) => ({ type: GET_AUTH, number, code, number_send})
+export const getAuthAction = (number, code, number_send, is_new_user) => ({ type: GET_AUTH, number, code, number_send, is_new_user })
