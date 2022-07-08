@@ -1,10 +1,7 @@
-import React from 'react';
-
-const Landing = () => {
+const Landing = (props) => {
   return (
-    <>
-      
-    </>
+    <div dangerouslySetInnerHTML={{__html: props.html}}>
+    </div>
   );
 };
 

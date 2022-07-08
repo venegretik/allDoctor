@@ -23,24 +23,26 @@ function App() {
       dispatch(axiosConfig())
     }, 2000)
   }, [])
-  console.log(module)
+
   return (
     <>
-
-      {!loading && <Preloader/>}
-      <Routes>
-        <Route path={'/'} element={<Layout/>}>
-          <Route index element={<Landing/>}/>
-          <Route path={'main'} element={<Main/>}/>
-          <Route path={'profile'} element={<MyProfile/>}/>
-          <Route path={'doctor-list'} element={<DoctorList/>}/>
-          <Route path={'consultation'} element={<Consultation/>}/>
-          <Route path={'my-doctor'} element={<MyDoctor/>}/>
-          <Route path={'register'} element={<Register/>}/>
-          <Route path={'login'} element={<Login_Con/>}/>
-        </Route>
-      </Routes>
-
+      {!loading
+        ?
+          <Preloader/>
+        :
+        <Routes>
+          <Route index element={<Landing html={config.module.landing.html}/>}/>
+          <Route path={'/'} element={<Layout/>}>
+            <Route path={'main'} element={<Main/>}/>
+            <Route path={'profile'} element={<MyProfile/>}/>
+            <Route path={'doctor-list'} element={<DoctorList/>}/>
+            <Route path={'consultation'} element={<Consultation/>}/>
+            <Route path={'my-doctor'} element={<MyDoctor/>}/>
+            <Route path={'register'} element={<Register/>}/>
+            <Route path={'login'} element={<Login_Con/>}/>
+          </Route>
+        </Routes>
+      }
     </>
   );
 }
