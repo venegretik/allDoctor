@@ -13,7 +13,7 @@ export const axiosConfig = () => {
 export const axiosAuth = (number,code) => {
   return async function (dispatch) {//стрелочная функция
     if(!code){
-      const response = await axios.get(`${url}auth`,{phone:number})
+      const response = await axios.get(`${url}auth?phone = ${number}`)
       dispatch(getAuthAction(number, '', response.data.status))
     }
     else{
@@ -22,4 +22,3 @@ export const axiosAuth = (number,code) => {
     }
   }
 }
-axiosConfig()
