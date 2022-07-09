@@ -14,10 +14,15 @@ const Form_Register = (props) => {
             <Field component={inputValidate} name={"LastnameInput"} el_type="input" placeholder="Отчество" />
             <div className={s.Register_male}>
                 <p>Пол</p>
-                <Field component={"input"} name={"Radio"} id="Register_radio1" type="radio" value="0" checked />
-                <label htmlFor="Register_radio1">Мужчина</label>
-                <Field component={"input"} name={"Radio"} id="Register_radio2" type="radio" value="1"  />
-                <label htmlFor="Register_radio2">Женщина</label>
+                
+                <label className="container">One
+                    <Field component={"input"} name={"Radio"} id="Register_radio1" type="radio" checked value="0" />
+                        <span className="checkmark"></span>
+                </label>
+                <label className="container">One
+                    <Field component={"input"} name={"Radio"} id="Register_radio1" type="radio"  value="1" />
+                        <span className="checkmark"></span>
+                </label>
             </div>
             <Field component={inputValidate} name={"DateInput"} el_type="input" placeholder="Дата Рождения" />
             <Field component={inputValidate} name={"EmailInput"} el_type="input" placeholder="Электронная почта" />
@@ -34,6 +39,7 @@ const RegisterformRedux = reduxForm({
 })(Form_Register);
 const Register = (props) => {
     const onSubmit = (formData) => {
+        console.log(formData)
         let obj = {
             firstname: formData.NameInput,
             lastname: formData.SurnameInput,
@@ -42,7 +48,8 @@ const Register = (props) => {
             birthday: formData.DateInput,
             email: formData.EmailInput
         }
-        props.axiosRegister(obj)
+        const token = localStorage.getItem('token');
+        props.axiosRegister(obj, token);
     }
     return (
         <div className={s.Register_wrapper}>

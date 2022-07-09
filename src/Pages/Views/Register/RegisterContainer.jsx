@@ -12,8 +12,8 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return{
-        axiosRegister:(obj) =>{
-            dispatch(axiosRegister(obj));
+        axiosRegister:(obj, token) =>{
+            dispatch(axiosRegister(obj, token));
         }
     }
 }
