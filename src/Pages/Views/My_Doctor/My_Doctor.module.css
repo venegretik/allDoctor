@@ -26,6 +26,7 @@
 .Doctor {
     display: flex;
     margin-top: 40px;
+    flex-direction: column;
     max-width: 550px;
     position: relative;
     justify-content: space-between;
@@ -141,27 +142,42 @@
     letter-spacing: 0px;
     text-align: left;
 }
-
+.Doctor_button{
+    display: none;
+}
 @media(max-width:480px) {
     .Doctor_avatar_img {
         width: 70px;
     }
-
-    .Doctor_avatar_info ul li img {
-        width: 15px;
+    .Doctor_avatar{
+        margin-right: 0px;
+        width: 90px
     }
-
-    .Doctor_info button {
+    .Doctor_button{
+        display: block;
+    }
+    .Doctor_button{
+        margin: 0 auto;
+        width: 90%;
+    }
+    .Doctor_button button {
         background: #407BFF;
         border-radius: 16px;
-        width: 140px;
+        width: 100%;
         height: 40px;
-        margin-top: 25px;
+        margin-top: 10px;
         border: 0px;
         letter-spacing: 1px;
         text-transform: uppercase;
         color: #FFFFFF;
         padding: 10px 21px;
+    }
+    .Doctor_avatar_info ul li img {
+        width: 15px;
+    }
+
+    .Doctor_info button {
+        display: none;
     }
 
     .Doctor_avatar {

@@ -161,7 +161,9 @@
 .Consultation_info {
     margin-left: 30px;
 }
-
+.Doctor_full1{
+    display: flex;
+}
 .History_title {
     margin-top: 70px;
     margin-bottom: 32px;
@@ -174,6 +176,7 @@
 
 .History_special {
     display: flex;
+    width: 440px;
     margin-right: 80px;
 }
 
@@ -183,6 +186,7 @@
 
 .History_date {
     display: flex;
+    width: 440px;
 }
 
 .History_date p {

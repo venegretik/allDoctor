@@ -1,0 +1,25 @@
+.Input{
+    max-width: 400px;
+    width: 100%;
+    border-radius: 16px;
+    border: 1px #EAF2FF solid;
+    padding: 20px 0px;
+}
+.Input[type="tel"]{padding-left: 28px;}
+.Input[type="text"]{padding-left: 28px;}
+
+.error{
+    border: solid 2px red;
+}
+.InputError span{
+    font-size: 14px;
+    margin-top: 5px;
+}
+.InputError{
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+

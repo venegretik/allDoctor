@@ -4,6 +4,8 @@ import Select_custom from "../../../../Components/Select/Select";
 import Cancel_Record from "../../../../Components/Modal/Cancel_record/Cancel_Record";
 import New_review from "../../../../Components/Modal/New_review/New_review";
 import Chat from "../../../../Components/Chat/Chat";
+import Slide from "../../../../Components/Slide/Slide";
+import Radio_button from "../../../../Components/Radio_button/Radio_button";
 const Utility = () => {
   return (
     <div className={s.Utility_full}>
@@ -31,7 +33,7 @@ const Utility = () => {
           <div className={s.Utility_configuration_volume}>
             <p>Устройство вывода</p>
             <select name="" id=""></select>
-            <input type="text" />
+            <Slide />
           </div>
         </div>
       </div>
@@ -39,7 +41,6 @@ const Utility = () => {
         <p>Проверка микрофона</p>
         <div></div>
       </div>
-      <Chat />
     </div>
   );
 };

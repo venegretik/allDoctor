@@ -1,6 +1,8 @@
 import React from "react";
 import s from './Consultation.module.css';
 import star from '../../../img/Rating_Star.png';
+import ConsultationReady from "../../../Components/Consultation_ready/ConsultationReady";
+import SelectCustom from "../../../Components/Select/Select";
 import Download from '../../../img/Download.png'
 const Consultation = () => {
     return (
@@ -9,45 +11,7 @@ const Consultation = () => {
             <div className={s.Consultation_title}>
                 <h1>Предстоящая консультация</h1>
             </div>
-            <section>
-                <div className={s.Doctor_cart}>
-                    <div className={s.Cart_close}>
-                        +
-                    </div>
-                    <div className={s.Doctor_avatar}>
-                        <div className={s.Doctor_avatar_img}>
-                            <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
-                        </div>
-                        <div className={s.Doctor_avatar_info}>
-                            <ul>
-                                <li><img src={star} alt="" /> </li>
-                                <li><img src={star} alt="" /></li>
-                                <li><img src={star} alt="" /></li>
-                                <li><img src={star} alt="" /></li>
-                                <li><img src={star} alt="" /></li>
-                            </ul>
-                            <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
-                            <p className={s.Font_size14}>28 отзывов</p>
-                        </div>
-                    </div>
-                    <div className={s.Doctor_info}>
-                        <p className={s.Doctor_skills}>Терапевт</p>
-                        <h2 className={s.Font_size24}>Смирнов Владислав Владимирович</h2>
-                        <p className={s.Font_size14}>Стаж 12 лет • Врач высшей категории</p>
-                        <div className={s.Data}>
-                            <div className={s.Data_consultation}>
-                                <img src="" alt="" />
-                                <p className={s.Font_size16}>12.07.22</p>
-                            </div>
-                            <div className={s.Data_time}>
-                                <img src="" alt="" />
-                                <p className={s.Font_size16}>09:30</p>
-                            </div>
-                        </div>
-                        <button className={s.Injoy}>Присоединиться</button>
-                    </div>
-                </div>
-            </section>
+            <ConsultationReady />
             <div className={s.Doctor_full}>
 
                 <div className={s.Cart_close + " " + s.black}>
@@ -98,11 +62,11 @@ const Consultation = () => {
                 <div className={s.History_select}>
                     <div className={s.History_special}>
                         <p className={s.Font_size14}>Специализация</p>
-                        <select name="" id=""></select>
+                        <SelectCustom />
                     </div>
                     <div className={s.History_date}>
                         <p className={s.Font_size14}>Специализация</p>
-                        <select name="" id=""></select>
+                        <SelectCustom />
                     </div>
                 </div>
             </div>

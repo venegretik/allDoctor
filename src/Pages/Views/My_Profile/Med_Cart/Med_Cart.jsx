@@ -6,56 +6,66 @@ const Med_Cart = () => {
             <div className={s.Med_Cart_Title}>
                 <h1>Медицинская карта</h1>
             </div>
-            <div className={s.Med_Cart_info}>
-                <ul>
-                    <li>
-                        <p>Пупкин Иван Петрович</p>
-                    </li>
-                    <li>
-                        <p>Адрес регистрации: г.</p>
-                    </li>
-                    <li>
-                        <p>СНИЛС:</p>
-                    </li>
-                    <li>
-                        <p>Наименование страховой компании:</p>
-                    </li>
-                    <li>
-                        <p>Серия номер полиса</p>
-                    </li>
-                    <li>
-                        <p>Экстренный анамнез</p>
-                    </li>
-                    <li>
-                        <p>Пол: мужской</p>
-                    </li>
-                    <li>
-                        <p>Дата рождения: </p>
-                    </li>
-                    <li>
-                        <p>Группа здоровья: </p>
-                    </li>
-                    <li>
-                        <p>Группа крови</p>
-                    </li>
-                    <li>
-                        <p>Rh-фактор:</p>
-                    </li>
-                    <li>
-                        <p>Алергические реакции:</p>
-                    </li>
-                    <li>
-                        <p>Хронические заболевания</p>
-                    </li>
-                    <li>
-                        <p>История заболеваний</p>
-                    </li>
-                </ul>
+            <div className={s.Med_Cart_info_full}>
+                <div className={s.Med_Cart_info}>
+                    <ul>
+                        <li>
+                            <p className={s.Font_size16}>Пупкин Иван Петрович</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Адрес регистрации: г.</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>СНИЛС:</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Наименование страховой компании:</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Серия номер полиса</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Экстренный анамнез</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Пол: мужской</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Дата рождения: </p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Группа здоровья: </p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Группа крови</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Rh-фактор:</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Алергические реакции:</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>Хронические заболевания</p>
+                        </li>
+                        <li>
+                            <p className={s.Font_size16}>История заболеваний</p>
+                        </li>
+                    </ul>
+                </div>
+                <div className={s.Download_file}>
+                    <div className={s.Download_img}>
+                        <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
+                    </div>
+                    <div className={s.Download_text}>
+                        <p className={s.Font_size14}>Скачать заключение врача</p>
+                    </div>
+                </div>
             </div>
             <div className={s.Med_Cart_table}>
                 <table>
                     <thead>
-                        <tr>
+                        <tr className={s.Font_size16}>
                             <th scope="col">Датф</th>
                             <th scope="col">Специальность</th>
                             <th scope="col">Врач</th>
@@ -65,7 +75,7 @@ const Med_Cart = () => {
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr className={s.Font_size16}>
                             <td data-label="ACCOUNT">20.03.2018</td>
                             <td data-label="DUE DATE">Лор</td>
                             <td data-label="AMOUNT">Иванов И.И</td>
@@ -78,10 +88,10 @@ const Med_Cart = () => {
             <ul>
                 <li className={s.Med_Cart_Text}>Врачебные комиссии, консилиумы</li>
             </ul>
-            <div className={s.Med_Cart_table}>
+            <div className={s.Med_Cart_table + " " + s.Font_size16}>
                 <table>
                     <thead>
-                        <tr>
+                        <tr className={s.Font_size16}>
                             <th scope="col">Дата</th>
                             <th scope="col">Состав</th>
                             <th scope="col">Решение</th>
@@ -89,7 +99,7 @@ const Med_Cart = () => {
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr className={s.Font_size16}>
                             <td data-label="ACCOUNT">20.03.2018</td>
                             <td data-label="DUE DATE">Лор</td>
                             <td data-label="AMOUNT">Иванов И.И</td>
@@ -98,19 +108,19 @@ const Med_Cart = () => {
                 </table>
             </div>
             <ul>
-                <li className={s.Med_Cart_Text}>Травмы/Операции</li>
+                <li className={s.Med_Cart_Text + " " + s.Font_size16}>Травмы/Операции</li>
             </ul>
             <div className={s.Med_Cart_table}>
                 <table>
                     <thead>
-                        <tr>
+                        <tr className={s.Font_size16}>
                             <th scope="col">Дата</th>
                             <th scope="col">Травма/операция</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
+                        <tr className={s.Font_size16}>
                             <td data-label="ACCOUNT">20.03.2018</td>
                             <td data-label="DUE DATE">Удаление аппендицита</td>
                         </tr>

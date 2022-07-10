@@ -32,6 +32,7 @@
 .Form_Line{
     border: 1px solid #EAF2FF;
     margin-top: 14px;
+    max-width: 500px;
     margin-bottom: 30px;
 }
 .Download_File_left{
@@ -132,6 +133,12 @@
 @media (max-width:480px) {
     .title{
         display: none;
+    }
+    .formDownload button{
+        width: 100%;
+        font-size: 10px;
+        padding: 13.5px 41px;
+        height: 40px;
     }
     .Font_size24 {
         font-family: 'Exo', sans-serif;

@@ -1,0 +1,91 @@
+.Profile_data img{
+    max-width: 132px;
+    border-radius: 50%;
+}
+.Profile_data{
+    display: flex;
+    align-items: center;
+}
+.Profile_data b{
+    max-width: 280px;
+    font-size: 24px;
+    margin-left: 30px;
+}
+.Profile_replace_tel{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.Profile_replace_tel_data{
+    display: flex;
+    align-items: center;
+    margin-top: 7px;
+}
+.Profile_replace_tel_link {
+    color: #407BFF;
+    margin-left: 15px;
+}
+.Font_size24 {
+    font-family: 'Exo', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0px;
+}
+
+.Font_size40 {
+    font-family: 'Exo', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 53px;
+    letter-spacing: 0px;
+
+}
+
+.Font_size14 {
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+}
+
+.Font_size16 {
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0px;
+}
+@media(max-width:580px) {
+    .Font_size24 {
+        font-family: 'Exo', sans-serif;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 19px !important;
+        letter-spacing: 0px !important;
+    }
+    .Font_size40 {
+        font-family: 'Exo', sans-serif;
+        font-size: 16px !important;
+        font-weight: 700 !important;
+        line-height: 53px !important;
+        letter-spacing: 0px !important;
+    }
+
+    .Font_size14 {
+        font-family: 'Exo', sans-serif;
+        font-size: 10px !important;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0px;
+    }
+
+    .Font_size16 {
+        font-family: 'Exo', sans-serif;
+        font-size: 10px !important;
+        font-weight: 400 !important;
+        line-height: 13px !important;
+        letter-spacing: 0px !important;
+    }
+}

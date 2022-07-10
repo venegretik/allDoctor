@@ -113,3 +113,9 @@
         justify-content: center;
     }
 }
+@media (max-width:580px) {
+    .My_Profile {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

@@ -3,8 +3,8 @@ import './Radio.css';
 const Radio_button = (props) => {
     return (
         <div className="Radio">
-            <input type="radio" id="Register_radio1" name="radio-group" checked />
-            <label htmlFor="Register_radio1">{props.text}</label>
+            <input type="radio" id={props.el_id} name="radio-group"  />
+            <label htmlFor={props.el_id}>Apple</label>
         </div>
     )
 }

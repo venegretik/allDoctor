@@ -14,7 +14,7 @@ import {Landing} from "./Pages/Views/Landing/landing";
 import Main from "./Pages/Views/Main/Main";
 import {axiosConfig} from "./base/asyncActions/getConfig";
 import {Login} from "./Pages/Views/Login/Login";
-
+import Payment from './Pages/Views/Payment/Payment';
 function App() {
   const dispatch = useDispatch()
   const config = useSelector(state => state.config.config)

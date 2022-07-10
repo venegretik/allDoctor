@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from "react";
 import arrow from "../../img/arrow.png";
 import "./Select.css";
-const Select_ref = () => {};
 const SelectCustom = () => {
   const [isShown, setIsShown] = useState(false);
 

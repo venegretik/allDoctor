@@ -5,24 +5,17 @@
     padding-left: 15px;
 }
 
-[type="radio"]:checked+label:before,
-[type="radio"]:not(:checked)+label:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    display: none;
-    border-radius: 100%;
-    background: #fff;
-}
 
 #Select-menu {
     width: 100%;
+    position: absolute;
+    top: 50px;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
 }
 #Select-hide{
-   
+    width: 50%;
+    position: relative;
     max-width: 300px;
 }
 #Select-hide p {
@@ -43,4 +36,10 @@
     position: absolute;
     top: 17.5px;
     right: 17.5px;
+}
+@media (max-width: 768px) {
+    #Select-hide{
+        width: 100%;
+        max-width: 300px;
+    }
 }

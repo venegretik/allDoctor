@@ -1,6 +1,6 @@
 import React from "react";
 import s from '../My_Profile.module.css';
-import pen from '../../img/pen.png'
+import pen from '../../../../img/pen.png'
 const Local_Data = () => {
     return (
         <div className={s.My_content}>
