@@ -5,7 +5,11 @@ import {defaultUrl} from "../configUrl";
 
 export const axiosConfig = () => {
   return async function (dispatch) {
-    const response = await axios.get(`${defaultUrl}config`)
+    const response = await axios.get(`${defaultUrl}config`, {
+      data: {
+        platform: 'desktop'
+      }
+    })
     dispatch(getConfigAction(response.data))
   }
 }

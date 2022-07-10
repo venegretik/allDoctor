@@ -1,10 +1,10 @@
 import React from "react";
-import s from './Button.module.css';
-const Button = () => {
+import './Button.css';
+const Button = (props) => {
     return (
-        <div className={s.Button}>
-            <button></button>
-        </div>
+            <button type={props.type} className={props.class}>
+              {props.text}
+            </button>
     )
 }
 export default Button;

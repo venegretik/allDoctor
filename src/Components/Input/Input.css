@@ -1,0 +1,24 @@
+input[type=text], input[type=tel]{
+    background: #FFFFFF;
+    border: 2px solid #EAF2FF;
+    border-radius: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #8B9BAB;
+    padding: 20px 28px;
+    max-width: 400px;
+    width: 100%;
+}
+input[type=text]:invalid, input[type=tel]:invalid{
+    border: 2px solid red;
+}
+input[type=text]:focus:invalid, input[type=tel]:focus:invalid{
+    border: 2px solid red;
+}
+input[type=text]:valid, input[type=tel]:valid{
+    border: 2px solid green;
+}
+input[type=text]:not(:focus):invalid, input[type=tel]:not(:focus):invalid{
+    border: 2px solid #EAF2FF;
+}

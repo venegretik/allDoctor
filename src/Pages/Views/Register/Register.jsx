@@ -2,10 +2,12 @@ import React from "react";
 import s from './register.module.css';
 import Checkbox from "../../../Components/Checkbox/Checkbox";
 import Radio_button from "../../../Components/Radio_button/Radio_button";
-import ElementCreate from "../../../Components/Input/Input_custom";
+import ElementCreate from "../../../Components/Input_old/Input_custom";
 import './radio.css';
 import { reduxForm, Field } from "redux-form";
 const inputValidate = ElementCreate("input");
+
+
 const Form_Register = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
@@ -38,6 +40,7 @@ const RegisterformRedux = reduxForm({
     form: 'RegisterForm'
 })(Form_Register);
 const Register = (props) => {
+  console.log(props)
     const onSubmit = (formData) => {
         console.log(formData)
         let obj = {

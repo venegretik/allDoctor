@@ -29,7 +29,6 @@
     background: #FFFFFF;
     box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
-    padding: 21px 16px;
     width: 250px;
     right: 90px;
     top: 90px;
@@ -44,11 +43,11 @@
     align-items: center;
     color: #2E373D;
     text-decoration: none;
-    border-bottom: solid 2px transparent;
     transition-duration: 0.5s;
+    padding: 2px 16px;
 }
 .MenuLink:hover{
-    border-bottom: solid 2px #333;
+    background-color: rgba(224, 224, 224, 0.17);
 }
 .MenuBack{
     position: fixed;
@@ -58,4 +57,8 @@
     bottom: 0;
     width: 100%;
     height: 100%;
+}
+.LinkBorder{
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
 }

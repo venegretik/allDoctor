@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from "./UserMenu.module.css";
 import message_img from "../../../../img/coolicon.png";
 import avatar from "../../../../img/avatar.png";
 import arrow from "../../../../img/arrow.png";
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {getShortInfo} from "../../../../base/asyncActions/getMainPageInfo";
 
 const UserMenu = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getShortInfo())
+  }, [])
   const [show, setShow] = useState(false)
   return (
     <div className={s.jare}>
@@ -29,7 +35,7 @@ const UserMenu = () => {
         <div onClick={() => setShow(false)} className={s.MenuBack}>
           <div className={s.MenuWrap}>
             <ul className={s.MenuList}>
-              <li><Link className={s.MenuLink} to={'consultation'}>Личные данные</Link></li>
+              <li><Link className={`${s.MenuLink} ${s.LinkBorder}`} to={'consultation'}>Личные данные</Link></li>
               <li><Link className={s.MenuLink} to={'/'}>Баланс</Link></li>
               <li><Link className={s.MenuLink} to={'/'}>Проверка оборудования</Link></li>
               <li><Link className={s.MenuLink} to={'/'}>Анкета</Link></li>

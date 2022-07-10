@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Result.module.css';
 import { Field, reduxForm } from "redux-form";
-import ElementCreate from "../../../../Components/Input/Input_custom";
+import ElementCreate from "../../../../Components/Input_old/Input_custom";
 import file from "../../../../img/file.png";
 import download from "../../../../img/download_file.png";
 const inputValidate = ElementCreate("input");

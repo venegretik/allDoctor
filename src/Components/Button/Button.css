@@ -1,12 +1,12 @@
-.Button button {
-    background: #407BFF;
+.btn {
     border-radius: 16px;
-    width: 200px;
-    height: 60px;
-    margin-top: 25px;
-    border: 0px;
+    width: fit-content;
+    border: none;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #FFFFFF;
     padding: 22px 41px;
+}
+.blue{
+    background-color: #407BFF;
 }

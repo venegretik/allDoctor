@@ -1,38 +1,37 @@
 import {useEffect} from 'react'
 
-const LandingLoader = ({ children }) => {
-    useEffect(() => {
-        nodeScriptReplace(document.getElementsByTagName("body")[0]);
-    }, []);
-    return children;
+const LandingLoader = ({children}) => {
+  useEffect(() => {
+    nodeScriptReplace(document.getElementsByTagName("body")[0]);
+  }, []);
+  return children;
 };
 
 function nodeScriptReplace(node) {
-    if ( nodeScriptIs(node) === true ) {
-            node.parentNode.replaceChild( nodeScriptClone(node) , node );
+  if (nodeScriptIs(node) === true) {
+    node.parentNode.replaceChild(nodeScriptClone(node), node);
+  } else {
+    var i = -1, children = node.childNodes;
+    while (++i < children.length) {
+      nodeScriptReplace(children[i]);
     }
-    else {
-            var i = -1, children = node.childNodes;
-            while ( ++i < children.length ) {
-                  nodeScriptReplace( children[i] );
-            }
-    }
-    return node;
+  }
+  return node;
 }
 
-function nodeScriptClone(node){
-    var script  = document.createElement("script");
-    script.text = node.innerHTML;
+function nodeScriptClone(node) {
+  var script = document.createElement("script");
+  script.text = node.innerHTML;
 
-    var i = -1, attrs = node.attributes, attr;
-    while ( ++i < attrs.length ) {                                    
-          script.setAttribute( (attr = attrs[i]).name, attr.value );
-    }
-    return script;
+  var i = -1, attrs = node.attributes, attr;
+  while (++i < attrs.length) {
+    script.setAttribute((attr = attrs[i]).name, attr.value);
+  }
+  return script;
 }
 
 function nodeScriptIs(node) {
-    return node.tagName === 'SCRIPT';
+  return node.tagName === 'SCRIPT';
 }
 
 export {LandingLoader};
