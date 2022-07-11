@@ -36,9 +36,7 @@ const MyDoctor = () => {
             </div>
             <div className={s.Reviews_buttons}>
                 <button className={s.Show_more + " " + s.Font_size14}>Показать ещё</button>
-                
             </div>
-            
         </div>
     )
 }
