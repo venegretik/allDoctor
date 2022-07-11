@@ -1,36 +1,40 @@
 import React from "react";
 import s from './Recording.module.css';
-import star from '../img/Rating_Star.png';
+import star from '../../../img/Rating_Star.png';
 import Reviews from './Reviews/Reviews';
+import Calendar from "../../../Components/Calendar/Calendar";
 const Recording = () => {
     return (
         <div className={s.Recording_full}>
-            <div className={s.Doctor_infos}>
-                <div className={s.Doctor_avatar}>
-                    <div className={s.Doctor_avatar_img}>
-                        <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
+            <div className={s.Doctor_calendar}>
+                <div className={s.Doctor_infos}>
+                    <div className={s.Doctor_avatar}>
+                        <div className={s.Doctor_avatar_img}>
+                            <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
+                        </div>
+                        <div className={s.Doctor_avatar_info + " " + s.black}>
+                            <ul>
+                                <li><img src={star} alt="" /> </li>
+                                <li><img src={star} alt="" /></li>
+                                <li><img src={star} alt="" /></li>
+                                <li><img src={star} alt="" /></li>
+                                <li><img src={star} alt="" /></li>
+                            </ul>
+                            <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
+                            <p className={s.Font_size14}>28 отзывов</p>
+                        </div>
                     </div>
-                    <div className={s.Doctor_avatar_info + " " + s.black}>
-                        <ul>
-                            <li><img src={star} alt="" /> </li>
-                            <li><img src={star} alt="" /></li>
-                            <li><img src={star} alt="" /></li>
-                            <li><img src={star} alt="" /></li>
-                            <li><img src={star} alt="" /></li>
-                        </ul>
-                        <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
-                        <p className={s.Font_size14}>28 отзывов</p>
+                    <div className={s.Doctor_info + " " + s.black}>
+                        <p className={s.gray + " " + s.Font_size14}>Терапевт</p>
+                        <h2 className={s.Font_size24}>Смирнов Владислав Владимирович</h2>
+                        <p className={s.Staj + " " + s.Font_size14}>Стаж 19 лет • Врач высшей категории • Кандидат медицинских наук</p>
+                        <div className={s.Doctor_buy}>
+                            <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
+                            <p className={s.buy}>1500 ₽</p>
+                        </div>
                     </div>
                 </div>
-                <div className={s.Doctor_info + " " + s.black}>
-                    <p className={s.gray + " " + s.Font_size14}>Терапевт</p>
-                    <h2 className={s.Font_size24}>Смирнов Владислав Владимирович</h2>
-                    <p className={s.Staj + " " + s.Font_size14}>Стаж 19 лет • Врач высшей категории • Кандидат медицинских наук</p>
-                    <div className={s.Doctor_buy}>
-                        <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-                        <p className={s.buy}>1500 ₽</p>
-                    </div>
-                </div>
+                <Calendar />
             </div>
             <div className={s.Doctor_text}>
                 <div className={s.Qualification}>

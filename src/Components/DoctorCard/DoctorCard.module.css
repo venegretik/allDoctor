@@ -9,7 +9,16 @@
     background-color: #407BFF;
     border-radius: 40px;
 }
-
+.Doctor_cart {
+    position: relative;
+    margin-top: 80px;
+    width: 800px;
+    display: flex;
+    padding-bottom: 22px;
+    padding-top: 30px;
+    background-color: #407BFF;
+    border-radius: 40px;
+}
 .Font_size14 {
     font-family: 'Exo', sans-serif;
     font-size: 14px;

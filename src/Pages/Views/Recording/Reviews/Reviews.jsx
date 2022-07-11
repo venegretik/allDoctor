@@ -1,6 +1,6 @@
 import React from "react";
 import s from '../Recording.module.css';
-import star from '../../img/Rating_Star.png';
+import star from '../../../../img/Rating_Star.png';
 const Reviews = () => {
     return (
         <div>

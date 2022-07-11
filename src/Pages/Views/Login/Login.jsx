@@ -28,7 +28,7 @@ const Login = (props) => {
   return (
     <div className={'Container'}>
       <div className={style.login_container}>
-        <div>
+        <div className={style.login_text}>
           <img className={style.login_image} src={logo} alt=""/>
           <h1 className={style.login_title}>Советуйтесь с врачом, а не с форумом</h1>
           <ul className={style.login_list}>

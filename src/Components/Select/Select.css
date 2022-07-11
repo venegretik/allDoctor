@@ -13,11 +13,52 @@
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
 }
-#Select-hide{
+
+#Select-menu [type="radio"]:checked+label::before,
+#Select-menu [type="radio"]:not(:checked)+label::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    width: 0px;
+    height: 0px;
+    background: #F3F3F5;
+    border: 0px solid #ECECEE;
+    border-radius: 100%;
+    background: #fff;
+}
+
+#Select-menu [type="radio"]:checked,
+#Select-menu [type="radio"]:not(:checked) {
+    position: static;
+    left: 0px;
+    outline-style: none;
+    width: 100%;
+    border: 0px;
+}
+
+#Select-menu [type="radio"]:checked+label:after,
+#Select-menu [type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    background: #407BFF;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+#Select-hide {
     width: 50%;
     position: relative;
+    height: 43px;
     max-width: 300px;
 }
+
 #Select-hide p {
     padding: 10px 0px;
     padding-left: 16px;
@@ -26,19 +67,23 @@
     border: 1px solid #9DC3FF;
     border-radius: 7px;
 }
-.Select_content{
+
+.Select_content {
     position: relative;
 }
-.Rotate_img{
+
+.Rotate_img {
     transform: rotate(-180deg);
 }
-.Select_content img{
+
+.Select_content img {
     position: absolute;
     top: 17.5px;
     right: 17.5px;
 }
+
 @media (max-width: 768px) {
-    #Select-hide{
+    #Select-hide {
         width: 100%;
         max-width: 300px;
     }

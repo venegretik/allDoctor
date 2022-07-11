@@ -1,11 +1,12 @@
 import React from "react";
 import s from './Post_review.module.css';
 import star from '../../../img/Rating_Star.png';
+import SelectCustom from "../../../Components/Select/Select";
 const Post_rewiew = () => {
     return (
         <div className={s.Review_full}>
             <div className={s.Review_title}>
-                <h1>Оставить отзыв</h1>
+                <h1 className={s.Font_size24}>Оставить отзыв</h1>
             </div>
             <div className={s.Doctor_infos}>
                 <div className={s.Doctor_avatar}>
@@ -14,15 +15,15 @@ const Post_rewiew = () => {
                     </div>
                 </div>
                 <div className={s.Doctor_info + " " + s.black}>
-                    <p className={s.gray}>Терапевт</p>
-                    <h2>Смирнов Владислав Владимирович</h2>
-                    <p className={s.Staj}>Стаж 19 лет • Врач высшей категории • Кандидат медицинских наук</p>
+                    <p className={s.gray + " " + s.Font_size14}>Терапевт</p>
+                    <h2 className={s.Font_size24}>Смирнов Владислав Владимирович</h2>
+                    <p className={s.Staj + " " + s.Font_size14}>Стаж 19 лет • Врач высшей категории • Кандидат медицинских наук</p>
                 </div>
             </div>
             <div className={s.Grade}>
                 <ul>
                     <li>
-                        <b>Тщательное обследование</b>
+                        <b className={s.Font_size24}>Тщательное обследование</b>
                         <div className={s.Doctor_avatar_info + " " + s.black}>
                             <ul>
                                 <li><img src={star} alt="" /> </li>
@@ -34,7 +35,7 @@ const Post_rewiew = () => {
                         </div>
                     </li>
                     <li>
-                        <b>Эффективность лечения</b>
+                        <b className={s.Font_size24}>Эффективность лечения</b>
                         <div className={s.Doctor_avatar_info + " " + s.black}>
                             <ul>
                                 <li><img src={star} alt="" /> </li>
@@ -46,7 +47,7 @@ const Post_rewiew = () => {
                         </div>
                     </li>
                     <li>
-                        <b>Отношение к пациенту</b>
+                        <b className={s.Font_size24}>Отношение к пациенту</b>
                         <div className={s.Doctor_avatar_info + " " + s.black}>
                             <ul>
                                 <li><img src={star} alt="" /> </li>
@@ -58,7 +59,7 @@ const Post_rewiew = () => {
                         </div>
                     </li>
                     <li>
-                        <b>Информирование пациента</b>
+                        <b className={s.Font_size24}>Информирование пациента</b>
                         <div className={s.Doctor_avatar_info + " " + s.black}>
                             <ul>
                                 <li><img src={star} alt="" /> </li>
@@ -70,7 +71,7 @@ const Post_rewiew = () => {
                         </div>
                     </li>
                     <li>
-                        <b>Посоветуете ли Вы врача?</b>
+                        <b className={s.Font_size24}>Посоветуете ли Вы врача?</b>
                         <div className={s.Doctor_avatar_info + " " + s.black}>
                             <ul>
                                 <li><img src={star} alt="" /> </li>
@@ -85,23 +86,23 @@ const Post_rewiew = () => {
             </div>
             <div className={s.Rewiew_add}>
                 <div className={s.select_consultation}>
-                    <p>Выберите консультацию</p>
-                    <select name="" id=""></select>
+                    <p className={s.Font_size24}>Выберите консультацию</p>
+                    <SelectCustom />
                 </div>
                 <div className={s.select_consultation + " " + s.select_margin}>
-                    <p>Ваша история</p>
+                    <p className={s.Font_size24}>Ваша история</p>
                     <input type="text" placeholder="Расскажите, как обратились к врачу, как прошла консультация, помогло ли лечение"/>
                 </div>
                 <div className={s.select_consultation + " " + s.select_margin}>
-                    <p>Понравилось</p>
+                    <p className={s.Font_size24}>Понравилось</p>
                     <input type="text" placeholder="Здесь можно указать главные плюсы"/>
                 </div>
                 <div className={s.select_consultation + " " + s.select_margin}>
-                    <p>Не понравилось</p>
+                    <p className={s.Font_size24}>Не понравилось</p>
                     <input type="text" placeholder="Какие недостатки вы отметили?"/>
                 </div>
                 <div className={s.otziv}>
-                    <button>Оставить отзыв</button>
+                    <button className={s.Font_size14}>Оставить отзыв</button>
                 </div>
             </div>
         </div>

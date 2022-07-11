@@ -17,7 +17,6 @@
 .Doctor_avatar_info p {
     text-align: center;
 }
-
 .Doctor_avatar {
     width: 162px;
     margin-right: 30px;
@@ -99,6 +98,8 @@
 }
 
 .Skill_select {
+    width: 300px;
+    align-items: center;
     display: flex;
 }
 
@@ -107,7 +108,9 @@
 }
 
 .Sort_select {
+    align-items: center;
     margin-left: 80px;
+    width: 300px;
     display: flex;
 }
 
@@ -186,7 +189,15 @@
         display: flex;
         flex-direction: column;
     }
-
+    .Skill_select {
+        width: 120px;
+        display: flex;
+    }
+    .Sort_select {
+        margin-left: 80px;
+        width: 120px;
+        display: flex;
+    }
     .Sort_select {
         display: flex;
         flex-direction: column;

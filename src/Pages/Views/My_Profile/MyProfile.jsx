@@ -33,7 +33,7 @@ const MyProfile = () => {
                     </li>
                 </ul>
             </div>
-            <Result />
+            <ReplaceData />
         </div>
     )
 }

@@ -8,8 +8,22 @@
 
 .Med_Cart ul {
     max-width: 510px;
+    list-style: none;
 }
-
+.Med_Cart ul li p{
+    position: relative;
+}
+.Med_Cart ul li p::before{
+    position: absolute;
+    content: "";
+    top:50%;
+    left: -15px;
+    transform: translate(0,-50%);
+    width:3px;
+    height: 3px;
+    border-radius: 50%;
+    background: black;
+}
 .Med_Cart {
     margin-left: 85px;
     margin-left: 50px;

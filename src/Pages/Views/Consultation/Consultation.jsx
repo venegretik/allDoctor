@@ -3,7 +3,7 @@ import s from './Consultation.module.css';
 import star from '../../../img/Rating_Star.png';
 import ConsultationReady from "../../../Components/Consultation_ready/ConsultationReady";
 import SelectCustom from "../../../Components/Select/Select";
-import Download from '../../../img/Download.png'
+import Download from '../../../img/Download.png';
 const Consultation = () => {
     return (
 

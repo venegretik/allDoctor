@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Doctor_list.module.css';
 import star from '../../../img/Rating_Star.png';
-
+import SelectCustom from "../../../Components/Select/Select";
 const DoctorList = () => {
   return (
     <section className={s.Doctor_list}>
@@ -12,11 +12,11 @@ const DoctorList = () => {
         <div className={s.Select_all}>
           <div className={s.Skill_select}>
             <p className={s.Font_size14}>Специализация</p>
-            <select name="" id=""></select>
+            <SelectCustom />
           </div>
           <div className={s.Sort_select}>
             <p className={s.Font_size14}>Сортировка</p>
-            <select name="" id=""></select>
+            <SelectCustom />
           </div>
         </div>
       </div>

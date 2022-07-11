@@ -2,12 +2,13 @@ import React from "react";
 import s from './Main.module.css';
 import star from '../../../img/Rating_Star.png'
 import { Link } from 'react-router-dom';
-import {DoctorCard} from "../../../Components/DoctorCard/DoctorCard";
+import ConsultationReady from "../../../Components/Consultation_ready/ConsultationReady";
+import './Slider.css'
 const Main = (props) => {
   return (
     <div>
       <div className={s.Container}>
-        <DoctorCard props={props} />
+        <ConsultationReady props={props} />
         <section>
           <div className={s.Container_list}>
             <div className={s.Title_list}>
@@ -63,6 +64,39 @@ const Main = (props) => {
             </div>
           </div>
         </section>
+        <div className="container">
+          <div className="arrows">
+            <a href="" className="left_arrow"></a>
+            <a href="" className="right_arrow"></a>
+          </div>
+          <div className="slider">
+            <div className="slider__wrapper">
+              <div className="slider__items">
+                <div className="slider__item">
+                  <img src="https://api.telemed.dev-h.ru/images/icons/pain/zubi.svg" alt="" />
+                  <b>Проблемы с зубами</b>
+                </div>
+                <div className="slider__item">
+                  <img src="https://api.telemed.dev-h.ru/images/icons/pain/zubi.svg" alt="" />
+                  <b>Проблемы с зубами</b>
+                </div>
+                <div className="slider__item">
+                  <img src="https://api.telemed.dev-h.ru/images/icons/pain/zubi.svg" alt="" />
+                  <b>Проблемы с зубами</b>
+                </div>
+                <div className="slider__item">
+                  <img src="https://api.telemed.dev-h.ru/images/icons/pain/zubi.svg" alt="" />
+                  <b>Проблемы с зубами</b>
+                </div>
+                <div className="slider__item">
+                  <img src="https://api.telemed.dev-h.ru/images/icons/pain/zubi.svg" alt="" />
+                  <b>Проблемы с зубами</b>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
         <section className={s.medicine + " " + s.container}>
           <h2 className={s.medicine_title + " " + s.Font_size40}>Разделы медицины</h2>
           <div className={s.medicine_cards}>

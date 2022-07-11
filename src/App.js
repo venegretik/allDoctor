@@ -14,7 +14,7 @@ import {Landing} from "./Pages/Views/Landing/landing";
 import Main from "./Pages/Views/Main/Main";
 import {axiosConfig} from "./base/asyncActions/getConfig";
 import {Login} from "./Pages/Views/Login/Login";
-import Payment from './Pages/Views/Payment/Payment';
+import Recording from './Pages/Views/Recording/Recording';
 function App() {
   const dispatch = useDispatch()
   const config = useSelector(state => state.config.config)
@@ -44,6 +44,7 @@ function App() {
             <Route path={'doctor-list'} element={<DoctorList/>}/>
             <Route path={'consultation'} element={<Consultation/>}/>
             <Route path={'my-doctor'} element={<MyDoctor/>}/>
+            <Route path={'recording'} element={<Recording />}/>
           </Route>
         </Routes>
       }

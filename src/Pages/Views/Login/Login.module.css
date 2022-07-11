@@ -61,3 +61,31 @@
     font-size: 16px;
     color: #407BFF;
 }
+@media (max-width:1280px) {
+    .login_container{
+        flex-direction: column;
+    }
+    .login_title{
+        text-align: center;
+    }
+    .login_text{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+@media (max-width:650px){
+    .login_title{
+        display: none;
+    }
+    .login_image{
+        width: 280px;
+    }
+    .login_container{
+        padding: 0px 20px;
+    }
+    .login_item{
+        display: none;
+    }
+}

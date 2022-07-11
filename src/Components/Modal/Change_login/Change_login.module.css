@@ -1,0 +1,30 @@
+.ChangeLogin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ChangeLoginMain{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ChangeLoginMain_step2{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ChangeLoginMain_step3{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ChangeLoginMain_step2 input{
+    width: 100%;
+    max-width: 400px;
+}
+.ChangeLoginMain_step3 input{
+    width: 100%;
+    max-width: 400px;
+}
