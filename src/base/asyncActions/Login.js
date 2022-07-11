@@ -1,7 +1,6 @@
 import axios from "axios";
 import {defaultUrl} from "../configUrl";
-import {getCodeAction, loginAction} from "../Reducers/loginReducer";
-import {Navigate} from "react-router-dom";
+import {getCodeAction} from "../Reducers/loginReducer";
 
 
 export const axiosLogin = (phone) => {
@@ -21,7 +20,7 @@ export const axiosLogin = (phone) => {
   }
 }
 export const axiosSendCode = (phone, code) => {
-  return async function (dispatch) {
+  return async function () {
     const response = await axios.get(`${defaultUrl}auth`, {
       params: {
         code: code,
@@ -32,7 +31,9 @@ export const axiosSendCode = (phone, code) => {
       localStorage.setItem('login', true)
       localStorage.setItem('token', response.data.token)
       localStorage.setItem('isNewUser', response.data.is_new_user)
-      return response.data
+      window.location.reload()
+    } else {
+      return response.data.error.fields.code[0]
     }
   }
 }

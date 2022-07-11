@@ -1,7 +1,6 @@
 import React from "react";
 import s from './My_Doctor.module.css';
 import star from '../../../img/Rating_Star.png';
-import Radio_button from '../../../Components/Radio_button/Radio_button'
 const MyDoctor = () => {
     return (
         <div>

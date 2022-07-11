@@ -3,13 +3,17 @@ import './Input.css'
 import InputMask from 'react-input-mask'
 
 
-export const InputPhone = (props) => {
+export const InpMask = (props) => {
   return (
-    <InputMask mask="+7 (999) 999-99-99" onChange={props.onChange} value={props.value} {...props}/>
+    <InputMask mask='+7 (999) 999-99-99' onChange={props.onChange} value={props.value} {...props}/>
   );
 };
+
 export const Input = (props) => {
   return (
-    <input {...props}/>
+    <label style={props.label}>
+      <input {...props}/>
+      {props.labeltext}
+    </label>
   );
 };

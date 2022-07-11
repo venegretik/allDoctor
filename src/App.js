@@ -6,7 +6,6 @@ import {MyProfile} from "./Pages/Views/My_Profile/MyProfile";
 import {DoctorList} from "./Pages/Views/Doctor_list/DoctorList";
 import Consultation from "./Pages/Views/Consultation/Consultation";
 import {MyDoctor} from "./Pages/Views/My_Doctor/MyDoctor";
-import Register from "./Pages/Views/Register/Register";
 import {useDispatch, useSelector} from 'react-redux/es/exports'
 import {Preloader} from "./Components/Preloader/Preloader";
 import {LandingLoader} from "./Pages/Views/Landing/LandingLoader";
@@ -15,14 +14,14 @@ import Main from "./Pages/Views/Main/Main";
 import {axiosConfig} from "./base/asyncActions/getConfig";
 import {Login} from "./Pages/Views/Login/Login";
 import Recording from './Pages/Views/Recording/Recording';
+import Payment from './Pages/Views/Payment/Payment';
+import {Register} from "./Pages/Views/Register/Register";
 function App() {
   const dispatch = useDispatch()
   const config = useSelector(state => state.config.config)
   const loading = useSelector(state => state.config.loading)
   useEffect(() => {
-    setTimeout(() => {
       dispatch(axiosConfig())
-    }, 2000)
   }, [])
   return (
     <>
@@ -38,6 +37,7 @@ function App() {
           }/>
           <Route path={'login'} element={<Login/>}/>
           <Route path={'register'} element={<Register/>}/>
+
           <Route path={'/'} element={<Layout/>}>
             <Route path={'main'} element={<Main/>}/>
             <Route path={'profile'} element={<MyProfile/>}/>

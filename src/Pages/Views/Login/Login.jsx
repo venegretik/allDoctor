@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import style from './Login.module.css'
 import logo from '../../../img/logo.png'
 import {useSelector} from "react-redux";
@@ -9,24 +9,10 @@ import {LoginForm} from "../../../Components/Forms/LoginForm";
 const Login = (props) => {
 
   const error = useSelector(state => state.login.error)
-  const newUser = localStorage.getItem('isNewUser')
   const log_in = localStorage.getItem('login')
-  const checkUser = () => {
-    if (!log_in) {
-      return <Navigate to={'/login'}/>
-    } else if(log_in && newUser){
-      return <Navigate to={'/register'}/>
-    } else if(log_in && !newUser){
-      return <Navigate to={'/main'}/>
-    } else {
-      return false
-    }
-  }
-  useEffect(() => {
-    checkUser()
-  }, [])
   return (
     <div className={'Container'}>
+      {log_in ? <Navigate to={'/register'}/> : false }
       <div className={style.login_container}>
         <div className={style.login_text}>
           <img className={style.login_image} src={logo} alt=""/>

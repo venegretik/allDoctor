@@ -1,18 +1,18 @@
 import React from "react";
 import s from './Result.module.css';
-import { Field, reduxForm } from "redux-form";
-import ElementCreate from "../../../../Components/Input_old/Input_custom";
+import { reduxForm } from "redux-form";
 import file from "../../../../img/file.png";
 import download from "../../../../img/download_file.png";
-const inputValidate = ElementCreate("input");
+import {Input} from "../../../../Components/Input/Input";
+
 const Form_Result = () => {
     return (
         <form action="">
-            <Field component={inputValidate} name={"ResultInput"} el_type="input" placeholder="Название документа" />
+            <Input  name={"ResultInput"} el_type="input" placeholder="Название документа" />
             <div className={s.Form_Radio}>
-                <Field component={inputValidate} id="Register_radio1" el_type="radio" name={"ResultRadio"} checked />
+                <Input  id="Register_radio1" el_type="radio" name={"ResultRadio"} checked />
                 <label htmlFor="Register_radio1" className={s.gray}>Лабороторные</label>
-                <Field component={inputValidate} id="Register_radio2" el_type="radio" name={"ResultRadio"} />
+                <Input  id="Register_radio2" el_type="radio" name={"ResultRadio"} />
                 <label htmlFor="Register_radio2" className={s.gray}>Функциональные</label>
             </div>
             <div className={s.Form_Download}>
@@ -26,6 +26,7 @@ const Form_Result = () => {
 const ResultformRedux = reduxForm({
     form: 'ResultForm'
 })(Form_Result);
+
 const Result = () => {
 
     return (
