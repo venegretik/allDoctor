@@ -2,13 +2,21 @@
     border-collapse: collapse;
     width: 100%;
     padding: 5px 0px;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    box-sizing: border-box;
+    position: relative;
     padding-left: 15px;
 }
-
 
 #Select-menu {
     width: 100%;
     position: absolute;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #fff;
     top: 50px;
     box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
     border-radius: 7px;
@@ -28,13 +36,18 @@
     border-radius: 100%;
     background: #fff;
 }
-
+#Select-menu input[type=radio]:before {
+    display: none;
+}
 #Select-menu [type="radio"]:checked,
 #Select-menu [type="radio"]:not(:checked) {
-    position: static;
-    left: 0px;
     outline-style: none;
-    width: 100%;
+    position: absolute;
+    width: 150px;
+    left: 0px;
+    top: 0px;
+    cursor: pointer;
+    height: 50px;
     border: 0px;
 }
 

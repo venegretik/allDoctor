@@ -64,7 +64,7 @@ const Main = (props) => {
             </div>
           </div>
         </section>
-        <div className="container">
+        <div className="container1">
           <div className="arrows">
             <a href="" className="left_arrow"></a>
             <a href="" className="right_arrow"></a>

@@ -13,7 +13,10 @@
 .Skill_title h1 {
     font-size: 40px;
 }
-
+.Doctor_button{
+    display: flex;
+    justify-content: center;
+}
 .Doctor_avatar_info p {
     text-align: center;
 }
