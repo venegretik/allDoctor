@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+public/.idea/workspace.xml
+public/.idea/vcs.xml
+public/.idea/public.iml
+public/.idea/modules.xml
+public/.idea/misc.xml
+public/.idea/deployment.xml
