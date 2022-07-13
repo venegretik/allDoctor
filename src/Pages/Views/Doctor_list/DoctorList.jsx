@@ -2,13 +2,14 @@ import React from "react";
 import s from './Doctor_list.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import { axiosDoctor, axiosBranch } from "../../../base/asyncActions/getDoctors";
-import SelectCustom from "../../../Components/Select/Select";
+import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
 import Stars from "../../../Components/Stars/Stars";
 const DoctorList = () => {
   const dispatch = useDispatch();
+  const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
-  const totalPage = useSelector(state => state.doctorSpec.totalPage);
   const arraySort =[{
     title:"По популярности",
     branch_id:"rate"
@@ -27,7 +28,7 @@ const DoctorList = () => {
     dispatch(axiosBranch())
   }
   useEffect(() => {
-    dispatch(axiosDoctor(pageNumber));
+    dispatch(axiosDoctor(1));
   }, [])
   const sendRequest = () => {
     setPageNumber(pageNumber + 1);
@@ -76,11 +77,11 @@ const DoctorList = () => {
           <div className={s.Select_all}>
             <div className={s.Skill_select}>
               <p className={s.Font_size14}>Специализация</p>
-              <SelectCustom array={branch} selectType={"specialization"} func={axiosDoctor}/>
+              <SelectLogin array={branch} selectType={"specialization"} func={axiosDoctor} category_id={params.id}/>
             </div>
             <div className={s.Sort_select}>
               <p className={s.Font_size14}>Сортировка</p>
-              <SelectCustom array={arraySort} selectType={"sort"} func={axiosDoctor}/>
+              <SelectLogin array={arraySort} selectType={"sort"} func={axiosDoctor}/>
             </div>
           </div>
         </div>

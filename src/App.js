@@ -14,7 +14,7 @@ import Main from "./Pages/Views/Main/Main";
 import {axiosConfig} from "./base/asyncActions/getConfig";
 import {Login} from "./Pages/Views/Login/Login";
 import Recording from './Pages/Views/Recording/Recording';
-import Payment from './Pages/Views/Payment/Payment';
+import Razdeli from './Pages/Views/Razdeli/Razdeli';
 import {Register} from "./Pages/Views/Register/Register";
 function App() {
   const dispatch = useDispatch()
@@ -45,6 +45,7 @@ function App() {
             <Route path={'consultation'} element={<Consultation/>}/>
             <Route path={'my-doctor'} element={<MyDoctor/>}/>
             <Route path={'recording'} element={<Recording />}/>
+            <Route path={'razdeli'} element={<Razdeli />}/>
           </Route>
         </Routes>
       }
