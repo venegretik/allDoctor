@@ -5,15 +5,13 @@ import Footer from "./Footer/Footer";
 
 const Layout = (pros) => {
   return (
-    <>
+    <div className="wrapper">
       <Header />
-
-      <main className={"Container"}>
+      <main className={"Container main"}>
         <Outlet />
       </main>
-
       <Footer />
-    </>
+    </div>
   );
 };
 

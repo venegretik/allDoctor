@@ -1,8 +1,23 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans");
 @import url("https://fonts.googleapis.com/css?family=Exo&display=swap");
 
+#root {
+  height: 100%;
+}
+html {
+  height: 100%;
+}
 body {
+  height: 100%;
   font-family: "Exo", sans-serif;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.main {
+  flex: 1 1 auto;
 }
 *::-webkit-scrollbar {
   width: 11px; /* ширина всей полосы прокрутки */
