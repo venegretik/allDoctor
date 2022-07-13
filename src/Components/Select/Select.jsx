@@ -1,41 +1,28 @@
 import React from "react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import arrow from "../../img/arrow.png";
 import "./Select.css";
-const SelectCustom = (props) => {
-  const dispatch = useDispatch();
-  const specialization = useSelector(state => state.doctorSpec.specialization_id);
-  const page = useSelector(state => state.doctorSpec.page);
-  const sort = useSelector(state => state.doctorSpec.sort);
+const SelectCustom = () => {
   const [isShown, setIsShown] = useState(false);
-  const [Showtext, setShowText] = useState('...');
-
+  const [Showtext, setShowText] = useState('Выберите вариант...');
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
-  
   const handleClickChange = (changeEvent) => {
-    setShowText(changeEvent.target.title);
-    if (props.selectType == "specialization")
-      dispatch(props.func(page, Number(changeEvent.target.value), sort));
-    if (props.selectType == "sort")
-      dispatch(props.func(page, specialization, changeEvent.target.value));
+    console.log(changeEvent.target.value);
   }
-  let arrayItems = props.array.map(el =>
-    <label htmlFor={el.branch_id} key={el.branch_id}>
-      <input type="radio" name="main-categories" title={el.title} id={el.branch_id} value={el.branch_id} onChange={handleClickChange} />
-      {el.title}
-    </label>)
   return (
     <div id="Select-hide" onClick={handleClick}>
       <div className="Select_content">
-        <p>{Showtext}</p>
+        <p>Акушер</p>
         <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
       </div>
       {isShown && (
-        <div id="Select-menu" >
-          {arrayItems}
+        <div id="Select-menu">
+
+          <label htmlFor="_1234" value="1234">
+            <input type="radio" name="main-categories" id="_1234" value="1234" onChange={handleClickChange}/>
+          </label>
         </div>
       )}
     </div>

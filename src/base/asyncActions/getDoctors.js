@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
-import { doctorArrayAction, branchArrayAction } from "../Reducers/doctorReducer";
+import { doctorArrayAction, branchArrayAction, branchOfflineArrayAction, DoctorMyArray, DoctorMyDelete } from "../Reducers/doctorReducer";
 export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -9,12 +9,10 @@ export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") =>
         const response = await axios.get(`${defaultUrl}doctors`, {
             params: {
                 branch_id: specialization,
-                specialization_id: 3,//?
                 sort: sort,
                 page: totalPage
             }
         })
-        debugger;
         const responceObj = {
             DoctorArray: response.data.data.doctors,
             page: response.data.data.pagination.current_page,
@@ -33,5 +31,33 @@ export const axiosBranch = () => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}branch`);
         dispatch(branchArrayAction(response.data.data.items));
+    }
+}
+export const axiosBranchOffline = () => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.get(`${defaultUrl}branch/offline`);
+        dispatch(branchOfflineArrayAction(response.data.data.items));
+    }
+}
+export const axiosMyDoctor = (page) => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.get(`${defaultUrl}doctors/my`, {
+            params: {
+                page: page
+            }
+        });
+        dispatch(DoctorMyArray(response.data.data.doctors, response.data.data.pagination.current_page, response.data.data.pagination.total_page));
+    }
+}
+export const axiosDoctorDelete = (user_id) => {
+    return async function (dispatch) {
+        const response = await axios.delete(`${defaultUrl}doctors/my/${user_id}`,{withCredentials:true});
+        dispatch(DoctorMyDelete(user_id));
     }
 }
