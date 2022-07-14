@@ -5,6 +5,7 @@ import ReplaceData from "./Replace_Data/ReplaceData";
 import Med_Cart from "./Med_Cart/Med_Cart";
 import Local_Data from "./Local_Data/Local_Data";
 import Result from "./Result/Result";
+import Balance from "./Balance/Balance";
 const MyProfile = () => {
     return (
         <div className={s.My_Profile}>
@@ -33,7 +34,7 @@ const MyProfile = () => {
                     </li>
                 </ul>
             </div>
-            <ReplaceData />
+            <Local_Data />
         </div>
     )
 }

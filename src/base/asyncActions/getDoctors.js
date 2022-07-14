@@ -1,6 +1,8 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
 import { doctorArrayAction, branchArrayAction, branchOfflineArrayAction, DoctorMyArray, DoctorMyDelete } from "../Reducers/doctorReducer";
+
+//Получение докторов по должности
 export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -24,6 +26,8 @@ export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") =>
         dispatch(doctorArrayAction(responceObj));
     }
 }
+
+//Получение онлайн разделов
 export const axiosBranch = () => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -33,6 +37,8 @@ export const axiosBranch = () => {
         dispatch(branchArrayAction(response.data.data.items));
     }
 }
+
+//Получение оффлайновых разделов
 export const axiosBranchOffline = () => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -42,6 +48,8 @@ export const axiosBranchOffline = () => {
         dispatch(branchOfflineArrayAction(response.data.data.items));
     }
 }
+
+//get запрос на странице my-doctor
 export const axiosMyDoctor = (page) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -55,9 +63,11 @@ export const axiosMyDoctor = (page) => {
         dispatch(DoctorMyArray(response.data.data.doctors, response.data.data.pagination.current_page, response.data.data.pagination.total_page));
     }
 }
+
+//Удаление моего доктора
 export const axiosDoctorDelete = (user_id) => {
     return async function (dispatch) {
-        const response = await axios.delete(`${defaultUrl}doctors/my/${user_id}`,{withCredentials:true});
+        const response = await axios.delete(`${defaultUrl}doctors/my/${user_id}`);
         dispatch(DoctorMyDelete(user_id));
     }
 }

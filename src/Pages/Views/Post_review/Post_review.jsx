@@ -1,8 +1,17 @@
 import React from "react";
 import s from './Post_review.module.css';
 import star from '../../../img/Rating_Star.png';
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { axiosReviews } from "../../../base/asyncActions/getReviews";
 import SelectCustom from "../../../Components/Select/Select";
-const Post_rewiew = () => {
+const PostRewiew = () => {
+    let dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(axiosReviews(4));
+      }, []);
+      const review = useSelector((state) => state.review);
+      console.log(review)
     return (
         <div className={s.Review_full}>
             <div className={s.Review_title}>
@@ -11,13 +20,13 @@ const Post_rewiew = () => {
             <div className={s.Doctor_infos}>
                 <div className={s.Doctor_avatar}>
                     <div className={s.Doctor_avatar_img}>
-                        <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
+                        <img src={review.photo} alt="" />
                     </div>
                 </div>
                 <div className={s.Doctor_info + " " + s.black}>
-                    <p className={s.gray + " " + s.Font_size14}>Терапевт</p>
-                    <h2 className={s.Font_size24}>Смирнов Владислав Владимирович</h2>
-                    <p className={s.Staj + " " + s.Font_size14}>Стаж 19 лет • Врач высшей категории • Кандидат медицинских наук</p>
+                    <p className={s.gray + " " + s.Font_size14}>{review.specialization.join(' • ')}</p>
+                    <h2 className={s.Font_size24}>{review.firstname + " " + review.lastname + " " + review.secondname}</h2>
+                    <p className={s.Staj + " " + s.Font_size14}>{review.regalia.join(' • ')}</p>
                 </div>
             </div>
             <div className={s.Grade}>
@@ -108,4 +117,4 @@ const Post_rewiew = () => {
         </div>
     )
 }
-export default Post_rewiew;
+export default PostRewiew;

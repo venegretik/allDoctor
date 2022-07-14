@@ -1,6 +1,6 @@
 import React from "react";
 import s from './ReplaceData.module.css';
-import upload from '../../../../img/upload.png'
+import upload from '../../../../img/upload.png';
 const ReplaceData = () => {
     return (
         <div>

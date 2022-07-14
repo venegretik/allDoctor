@@ -1,7 +1,15 @@
 import React from "react";
 import s from '../My_Profile.module.css';
 import pen from '../../../../img/pen.png'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
+    let dispatch = useDispatch();
+    const profile = useSelector((state) => state.profile);
+    useEffect(() => {
+        dispatch(axiosProfile());
+      }, []);
     return (
         <div className={s.My_content}>
                 <div className={s.My_content_title}>
@@ -10,14 +18,14 @@ const Local_Data = () => {
                 <div className={s.My_content_container}>
                     <div className={s.My_content_top}>
                         <div className={s.My_content_top_image}>
-                            <img src="https://api.telemed.dev-h.ru/images/profiles/profile.png" alt="" />
+                            <img src={profile.photo} alt="" />
                         </div>
                         <div className={s.My_content_top_content}>
                             <div className={s.My_content_top_title}>
-                                <h1>Смирнов Владислав Владимирович</h1>
+                                <h1>{profile.firstname + " " + profile.lastname + " " + profile.secondname}</h1>
                                 <img src={pen} alt="" />
                             </div>
-                            <p>+7 (999) 123-56-96</p>
+                            <p>{profile.phone}</p>
                         </div>
                     </div>
                     <div className={s.My_content_bottom}>
