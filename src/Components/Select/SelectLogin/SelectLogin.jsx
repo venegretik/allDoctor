@@ -19,6 +19,7 @@ const SelectLogin = (props) => {
       dispatch(props.func(page, Number(changeEvent.target.value), sort));
     if (props.selectType == "sort")
       dispatch(props.func(page, specialization, changeEvent.target.value));
+    
   }
   let arrayItems = props.array.map(el =>
     <label htmlFor={el.branch_id} key={el.branch_id}>

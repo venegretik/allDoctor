@@ -76,8 +76,8 @@
 }
 
 .Doctor_avatar_info {
-    margin-top: auto;
-    margin-bottom: auto;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .Doctor_avatar_info ul {
@@ -97,9 +97,9 @@
     margin-bottom: 13px;
 }
 
-.select_consultation input {
+.select_consultation textarea {
     max-width: 570px;
-    width: 100%;
+    width: 100%!important;
     height: 167px;
     border: 1px solid #EAF2FF;
     border-radius: 16px;
