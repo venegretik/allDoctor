@@ -39,3 +39,35 @@ export const getDoctorDuty = () => {
     }
   };
 };
+export const getSymptoms = () => {
+  return async () => {
+    if (token) {
+      const response = await axios.get(`${defaultUrl}symptoms`);
+      return response.data;
+    }
+  };
+};
+export const getSlider = () => {
+  return async () => {
+    if (token) {
+      const response = await axios.get(`${defaultUrl}slider`);
+      return response.data;
+    }
+  };
+};
+export const getBranch = () => {
+  return async () => {
+    if (token) {
+      const response = await axios.get(`${defaultUrl}branch`);
+      return response.data;
+    }
+  };
+};
+export const getOfline = () => {
+  return async () => {
+    if (token) {
+      const response = await axios.get(`${defaultUrl}branch/offline`);
+      return response.data;
+    }
+  };
+};

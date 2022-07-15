@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import s from "./Consultation.module.css";
-import star from "../../img/Rating_Star.png";
 import { useDispatch } from "react-redux";
 import Loader from "../../Components/Loading/Loader";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
+import Stars from "../Stars/Stars";
 
 const ConsultationReady = (props) => {
   const dispatch = useDispatch();
@@ -13,7 +13,6 @@ const ConsultationReady = (props) => {
     const response = await dispatch(getConsultationUpcoming());
     if (response.status) {
       setConsultationUpcoming(response.data);
-      console.log(response.data);
     }
   };
 
@@ -28,29 +27,10 @@ const ConsultationReady = (props) => {
           <div className={s.Cart_close}>+</div>
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
-              <img
-                src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png"
-                alt=""
-              />
+              <img src={ConsultationUpcoming.doctor.photo} alt="" />
             </div>
             <div className={s.Doctor_avatar_info}>
-              <ul>
-                <li>
-                  <img src={star} alt="" />
-                </li>
-                <li>
-                  <img src={star} alt="" />
-                </li>
-                <li>
-                  <img src={star} alt="" />
-                </li>
-                <li>
-                  <img src={star} alt="" />
-                </li>
-                <li>
-                  <img src={star} alt="" />
-                </li>
-              </ul>
+              <Stars num={ConsultationUpcoming.doctor.rate} />
               <p className={s.Font_size14}>
                 {ConsultationUpcoming.doctor.recomends}% пациентов рекомендуют
                 врача

@@ -7,7 +7,7 @@ const Layout = (pros) => {
   return (
     <div className="wrapper">
       <Header />
-      <main className={"Container main"}>
+      <main className={"main"}>
         <Outlet />
       </main>
       <Footer />
