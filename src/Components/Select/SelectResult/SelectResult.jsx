@@ -2,30 +2,23 @@ import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import arrow from "../../../img/arrow.png";
-import { reviewCosultationAction } from "../../../base/Reducers/reviewsReducer";
+import { axiosProfileResult } from "../../../base/asyncActions/Profile";
 import "../Select.css";
-const SelectReview = (props) => {
+const SelectResult = (props) => {
     let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
-    const [Showtext, setShowText] = useState("...");
+    const [Showtext, setShowText] = useState("Все");
     const handleClick = (event) => {
         setIsShown((current) => !current);
     };
     const handleClickChange = (changeEvent) => {
         setShowText(changeEvent.target.title);
-        dispatch(reviewCosultationAction(changeEvent.target.value));
+        dispatch(axiosProfileResult(1,changeEvent.target.value));
     }
     let arrayItems = props.array.map(el =>
-        <label htmlFor={el.consultation_id} key={el.consultation_id}>
-          <input type="radio" name="main-categories" title={el.datetime} id={el.consultation_id} value={el.consultation_id} onChange={handleClickChange} />
-          {new Date(el.datetime).toLocaleString(
-                    "ru",
-                    {
-                      month: "short",
-                      year: "numeric",
-                      day: "numeric",
-                    }
-                  )}
+        <label htmlFor={el.branch_id} key={el.branch_id}>
+          <input type="radio" name="main-categories" title={el.title} id={el.branch_id} value={el.branch_id} onChange={handleClickChange} />
+          {el.title}
         </label>)
     return (
         <div id="Select-hide" onClick={handleClick}>
@@ -41,4 +34,4 @@ const SelectReview = (props) => {
         </div>
     );
 }
-export default SelectReview;
+export default SelectResult;

@@ -2,35 +2,43 @@ import React from "react";
 import s from './Recording.module.css';
 import star from '../../../img/Rating_Star.png';
 import Reviews from './Reviews/Reviews';
+import { useParams } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import Calendar from "../../../Components/Calendar/Calendar";
+import Stars from "../../../Components/Stars/Stars";
+import {axiosReview, axiosRecordingDoctor} from "../../../base/asyncActions/getReviews";
 const Recording = () => {
+    const params = useParams();
+    let dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(axiosReview(4));
+        dispatch(axiosRecordingDoctor(4));
+        
+      }, []);
+    let recording = useSelector(state => state.recording);
+    console.log(recording.reviewsArray)
     return (
         <div className={s.Recording_full}>
             <div className={s.Doctor_calendar}>
                 <div className={s.Doctor_infos}>
                     <div className={s.Doctor_avatar}>
                         <div className={s.Doctor_avatar_img}>
-                            <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
+                            <img src={recording.photo} alt="" />
                         </div>
                         <div className={s.Doctor_avatar_info + " " + s.black}>
-                            <ul>
-                                <li><img src={star} alt="" /> </li>
-                                <li><img src={star} alt="" /></li>
-                                <li><img src={star} alt="" /></li>
-                                <li><img src={star} alt="" /></li>
-                                <li><img src={star} alt="" /></li>
-                            </ul>
-                            <p className={s.Font_size14}>79% пациентов рекомендуют врача</p>
-                            <p className={s.Font_size14}>28 отзывов</p>
+                        <Stars num={recording.rate} />
+                            <p className={s.Font_size14}>{recording.recomends + "%"} пациентов рекомендуют врача</p>
+                            <p className={s.Font_size14}>{recording.reviews} отзывов</p>
                         </div>
                     </div>
                     <div className={s.Doctor_info + " " + s.black}>
-                        <p className={s.gray + " " + s.Font_size14}>Терапевт</p>
-                        <h2 className={s.Font_size24}>Смирнов Владислав Владимирович</h2>
-                        <p className={s.Staj + " " + s.Font_size14}>Стаж 19 лет • Врач высшей категории • Кандидат медицинских наук</p>
+                        <p className={s.gray + " " + s.Font_size14}>{recording.specialization.join(' • ')}</p>
+                        <h2 className={s.Font_size24}>{recording.firstname + " " + recording.lastname + " " + recording.secondname}</h2>
+                        <p className={s.Staj + " " + s.Font_size14}>{recording.regalia.join(' • ')}</p>
                         <div className={s.Doctor_buy}>
                             <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-                            <p className={s.buy}>1500 ₽</p>
+                            <p className={s.buy}>{recording.price} ₽</p>
                         </div>
                     </div>
                 </div>
@@ -40,42 +48,7 @@ const Recording = () => {
                 <div className={s.Qualification}>
                     <h1 className={s.Font_size24}>Квалификация</h1>
                     <p className={s.Font_size14}>
-                        {`
-В работе с детьми, взрослыми и семьями использую интегративный подход, подбирая методы в каждой ситуации и запросе индивидуально. Опираюсь на методы гештальт-терапии, работы с внутренним ребенком и родителем, арттерпии, телесно-ориентированной психотерапии, нарративной терапии и письменных
-
-Симптомы и запросы, с которыми можно обращаться ко мне за помощью:
-
-Взрослые:
-· тяжелая история детства, детские травмы и их последствия
-· трудные отношения с собой и близкими
-· мучительные переживания: тревога, страх, одиночество, стыд, обида, зависть, ревность, раздражительность и гнев
-· потеря близкого человека
-· кризис среднего возраста
-· перфекционизм, чувство неудовлетворенности собой и внутренняя самокритика
-· длительный стресс, усталость и эмоциональное выгорание
-· трудности социальной адаптации и поиск пути самореализации
-· непонимание себя и своих желаний, неуверенность
-· депрессия, бессонница
-· эмоциональные срывы, истерики
-
-Семьи:
-· неудовлетворенность отношениями
-· конфликты и разногласия по различным вопросам
-· кризисные периоды в жизни семьи
-· вопросы границ и дистанции в семейных отношениях
-· тяжелые семейные сценарии в семье происхождения супругов
-
-Родители:
-· вопросы воспитания и отношения с детьми всех возрастов
-· подготовка к родительству, беременность и роды, все вопросы перинатальной истории развития
-· трудные родительские чувства: раздражение, гнев и вина в отношениях с детьми
-· ресурсы и их восполнение в жизни родителей
-· вопросы привязанности и эмоциональной связи с детьми
-· адаптация к детскому саду и школе 
-
-Дети и подростки:
-· помогаю детям и подросткам, испытывающим различные психологические трудности
-                        `}
+                        {`${recording.qualification}`}
                     </p>
                 </div>
                 <div>
@@ -83,10 +56,7 @@ const Recording = () => {
                         <h1 className={s.Font_size24}>Образование</h1>
                     </div>
                     <div>
-                        <p className={s.Font_size14}>{`
-2002 г. — Московский государственный университет им. М.В.Ломоносова, факультет психологии, психолог, преподаватель психологии; кафедра возрастной психологии; диплом с отличием.
-2004 г. — Московский гештальт институт, теория и практика гештальт-терапии, I и II ступени, детская и семейная психотерапия.
-                        `}
+                        <p className={s.Font_size14}>{`${recording.education}`}
 
                         </p>
                     </div>
@@ -96,12 +66,7 @@ const Recording = () => {
                         <h1 className={s.Font_size24}>Повышение квалификации</h1>
                     </div>
                     <div>
-                        <p className={s.Font_size14}>{`
-2009 г. — Обучающие семинары Мишель Одена, Эссел, Молли Каллигер в рамках программы повышения квалификации инструкторов по подготовке к родам,
-2017 г. — Московский православный институт им.Иоанна Богослова «Основы Христианской психологии»,
-2018 г. — «Испытание детством: работа с внутренним ребенком», «Работа с внутренним родителем», «Работа с внутренним взрослым», Мастерские психолога Натальи Ининой,
-2019 г. — семинары-практикумы Д. Кутузовой: «Хороший вопрос» и «Еда и депрессия» в рамках нарративной психотерапии.
-                        `}
+                        <p className={s.Font_size14}>{`${recording.training}`}
                         </p>
                     </div>
                 </div>
@@ -110,7 +75,7 @@ const Recording = () => {
                 <div className={s.Reviews_title}>
                     <h1 className={s.Font_size24}>Отзывы</h1>
                 </div>
-                <Reviews />
+                <Reviews arrayReview={recording.reviewsArray}/>
             </div>
         </div>
 

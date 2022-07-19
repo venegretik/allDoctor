@@ -16,6 +16,7 @@ import { Login } from "./Pages/Views/Login/Login";
 import Recording from "./Pages/Views/Recording/Recording";
 import Razdeli from "./Pages/Views/Razdeli/Razdeli";
 import { Register } from "./Pages/Views/Register/Register";
+import Payment from "./Pages/Views/Payment/Payment";
 import PostRewiew from "./Pages/Views/Post_review/Post_review";
 function App() {
   const dispatch = useDispatch();
@@ -49,6 +50,7 @@ function App() {
             <Route path={"my-doctor"} element={<MyDoctor />} />
             <Route path={"recording"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
+            <Route path="payment" element={<Payment />}/>
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
           </Route>
         </Routes>

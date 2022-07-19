@@ -8,6 +8,7 @@ const defaultState = {
     specialization:[],
     regalia:[],
     consultations:[],
+    consultation_id:0,
     star1: 0,
     star2: 0,
     star3: 0,
@@ -15,6 +16,7 @@ const defaultState = {
     star5: 0,
 }
 const REVIEWS_ARRAY = 'REVIEWS_ARRAY';
+const ID_CONSULTATION = 'ID_CONSULTATION';
 const STAR1 = 'STAR1';
 const STAR2 = 'STAR2';
 const STAR3 = 'STAR3';
@@ -36,11 +38,14 @@ export const reviewsReducer = (state = defaultState, action) => {
             return{...state, star4:action.Star}
         case STAR5:
             return{...state, star5:action.Star}
+            case ID_CONSULTATION:
+            return{...state, consultation_id:action.id}
         default:
             return state;
     }
 }
 export const reviewsAction = (Reviews_array) => ({ type: REVIEWS_ARRAY, Reviews_array});
+export const reviewCosultationAction = (id) => ({type:ID_CONSULTATION, id});
 export const Star1Action = (Star) => ({ type: STAR1, Star});
 export const Star2Action = (Star) => ({ type: STAR2, Star});
 export const Star3Action = (Star) => ({ type: STAR3, Star});

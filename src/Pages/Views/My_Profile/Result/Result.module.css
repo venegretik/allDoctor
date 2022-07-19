@@ -11,9 +11,15 @@
 .formDownload input {
     width: 100%;
 }
-
+.Form_Radio{
+    margin-top: 10px;
+    margin-left: 20px;
+}
 .Form_Radio label {
-    margin-left: 10px;
+    margin-left: 0px;
+}
+.Register_radio2{
+    margin-right: 40px;
 }
 .Download_File_full{
     max-width: 500px;

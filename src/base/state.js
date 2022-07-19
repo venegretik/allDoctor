@@ -7,6 +7,9 @@ import { doctorReducer } from "./Reducers/doctorReducer";
 import { mainPageReducer } from "./Reducers/mainPageReducer";
 import {profileReducer} from "./Reducers/UserReducer";
 import { reviewsReducer } from "./Reducers/reviewsReducer";
+import { recordingReducer } from "./Reducers/recordingReducer";
+import { consultationReducer } from "./Reducers/ConsultationReducer";
+import { paymentReducer } from "./Reducers/paymentReducer";
 const reducers = combineReducers({
   form: formReducer,
   config: configReducer,
@@ -14,7 +17,10 @@ const reducers = combineReducers({
   doctorSpec: doctorReducer,
   main: mainPageReducer,
   profile: profileReducer,
-  review: reviewsReducer
+  review: reviewsReducer,
+  recording:recordingReducer,
+  consultation:consultationReducer,
+  payment: paymentReducer
 });
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleware));
