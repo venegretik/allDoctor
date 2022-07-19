@@ -1,42 +1,91 @@
-.Profile_data img{
+.Profile_data img {
     max-width: 132px;
     border-radius: 50%;
 }
-.Profile_data_download_img{
+
+.Profile_data_download_img {
     position: relative;
     max-width: 132px;
     height: 132px;
 }
-.upload{
+
+form {
+    margin-top: 30px;
+    margin-bottom: 87px;
+    display: flex;
+    max-width: 400px;
+    flex-direction: column;
+}
+
+.radio_block p {
+    margin-left: 10px;
+}
+
+form button {
+    padding: 22px 41px;
+    width: 240px;
+    height: 60px;
+    background: #407BFF;
+    border-radius: 16px;
+    color: #ffffff;
+    border: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.radio_block {
+    display: flex;
+    align-items: center;
+    column-gap: 65px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #8B9BAB;
+    margin-bottom: 20px;
+}
+
+form input {
+    margin-bottom: 24px;
+}
+
+.upload {
     position: absolute;
     width: 24px;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     bottom: 5px;
 }
-.Profile_data{
+
+.Profile_data {
     display: flex;
     align-items: center;
 }
-.Profile_data b{
+
+.Profile_data b {
     max-width: 280px;
     font-size: 24px;
     margin-left: 30px;
 }
-.Profile_replace_tel{
+
+.Profile_replace_tel {
     margin-top: 24px;
     display: flex;
     flex-direction: column;
 }
-.Profile_replace_tel_data{
+
+.Profile_replace_tel_data {
     display: flex;
     align-items: center;
     margin-top: 7px;
 }
+
 .Profile_replace_tel_link {
     color: #407BFF;
     margin-left: 15px;
 }
+
 .Font_size24 {
     font-family: 'Exo', sans-serif;
     font-size: 24px;
@@ -69,6 +118,7 @@
     line-height: 21px;
     letter-spacing: 0px;
 }
+
 @media(max-width:580px) {
     .Font_size24 {
         font-family: 'Exo', sans-serif;
@@ -77,6 +127,7 @@
         line-height: 19px !important;
         letter-spacing: 0px !important;
     }
+
     .Font_size40 {
         font-family: 'Exo', sans-serif;
         font-size: 16px !important;

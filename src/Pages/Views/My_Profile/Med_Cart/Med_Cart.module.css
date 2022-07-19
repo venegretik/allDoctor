@@ -5,7 +5,9 @@
 .Med_Cart_info_full {
     display: flex;
 }
-
+.sostav{
+    display: flex;
+}
 .Med_Cart ul {
     max-width: 510px;
     list-style: none;

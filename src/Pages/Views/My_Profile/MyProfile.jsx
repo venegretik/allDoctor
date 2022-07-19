@@ -34,7 +34,7 @@ const MyProfile = () => {
                     </li>
                 </ul>
             </div>
-            <Local_Data />
+            <ReplaceData />
         </div>
     )
 }

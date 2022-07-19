@@ -1,4 +1,20 @@
+.ChangeLoginFull{
+    width:100%;
+    height: 2000px;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    position:fixed;
+    left: 0px;
+    z-index: 20;
+    top:0px;
+}
 .ChangeLogin{
+    margin:40px auto 0px auto;
+    height: auto;
+    padding:10px;
+    background-color: #c5c5c5;
+    border-radius:5px;
+    box-shadow: 0px 0px 10px #000;
     display: flex;
     flex-direction: column;
     align-items: center;
