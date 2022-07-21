@@ -16,10 +16,12 @@ const defaultState = {
     price:0,
     qualification:"",
     education:"",
-    training:""
+    training:"",
+    calendar:[]
 }
 const RECORDING_ARRAY = 'RECORDING_ARRAY';
 const RECORDING_INFO = 'RECORDING_INFO';
+const RECORDING_CALCULATOR = 'RECORDING_CALCULATOR';
 export const recordingReducer = (state = defaultState, action) => {
     switch (action.type) {
         case RECORDING_ARRAY:
@@ -29,9 +31,12 @@ export const recordingReducer = (state = defaultState, action) => {
             total_page:action.Reviews_array.pagination.total_page}
         case RECORDING_INFO:
             return {...state, ...action.recording_array}
+        case RECORDING_CALCULATOR:
+            return {...state, calendar:[...action.recording_array.items]}
         default:
             return state;
     }
 }
 export const recordingAction = (Reviews_array) => ({ type: RECORDING_ARRAY, Reviews_array});
 export const recordingInfoAction = (recording_array) => ({ type: RECORDING_INFO, recording_array});
+export const recordingConsultationAction = (recording_array) => ({ type: RECORDING_CALCULATOR, recording_array});

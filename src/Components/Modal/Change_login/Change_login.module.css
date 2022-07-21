@@ -8,6 +8,12 @@
     z-index: 20;
     top:0px;
 }
+.ChangeLoginButton{
+    display: flex;
+}
+.ChangeLoginMain form{
+    margin-bottom: 30px;
+}
 .ChangeLogin{
     margin:40px auto 0px auto;
     height: auto;

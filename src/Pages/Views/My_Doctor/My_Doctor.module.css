@@ -6,6 +6,15 @@
     margin-bottom: 70px;
     display: flex;
 }
+.DoctorOnline {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #22e112;
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
+}
 .Reviews_buttons{
     display: flex;
     justify-content: center;
@@ -69,7 +78,7 @@
 
 .Doctor_avatar_img {
     width: 132px;
-
+    position: relative;
 }
 
 .Doctor_avatar_img img {
@@ -90,6 +99,7 @@
     transform: rotate(-45deg);
     font-size: 20px;
     right: 10px;
+    cursor: pointer;
 }
 
 .buy {

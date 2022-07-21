@@ -8,7 +8,7 @@ export const axiosConsultation = () => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}consultations`);
         dispatch(consultationAction(response.data.data));
-        console.log(response.data.data)
+        return response.data;
     }
 }
 export const axiosConsultationHistory = (totalPage = 1, specialization = 1) => {
@@ -30,7 +30,6 @@ export const axiosConsultationHistory = (totalPage = 1, specialization = 1) => {
             specialization_id: specialization
         }
         dispatch(consultationHistoryAction(responceObj));
-        console.log(response.data.data)
     }
 }
 export const axiosConsultationDelete = (consultation_id) => {
@@ -48,5 +47,6 @@ export const axiosConsultationPuy = (consultation_id) => {
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.post(`${defaultUrl}consultation/${consultation_id}/pay`);
+        return response.data.data
     }
 }

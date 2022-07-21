@@ -5,7 +5,10 @@ import ReplaceData from "./Replace_Data/ReplaceData";
 import Med_Cart from "./Med_Cart/Med_Cart";
 import Local_Data from "./Local_Data/Local_Data";
 import Result from "./Result/Result";
+import { Route, Routes } from "react-router-dom";
 import Balance from "./Balance/Balance";
+import { Layout } from "../../Layout/Layout";
+import Messages from "./Messages/Messages";
 const MyProfile = () => {
     return (
         <div className={s.My_Profile}>
@@ -34,8 +37,16 @@ const MyProfile = () => {
                     </li>
                 </ul>
             </div>
-            <ReplaceData />
+            <Routes>
+                <Route path={"balance"} element={<Balance />} />
+                <Route path={"result"} element={<Result />} />
+                <Route path={"med-cart"} element={<Med_Cart />} />
+                <Route path={"local-data"} element={<Local_Data />} />
+                <Route path={"replace-data"} element={<ReplaceData />} />
+                <Route path={"utility"} element={<Utility />} />
+            </Routes>
+            <Messages />
         </div>
     )
 }
-export {MyProfile}
+export { MyProfile }

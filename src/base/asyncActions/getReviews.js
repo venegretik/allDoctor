@@ -1,7 +1,7 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
 import { reviewsAction } from "../Reducers/reviewsReducer";
-import { recordingAction, recordingInfoAction } from "../Reducers/recordingReducer";
+import { recordingAction, recordingInfoAction, recordingConsultationAction } from "../Reducers/recordingReducer";
 export const axiosReviews = (doctor_id) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -35,5 +35,15 @@ export const axiosPostReviews = (doctor_id) => {
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.post(`${defaultUrl}doctor/${doctor_id}/review`);
+    }
+}
+export const axiosRecordingCalculator = (doctor_id) => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.get(`${defaultUrl}doctor/${doctor_id}/slots`);
+        dispatch(recordingConsultationAction(response.data.data));
+        console.log(response.data.data)
     }
 }

@@ -6,32 +6,34 @@ import { useParams } from "react-router-dom";
 import { axiosDoctor, axiosBranch } from "../../../base/asyncActions/getDoctors";
 import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
 import Stars from "../../../Components/Stars/Stars";
+import { Link } from "react-router-dom";
+import Button from "../../../Components/Button/Button";
 const DoctorList = () => {
   const dispatch = useDispatch();
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
-  const arraySort =[{
-    title:"По популярности",
-    branch_id:"rate"
+  const arraySort = [{
+    title: "По популярности",
+    branch_id: "rate"
   },
   {
-    title:"Цена по убыванию",
-    branch_id:"price_desc"
+    title: "Цена по убыванию",
+    branch_id: "price_desc"
   },
   {
-    title:"Цена по возрастанию",
-    branch_id:"price_asc"
+    title: "Цена по возрастанию",
+    branch_id: "price_asc"
   }]
-  const [pageNumber, setPageNumber] = useState(1);
+  let [pageNumber, setPageNumber] = useState(1);
   const branch = useSelector(state => state.doctorSpec.branch_array);
-  if(!branch[0]){
+  if (!branch[0]) {
     dispatch(axiosBranch())
   }
   useEffect(() => {
     dispatch(axiosDoctor(1));
   }, [])
   const sendRequest = () => {
-    setPageNumber(pageNumber + 1);
+    setPageNumber(++pageNumber);
     dispatch(axiosDoctor(pageNumber));
   }
 
@@ -61,11 +63,29 @@ const DoctorList = () => {
       <div className={s.Payment_block}>
         <div className={s.Payment_block_p}>
           <p className={s.gray + " " + s.Font_size14}>Ближайшая запись:</p>
-          <p className={s.Font_size14}>{el.closest_datetime}</p>
+          <p className={s.Font_size14}>
+            {new Date(el.closest_datetime).toLocaleString(
+              "ru",
+              {
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric"
+              }
+            )}
+          </p>
         </div>
-        <button>Записаться</button>
+        <Link to="/recording">
+          <Button
+            className={s.Reviews_send + " " + s.Font_size14}
+            type={'submit'}
+            class={'btn blue'}
+            text={'Записаться'}
+          />
+        </Link>
       </div>
-    </div>
+    </div >
+
   );
   return (
     <div>
@@ -77,18 +97,25 @@ const DoctorList = () => {
           <div className={s.Select_all}>
             <div className={s.Skill_select}>
               <p className={s.Font_size14}>Специализация</p>
-              <SelectLogin array={branch} selectType={"specialization"} func={axiosDoctor} category_id={params.id}/>
+              <SelectLogin array={branch} selectType={"specialization"} func={axiosDoctor} category_id={params.id} />
             </div>
             <div className={s.Sort_select}>
               <p className={s.Font_size14}>Сортировка</p>
-              <SelectLogin array={arraySort} selectType={"sort"} func={axiosDoctor}/>
+              <SelectLogin array={arraySort} selectType={"sort"} func={axiosDoctor} />
             </div>
           </div>
         </div>
         {Doctor}
       </section>
       <div className={s.Doctor_button}>
-        <button onClick={sendRequest}>Показать ещё</button>
+        <div onClick={sendRequest}>
+          <Button
+            className={s.Reviews_send + " " + s.Font_size14}
+            type={'submit'}
+            class={'btn white'}
+            text={'Показать ещё'}
+          />
+        </div>
       </div>
     </div>
 

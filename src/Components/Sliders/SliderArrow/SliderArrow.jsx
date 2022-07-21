@@ -40,7 +40,7 @@ const SliderArrow = () => {
           ) : (
             Symptoms.map((item) => (
               <SwiperSlide key={item.symptom_id}>
-                <Link to={"#"} className="swiperCard">
+                <Link to={"/razdeli"} className="swiperCard">
                   <img className="swiperCardImg" src={item.image} alt="" />
                   <p className="switepCardText">{item.title}</p>
                 </Link>

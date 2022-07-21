@@ -14,10 +14,8 @@ const Recording = () => {
     useEffect(() => {
         dispatch(axiosReview(4));
         dispatch(axiosRecordingDoctor(4));
-        
       }, []);
     let recording = useSelector(state => state.recording);
-    console.log(recording.reviewsArray)
     return (
         <div className={s.Recording_full}>
             <div className={s.Doctor_calendar}>

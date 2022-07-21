@@ -18,6 +18,7 @@ import Razdeli from "./Pages/Views/Razdeli/Razdeli";
 import { Register } from "./Pages/Views/Register/Register";
 import Payment from "./Pages/Views/Payment/Payment";
 import PostRewiew from "./Pages/Views/Post_review/Post_review";
+import NotFound from "./Pages/Views/NotFound/NotFound";
 function App() {
   const dispatch = useDispatch();
   const config = useSelector((state) => state.config.config);
@@ -41,17 +42,17 @@ function App() {
           />
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
-
           <Route path={"/"} element={<Layout />}>
             <Route path={"main"} element={<Main />} />
             <Route path={"profile"} element={<MyProfile />} />
-            <Route path={"doctor-list"} element={<DoctorList />} />
+            <Route path={"doctor-list/:id"} element={<DoctorList />} />
             <Route path={"consultation"} element={<Consultation />} />
             <Route path={"my-doctor"} element={<MyDoctor />} />
             <Route path={"recording"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
             <Route path="payment" element={<Payment />}/>
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
+            <Route path={"*"} element={<NotFound />}/>
           </Route>
         </Routes>
       )}

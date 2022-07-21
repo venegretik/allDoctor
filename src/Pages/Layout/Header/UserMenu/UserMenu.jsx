@@ -48,7 +48,7 @@ const UserMenu = () => {
                   <li>
                     <Link
                       className={`${s.MenuLink} ${s.LinkBorder}`}
-                      to={"consultation"}
+                      to={"local-data"}
                     >
                       Личные данные
                     </Link>
