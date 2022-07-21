@@ -19,6 +19,12 @@ import { Register } from "./Pages/Views/Register/Register";
 import Payment from "./Pages/Views/Payment/Payment";
 import PostRewiew from "./Pages/Views/Post_review/Post_review";
 import NotFound from "./Pages/Views/NotFound/NotFound";
+import Balance from "./Pages/Views/My_Profile/Balance/Balance";
+import Result from "./Pages/Views/My_Profile/Result/Result";
+import Med_Cart from "./Pages/Views/My_Profile/Med_Cart/Med_Cart";
+import Local_Data from "./Pages/Views/My_Profile/Local_Data/Local_Data";
+import ReplaceData from "./Pages/Views/My_Profile/Replace_Data/ReplaceData";
+import Utility from "./Pages/Views/My_Profile/Utility/Utility";
 function App() {
   const dispatch = useDispatch();
   const config = useSelector((state) => state.config.config);
@@ -40,19 +46,27 @@ function App() {
               </LandingLoader>
             }
           />
+
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
           <Route path={"/"} element={<Layout />}>
             <Route path={"main"} element={<Main />} />
-            <Route path={"profile"} element={<MyProfile />} />
+            <Route path={"profile"} element={<MyProfile />}>
+              <Route path={"balance"} element={<Balance />} />
+              <Route path={"result"} element={<Result />} />
+              <Route path={"med-cart"} element={<Med_Cart />} />
+              <Route path={"local-data"} element={<Local_Data />} />
+              <Route path={"replace-data"} element={<ReplaceData />} />
+              <Route path={"utility"} element={<Utility />} />
+            </Route>
             <Route path={"doctor-list/:id"} element={<DoctorList />} />
             <Route path={"consultation"} element={<Consultation />} />
             <Route path={"my-doctor"} element={<MyDoctor />} />
             <Route path={"recording"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
-            <Route path="payment" element={<Payment />}/>
+            <Route path="payment" element={<Payment />} />
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
-            <Route path={"*"} element={<NotFound />}/>
+            <Route path={"*"} element={<NotFound />} />
           </Route>
         </Routes>
       )}
