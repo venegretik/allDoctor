@@ -42,7 +42,7 @@ const Header = () => {
             </NavLink>
           </nav>
         </div>
-        <UserMenu />
+        <UserMenu type="login" />
       </header>
       <div className={s.Menu_mobile}>
         <Link to={"main"} className={s.Menu_mobile_back}>
