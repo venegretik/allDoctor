@@ -86,3 +86,15 @@ export const axiosProfileEdit = (obj) => {
         dispatch(getShortInfo());
     }
 }
+export const axiosProfileEmailEdit = (obj={}) => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.post(`${defaultUrl}user/email`,{
+            params:{
+                ...obj
+            }
+        });
+    }
+}

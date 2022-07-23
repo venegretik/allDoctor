@@ -4,11 +4,12 @@ const defaultState = {
     page:1,
     totalPage:1,
     specialization_id:1,
-
+    doctor:{}
 }
 const CONSULTATION_ARRAY = 'CONSULTATION_ARRAY';
 const HISTORY_ARRAY = 'HISTORY_ARRAY';
-const CONSULTATION_DELETE = 'CONSULTATION_DELETE'
+const CONSULTATION_DELETE = 'CONSULTATION_DELETE';
+const CONSULTATION_START = 'CONSULTATION_START';
 export const consultationReducer = (state = defaultState, action) => {
     switch (action.type) {
         case CONSULTATION_ARRAY:
@@ -21,6 +22,8 @@ export const consultationReducer = (state = defaultState, action) => {
                 specialization_id:action.consultation_array.specialization_id}
         case CONSULTATION_DELETE:
             return {...state, consultation: state.consultation.filter(el => action.user_id != el.consultation_id)}
+        case CONSULTATION_START:
+            return{...state, doctor: {...action.Doctor}}
         default:
             return state;
     }
@@ -28,3 +31,4 @@ export const consultationReducer = (state = defaultState, action) => {
 export const consultationAction = (consultation_array) => ({ type: CONSULTATION_ARRAY, consultation_array});
 export const consultationHistoryAction = (consultation_array) => ({ type: HISTORY_ARRAY, consultation_array});
 export const consultationDeleteAction = (user_id) => ({type: CONSULTATION_DELETE, user_id})
+export const consultationStartAction = (Doctor) => ({type: CONSULTATION_START, Doctor})

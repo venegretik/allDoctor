@@ -5,7 +5,7 @@ import Loader from "../../Components/Loading/Loader";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
 import Stars from "../Stars/Stars";
-
+import { axiosConsultationStart, axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
 const ConsultationReady = (props) => {
   const dispatch = useDispatch();
   const [ConsultationUpcoming, setConsultationUpcoming] = useState(false);
@@ -100,13 +100,18 @@ const ConsultationReady = (props) => {
               </div>
             </div>
             {ConsultationUpcoming.can_start && (
-              <Button type="button" class="btn orange" text="Начать" />
+              <div onClick={e => dispatch(axiosConsultationStart(ConsultationUpcoming.doctor.doctor_id))}>
+                  <Button type="button" class="btn orange" text="Начать"/>
+              </div>
+              
             )}
             {ConsultationUpcoming.can_reschedule && (
               <Button type="button" class="btn orange" text="перенести" />
             )}
             {ConsultationUpcoming.is_paid && (
-              <Button type="button" class="btn orange" text="Оплатить" />
+              <div onClick={e => dispatch(axiosConsultationPuy(ConsultationUpcoming.doctor.doctor_id))}>
+                  <Button type="button" class="btn orange" text="Оплатить"/>
+              </div>
             )}
           </div>
         </div>

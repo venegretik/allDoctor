@@ -25,6 +25,8 @@ import Med_Cart from "./Pages/Views/My_Profile/Med_Cart/Med_Cart";
 import Local_Data from "./Pages/Views/My_Profile/Local_Data/Local_Data";
 import ReplaceData from "./Pages/Views/My_Profile/Replace_Data/ReplaceData";
 import Utility from "./Pages/Views/My_Profile/Utility/Utility";
+import Messages from "./Pages/Views/My_Profile/Messages/Messages";
+import PrivatePolice from "./Pages/Views/PrivatePolice.jsx/PrivatePolice";
 function App() {
   const dispatch = useDispatch();
   const config = useSelector((state) => state.config.config);
@@ -49,6 +51,7 @@ function App() {
 
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
+          <Route path={"private"} element={<PrivatePolice />}/>
           <Route path={"/"} element={<Layout />}>
             <Route path={"main"} element={<Main />} />
             <Route path={"profile"} element={<MyProfile />}>
@@ -58,13 +61,14 @@ function App() {
               <Route path={"local-data"} element={<Local_Data />} />
               <Route path={"replace-data"} element={<ReplaceData />} />
               <Route path={"utility"} element={<Utility />} />
+              <Route path={"message"} element={<Messages />} />
             </Route>
             <Route path={"doctor-list/:id"} element={<DoctorList />} />
             <Route path={"consultation"} element={<Consultation />} />
             <Route path={"my-doctor"} element={<MyDoctor />} />
-            <Route path={"recording"} element={<Recording />} />
+            <Route path={"recording/:id"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
-            <Route path="payment" element={<Payment />} />
+            <Route path="payment/:id/:slot" element={<Payment />} />
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
             <Route path={"*"} element={<NotFound />} />
           </Route>

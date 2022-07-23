@@ -5,8 +5,17 @@ import Stars from "../../../../Components/Stars/Stars";
 import AnswerReviews from "./answerReviews";
 import { Link } from "react-router-dom";
 import Button from "../../../../Components/Button/Button";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import {axiosReview} from "../../../../base/asyncActions/getReviews";
 const Reviews = (props) => {
-    let review = props.arrayReview.map(el =>
+    let dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(axiosReview(props.usId));
+      }, []);
+    let recording = useSelector(state => state.recording);
+    let page = useSelector(state => state.recording.current_page);
+    let review = recording.reviewsArray.map(el =>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>
@@ -54,13 +63,15 @@ const Reviews = (props) => {
             {review}
             <div className={s.Reviews_buttons_full}>
                 <div className={s.Reviews_buttons}>
+                    <div className={s.Message_button_margin} onClick={e => dispatch(axiosReview(props.usId, ++page))}>
                     <Button
                             className={s.Show_more + " " + s.Font_size14}
                             type={'submit'}
                             class={'btn white'}
                             text={'Показать ещё'}
                         />
-                    <Link to={"../post-rewiew"}>
+                    </div>
+                    <Link to={"../post-rewiew/" + props.usId}>
                         <Button
                             className={s.Reviews_send + " " + s.Font_size14}
                             type={'submit'}

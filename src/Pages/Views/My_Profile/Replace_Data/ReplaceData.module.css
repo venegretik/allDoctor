@@ -60,6 +60,7 @@ form input {
 
 .Profile_data {
     display: flex;
+    margin-top: 45px;
     align-items: center;
 }
 
@@ -81,10 +82,7 @@ form input {
     margin-top: 7px;
 }
 
-.Profile_replace_tel_link {
-    color: #407BFF;
-    margin-left: 15px;
-}
+
 
 .Font_size24 {
     font-family: 'Exo', sans-serif;

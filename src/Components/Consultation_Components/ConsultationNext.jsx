@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Stars from "../Stars/Stars";
 import Loader from "../Loading/Loader";
+import ModalCalendar from "../Modal/Modal_calendar/Modal_calendar";
 import {axiosConsultationDelete, axiosConsultation} from '../../base/asyncActions/getConsultation'
 import { axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
 import { Navigate } from "react-router-dom";
@@ -26,9 +27,9 @@ const ConsultationNext = () => {
     
     return(
         <div>
-            {consultation.map(
+            {consultation[0] ?consultation.map(
             el => <div className={s.Doctor_full} key={el.consultation_id}>
-                {el.can_cancel ? <Cancel_Record consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"}/> : ""}
+                {el.can_cancel ? <Cancel_Record consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete}/> : ""}
                 <div className={s.Doctor_full1}>
                     <div className={s.Doctor}>
                         <div className={s.Doctor_infos}>
@@ -64,11 +65,14 @@ const ConsultationNext = () => {
                                 }
                             )}</p>
                         </div>
-                        {el.paid ? <button className={s.Injoy1} onClick={onClickPuy}>Оплатить</button> : el.can_reschedule ? <button className={s.Injoy1} >Перенести</button> : ""}
+                        {el.paid ? <button className={s.Injoy1} onClick={onClickPuy}>Оплатить</button> : el.can_reschedule ? <ModalCalendar /> : ""}
                     </div>
                 </div>
+                <div className={s.ButtonMobile}>
+                {el.paid ? <button className={s.Injoy1} onClick={onClickPuy}>Оплатить</button> : el.can_reschedule ? <ModalCalendar /> : ""}
+                </div>
             </div>
-        )}
+        ): <Loader />}
         </div>
     )
 }

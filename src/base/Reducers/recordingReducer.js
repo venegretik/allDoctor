@@ -1,7 +1,7 @@
 const defaultState = {
     reviewsArray:[],
-    current_page:0,
-    total_page:0,
+    current_page:1,
+    total_page:1,
     doctor_id:0,
     firstname:"",
     lastname:"",

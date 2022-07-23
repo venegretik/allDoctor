@@ -8,7 +8,12 @@
   padding-left: 31px;
   padding-right: 31px;
 }
-
+.ClassNull{
+  text-decoration: none;
+}
+a{
+  text-align: center;
+}
 .black {
   color: black !important;
 }

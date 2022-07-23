@@ -1,13 +1,13 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
 import { paymentInfoAction } from "../Reducers/paymentReducer";
-export const getPuymentInfo = (id) => {
+export const getPuymentInfo = (id, slot) => {
   return async (dispatch) => {
     const token = localStorage.getItem('token');
     if (token) {
       const response = await axios.post(`${defaultUrl}consultation/checkout`, {
         doctor_id: id,
-        slot_id: 1,
+        slot_id: slot,
         promocode: "1234",
         use_balance: true
       });
@@ -20,7 +20,9 @@ export const getPuymentPost = (obj) => {
     const token = localStorage.getItem('token');
     if (token) {
       const response = await axios.post(`${defaultUrl}consultation/pay`,{
-          obj
+          params:{
+            ...obj
+          }
       });
       dispatch(paymentInfoAction(response.data.data));
     }

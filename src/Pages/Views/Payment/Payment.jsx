@@ -5,12 +5,14 @@ import { useEffect } from "react";
 import { getPuymentInfo, getPuymentPost } from "../../../base/asyncActions/Payment";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import Stars from "../../../Components/Stars/Stars";
+import { useParams } from "react-router-dom";
 import { Input } from "../../../Components/Input/Input";
 const Payment = () => {
     const dispatch = useDispatch();
-    let payment = useSelector((state) => state.payment)
+    let params = useParams();
+    let payment = useSelector((state) => state.payment);
     useEffect(() => {
-        dispatch(getPuymentInfo(4));
+        dispatch(getPuymentInfo(params.id, params.slot));
     }, [])
     const sendForm = async (e) => {
         e.preventDefault()
@@ -20,7 +22,7 @@ const Payment = () => {
         obj.doctor_id = 4;
         obj.use_balance = Boolean(obj.use_balance);
         obj.slot_id = 1;
-        dispatch(getPuymentPost(obj))
+        dispatch(getPuymentPost(obj));
     }
     return (
         <div className={s.Payment}>
@@ -41,7 +43,7 @@ const Payment = () => {
                     </div>
                     <div className={s.Doctor_info + " " + s.black}>
                         <p className={s.gray + " " + s.Font_size14}>{payment.specialization.join(' • ')}</p>
-                        <h2>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
+                        <h2 className={s.Font_size24}>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
                         <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
                         <div className={s.Doctor_buy}>
                             <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
@@ -83,7 +85,7 @@ const Payment = () => {
                 </div>
                 <div className={s.Total_sum}>
                     <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
-                    <button className={s.Font_size14}>Оплатить</button>
+                    <button className={s.Font_size14} type="submit">Оплатить</button>
                     <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия пользовательского соглашения и даю согласие на обработку персональных данных.</p>
                 </div>
             </form>

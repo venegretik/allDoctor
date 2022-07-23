@@ -15,10 +15,14 @@ export const getShortInfo = () => {
   };
 };
 
-export const getNotification = () => {
+export const getNotification = (page = 1) => {
   return async () => {
     if (token) {
-      const response = await axios.get(`${defaultUrl}user/notification`);
+      const response = await axios.get(`${defaultUrl}user/notification`, {
+        params:{
+          page: page
+        }
+      });
       return response.data;
     }
   };

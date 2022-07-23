@@ -27,7 +27,7 @@ const SliderArrow = () => {
       <h1 className="CardSwiperTitle">Симптомы</h1>
       <div>
         <Swiper
-          slidesPerView={5}
+          slidesPerView={4}
           spaceBetween={10}
           slidesPerGroup={1}
           loop={true}

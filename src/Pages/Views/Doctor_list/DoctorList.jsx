@@ -75,7 +75,7 @@ const DoctorList = () => {
             )}
           </p>
         </div>
-        <Link to="/recording">
+        <Link to={"/recording/" + el.doctor_id}>
           <Button
             className={s.Reviews_send + " " + s.Font_size14}
             type={'submit'}

@@ -6,6 +6,7 @@ import Note from "../../../img/note_icon.png";
 import Chat from "../../../img/Chat_icon.png";
 import Home from "../../../img/Home_icon.png";
 import Prof from "../../../img/Profile_icon.png";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <section>
@@ -30,26 +31,36 @@ const Footer = () => {
       </footer>
       <div className={s.footer_Mobile}>
         <ul>
-          <li>
-            <img src={Home} alt="" />
-            <p>Главная</p>
-          </li>
-          <li>
-            <img src={Note} alt="" />
-            <p>Мои записи</p>
-          </li>
-          <li>
-            <img src={Chat} alt="" />
-            <p>Чат</p>
-          </li>
-          <li>
-            <img src={Doctor} alt="" />
-            <p>Мои врачи</p>
-          </li>
-          <li>
-            <img src={Prof} alt="" />
-            <p>Мой кабинет</p>
-          </li>
+          <Link to={"main"}>
+            <li>
+              <img src={Home} alt="" />
+              <p>Главная</p>
+            </li>
+          </Link>
+          <Link to={"consultation"}>
+            <li>
+              <img src={Note} alt="" />
+              <p>Мои записи</p>
+            </li>
+          </Link>
+          <Link to={"main"}>
+            <li>
+              <img src={Chat} alt="" />
+              <p>Чат</p>
+            </li>
+          </Link>
+          <Link to={"my-doctor"}>
+            <li>
+              <img src={Doctor} alt="" />
+              <p>Мои врачи</p>
+            </li>
+          </Link>
+          <Link to={"profile/local-data"}>
+            <li>
+              <img src={Prof} alt="" />
+              <p>Мой кабинет</p>
+            </li>
+          </Link>
         </ul>
       </div>
     </section>

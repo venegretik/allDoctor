@@ -34,6 +34,9 @@ const ReplaceData = () => {
 
   return (
     <div>
+      <div className={s.My_content_title}>
+        <h1>Личные данные</h1>
+      </div>
       <div className={s.Profile_data}>
         <div className={s.Profile_data_download_img}>
           <img
@@ -54,24 +57,19 @@ const ReplaceData = () => {
         <p className={s.Font_size16}>Телефон</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.phone}</p>
-          <p
-            onClick={() => dispatch(getLoginModal(true))}
-            className={s.Profile_replace_tel_link + " " + s.Font_size14}
-          >
-            Изменить
-          </p>
+          <ChangeLogin type_el="phone" />
         </div>
       </div>
       <div className={s.Profile_replace_tel}>
-        <p className={s.Font_size16}>Почта</p>
+        <p className={s.Font_size16}>Электронная почта</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
-          <p className={s.Profile_replace_tel_link + " " + s.Font_size14}>
-            Изменить
+          <p className={s.Font_size14}>
+            
           </p>
+          <ChangeLogin type_el="email" />
         </div>
       </div>
-      {showModal && <ChangeLogin />}
 
       <form onSubmit={(e) => sendForm(e)}>
         <Input

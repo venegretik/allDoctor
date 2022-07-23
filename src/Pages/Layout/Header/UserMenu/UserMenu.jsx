@@ -48,33 +48,33 @@ const UserMenu = () => {
                   <li>
                     <Link
                       className={`${s.MenuLink} ${s.LinkBorder}`}
-                      to={"local-data"}
+                      to={"profile/local-data"}
                     >
                       Личные данные
                     </Link>
                   </li>
                   <li>
-                    <Link className={s.MenuLink} to={"/"}>
+                    <Link className={s.MenuLink} to={"profile/balance"}>
                       Баланс
                     </Link>
                   </li>
                   <li>
-                    <Link className={s.MenuLink} to={"/"}>
+                    <Link className={s.MenuLink} to={"profile/utility"}>
                       Проверка оборудования
                     </Link>
                   </li>
                   <li>
-                    <Link className={s.MenuLink} to={"/"}>
+                    <Link className={s.MenuLink} to={"profile/"}>
                       Анкета
                     </Link>
                   </li>
                   <li>
-                    <Link className={s.MenuLink} to={"/"}>
+                    <Link className={s.MenuLink} to={"profile/med-cart"}>
                       Медицинская карта
                     </Link>
                   </li>
                   <li>
-                    <Link className={s.MenuLink} to={"/"}>
+                    <Link className={s.MenuLink} to={"profile/result"}>
                       Результаты исследований
                     </Link>
                   </li>

@@ -51,7 +51,7 @@
 .Doctor_info {
   display: flex;
   color: #ffffff;
-  width: 335px;
+  max-width: 335px;
   flex-direction: column;
 }
 
@@ -187,7 +187,65 @@
     width: 500px;
   }
 }
+@media (max-width: 580px) {
+  .Doctor_cart {
+    width: 380px;
+  }
+  .Data_consultation {
+    padding: 13px 11.5px;
+    width: 80px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    max-height: 40px;
+    padding-left: 16px;
+    color: black;
+    background-color: #ffffff;
+  }
+  .Data_time {
+    padding: 13px 9px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    height: 40px;
+    padding-left: 16px;
+    color: black;
+    background-color: #ffffff;
+  }
+  .Font_size24 {
+    font-family: "Exo", sans-serif;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 19px !important;
+    letter-spacing: 0px !important;
+  }
 
+  .Font_size40 {
+    font-family: "Exo", sans-serif;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 53px !important;
+    letter-spacing: 0px !important;
+  }
+
+  .Font_size14 {
+    font-family: "Exo", sans-serif;
+    font-size: 10px !important;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+  }
+
+  .Font_size16 {
+    font-family: "Exo", sans-serif;
+    font-size: 10px !important;
+    font-weight: 400 !important;
+    line-height: 13px !important;
+    letter-spacing: 0px !important;
+  }
+}
 @media (max-width: 480px) {
   .Doctor_cart {
     width: 280px;
@@ -230,38 +288,6 @@
 
   .Doctor_avatar {
     width: 80px;
-  }
-
-  .Font_size24 {
-    font-family: "Exo", sans-serif;
-    font-size: 14px !important;
-    font-weight: 700 !important;
-    line-height: 19px !important;
-    letter-spacing: 0px !important;
-  }
-
-  .Font_size40 {
-    font-family: "Exo", sans-serif;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    line-height: 53px !important;
-    letter-spacing: 0px !important;
-  }
-
-  .Font_size14 {
-    font-family: "Exo", sans-serif;
-    font-size: 10px !important;
-    font-weight: 400;
-    line-height: 19px;
-    letter-spacing: 0px;
-  }
-
-  .Font_size16 {
-    font-family: "Exo", sans-serif;
-    font-size: 10px !important;
-    font-weight: 400 !important;
-    line-height: 13px !important;
-    letter-spacing: 0px !important;
   }
 
   .Doctor_info {

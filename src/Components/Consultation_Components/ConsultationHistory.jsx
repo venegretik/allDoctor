@@ -12,6 +12,8 @@ import SelectConsultation from "../Select/SelectConsultation/SelectConsultation"
 import SelectCustom from "../Select/Select";
 const ConsultationHistory = () => {
     const branch = useSelector(state => state.doctorSpec.branch_array);
+    const page = useSelector(state => state.consultation.page);
+    let specialization_id = useSelector(state => state.consultation.specialization_id);
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(axiosBranch());
@@ -88,7 +90,7 @@ const ConsultationHistory = () => {
             {!history[0] ? (
                 <Loader />
             ) : (history)}
-            <div className={s.Show_more}>
+            <div className={s.Show_more + " " + s.Message_button_margin} onClick={e => dispatch(axiosConsultationHistory(page+1, specialization_id))}>
                 <Button
                     className={s.Reviews_send + " " + s.Font_size14}
                     type={'submit'}

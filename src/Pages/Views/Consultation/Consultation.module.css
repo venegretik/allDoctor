@@ -162,9 +162,11 @@
     margin-top: 40px;
     max-width: 830px;
     position: relative;
-    display: flex;
 }
-
+.ButtonMobile button{
+    width: 100%;
+    display: none;
+}
 .Consultation_info button {
     width: 200px;
     margin-top: 20px;
@@ -307,8 +309,15 @@
         display: flex;
         flex-direction: column;
     }
+    .ButtonMobile button{
+        width: 100%;
+        margin-top: 20px;
+        display: block;
+    }
 }
-
+.Message_button_margin{
+    margin-right: 20px;
+}
 @media(max-width:780px) {
     .Download_file {
         align-self: center;

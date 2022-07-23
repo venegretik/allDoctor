@@ -99,8 +99,7 @@
 
 .Doctor_list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .Doctor_avatar_info ul {
@@ -370,4 +369,10 @@
   background-color: #f5f5f5;
   cursor: pointer;
   transition: 0.2s background-color ease-in-out;
+}
+@media(max-width:580px){
+  .Doctor_avatar_img {
+    position: relative;
+    width: 90px;
+  }
 }

@@ -11,12 +11,16 @@ export const axiosReviews = (doctor_id) => {
         dispatch(reviewsAction(response.data.data));
     }
 }
-export const axiosReview = (doctor_id) => {
+export const axiosReview = (doctor_id = 1, page = 1) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.get(`${defaultUrl}doctor/${doctor_id}/reviews`);
+        const response = await axios.get(`${defaultUrl}doctor/${doctor_id}/reviews`,{
+            params: {
+                page: page
+            }
+        });
         dispatch(recordingAction(response.data.data));
     }
 }

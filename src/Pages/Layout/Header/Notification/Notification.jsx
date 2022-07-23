@@ -48,7 +48,7 @@ const Notification = () => {
                 return (
                   <Link
                     key={item.notofication_id}
-                    to={"/notifications/" + item.notofication_id}
+                    to={"profile/message"}
                     className={s.notice_item}
                   >
                     <svg
@@ -84,7 +84,7 @@ const Notification = () => {
             ) : (
               <h4 className={s.text_notice}>Новых уведомлений нет</h4>
             )}
-            <Link to={"123"} className={s.notice_readAll}>
+            <Link to={"profile/message"} className={s.notice_readAll}>
               Посмотреть все уведомления
             </Link>
           </div>

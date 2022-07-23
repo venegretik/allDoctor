@@ -76,3 +76,13 @@
   color: #2e373d;
   font-size: 30px;
 }
+@media(max-width:980px){
+  .swiperCard {
+    max-width: 240px;
+    border: 2px solid #eaf2ff;
+    border-radius: 40px;
+    padding: 40px 10px 35px 10px;
+    min-height: 240px;
+    text-decoration: none;
+  }
+}

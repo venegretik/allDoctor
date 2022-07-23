@@ -8,6 +8,7 @@ import Result from "./Result/Result";
 import { Outlet } from "react-router-dom";
 import Balance from "./Balance/Balance";
 import { Layout } from "../../Layout/Layout";
+import { NavLink } from "react-router-dom";
 import Messages from "./Messages/Messages";
 const MyProfile = () => {
   return (
@@ -15,30 +16,64 @@ const MyProfile = () => {
       <div className={s.Left_Position}>
         <ul>
           <li>
-            <p>Личные данные</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="local-data">
+              <p>Личные данные</p>
+            </NavLink>
           </li>
           <li>
-            <p>Уведомления</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="message">
+              <p>Уведомления</p>
+            </NavLink>
           </li>
           <li>
-            <p>Баланс</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="balance">
+              <p>Баланс</p>
+            </NavLink>
           </li>
           <li>
-            <p>Проверка оборудования</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="utility">
+                <p>Проверка оборудования</p>
+            </NavLink>
           </li>
           <li>
-            <p>Анкета</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="local-data">
+              <p>Анкета</p>
+            </NavLink>
           </li>
           <li>
-            <p>Медицинская карта</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="med-cart">
+              <p>Медицинская карта</p>
+            </NavLink>
           </li>
           <li>
-            <p>Результаты использований</p>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="result">
+              <p>Результаты использований</p>
+            </NavLink>
           </li>
         </ul>
       </div>
       <Outlet />
-      <Messages />
     </div>
   );
 };

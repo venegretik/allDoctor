@@ -9,7 +9,9 @@
     position: relative;
     padding-left: 15px;
 }
-
+#Select-menu label:hover{
+    background-color: #ECECEE;
+}
 #Select-menu {
     width: 100%;
     position: absolute;
@@ -88,12 +90,15 @@
 
 .Rotate_img {
     transform: rotate(-180deg);
+    
 }
 
 .Select_content img {
     position: absolute;
-    top: 17.5px;
-    right: 17.5px;
+    top: 7.5px;
+    right: 1px;
+    background: #fff;
+    padding: 10px 10px;
 }
 
 @media (max-width: 768px) {

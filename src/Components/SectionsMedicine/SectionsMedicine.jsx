@@ -65,8 +65,8 @@ const SectionsMedicine = () => {
           ) : (
             Ofline.map((el, key) =>
               key < 4 ? (
-                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id}>
-                  <div className={s.card_item}>
+                <Link className={s.ClassNull} key={el.branch_id} to={"/doctor-list/" + el.branch_id}>
+                  <div className={s.card_item} >
                     <img src={el.image} alt="" />
                     <div className={s.card_text_wrapper}>
                       <div className={s.card_title}>{el.title}</div>

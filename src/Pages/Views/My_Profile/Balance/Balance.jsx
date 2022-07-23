@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { axiosProfileBalance, axiosProfileRefferal, axiosProfilePay, axiosProfileFriend, axiosProfileHistory } from "../../../../base/asyncActions/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, InpMask } from "../../../../Components/Input/Input";
+import RequestMoney from "../../../../Components/Modal/Request_money/RequestMoney";
 const Balance = () => {
     const [isShown, setIsShown] = useState(false);
     let dispatch = useDispatch();
@@ -73,7 +74,7 @@ const Balance = () => {
                     }
                     <div className={s.Remove_balance}>
                         <img src="" alt="" />
-                        <p>Вывести средства</p>
+                        <RequestMoney />
                     </div>
                 </div>
             </form>

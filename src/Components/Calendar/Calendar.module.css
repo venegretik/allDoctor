@@ -79,6 +79,7 @@
     border-radius: 15px;
 }
 .colorUnactive{
+    cursor: default;
     background: #EAF2FF;
 }
 .colorOnClick{

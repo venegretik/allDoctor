@@ -24,11 +24,22 @@
 .Cancel_Record_block {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     max-width: 800px;
-    height: 600px;
+    background-color: #ffffff;
+    min-height: 400px;
+    max-height: 500px;
+    padding-bottom: 40px;
 }
-
+.Font_size24 {
+    font-family: 'Exo', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 32px;
+    letter-spacing: 0px;
+}
 .Cancel_Record {
     display: flex;
     flex-direction: column;
@@ -36,15 +47,14 @@
     margin:40px auto 0px auto;
     height: auto;
     padding:10px;
-    background-color: #c5c5c5;
     border-radius:5px;
-    box-shadow: 0px 0px 10px #000;
 }
 .Cart_close {
     position: absolute;
     transform: rotate(-45deg);
     font-size: 20px;
-    right: 30px;
+    cursor: pointer;
+    right: 10px;
 }
 
 .buttonActive {
@@ -60,5 +70,13 @@
 
 .Cancel_Record h1 {
     text-align: center;
-
+}
+@media (max-width:480px) {
+    .Font_size24 {
+        font-family: 'Exo', sans-serif;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 19px !important;
+        letter-spacing: 0px !important;
+    }
 }

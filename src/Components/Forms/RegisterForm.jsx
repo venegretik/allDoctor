@@ -77,7 +77,7 @@ const RegisterForm = () => {
                name={'policy'}
         />
 
-        <p className={style.policy}>Я принимаю <Link className={style.policyLink} to={'#'}>условия пользовательского
+        <p className={style.policy}>Я принимаю <Link className={style.policyLink} to={'../private'}>условия пользовательского
           соглашения</Link> и даю своё согласие на <Link className={style.policyLink} to={'#'}>обработку
           персональных данных</Link>
         </p>

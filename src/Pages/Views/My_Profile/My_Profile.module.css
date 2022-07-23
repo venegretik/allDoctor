@@ -1,5 +1,4 @@
 .Left_Position ul li p {
-    margin-bottom: 40px;
     text-transform: uppercase;
 }
 
@@ -12,6 +11,7 @@
 
 .Left_Position {
     max-width: 305px;
+    margin-right: 30px;
 }
 
 .Left_Position ul {
@@ -31,9 +31,12 @@
     font-size: 40px;
     margin-bottom: 24px;
 }
-
+.My_content_top_image{
+    width: 132px;
+}
 .My_content_top_image img {
     border-radius: 50%;
+    width: 100%;
 }
 
 .My_content_top_content {
@@ -63,7 +66,35 @@
     height: 18px;
     margin-top: 10px;
 }
-
+.navLi:hover{
+    border-color: #407BFF;
+}
+.Menu_mobile{
+    display: none;
+}
+.navLink{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8B9BAB;
+    text-decoration: none;
+    display: flex;
+    min-height: 20px;
+    padding-bottom: 5px;
+    margin-bottom: 40px;
+    border-bottom: 4px solid #EAF2FF;
+    transition-duration: 0.5s;
+}
+.navLink:hover{
+    color: #2E373D;
+    border-color: #407BFF;
+}
+.headerActiveLink{
+    color: #2E373D;
+    border-color: #407BFF;
+}
 @media(max-width:840px) {
     .My_content_title h1 {
         display: none;

@@ -3,7 +3,10 @@ import s from './Calendar.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosRecordingCalculator } from "../../base/asyncActions/getReviews";
-const Calendar = () => {
+import { Link } from "react-router-dom";
+import Loader from "../Loading/Loader";
+import { axiosConsultationCalendar } from "../../base/asyncActions/getConsultation";
+const Calendar = (props) => {
     const dispatch = useDispatch(),
         [DateStr, setDate] = useState(""),
         [slot_id, setId] = useState(0),
@@ -32,15 +35,32 @@ const Calendar = () => {
         setSlot(el.slots);
     }
     slots = Slot.map(
-        el => <div className={s.Calendar_rasp} key={el.slot_id}>
-            <p className={s.Font_size16 } onClick={e =>setId(el.slot_id)}>{new Date(el.time).toLocaleString(
+        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive} key={el.slot_id}>
+            <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
                     hour: "numeric",
                     minute: "numeric"
                 }
             )}</p>
-        </div>
+        </div> : slot_id == el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault} key={el.slot_id} onClick={e => setId(el.slot_id)}>
+            <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
+                "ru",
+                {
+                    hour: "numeric",
+                    minute: "numeric"
+                }
+            )}</p>
+        </div> :
+            <div className={s.Calendar_rasp + " " + s.colorOnClick} key={el.slot_id} onClick={e => setId(el.slot_id)}>
+                <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
+                    "ru",
+                    {
+                        hour: "numeric",
+                        minute: "numeric"
+                    }
+                )}</p>
+            </div>
     )
     let call = calendar.map(el => <li >
         <p>{callendarDay(el.date)}</p>
@@ -54,25 +74,28 @@ const Calendar = () => {
 
 
     return (
-        <div className={s.Calendar_full}>
-            <div>
-                <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
-            </div>
-            <div className={s.Calendar_main}>
-                <ul className={s.Font_size14}>
-                    {call}
-                </ul>
-            </div>
-            <div>
-                <p className={s.Font_size14 + " " + s.gray}>Онлайн-расписание на 25 марта:</p>
-            </div>
-            <div className={s.Calendar_rasp_top}>
-                {slots}
-            </div>
-            <div className={s.Calendar_button}>
-                <button>записаться</button>
-            </div>
+        slots[0] ? <div className={s.Calendar_full}>
+        <div>
+            <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
         </div>
+        <div className={s.Calendar_main}>
+            <ul className={s.Font_size14}>
+                {call}
+            </ul>
+        </div>
+        <div>
+            <p className={s.Font_size14 + " " + s.gray}>Онлайн-расписание на 25 марта:</p>
+        </div>
+        <div className={s.Calendar_rasp_top}>
+            {slots}
+        </div>
+        <div className={s.Calendar_button}>
+            {props.type_el == "popup" ? <button onClick={e => dispatch(axiosConsultationCalendar(props.usId, slot_id))}>записаться</button> : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button>:
+            <Link to={"../payment/" + props.usId + "/" + slot_id}>
+                <button disabled={!slot_id ? true : false}>записаться</button>
+            </Link>}
+        </div>
+    </div> : <Loader />
     )
 }
 export default Calendar;

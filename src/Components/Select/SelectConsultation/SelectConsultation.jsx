@@ -8,7 +8,7 @@ const SelectConsultation = (props) => {
   const specialization = useSelector(state => state.consultation.specialization_id);
   const page = useSelector(state => state.consultation.page);
   const [isShown, setIsShown] = useState(false);
-  const [Showtext, setShowText] = useState("...");
+  const [Showtext, setShowText] = useState("Педиатр");
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
