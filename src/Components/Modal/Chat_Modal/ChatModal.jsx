@@ -1,18 +1,22 @@
 import React from "react";
-import s from './Chat.module.css';
-import chat from '../../img/chat.png'
+import s from './ChatModal.module.css';
+import chat from '../../../img/Chat_icon.png'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { axiosConsultationChat } from "../../base/asyncActions/getConsultation";
-const Chat = () => {
+import { axiosConsultationChat } from "../../../base/asyncActions/getConsultation";
+
+const ChatModal = () => {
     let dispatch = useDispatch();
     let [showWindow, setWindow] = useState(false);
     return (
         <div>
             <div className={s.Chat_icon}>
-                <img src={chat} alt="" onClick={e=> setWindow(true)}/>
-                {showWindow ?<div className={s.Chat_full}>
-                    <div className={s.Cart_slose} onClick={e=> setWindow(false)}>
+                <div className={s.Chat_mod} onClick={e=> setWindow(true)}>
+                    <img src={chat} alt="" />
+                    <p>Чат</p>
+                </div>
+                {showWindow ? <div className={s.Chat_full}>
+                    <div className={s.Cart_slose} onClick={e => setWindow(false)}>
                         x
                     </div>
                     <div className={s.Chat_list}>
@@ -38,4 +42,4 @@ const Chat = () => {
         </div>
     )
 }
-export default Chat;
+export default ChatModal;

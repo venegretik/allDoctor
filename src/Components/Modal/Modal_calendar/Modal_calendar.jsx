@@ -22,7 +22,7 @@ const ModalCalendar = () => {
                         +
                     </div>
                     <div>
-                        <h1>Перенести запись</h1>
+                        <h1 className={s.title}>Перенести запись</h1>
                     </div>
                     <Calendar type_el= "popup"/>
                 </div>

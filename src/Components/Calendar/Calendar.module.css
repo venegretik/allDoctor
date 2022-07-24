@@ -128,7 +128,18 @@
         line-height: 19px !important;
         letter-spacing: 0px !important;
     }
-
+    .Calendar_rasp {
+        width: 23%;
+        height: 40px;
+        margin-right: 5px;
+        margin-top: 5px;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        background: #EAF2FF;
+        border-radius: 15px;
+    }
     .Font_size40 {
         font-family: 'Exo', sans-serif;
         font-size: 16px !important;

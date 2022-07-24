@@ -12,20 +12,27 @@ const SelectReview = (props) => {
         setIsShown((current) => !current);
     };
     const handleClickChange = (changeEvent) => {
-        setShowText(changeEvent.target.title);
+        setShowText(new Date(changeEvent.target.title).toLocaleString(
+            "ru",
+            {
+                month: "short",
+                year: "numeric",
+                day: "numeric",
+            }
+        ));
         dispatch(reviewCosultationAction(changeEvent.target.value));
     }
     let arrayItems = props.array.map(el =>
         <label htmlFor={el.consultation_id} key={el.consultation_id}>
-          <input type="radio" name="main-categories" title={el.datetime} id={el.consultation_id} value={el.consultation_id} onChange={handleClickChange} />
-          {new Date(el.datetime).toLocaleString(
-                    "ru",
-                    {
-                      month: "short",
-                      year: "numeric",
-                      day: "numeric",
-                    }
-                  )}
+            <input type="radio" name="main-categories" title={el.datetime} id={el.consultation_id} value={el.consultation_id} onChange={handleClickChange} />
+            {new Date(el.datetime).toLocaleString(
+                "ru",
+                {
+                    month: "short",
+                    year: "numeric",
+                    day: "numeric",
+                }
+            )}
         </label>)
     return (
         <div id="Select-hide" onClick={handleClick}>

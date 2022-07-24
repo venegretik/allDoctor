@@ -5,6 +5,7 @@ import { Input } from "../../../../Components/Input/Input";
 import { useSelector } from "react-redux/es/exports";
 import ChangeLogin from "../../../../Components/Modal/Change_login/Change_login";
 import { useDispatch } from "react-redux";
+import UploadFile from "../../../../Components/UploadFile/UploadFile";
 import {
   axiosProfileEdit,
   axiosProfile,
@@ -33,7 +34,7 @@ const ReplaceData = () => {
   };
 
   return (
-    <div>
+    <div className={s.ReplaceData}>
       <div className={s.My_content_title}>
         <h1>Личные данные</h1>
       </div>
@@ -43,7 +44,9 @@ const ReplaceData = () => {
             src="https://api.telemed.dev-h.ru/images/profiles/profile.png"
             alt=""
           />
-          <img src={upload} alt="" className={s.upload} />
+          <div className={s.upload}>
+            <UploadFile />
+          </div>
         </div>
         <b className={s.Font_size24}>
           {profile.firstname +
@@ -65,7 +68,7 @@ const ReplaceData = () => {
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
           <p className={s.Font_size14}>
-            
+
           </p>
           <ChangeLogin type_el="email" />
         </div>

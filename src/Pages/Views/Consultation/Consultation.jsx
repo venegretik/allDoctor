@@ -6,14 +6,16 @@ import ConsultationHistory from "../../../Components/Consultation_Components/Con
 import Chat from "../../../Components/Chat/Chat";
 const Consultation = () => {
     return (
-        <div className={s.My_consultation}>
-            <div className={s.Consultation_title}>
-                <h1>Предстоящая консультация</h1>
+        <div className={s.Container + " Container"}>
+            <div className={s.My_consultation}>
+                <div className={s.Consultation_title}>
+                    <h1 className={s.Font_size24}>Предстоящая консультация</h1>
+                </div>
+                <ConsultationReady />
+                <ConsultationNext />
+                <ConsultationHistory />
+                <Chat />
             </div>
-            <ConsultationReady />
-            <ConsultationNext />
-            <ConsultationHistory />
-            <Chat />
         </div>
     )
 }

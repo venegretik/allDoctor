@@ -1,12 +1,14 @@
-.Messages_block{
+.Messages_block {
     position: relative;
 }
-.Messages_close{
+
+.Messages_close {
     position: absolute;
     right: 0px;
     transform: rotate(-45deg);
     font-size: 18px;
 }
+
 .Font_size24 {
     font-family: 'Exo', sans-serif;
     font-size: 24px;
@@ -43,23 +45,35 @@
     letter-spacing: 0px;
     text-align: left;
 }
-.Message_button{
+
+.Message_button {
     display: flex;
     margin-top: 40px;
 }
-.Message_button_margin{
+
+.Message_button_margin {
     margin-right: 20px;
 }
-.Messages_full{
+
+.text_notice {
+    padding: 10px 30px;
+    font-weight: normal;
+    color: #8b9bab;
+    border-bottom: 1px solid #eaf2ff;
+}
+
+.Messages_full {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.Messages_line{
+
+.Messages_line {
     margin-top: 7px;
     width: 100%;
     border: 2px solid #EAF2FF;
 }
+
 @media(max-width:480px) {
     .Font_size24 {
         font-family: 'Exo', sans-serif;
@@ -69,10 +83,17 @@
         letter-spacing: 0px !important;
 
     }
-    .Message_button{
+
+    .Message_button_margin {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+
+    .Message_button {
         flex-direction: column;
         align-items: center;
     }
+
     .Font_size40 {
         font-family: 'Exo', sans-serif;
         font-size: 16px !important;
@@ -80,6 +101,7 @@
         line-height: 53px !important;
         letter-spacing: 0px !important;
     }
+
     .Font_size14 {
         font-family: 'Exo', sans-serif;
         font-size: 10px !important;

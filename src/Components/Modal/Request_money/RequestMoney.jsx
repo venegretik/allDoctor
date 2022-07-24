@@ -2,6 +2,7 @@ import React from "react";
 import s from './RequestMoney.module.css';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import arrow from "../../../img/arrow-left.png"
 import { Input } from "../../Input/Input";
 import Button from "../../Button/Button";
 const RequestMoney = (props) => {
@@ -9,8 +10,9 @@ const RequestMoney = (props) => {
     let [showWindow, setWindow] = useState(false);
     return (
         <div>
-            <div onClick={e=>setWindow(true)}>
-                <p >Вывести средства</p>
+            <div className={s.blue} onClick={e=>setWindow(true)}>
+                <img src={arrow} alt="" />
+                <p>Вывести средства</p>
             </div>
             {showWindow ? <div className={s.Cancel_Record_full}>
                 <div className={s.Cancel_Record_block}>

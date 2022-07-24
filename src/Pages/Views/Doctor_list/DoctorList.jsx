@@ -56,7 +56,7 @@ const DoctorList = () => {
           <p className={s.Staj + " " + s.Font_size14}>{el.regalia.join(' • ')}</p>
           <div className={s.Doctor_buy}>
             <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-            <p className={s.buy}>1500 ₽</p>
+            <p className={s.buy + " " + s.Font_size24}>1500 ₽</p>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@ const DoctorList = () => {
 
   );
   return (
-    <div>
+    <div className={s.Container + " Container"}>
       <section className={s.Doctor_list}>
         <div className={s.Skill}>
           <div className={s.Skill_title}>

@@ -157,7 +157,7 @@
 }
 @media(max-width:580px){
     .Doctor_info{
-        max-width: 280px;
+        max-width: 200px;
     }
 }
 @media(max-width:480px) {

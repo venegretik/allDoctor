@@ -7,7 +7,6 @@
   text-align: center;
   font-size: 18px;
   background: #fff;
-
   /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -79,10 +78,35 @@
 @media(max-width:980px){
   .swiperCard {
     max-width: 240px;
+    width: 100%;
     border: 2px solid #eaf2ff;
     border-radius: 40px;
     padding: 40px 10px 35px 10px;
     min-height: 240px;
+    height: 100%;
     text-decoration: none;
+  }
+  
+}
+@media(max-width:600px){
+  .swiperCardImg {
+    max-width: 50px;
+    margin: 0 auto 12px auto;
+    height: 50px!important;
+    object-fit: contain !important;
+  }
+  .swiperCard {
+    max-width: 240px;
+    width: 100%;
+    border: 2px solid #eaf2ff;
+    border-radius: 40px;
+    padding: 20px 10px 20px 10px;
+    min-height: 160px;
+    max-height: 240px;
+    height: 100%;
+    text-decoration: none;
+  }
+  .switepCardText{
+    font-size: 10px;
   }
 }

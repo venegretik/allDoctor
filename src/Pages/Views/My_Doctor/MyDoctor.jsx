@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Cancel_Record from "../../../Components/Modal/Cancel_record/Cancel_Record";
 import Button from "../../../Components/Button/Button";
 import Loader from "../../../Components/Loading/Loader";
+import Chat from "../../../Components/Chat/Chat";
 const MyDoctor = () => {
     const dispatch = useDispatch();
     const page = useSelector(state => state.doctorSpec.page);
@@ -60,7 +61,7 @@ const MyDoctor = () => {
         </div>
     </div>)
     return (
-        <div>
+        <div className={s.Container + " Container"}>
             {Doctor[0] ? Doctor :<Loader />}
             <div className={s.Reviews_buttons}>
                 <div onClick = {showMore}>
@@ -72,6 +73,7 @@ const MyDoctor = () => {
                 />
                 </div>
             </div>
+            <Chat />
         </div>
     )
 }

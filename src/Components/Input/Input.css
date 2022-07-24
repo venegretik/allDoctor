@@ -54,7 +54,7 @@ input[type=email]:not(:focus):invalid{
 }
 input[type=radio]{
     position: absolute;
-    width: 0;
+    width: 0!important;
     height: 0;
     appearance: none;
 }
@@ -64,6 +64,7 @@ input[type=radio]:before{
     border: 1px solid #ECECEE;
     border-radius: 26px;
     content: '';
+    cursor: pointer;
     width: 24px;
     height: 24px;
     box-sizing: border-box;

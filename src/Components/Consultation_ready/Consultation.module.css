@@ -248,13 +248,16 @@
 }
 @media (max-width: 480px) {
   .Doctor_cart {
-    width: 280px;
+    max-width: 400px;
+    width: 100%;
   }
 
   .Doctor_avatar_info p {
     display: none;
   }
-
+  .Doctor_skills{
+    align-items: flex-start;
+  }
   .Doctor_avatar_img {
     width: 70px;
   }
@@ -262,7 +265,9 @@
   .Doctor_avatar_info ul li img {
     width: 13px;
   }
-
+  .Cart_close{
+    right: 15px;
+  }
   .Doctor_avatar {
     margin-right: 10px;
   }
@@ -291,6 +296,7 @@
   }
 
   .Doctor_info {
-    width: 180px;
+    max-width: 180px;
+    width: 70%;
   }
 }

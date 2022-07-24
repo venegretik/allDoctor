@@ -3,10 +3,10 @@ import s from "./Footer.module.css";
 import logo from "../../../img/logo-white.svg";
 import Doctor from "../../../img/Doctor_icon.png";
 import Note from "../../../img/note_icon.png";
-import Chat from "../../../img/Chat_icon.png";
 import Home from "../../../img/Home_icon.png";
 import Prof from "../../../img/Profile_icon.png";
 import { Link } from "react-router-dom";
+import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
   return (
     <section>
@@ -43,12 +43,9 @@ const Footer = () => {
               <p>Мои записи</p>
             </li>
           </Link>
-          <Link to={"main"}>
-            <li>
-              <img src={Chat} alt="" />
-              <p>Чат</p>
-            </li>
-          </Link>
+          <li>
+            <ChatModal />
+          </li>
           <Link to={"my-doctor"}>
             <li>
               <img src={Doctor} alt="" />

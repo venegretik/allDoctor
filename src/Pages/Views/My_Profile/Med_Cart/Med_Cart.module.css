@@ -12,6 +12,21 @@
     max-width: 510px;
     list-style: none;
 }
+.MedCenter{
+    display: flex;
+    height: 100%;
+    border-collapse: collapse;
+    border-left: 0px!important;
+    border-top: 0px!important;
+    flex-direction: column;
+    align-items: center;
+}
+.MedCenter a{
+    color: #407BFF;
+}
+.Med_Cart{
+    margin-bottom: 30px;
+}
 .Med_Cart ul li p{
     position: relative;
 }

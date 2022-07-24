@@ -9,7 +9,7 @@ import Button from "../Button/Button";
 import { axiosConsultationHistory, axiosConsultationDelete } from '../../base/asyncActions/getConsultation';
 import { axiosBranch } from "../../base/asyncActions/getDoctors";
 import SelectConsultation from "../Select/SelectConsultation/SelectConsultation";
-import SelectCustom from "../Select/Select";
+import SelectCalendar from "../Select/SelectCalendar/SelectCalendar";
 const ConsultationHistory = () => {
     const branch = useSelector(state => state.doctorSpec.branch_array);
     const page = useSelector(state => state.consultation.page);
@@ -83,7 +83,7 @@ const ConsultationHistory = () => {
                     </div>
                     <div className={s.History_date}>
                         <p className={s.Font_size14}>Специализация</p>
-                        <SelectCustom />
+                        <SelectCalendar />
                     </div>
                 </div>
             </div>

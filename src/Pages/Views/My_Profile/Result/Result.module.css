@@ -4,12 +4,16 @@
 }
 .ResultFull{
     padding-left: 95px;
+    margin-bottom: 30px;
 }
 .formDownload {
     max-width: 500px;
 }
 .formDownload input {
     width: 100%;
+}
+.Form_Download label{
+    height: 100%;
 }
 .Form_Radio{
     margin-top: 10px;
@@ -27,8 +31,6 @@
 .Form_Download {
     width: 100%;
     height: 100px;
-    border: 2px dashed #EAF2FF;
-    border-radius: 24px;
     margin-top: 30px;
     color: #8B9BAB;
     display: flex;

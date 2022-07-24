@@ -6,7 +6,7 @@ import DoctorsOnDuty from "../../../Components/DoctorsOnDuty/DoctorsOnDuty";
 import SliderArrow from "../../../Components/Sliders/SliderArrow/SliderArrow";
 import SliderDots from "../../../Components/Sliders/SliderDots/SliderDots";
 import SectionsMedicine from "../../../Components/SectionsMedicine/SectionsMedicine";
-
+import Chat from "../../../Components/Chat/Chat";
 const Main = (props) => {
   return (
     <div>
@@ -19,6 +19,7 @@ const Main = (props) => {
       <div className={s.Container + " Container"}>
         <SectionsMedicine />
       </div>
+      <Chat />
     </div>
   );
 };

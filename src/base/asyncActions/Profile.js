@@ -73,7 +73,6 @@ export const axiosProfileResult = (page, type) => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}user/research?page=${page}&type=${type}`);
         dispatch(ProfileResultAction(response.data.data));
-        console.log(response.data.data)
     }
 }
 export const axiosProfileEdit = (obj) => {
@@ -94,6 +93,46 @@ export const axiosProfileEmailEdit = (obj={}) => {
         const response = await axios.post(`${defaultUrl}user/email`,{
             params:{
                 ...obj
+            }
+        });
+    }
+}
+export const axiosProfileUpload = (obj={}) => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.post(`${defaultUrl}user/research`,{
+            params:{
+                ...obj
+            }
+        });
+    }
+}
+export const axiosProfileDeleteNot = (notification_id) => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.delete(`${defaultUrl}user/notification/${notification_id}`);
+    }
+}
+export const axiosProfileDeleteNotAll = () => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.delete(`${defaultUrl}user/notification/all`);
+    }
+}
+export const axiosProfilePhotoUpload = (photo) => {
+    return async function (dispatch) {
+        const token = localStorage.getItem('token');
+        if (token)
+            axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+        const response = await axios.post(`${defaultUrl}user/photo`,{
+            params:{
+                photo:photo
             }
         });
     }

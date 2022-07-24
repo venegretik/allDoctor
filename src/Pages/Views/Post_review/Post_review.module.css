@@ -101,6 +101,7 @@
     max-width: 570px;
     width: 100%!important;
     height: 167px;
+    padding: 10px;
     border: 1px solid #EAF2FF;
     border-radius: 16px;
 }
@@ -120,6 +121,7 @@
     border-radius: 16px;
     border: 0px;
     font-size: 14px;
+    text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #FFFFFF;

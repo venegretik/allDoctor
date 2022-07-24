@@ -75,27 +75,29 @@ const Calendar = (props) => {
 
     return (
         slots[0] ? <div className={s.Calendar_full}>
-        <div>
-            <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
-        </div>
-        <div className={s.Calendar_main}>
-            <ul className={s.Font_size14}>
-                {call}
-            </ul>
-        </div>
-        <div>
-            <p className={s.Font_size14 + " " + s.gray}>Онлайн-расписание на 25 марта:</p>
-        </div>
-        <div className={s.Calendar_rasp_top}>
-            {slots}
-        </div>
-        <div className={s.Calendar_button}>
-            {props.type_el == "popup" ? <button onClick={e => dispatch(axiosConsultationCalendar(props.usId, slot_id))}>записаться</button> : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button>:
-            <Link to={"../payment/" + props.usId + "/" + slot_id}>
-                <button disabled={!slot_id ? true : false}>записаться</button>
-            </Link>}
-        </div>
-    </div> : <Loader />
+            <div>
+                <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
+            </div>
+            <div className={s.Calendar_main}>
+                <ul className={s.Font_size14}>
+                    {call}
+                </ul>
+            </div>
+            <div>
+                <p className={s.Font_size14 + " " + s.gray}>Онлайн-расписание на 25 марта:</p>
+            </div>
+            <div className={s.Calendar_rasp_top}>
+                {slots}
+            </div>
+            <div className={s.Calendar_button}>
+                {props.type_el == "popup" ?
+                    <button onClick={e => dispatch(axiosConsultationCalendar(props.usId, slot_id))}>записаться</button>
+                    : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button> :
+                        <Link to={"../payment/" + props.usId + "/" + slot_id}>
+                            <button disabled={!slot_id ? true : false}>записаться</button>
+                        </Link>}
+            </div>
+        </div> : <Loader />
     )
 }
 export default Calendar;

@@ -24,7 +24,7 @@ const Utility = () => {
           <div className={s.Utility_configuration_video}>
             <p>Устройство ввода</p>
             <select name="" id=""></select>
-            <input type="text" />
+            <Slide />
           </div>
           <div className={s.Utility_configuration_volume}>
             <p>Устройство вывода</p>

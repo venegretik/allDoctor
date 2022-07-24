@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import Messages from "./Messages/Messages";
 const MyProfile = () => {
   return (
+    <div className={s.Container + " Container"}>
     <div className={s.My_Profile}>
       <div className={s.Left_Position}>
         <ul>
@@ -75,6 +76,7 @@ const MyProfile = () => {
       </div>
       <Outlet />
     </div>
+    </div >
   );
 };
 export { MyProfile };

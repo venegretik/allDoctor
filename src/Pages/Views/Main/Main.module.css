@@ -11,7 +11,7 @@
 .ClassNull{
   text-decoration: none;
 }
-a{
+.medicine a{
   text-align: center;
 }
 .black {
@@ -278,7 +278,10 @@ a{
     cursor: pointer;
     border-radius: 16px;
   }
-
+  .Container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   .Doctor_avatar {
     width: 80px;
   }

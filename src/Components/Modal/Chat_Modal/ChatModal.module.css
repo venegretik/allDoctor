@@ -10,19 +10,14 @@
     flex-direction: column;
     align-items: center;
 }
-
-.Chat_icon img {
-    position: fixed;
-    right: 15px;
-    bottom: 15px;
-    padding: 15px;
-    background: #9DC3FF;
-    border-radius: 16px;
+.Chat_mod{
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
 }
-
 .Chat_icon {
     position: relative;
-    height: 50px;
 }
 
 .Chat_list ul {
@@ -40,7 +35,7 @@
 .Chat_full {
     max-width: 400px;
     width: 100%;
-    height: 600px;
+    height: 400px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     border-radius: 16px 16px 0px 0px;
     display: flex;
@@ -49,7 +44,7 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 0px;
+    bottom: 45px;
     right: 0px;
 }
 
@@ -65,7 +60,5 @@
     text-transform: uppercase;
 }
 @media(max-width:768px){
-    .Chat_icon{
-        display: none;
-    }
+    
 }

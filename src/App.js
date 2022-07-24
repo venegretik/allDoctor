@@ -27,6 +27,7 @@ import ReplaceData from "./Pages/Views/My_Profile/Replace_Data/ReplaceData";
 import Utility from "./Pages/Views/My_Profile/Utility/Utility";
 import Messages from "./Pages/Views/My_Profile/Messages/Messages";
 import PrivatePolice from "./Pages/Views/PrivatePolice.jsx/PrivatePolice";
+import Video from "./Pages/Views/Video/Video";
 function App() {
   const dispatch = useDispatch();
   const config = useSelector((state) => state.config.config);
@@ -68,6 +69,7 @@ function App() {
             <Route path={"my-doctor"} element={<MyDoctor />} />
             <Route path={"recording/:id"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
+            <Route path={"video"} element={<Video />} />
             <Route path="payment/:id/:slot" element={<Payment />} />
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
             <Route path={"*"} element={<NotFound />} />

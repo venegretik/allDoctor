@@ -9,7 +9,7 @@
     height: 132px;
 }
 
-form {
+.ReplaceData form {
     margin-top: 30px;
     margin-bottom: 87px;
     display: flex;
@@ -148,5 +148,15 @@ form input {
         font-weight: 400 !important;
         line-height: 13px !important;
         letter-spacing: 0px !important;
+    }
+    .radio_block {
+        display: flex;
+        align-items: center;
+        column-gap: 35px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        color: #8B9BAB;
+        margin-bottom: 20px;
     }
 }

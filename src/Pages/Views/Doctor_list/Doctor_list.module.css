@@ -75,10 +75,6 @@
   margin-top: 21px;
 }
 
-.buy {
-  margin-top: 5px;
-  font-size: 24px !important;
-}
 
 .Doctor {
   display: flex;
@@ -108,6 +104,9 @@
   list-style: none;
 }
 
+.Doctor_button{
+  margin-bottom: 30px;
+}
 .Select_all {
   display: flex;
 }
@@ -202,13 +201,16 @@
     display: flex;
     flex-direction: column;
   }
+  .Skill{
+    margin-top: 0px;
+  }
   .Skill_select {
-    width: 120px;
+    width: 200px;
     display: flex;
   }
   .Sort_select {
     margin-left: 80px;
-    width: 120px;
+    width: 200px;
     display: flex;
   }
   .Sort_select {
@@ -374,5 +376,18 @@
   .Doctor_avatar_img {
     position: relative;
     width: 90px;
+  }
+}
+@media(max-width:480px){
+  .Select_all{
+    display: flex;
+    flex-direction: column;
+  }
+  .Sort_select{
+    margin-left: 0px!important;
+    align-items: flex-start;
+  }
+  .Skill_select{
+    align-items: flex-start;
   }
 }

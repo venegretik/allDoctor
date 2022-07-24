@@ -82,7 +82,7 @@ const Balance = () => {
                 <div className={s.Referal_title}>
                     <h1>Реферальный код</h1>
                 </div>
-                <input type="text" value={referral} />
+                <input type="text" />
             </div>
             <div className={s.History}>
                 <div className={s.History_title}>

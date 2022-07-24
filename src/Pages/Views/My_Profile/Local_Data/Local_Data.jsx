@@ -2,7 +2,7 @@ import React from "react";
 import s from '../My_Profile.module.css';
 import pen from '../../../../img/pen.png'
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
 import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
@@ -13,6 +13,58 @@ const Local_Data = () => {
     }, []);
     return (
         <div className={s.My_content}>
+            <div className={s.Left_Position}>
+        <ul>
+          <li>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="../local-data">
+              <p>Личные данные</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="../message">
+              <p>Уведомления</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="../balance">
+              <p>Баланс</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="../local-data">
+              <p>Анкета</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="../med-cart">
+              <p>Медицинская карта</p>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className={({ isActive }) =>
+              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+            }
+              to="../result">
+              <p>Результаты использований</p>
+            </NavLink>
+          </li>
+        </ul>
+      </div>
             <div className={s.My_content_title}>
                 <h1>Личные данные</h1>
             </div>
@@ -34,15 +86,15 @@ const Local_Data = () => {
                 <div className={s.My_content_bottom}>
                     <span>
                         <p>Дата рождения:</p>
-                        <p> 27.05.1987</p>
+                        <p>{profile.birthday}</p>
                     </span>
                     <span>
                         <p>Электронная почта:</p>
-                        <p>smirnoff@yandex.ru</p>
+                        <p>{profile.email}</p>
                     </span>
                     <span>
                         <p>Пол:</p>
-                        <p>Мужской</p>
+                        <p>{profile.gender == 1 ? "Женский" : "Мужской"}</p>
                     </span>
                     <span>
                         <p>Баланс:</p>

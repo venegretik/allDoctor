@@ -1,0 +1,122 @@
+.VideoFull {
+    margin-top: 70px;
+    padding: 0px 25px;
+}
+
+.VideoTitle {
+    margin-bottom: 30px;
+}
+
+.VideoBlock {
+    display: flex;
+}
+
+.VideoBlockImage {
+    width: 750px;
+    position: relative;
+}
+.VideoBlockImage ul{
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%,0%);
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    list-style: none;
+    position: absolute;
+}
+.VideoBlockImage ul li{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    max-width: 85px;
+    text-align: center;
+    align-items: center;
+}
+.VideoBlockImage ul li .icon_back{
+    padding: 11px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+}
+.VideoBlockImage ul li img{
+    width: 20px;
+}
+.VideoChat {
+    margin-left: 20px;
+    min-height: 500px;
+    position: relative;
+}
+
+.VideoBlockImage img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.VideoChatDoctor {
+    margin-top: 20px;
+    max-width: 293px;
+    border-radius: 7px;
+    padding: 10px;
+    background: #E6E6E6;
+}
+
+.VideoChatMy {
+    margin-top: 20px;
+    border-radius: 7px;
+    padding: 10px;
+    background: #EAF2FF;
+    float: right;
+}
+
+.MessageText {
+    position: absolute;
+    bottom: 0px;
+}
+
+@media(max-width:980px) {
+    .VideoBlock {
+        flex-direction: column;
+    }
+    .VideoTitle {
+        text-align: center;
+    }
+    .VideoChat{
+        margin-left: 0px;
+    }
+    .VideoBlockImage {
+        width: 100%;
+    }
+    .MessageText{
+        width: 100%;
+        padding-bottom: 40px;
+    }
+    .MessageText input{
+        width: 100%;
+        max-width: 980px;
+    }
+}
+@media(max-width:480px){
+    .VideoFull {
+        padding: 0px 0px;
+        margin-top: 0px;
+    }
+    .VideoTitle {
+        display: none;
+    }
+    .VideoBlockImage{
+        height: 100%;
+    }
+    .VideoFull{
+        height: 100%;
+    }
+    .VideoBlockImage img {
+        width: 100%;
+        
+        border-radius: 0px;
+    }
+    .VideoChat{
+        display: none;
+    }
+}
