@@ -28,6 +28,7 @@ import Utility from "./Pages/Views/My_Profile/Utility/Utility";
 import Messages from "./Pages/Views/My_Profile/Messages/Messages";
 import PrivatePolice from "./Pages/Views/PrivatePolice.jsx/PrivatePolice";
 import Video from "./Pages/Views/Video/Video";
+import RazdeliOffline from "./Pages/Views/OfflineBranch/OfflineBranch";
 function App() {
   const dispatch = useDispatch();
   const config = useSelector((state) => state.config.config);
@@ -52,7 +53,6 @@ function App() {
 
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
-          <Route path={"private"} element={<PrivatePolice />}/>
           <Route path={"/"} element={<Layout />}>
             <Route path={"main"} element={<Main />} />
             <Route path={"profile"} element={<MyProfile />}>
@@ -67,12 +67,14 @@ function App() {
             <Route path={"doctor-list/:id"} element={<DoctorList />} />
             <Route path={"consultation"} element={<Consultation />} />
             <Route path={"my-doctor"} element={<MyDoctor />} />
+            <Route path={"private/:type"} element={<PrivatePolice />}/>
             <Route path={"recording/:id"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
             <Route path={"video"} element={<Video />} />
             <Route path="payment/:id/:slot" element={<Payment />} />
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
             <Route path={"*"} element={<NotFound />} />
+            <Route path={"razdeli-offline"} element={<RazdeliOffline />} />
           </Route>
         </Routes>
       )}

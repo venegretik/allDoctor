@@ -4,8 +4,9 @@ import s from "./Header.module.css";
 import logo from "../../../img/logo.png";
 import arrow_back from "../../../img/arrow-back.png";
 import { UserMenu } from "./UserMenu/UserMenu";
-
+import { useSelector } from "react-redux/es/exports";
 const Header = () => {
+  let Text = useSelector(state => state.config.header_text);
   return (
     <div className={s.Header_container + " Container"}>
       <header className={s.Header_full}>
@@ -49,7 +50,7 @@ const Header = () => {
           <img src={arrow_back} alt="" />
         </Link>
         <div className={s.Menu_mobile_title}>
-          <h1>Главная</h1>
+          <h1>{Text}</h1>
         </div>
       </div>
     </div>

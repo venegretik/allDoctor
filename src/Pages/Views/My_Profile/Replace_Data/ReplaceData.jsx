@@ -5,7 +5,8 @@ import { Input } from "../../../../Components/Input/Input";
 import { useSelector } from "react-redux/es/exports";
 import ChangeLogin from "../../../../Components/Modal/Change_login/Change_login";
 import { useDispatch } from "react-redux";
-import UploadFile from "../../../../Components/UploadFile/UploadFile";
+import Message_Container from "../../../../Components/UploadFile/UploadFile";
+import { getShortInfo } from "../../../../base/asyncActions/getMainPageInfo";
 import {
   axiosProfileEdit,
   axiosProfile,
@@ -30,7 +31,10 @@ const ReplaceData = () => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
-    dispatch(axiosProfileEdit(obj));
+    const response = await dispatch(axiosProfileEdit(obj));
+    if(response.status){
+      dispatch(getShortInfo());
+    } 
   };
 
   return (
@@ -41,11 +45,11 @@ const ReplaceData = () => {
       <div className={s.Profile_data}>
         <div className={s.Profile_data_download_img}>
           <img
-            src="https://api.telemed.dev-h.ru/images/profiles/profile.png"
+            src={profile.photo}
             alt=""
           />
           <div className={s.upload}>
-            <UploadFile />
+            <Message_Container />
           </div>
         </div>
         <b className={s.Font_size24}>

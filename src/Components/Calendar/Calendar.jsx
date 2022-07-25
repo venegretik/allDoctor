@@ -3,12 +3,14 @@ import s from './Calendar.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosRecordingCalculator } from "../../base/asyncActions/getReviews";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Loader from "../Loading/Loader";
 import { axiosConsultationCalendar } from "../../base/asyncActions/getConsultation";
+import { getPuymentInfo } from "../../base/asyncActions/Payment";
 const Calendar = (props) => {
     const dispatch = useDispatch(),
         [DateStr, setDate] = useState(""),
+        [RedPayment, setRedPayment] = useState(false),
         [slot_id, setId] = useState(0),
         [Slot, setSlot] = useState([]),
         calendar = useSelector((state) => state.recording.calendar),
@@ -21,6 +23,13 @@ const Calendar = (props) => {
     useEffect(() => {
         dispatch(axiosRecordingCalculator());
     }, [])
+    let OnCheck = async () => {
+        let status = await dispatch(getPuymentInfo(props.usId, slot_id));
+        if (status.status == true)
+            setRedPayment(true)
+        else
+            dispatch(axiosRecordingCalculator());
+    }
     useEffect(() => {
         if (calendar[0]) {
             setDate(calendar[0].date);
@@ -75,6 +84,7 @@ const Calendar = (props) => {
 
     return (
         slots[0] ? <div className={s.Calendar_full}>
+            {RedPayment == true ? <Navigate to={"../payment/" + props.usId + "/" + slot_id} /> : false}
             <div>
                 <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
             </div>
@@ -93,9 +103,10 @@ const Calendar = (props) => {
                 {props.type_el == "popup" ?
                     <button onClick={e => dispatch(axiosConsultationCalendar(props.usId, slot_id))}>записаться</button>
                     : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button> :
-                        <Link to={"../payment/" + props.usId + "/" + slot_id}>
-                            <button disabled={!slot_id ? true : false}>записаться</button>
-                        </Link>}
+                        //<Link to={"../payment/" + props.usId + "/" + slot_id}>
+                        <button disabled={!slot_id ? true : false} onClick={OnCheck}>записаться</button>
+                    //</Link>
+                }
             </div>
         </div> : <Loader />
     )

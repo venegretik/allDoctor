@@ -80,13 +80,13 @@
 }
 .colorUnactive{
     cursor: default;
-    background: #EAF2FF;
+    background: #EAF2FF!important;
 }
 .colorOnClick{
-    background: #407BFF;
+    background: #407BFF!important;
 }
 .colorDefault{
-    background: #F6AE2D;
+    background: #F6AE2D!important;
 }
 .Calendar_button button {
     margin-top: 14px;

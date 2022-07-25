@@ -1,16 +1,16 @@
 import React from "react";
 import s from "./My_Profile.module.css";
-import Utility from "./Utility/Utility";
-import ReplaceData from "./Replace_Data/ReplaceData";
-import Med_Cart from "./Med_Cart/Med_Cart";
-import Local_Data from "./Local_Data/Local_Data";
-import Result from "./Result/Result";
 import { Outlet } from "react-router-dom";
-import Balance from "./Balance/Balance";
-import { Layout } from "../../Layout/Layout";
 import { NavLink } from "react-router-dom";
-import Messages from "./Messages/Messages";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 const MyProfile = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(getConfigHeaderAction("Профиль"))
+ }, []);
   return (
     <div className={s.Container + " Container"}>
     <div className={s.My_Profile}>

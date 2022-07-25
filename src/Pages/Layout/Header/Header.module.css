@@ -47,6 +47,8 @@
     text-decoration: none;
     width: 33%;
     display: flex;
+    text-align: center;
+    align-items: center;
     border-bottom: 4px solid #EAF2FF;
     justify-content: center;
     padding-top: 18px;

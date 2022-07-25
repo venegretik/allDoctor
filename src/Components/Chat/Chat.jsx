@@ -2,12 +2,14 @@ import React from "react";
 import s from './Chat.module.css';
 import chat from '../../img/chat.png'
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { axiosConsultationChat } from "../../base/asyncActions/getConsultation";
 const Chat = () => {
     let dispatch = useDispatch();
+    const config = useSelector((state) => state.config.config);
     let [showWindow, setWindow] = useState(false);
     return (
+        config.module.chat ?
         <div>
             <div className={s.Chat_icon}>
                 <img src={chat} alt="" onClick={e=> setWindow(true)}/>
@@ -35,7 +37,7 @@ const Chat = () => {
                 </div> : ""}
             </div>
 
-        </div>
+        </div> : ""
     )
 }
 export default Chat;

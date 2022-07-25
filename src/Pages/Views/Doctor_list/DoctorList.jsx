@@ -7,11 +7,18 @@ import { axiosDoctor, axiosBranch } from "../../../base/asyncActions/getDoctors"
 import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
 import Stars from "../../../Components/Stars/Stars";
 import { Link } from "react-router-dom";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Button from "../../../Components/Button/Button";
 const DoctorList = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    dispatch(getConfigHeaderAction("Доктора"))
+ }, []);
+  
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
+  let Name = useSelector(state => state.doctorSpec.specialization_name);
   const arraySort = [{
     title: "По популярности",
     branch_id: "rate"
@@ -28,9 +35,14 @@ const DoctorList = () => {
   const branch = useSelector(state => state.doctorSpec.branch_array);
   if (!branch[0]) {
     dispatch(axiosBranch())
+    
+  }
+  if(Name == "" && branch[0] ){
+    let filt = branch.filter(el => el.branch_id == params.id);
+    Name = filt[0].title
   }
   useEffect(() => {
-    dispatch(axiosDoctor(1));
+    dispatch(axiosDoctor(params.id));
   }, [])
   const sendRequest = () => {
     setPageNumber(++pageNumber);
@@ -92,7 +104,7 @@ const DoctorList = () => {
       <section className={s.Doctor_list}>
         <div className={s.Skill}>
           <div className={s.Skill_title}>
-            <h1 className={s.Font_size24}>Дерматолог</h1>
+            <h1 className={s.Font_size24}>{Name}</h1>
           </div>
           <div className={s.Select_all}>
             <div className={s.Skill_select}>

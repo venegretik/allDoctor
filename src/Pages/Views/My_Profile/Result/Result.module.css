@@ -15,6 +15,10 @@
 .Form_Download label{
     height: 100%;
 }
+.Message_button_margin{
+    display: flex;
+    justify-content: center;
+}
 .Form_Radio{
     margin-top: 10px;
     margin-left: 20px;

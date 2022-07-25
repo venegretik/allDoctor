@@ -1,7 +1,6 @@
 import axios from "axios";
-import {getConfigAction, getAuthAction} from "../Reducers/configReducer";
-import {defaultUrl} from "../configUrl";
-
+import { getConfigAction, getAuthAction,getConfigPoliceAction } from "../Reducers/configReducer";
+import { defaultUrl } from "../configUrl";
 
 export const axiosConfig = () => {
   return async function (dispatch) {
@@ -30,4 +29,39 @@ export const axiosAuth = (number, code) => {
     }
   }
 }
-
+export const axiosPrivacy = () => {
+  return async function (dispatch) {
+    const token = localStorage.getItem('token');
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    const response = await axios.get(`${defaultUrl}docs/privacy_policy`)
+    dispatch(getConfigPoliceAction(response.data.data))
+  }
+}
+export const axiosServices = () => {
+  return async function (dispatch) {
+    const token = localStorage.getItem('token');
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    const response = await axios.get(`${defaultUrl}docs/services_agreement`)
+    dispatch(getConfigPoliceAction(response.data.data))
+  }
+}
+export const axiosPersonal = () => {
+  return async function (dispatch) {
+    const token = localStorage.getItem('token');
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    const response = await axios.get(`${defaultUrl}docs/personal_data`)
+    dispatch(getConfigPoliceAction(response.data.data))
+  }
+}
+export const axiosAgreemet = () => {
+  return async function (dispatch) {
+    const token = localStorage.getItem('token');
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
+    const response = await axios.get(`${defaultUrl}docs/user_agreement`)
+    dispatch(getConfigPoliceAction(response.data.data))
+  }
+}

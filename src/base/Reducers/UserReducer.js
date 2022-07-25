@@ -7,7 +7,7 @@ const defaultState = {
     gender: 1,
     birthday: "1985-06-15",
     email: "ivanov.ivan.1985@mail.ru",
-    photo: "https://....",
+    photo: "https://api.telemed.dev-h.ru/images/profiles/profile.png",
     referral: "",
     has_notifications: true,
     balance: 9000,
@@ -26,6 +26,7 @@ const defaultState = {
   const HISTORY_REQUEST = 'HISTORY_REQUEST';
   const MED_CART = 'MED_CART';
   const RESULT = 'RESULT';
+  const PHOTO = 'PHOTO';
   export const profileReducer = (state = defaultState, action) => {
     switch (action.type) {
         case USER_ARRAY:
@@ -49,7 +50,11 @@ const defaultState = {
             return{...state, file_history:[...action.obj.items], 
                 current_page:action.obj.pagination.current_page,
                 total_page:action.obj.pagination.total_page}
-        
+        case PHOTO:
+            return {
+                ...state,
+                photo:action.obj.photo
+            }
         default:
             return state
     }
@@ -62,3 +67,4 @@ export const ProfileFriendAction = (obj) =>({ type: FRIEND_REQUEST, obj});
 export const ProfileHistoryAction = (obj) =>({ type: HISTORY_REQUEST, obj});
 export const ProfileMedCartAction = (obj) =>({ type: MED_CART, obj});
 export const ProfileResultAction = (obj) =>({ type: RESULT, obj});
+export const ProfilePhotoAction = (obj) =>({ type: PHOTO, obj});

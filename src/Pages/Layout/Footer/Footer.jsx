@@ -5,9 +5,15 @@ import Doctor from "../../../img/Doctor_icon.png";
 import Note from "../../../img/note_icon.png";
 import Home from "../../../img/Home_icon.png";
 import Prof from "../../../img/Profile_icon.png";
-import { Link } from "react-router-dom";
+import DoctorAct from "../../../img/Doctor_active.png";
+import NoteAct from "../../../img/note_active.png";
+import HomeAct from "../../../img/Home_active.png";
+import ProfAct from "../../../img/profile_active.png";
+import {NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
+  let Text = useSelector(state => state.config.header_text);
   return (
     <section>
       <footer className={s.footer_full}>
@@ -31,33 +37,41 @@ const Footer = () => {
       </footer>
       <div className={s.footer_Mobile}>
         <ul>
-          <Link to={"main"}>
+          <NavLink to={"main"} className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }>
             <li>
-              <img src={Home} alt="" />
+              {Text === "Главная" ? <img src={Home} alt="" /> :<img src={HomeAct} alt="" />}
               <p>Главная</p>
             </li>
-          </Link>
-          <Link to={"consultation"}>
+          </NavLink>
+          <NavLink to={"consultation"} className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }>
             <li>
-              <img src={Note} alt="" />
+            {Text === "Мои записи" ? <img src={NoteAct} alt="" /> : <img src={Note} alt="" />}
               <p>Мои записи</p>
             </li>
-          </Link>
-          <li>
+          </NavLink>
+          <li className={s.navLink}>
             <ChatModal />
           </li>
-          <Link to={"my-doctor"}>
+          <NavLink to={"my-doctor"} className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }>
             <li>
-              <img src={Doctor} alt="" />
+            {Text === "Мои врачи" ? <img src={DoctorAct} alt="" /> : <img src={Doctor} alt="" />}
               <p>Мои врачи</p>
             </li>
-          </Link>
-          <Link to={"profile/local-data"}>
+          </NavLink>
+          <NavLink to={"profile/local-data"} className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }>
             <li>
-              <img src={Prof} alt="" />
+            {Text === "Профиль" ? <img src={ProfAct} alt="" /> : <img src={Prof} alt="" />}
               <p>Мой кабинет</p>
             </li>
-          </Link>
+          </NavLink>
         </ul>
       </div>
     </section>

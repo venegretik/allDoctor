@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Cancel_Record from "../../../Components/Modal/Cancel_record/Cancel_Record";
 import Button from "../../../Components/Button/Button";
 import Loader from "../../../Components/Loading/Loader";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Chat from "../../../Components/Chat/Chat";
 const MyDoctor = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const MyDoctor = () => {
     const Doctors = useSelector(state => state.doctorSpec.DoctorMy_array);
     useEffect(() => {
         dispatch(axiosMyDoctor(1));
+        dispatch(getConfigHeaderAction("Мои врачи"))
     }, [])
     let showMore = () => {
         if (page + 1 <= totalPage) {

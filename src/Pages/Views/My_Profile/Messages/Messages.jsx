@@ -17,6 +17,16 @@ const Messages = () => {
 
         }
     };
+    const asyncNotificationDelete = async (notofication_id) => {
+        const response = await dispatch(axiosProfileDeleteNot(notofication_id))
+        if (response.status)
+            dispatch(getNotification(num))
+    }
+    const asyncNotificationDeleteAll = async () => {
+        const response = await dispatch(axiosProfileDeleteNotAll())
+        if (response.status)
+            dispatch(getNotification(num))
+    }
     const asyncNotificationShow = async () => {
         if (num >= 3)
             setInt(num)
@@ -31,7 +41,7 @@ const Messages = () => {
         <div className={s.Messages_full}>
             {NewArray[0] ? NewArray.map((item) =>
                 <div className={s.Messages_block} key={item.notofication_id}>
-                    <div className={s.Messages_close} onClick={e => dispatch(axiosProfileDeleteNot(item.notofication_id))}>
+                    <div className={s.Messages_close} onClick={e => asyncNotificationDelete(item.notofication_id)}>
                         +
                     </div>
                     <div className={s.Messages_text}>
@@ -54,7 +64,7 @@ const Messages = () => {
                         text={'Показать ещё'}
                     />
                 </div>
-                <div onClick={e =>dispatch(axiosProfileDeleteNotAll())}>
+                <div onClick={asyncNotificationDeleteAll}>
                     <Button
                         className={s.Show_more + " " + s.Font_size14}
                         type={'submit'}

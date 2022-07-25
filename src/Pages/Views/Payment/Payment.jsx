@@ -1,27 +1,45 @@
 import React from "react";
 import s from './Payment.module.css';
 import star from '../../../img/Rating_Star.png'
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getPuymentInfo, getPuymentPost } from "../../../base/asyncActions/Payment";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
 const Payment = () => {
     const dispatch = useDispatch();
-    let params = useParams();
-    let payment = useSelector((state) => state.payment);
     useEffect(() => {
-        dispatch(getPuymentInfo(params.id, params.slot));
-    }, [])
+        window.scrollTo(0, 0);
+        dispatch(getConfigHeaderAction("Оплата"))
+    }, []);
+    let params = useParams();
+    const [Showtext, setShowText] = useState("");
+    let payment = useSelector((state) => state.payment);
     const sendForm = async (e) => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
         [...data].forEach(e => { obj[e[0]] = e[1] })
-        obj.doctor_id = 4;
+        obj.doctor_id = params.id;
         obj.use_balance = Boolean(obj.use_balance);
-        obj.slot_id = 1;
+        obj.slot_id = params.slot;
+        dispatch(getPuymentPost(obj));
+    }
+    const handleChange = (e) => {
+        setShowText(e.target.value);
+        let obj = {};
+        obj.doctor_id = params.id;
+        obj.slot_id = params.slot;
+        obj.promocode = e.target.value;
+        dispatch(getPuymentPost(obj));
+    }
+    const handleChangeCheck = (e) => {
+        let obj = {};
+        obj.doctor_id = params.id;
+        obj.slot_id = params.slot;
+        obj.use_balance = e.target.value;
         dispatch(getPuymentPost(obj));
     }
     return (
@@ -70,15 +88,14 @@ const Payment = () => {
                         <Input
                             type="text"
                             placeholder="Промо или реферальный код"
-                            name={'promocode'} />
+                            name={'promocode'} value={Showtext} onChange={handleChange} />
                     </div>
                     <div className={s.Oplata}>
                         <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
                         <div className={s.Balance}>
                             <Input
                                 type={'checkbox'}
-                                value={1}
-                                name={'use_balance'} />
+                                name={'use_balance'} onChange={handleChangeCheck} />
                             <p className={s.Font_size14}>Оплатить с баланса</p>
                         </div>
                         <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span>

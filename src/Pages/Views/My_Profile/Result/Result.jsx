@@ -3,42 +3,59 @@ import s from './Result.module.css';
 import { reduxForm } from "redux-form";
 import file from "../../../../img/file.png";
 import download from "../../../../img/download_file.png";
+import { Link } from "react-router-dom";
 import { Input } from "../../../../Components/Input/Input";
 import { axiosProfileResult } from "../../../../base/asyncActions/Profile";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SelectResult from "../../../../Components/Select/SelectResult/SelectResult";
 import { FileUploader } from "react-drag-drop-files";
+import Button from "../../../../Components/Button/Button";
 import { axiosProfileUpload } from "../../../../base/asyncActions/Profile";
 const Form_Result = () => {
     let dispatch = useDispatch();
     const fileTypes = ["JPG", "PNG", "GIF"];
+    const [Showtext, setShowText] = useState("");
+    const [radioValue, setRadioValue] = useState(null);
     const [file, setFile] = useState(null);
     const handleChange = (file) => {
-      setFile(file);
+        setFile(file);
+        console.log(file)
+        if (radioValue && Showtext.length > 4) {
+            let obj = {};
+            obj.file = file;
+            obj.name = Showtext;
+            obj.type = radioValue;
+            dispatch(axiosProfileUpload(obj))
+            setFile(null);
+        }
+        else {
+            alert('Заполните все поля');
+            setFile(null)
+        }
     };
-    const sendForm = async (e) => {
-        e.preventDefault()
-        const data = await new FormData(e.target);
-        let obj = {};
-        [...data].forEach(e => { obj[e[0]] = e[1] });
-        obj.file = file;
-        dispatch(axiosProfileUpload(obj))
+    const onChangeInput = async (e) => {
+        setShowText(e.target.value);
+    }
+    const onChangeRadio = async (e) => {
+        setRadioValue(e.target.value);
     }
     return (
-        <form onChange={sendForm}>
+        <form>
             <Input name={"name"}
-             minLength={'2'}
-             pattern={'^[А-Яа-яЁё\s]+$'}
-             type="text" placeholder="Название документа" />
+                minLength={'2'}
+                pattern={'^[А-Яа-яЁё\s]+$'}
+                value={Showtext}
+                onChange={onChangeInput}
+                type="text" placeholder="Название документа" />
             <div className={s.Form_Radio}>
-                <Input id="Register_radio1" value={'0'} type="radio" name={"type"} />
-                <label htmlFor="Register_radio1" className={s.gray + " " + s.Register_radio2}>Лабороторные</label>
-                <Input id="Register_radio2" value={'1'} type="radio" name={"type"} />
-                <label htmlFor="Register_radio2" className={s.gray + " " + s.Register_radio2}>Функциональные</label>
+                <Input id="Register_radio1" value={'0'} type="radio" name={"type"} onChange={onChangeRadio} />
+                <label htmlFor="Register_radio1" className={s.gray + " " + s.Register_radio2 + " " + s.Font_size14}>Лабороторные</label>
+                <Input id="Register_radio2" value={'1'} type="radio" name={"type"} onChange={onChangeRadio} />
+                <label htmlFor="Register_radio2" className={s.gray + " " + s.Register_radio2 + " " + s.Font_size14}>Функциональные</label>
             </div>
             <div className={s.Form_Download}>
-                <FileUploader  handleChange={handleChange} label="Нажмите или перетащите сюда файл" name="file" types={fileTypes} />
+                <FileUploader handleChange={handleChange} label="Нажмите или перетащите сюда файл" name="file" types={fileTypes} />
             </div>
             <button>выбрать файл</button>
             <div className={s.Form_Line}></div>
@@ -48,6 +65,15 @@ const Form_Result = () => {
 
 const Result = () => {
     let dispatch = useDispatch();
+    let page = useSelector((state) => state.profile.current_page);
+    let total_page = useSelector((state) => state.profile.total_page);
+    const onClickShow = () => {
+        if (page++ > total_page) {
+
+        }
+        else
+            dispatch(axiosProfileResult(page++));
+    }
     const arraySort = [{
         title: "Все",
         branch_id: "0"
@@ -81,10 +107,12 @@ const Result = () => {
                 </div>
             </div>
             <div className={s.Download_File_right}>
-                <div className={s.Download_File_right_text}>
-                    <img src={download} alt="" />
-                    <p className={s.Font_size14}>604КВ</p>
-                </div>
+                <Link to={el.file} target="_blank" download>
+                    <div className={s.Download_File_right_text}>
+                        <img src={download} alt="" />
+                        <p className={s.Font_size14}>604КВ</p>
+                    </div>
+                </Link>
                 <p className={s.Font_size14 + " " + s.gray}>{el.type == 1 ? "лабораторные" : "функциональные"}</p>
             </div>
         </div>
@@ -103,8 +131,18 @@ const Result = () => {
                 <div className={s.Download_File_full}>
                     <div className={s.Form_Line}></div>
                     {file_array}
+                    <div className={s.Message_button_margin} onClick={onClickShow}>
+                        <Button
+
+                            className={s.Show_more + " " + s.Font_size14}
+                            type={'submit'}
+                            class={'btn white'}
+                            text={'Показать ещё'}
+                        />
+                    </div>
                 </div>
                 <div className={s.Form_Line}></div>
+
             </div>
         </div>
     )

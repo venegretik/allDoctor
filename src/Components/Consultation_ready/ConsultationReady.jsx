@@ -6,6 +6,7 @@ import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo
 import Button from "../../Components/Button/Button";
 import Stars from "../Stars/Stars";
 import { axiosConsultationStart, axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
+import ModalCalendar from "../Modal/Modal_calendar/Modal_calendar";
 const ConsultationReady = (props) => {
   const dispatch = useDispatch();
   const [ConsultationUpcoming, setConsultationUpcoming] = useState(false);
@@ -15,7 +16,12 @@ const ConsultationReady = (props) => {
       setConsultationUpcoming(response.data);
     }
   };
-
+  const PuyFunc = async (id) => {
+    const response = await dispatch(axiosConsultationPuy(id));
+    if (response.is_paid == false) {
+      window.location.href = response.payment_url
+    }
+  };
   useEffect(() => {
     asyncCons();
   }, []);
@@ -106,10 +112,10 @@ const ConsultationReady = (props) => {
               
             )}
             {ConsultationUpcoming.can_reschedule && (
-              <Button type="button" class="btn orange" text="перенести" />
+              <ModalCalendar />
             )}
             {ConsultationUpcoming.is_paid && (
-              <div onClick={e => dispatch(axiosConsultationPuy(ConsultationUpcoming.doctor.doctor_id))}>
+              <div onClick={e => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}>
                   <Button type="button" class="btn orange" text="Оплатить"/>
               </div>
             )}

@@ -14,7 +14,16 @@
 }
 .Profile_replace_tel_link {
     color: #407BFF;
+    cursor: pointer;
     margin-left: 15px;
+}
+.Font_size14 {
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+    text-align: left;
 }
 .ChangeLoginMain form{
     margin-bottom: 30px;
@@ -55,4 +64,14 @@
 .ChangeLoginMain_step3 input{
     width: 100%;
     max-width: 400px;
+}
+@media(max-width:580px){
+    .Font_size14 {
+        font-family: 'Exo', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0px;
+        text-align: left;
+    }
 }

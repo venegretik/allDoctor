@@ -13,6 +13,8 @@ import SelectCalendar from "../Select/SelectCalendar/SelectCalendar";
 const ConsultationHistory = () => {
     const branch = useSelector(state => state.doctorSpec.branch_array);
     const page = useSelector(state => state.consultation.page);
+    const date_from = useSelector(state => state.consultation.date_from);
+    const date_to = useSelector(state => state.consultation.date_to);
     let specialization_id = useSelector(state => state.consultation.specialization_id);
     let dispatch = useDispatch();
     useEffect(() => {
@@ -79,7 +81,7 @@ const ConsultationHistory = () => {
                 <div className={s.History_select}>
                     <div className={s.History_special}>
                         <p className={s.Font_size14}>Специализация</p>
-                        <SelectConsultation array={branch} selectType={"specialization"} func={axiosConsultationHistory} />
+                        <SelectConsultation array={branch} selectType={"history"} func={axiosConsultationHistory} />
                     </div>
                     <div className={s.History_date}>
                         <p className={s.Font_size14}>Специализация</p>
@@ -90,7 +92,7 @@ const ConsultationHistory = () => {
             {!history[0] ? (
                 <Loader />
             ) : (history)}
-            <div className={s.Show_more + " " + s.Message_button_margin} onClick={e => dispatch(axiosConsultationHistory(page+1, specialization_id))}>
+            <div className={s.Show_more + " " + s.Message_button_margin} onClick={e => dispatch(axiosConsultationHistory(specialization_id,page+1,date_to,date_from))}>
                 <Button
                     className={s.Reviews_send + " " + s.Font_size14}
                     type={'submit'}

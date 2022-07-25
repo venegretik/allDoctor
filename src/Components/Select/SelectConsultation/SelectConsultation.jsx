@@ -6,6 +6,8 @@ import "../Select.css";
 const SelectConsultation = (props) => {
   const dispatch = useDispatch();
   const specialization = useSelector(state => state.consultation.specialization_id);
+  const date_from = useSelector(state => state.consultation.date_from);
+  const date_to = useSelector(state => state.consultation.date_to);
   const page = useSelector(state => state.consultation.page);
   const [isShown, setIsShown] = useState(false);
   const [Showtext, setShowText] = useState("Педиатр");
@@ -18,7 +20,8 @@ const SelectConsultation = (props) => {
       dispatch(props.func(page, Number(changeEvent.target.value)));
     if (props.selectType == "sort")
       dispatch(props.func(page, specialization));
-    
+    if (props.selectType == "history")
+      dispatch(props.func(changeEvent.target.value, page, date_to, date_from));
   }
   let arrayItems = props.array.map(el =>
     <label htmlFor={el.branch_id} key={el.branch_id}>

@@ -1,6 +1,7 @@
 .Chat_list ul li {
     background: #F6AE2D;
     border-radius: 16px;
+    color:black;
     padding: 4px 15px;
     margin-top: 10px;
 }

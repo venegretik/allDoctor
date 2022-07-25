@@ -8,16 +8,19 @@ import { useEffect, useState } from "react";
 import Calendar from "../../../Components/Calendar/Calendar";
 import Stars from "../../../Components/Stars/Stars";
 import Loader from "../../../Components/Loading/Loader";
+import { useRef } from "react";
 import { axiosReview, axiosRecordingDoctor } from "../../../base/asyncActions/getReviews";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 const Recording = () => {
     const params = useParams();
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(axiosRecordingDoctor(params.id));
+        dispatch(getConfigHeaderAction("Запись"))
     }, []);
     let recording = useSelector(state => state.recording);
     return (
-        recording.reviews ?
+        recording.reviews ? <>
             <div className={s.Container + " Container"}>
                 <div className={s.Recording_full}>
                     <div className={s.Doctor_calendar}>
@@ -75,10 +78,11 @@ const Recording = () => {
                         <div className={s.Reviews_title}>
                             <h1 className={s.Font_size24}>Отзывы</h1>
                         </div>
-                        <Reviews usId={params.id} />
+                        <Reviews usId={params.id}/>
                     </div>
                 </div>
-            </div> : <Loader />
+            </div>
+        </> : <Loader />
     );
 }
 export default Recording;

@@ -12,6 +12,7 @@ export const getPuymentInfo = (id, slot) => {
         use_balance: true
       });
       dispatch(paymentInfoAction(response.data.data));
+      return response.data
     }
   };
 };

@@ -5,10 +5,12 @@ const defaultState = {
     branch_array:[],
     sort:"rate",
     specialization_id:1,
+    specialization_name:"",
     branch_offline_array:[],
     DoctorMy_array: []
 }
 const DOCTOR_ARRAY = 'DOCTOR_ARRAY';
+const DOCTOR_NAME = 'DOCTOR_NAME';
 const BRANCH_ARRAY = 'BRANCH_ARRAY';
 const BRANCH_OFFLINE_ARRAY = 'BRANCH_OFFLINE_ARRAY';
 const DOCTORMY_ARRAY = 'DOCTORMY_ARRAY';
@@ -32,12 +34,15 @@ export const doctorReducer = (state = defaultState, action) => {
             return {...state, DoctorMy_array:[...action.DoctorMy_array], page:action.page, totalPage:action.total_page}
         case DOCTOR_DELETE:
             return{...state, DoctorMy_array: state.DoctorMy_array.filter(el => action.user_id != el.doctor_id)}
+        case DOCTOR_NAME:
+            return{...state,specialization_name: action.name}
         default:
             return state;
     }
 }
 export const doctorArrayAction = (Doctor_array) => ({ type: DOCTOR_ARRAY, Doctor_array})
 export const branchArrayAction = (branch_array) => ({ type: BRANCH_ARRAY, branch_array})
-export const branchOfflineArrayAction = (branchOffline_array) => ({ type: BRANCH_ARRAY, branchOffline_array})
+export const branchOfflineArrayAction = (branchOffline_array) => ({ type: BRANCH_OFFLINE_ARRAY, branchOffline_array})
 export const DoctorMyArray = (DoctorMy_array, page, total_page) => ({type: DOCTORMY_ARRAY, DoctorMy_array, page,total_page})
 export const DoctorMyDelete = (user_id) => ({type: DOCTOR_DELETE, user_id})
+export const DoctorMyName = (name) => ({type: DOCTOR_NAME, name});

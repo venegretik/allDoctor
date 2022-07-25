@@ -3,8 +3,16 @@ import s from './Consultation.module.css';
 import ConsultationReady from "../../../Components/Consultation_ready/ConsultationReady";
 import ConsultationNext from "../../../Components/Consultation_Components/ConsultationNext";
 import ConsultationHistory from "../../../Components/Consultation_Components/ConsultationHistory";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 import Chat from "../../../Components/Chat/Chat";
 const Consultation = () => {
+    let dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getConfigHeaderAction("Мои записи"))
+      }, [])
+    
     return (
         <div className={s.Container + " Container"}>
             <div className={s.My_consultation}>

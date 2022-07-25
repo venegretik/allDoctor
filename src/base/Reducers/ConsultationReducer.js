@@ -4,7 +4,9 @@ const defaultState = {
     page:1,
     totalPage:1,
     specialization_id:1,
-    doctor:{}
+    doctor:{},
+    date_to:"",
+    date_from: ""
 }
 const CONSULTATION_ARRAY = 'CONSULTATION_ARRAY';
 const HISTORY_ARRAY = 'HISTORY_ARRAY';
@@ -19,7 +21,9 @@ export const consultationReducer = (state = defaultState, action) => {
             return {...state, consultationHistory:[...action.consultation_array.DoctorArray],
                 page: action.consultation_array.page, 
                 totalPage: action.consultation_array.totalPage,
-                specialization_id:action.consultation_array.specialization_id}
+                specialization_id:action.consultation_array.specialization_id,
+                date_from:action.consultation_array.date_from,
+                date_to:action.consultation_array.date_to}
         case CONSULTATION_DELETE:
             return {...state, consultation: state.consultation.filter(el => action.user_id != el.consultation_id)}
         case CONSULTATION_START:

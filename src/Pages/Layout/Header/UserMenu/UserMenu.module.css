@@ -14,11 +14,7 @@
   border-bottom: 1px solid #eaf2ff;
 }
 .notice_back {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  position: relative;
   z-index: 20;
 }
 .notice_body {
@@ -30,8 +26,8 @@
   border-radius: 16px;
   padding-top: 10px;
   width: 500px;
-  top: 85px;
-  right: 55px;
+  top: 30px;
+  right: -220px;
   z-index: 1;
   max-height: 275px;
   overflow: auto;
@@ -126,8 +122,8 @@
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
   border-radius: 7px;
   width: 250px;
-  right: 90px;
-  top: 90px;
+  right: 0px;
+  top: 70px;
 }
 .MenuList {
   list-style: none;
@@ -146,13 +142,10 @@
   background-color: rgba(224, 224, 224, 0.17);
 }
 .MenuBack {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   width: 100%;
   height: 100%;
+  top: -60px;
   z-index: 20;
 }
 .LinkBorder {

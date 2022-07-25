@@ -1,7 +1,8 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
 import {ProfileAction, ProfileBalanceAction, ProfileReferralAction, ProfilePuyAction, 
-    ProfileFriendAction, ProfileHistoryAction, ProfileMedCartAction, ProfileResultAction} from "../Reducers/UserReducer";
+    ProfileFriendAction, ProfileHistoryAction, ProfileMedCartAction, ProfileResultAction,
+    ProfilePhotoAction} from "../Reducers/UserReducer";
 import { getShortInfo } from "./getMainPageInfo";
 export const axiosProfile = () => {
     return async function (dispatch) {
@@ -36,7 +37,9 @@ export const axiosProfilePay = (obj) => {
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.post(`${defaultUrl}user/balance/pay`,{...obj});
-        dispatch(ProfilePuyAction(response.data.data));
+        dispatch(ProfilePuyAction(response.data));
+        return response.data;
+        
     }
 }
 export const axiosProfileFriend = (obj) => {
@@ -45,7 +48,9 @@ export const axiosProfileFriend = (obj) => {
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.post(`${defaultUrl}user/balance/payout`,{...obj});
-        dispatch(ProfileFriendAction(response.data.data));
+        dispatch(ProfileFriendAction(response.data));
+        console.log(response.data)
+        return response.data;
     }
 }
 export const axiosProfileHistory = (obj) => {
@@ -66,7 +71,7 @@ export const axiosProfileMedCart = (obj) => {
         dispatch(ProfileMedCartAction(response.data.data));
     }
 }
-export const axiosProfileResult = (page, type) => {
+export const axiosProfileResult = (page=1, type=0) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -115,6 +120,7 @@ export const axiosProfileDeleteNot = (notification_id) => {
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.delete(`${defaultUrl}user/notification/${notification_id}`);
+        return response.data
     }
 }
 export const axiosProfileDeleteNotAll = () => {
@@ -123,6 +129,7 @@ export const axiosProfileDeleteNotAll = () => {
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.delete(`${defaultUrl}user/notification/all`);
+        return response.data
     }
 }
 export const axiosProfilePhotoUpload = (photo) => {
@@ -135,5 +142,8 @@ export const axiosProfilePhotoUpload = (photo) => {
                 photo:photo
             }
         });
+        dispatch(ProfilePhotoAction(response.data))
+        return response.data
     }
+
 }

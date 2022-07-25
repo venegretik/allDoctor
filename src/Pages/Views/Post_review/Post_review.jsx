@@ -9,12 +9,15 @@ import { axiosReviews } from "../../../base/asyncActions/getReviews";
 import SelectReview from "../../../Components/Select/SelectReview/SelectReview";
 import StarComponent from "./StarComponent";
 import { axiosPostReviews } from "../../../base/asyncActions/getReviews";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Star1Action, Star2Action, Star3Action, Star4Action, Star5Action } from "../../../base/Reducers/reviewsReducer";
 const PostRewiew = () => {
     const params = useParams();
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(axiosReviews(params.id));
+        window.scrollTo(0, 0);
+        dispatch(getConfigHeaderAction("Оставить отзыв"))
     }, []);
     const star1 = useSelector(state => state.review.star1);
     const star2 = useSelector(state => state.review.star2);

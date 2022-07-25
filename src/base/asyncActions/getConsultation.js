@@ -11,7 +11,7 @@ export const axiosConsultation = () => {
         return response.data;
     }
 }
-export const axiosConsultationHistory = (totalPage = 1, specialization = 1) => {
+export const axiosConsultationHistory = (specialization = 1, totalPage = 1, date_to = "2022-01-25", date_from = "2022-02-25") => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -19,7 +19,9 @@ export const axiosConsultationHistory = (totalPage = 1, specialization = 1) => {
         const response = await axios.get(`${defaultUrl}consultation/history`, {
             params: {
                 specialization_id: specialization,
-                page: totalPage
+                page: totalPage,
+                date_from: date_from,
+                date_to: date_to
             }
         }
         );
@@ -27,6 +29,8 @@ export const axiosConsultationHistory = (totalPage = 1, specialization = 1) => {
             DoctorArray: response.data.data.items,
             page: response.data.data.pagination.current_page,
             totalPage: response.data.data.pagination.total_page,
+            date_from: date_from,
+            date_to: date_to,
             specialization_id: specialization
         }
         dispatch(consultationHistoryAction(responceObj));
@@ -55,9 +59,9 @@ export const axiosConsultationCalendar = (consultation_id, slot_id) => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}consultation/${consultation_id}/reschedule`,{
-            params:{
-                slot_id:slot_id
+        const response = await axios.post(`${defaultUrl}consultation/${consultation_id}/reschedule`, {
+            params: {
+                slot_id: slot_id
             }
         });
         return response.data.data

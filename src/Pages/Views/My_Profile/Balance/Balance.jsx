@@ -8,6 +8,7 @@ import { Input, InpMask } from "../../../../Components/Input/Input";
 import RequestMoney from "../../../../Components/Modal/Request_money/RequestMoney";
 const Balance = () => {
     const [isShown, setIsShown] = useState(false);
+    const [message, setMessage] = useState("");
     let dispatch = useDispatch();
     const balance = useSelector((state) => state.profile.balance);
     const referral = useSelector((state) => state.profile.referral)
@@ -21,8 +22,22 @@ const Balance = () => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
+        let response
         [...data].forEach(e => { obj[e[0]] = e[1] });
-        !isShown ? dispatch(axiosProfilePay(obj)) : dispatch(axiosProfileFriend(obj))
+        !isShown ? response = await dispatch(axiosProfilePay(obj)) : response = await dispatch(axiosProfileFriend(obj))
+        if (response.status && response.payment_url) {
+            window.location.href = response.payment_url
+        }
+        if(!response.status && !isShown) {
+            setMessage(response.error.fields.summ)
+            alert(response.success.fields.summ)
+        }
+        if (isShown && response.status) {
+            setMessage(response.success.fields.summ)
+            alert(response.success.fields.summ)
+        }
+        if (isShown && !response.status)
+            setMessage(response.error.fields.summ)
     }
     let History = history.map(
         el => <div>
@@ -30,11 +45,11 @@ const Balance = () => {
                 <p>{new Date(el.datetime).toLocaleString(
                     "ru",
                     {
-                      month: "short",
-                      year: "numeric",
-                      day: "numeric",
+                        month: "short",
+                        year: "numeric",
+                        day: "numeric",
                     }
-                  )}</p>
+                )}</p>
             </div> <div className={s.History_content}>
                 <p>{el.action.type}</p>
                 <div className={s.History_content_text}>
@@ -64,8 +79,10 @@ const Balance = () => {
                 </div>
                 <div className={s.Balance_friend}>
                     <input type="checkbox" id="Register_checkbox" className={s.custom_checkbox} onChange={e => setIsShown((current) => !current)} />
+                    
                     <label htmlFor="Register_checkbox"></label>
                     <p>Пополнить другу</p>
+                    
                 </div>
                 <div className={s.Input_friend}>
                     {

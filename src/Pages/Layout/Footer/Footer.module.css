@@ -34,6 +34,14 @@
     width: 15px;
     height: 15px;
 }
+.navLink {
+    font-weight: 400;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #8B9BAB;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
 @media (max-width:768px) {
     .footer_Mobile{
         display: flex;
@@ -42,6 +50,9 @@
         z-index: 20;
         background: #fff;
         margin-top: 30px;
+    }
+    .headerActiveLink {
+        color: #407BFF;
     }
     .footer_full{
         display: none;
