@@ -23,7 +23,6 @@ export const axiosAuth = (number, code) => {
       const response = await axios.get(`${defaultUrl}auth?phone=${number}&code=${code}`)
       if (response.data.status) {
         localStorage.setItem('token', response.data.token);
-        console.log(response.data.is_new_user)
         dispatch(getAuthAction(number, false, response.data.is_new_user))
       }
     }

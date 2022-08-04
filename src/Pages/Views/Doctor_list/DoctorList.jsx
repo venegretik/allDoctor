@@ -14,8 +14,8 @@ const DoctorList = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getConfigHeaderAction("Доктора"))
- }, []);
-  
+  }, []);
+
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
   let Name = useSelector(state => state.doctorSpec.specialization_name);
@@ -35,9 +35,9 @@ const DoctorList = () => {
   const branch = useSelector(state => state.doctorSpec.branch_array);
   if (!branch[0]) {
     dispatch(axiosBranch())
-    
+
   }
-  if(Name == "" && branch[0] ){
+  if (Name == "" && branch[0]) {
     let filt = branch.filter(el => el.branch_id == params.id);
     Name = filt[0].title
   }
@@ -59,7 +59,9 @@ const DoctorList = () => {
           <div className={s.Doctor_avatar_info + " " + s.black}>
             <Stars num={el.rate} />
             <p className={s.Font_size14}>{el.recomends + " пациентов рекомендуют врача"}</p>
-            <p className={s.Font_size14}>{el.reviews + " отзывов"}</p>
+            <Link to={"/recording/" + el.doctor_id + "/Reviews"}>
+              <p className={s.Font_size14 + " " + s.blueLink}>{el.reviews + " отзывов"}</p>
+            </Link>
           </div>
         </div>
         <div className={s.Doctor_info + " " + s.black}>
@@ -87,7 +89,7 @@ const DoctorList = () => {
             )}
           </p>
         </div>
-        <Link to={"/recording/" + el.doctor_id}>
+        <Link to={"/recording/" + el.doctor_id + "/Default"}>
           <Button
             className={s.Reviews_send + " " + s.Font_size14}
             type={'submit'}

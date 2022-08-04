@@ -41,7 +41,7 @@ const MyDoctor = () => {
                 <p className={s.gray + " " + s.Font_size14}>{el.specialization.join(' • ')}</p>
                 <h2 className={s.Font_size24}>{el.firstname + " " + el.lastname + " " + el.secondname}</h2>
                 <p className={s.Staj + " " + s.Font_size14}>{el.regalia.join(' • ')}</p>
-                <Link to={"../recording/" + el.doctor_id}>
+                <Link to={"../recording/" + el.doctor_id + "/Default"}>
                     <Button
                         className={s.Reviews_send + " " + s.Font_size14}
                         type={'submit'}

@@ -5,6 +5,7 @@ import Loader from "../../Components/Loading/Loader";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
 import Stars from "../Stars/Stars";
+import { Link } from "react-router-dom";
 import { axiosConsultationStart, axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
 import ModalCalendar from "../Modal/Modal_calendar/Modal_calendar";
 const ConsultationReady = (props) => {
@@ -41,24 +42,26 @@ const ConsultationReady = (props) => {
                 {ConsultationUpcoming.doctor.recomends}% пациентов рекомендуют
                 врача
               </p>
-              <p className={s.Font_size14}>
-                {ConsultationUpcoming.doctor.reviews} отзывов
-              </p>
+              <Link to={"/recording/" + ConsultationUpcoming.doctor.doctor_id + "/Reviews"}>
+                <p className={s.Font_size14 + " " + s.blueLink}>
+                  {ConsultationUpcoming.doctor.reviews} отзывов
+                </p>
+              </Link>
             </div>
           </div>
           <div className={s.Doctor_info}>
             <div className={s.Doctor_skills}>
               {ConsultationUpcoming.doctor.specialization
                 ? ConsultationUpcoming.doctor.specialization.map(
-                    (spec, key) => {
-                      return (
-                        <p key={key}>
-                          {spec}
-                          <span>•</span>
-                        </p>
-                      );
-                    }
-                  )
+                  (spec, key) => {
+                    return (
+                      <p key={key}>
+                        {spec}
+                        <span>•</span>
+                      </p>
+                    );
+                  }
+                )
                 : ""}
             </div>
             <h2 className={s.Font_size24}>{`
@@ -69,13 +72,13 @@ const ConsultationReady = (props) => {
             <div className={`${s.Font_size14} ${s.regalia_block}`}>
               {ConsultationUpcoming.doctor.regalia
                 ? ConsultationUpcoming.doctor.regalia.map((regalia, key) => {
-                    return (
-                      <p key={key}>
-                        {regalia}
-                        <span>•</span>
-                      </p>
-                    );
-                  })
+                  return (
+                    <p key={key}>
+                      {regalia}
+                      <span>•</span>
+                    </p>
+                  );
+                })
                 : ""}
             </div>
             <div className={s.Data}>
@@ -107,16 +110,16 @@ const ConsultationReady = (props) => {
             </div>
             {ConsultationUpcoming.can_start && (
               <div onClick={e => dispatch(axiosConsultationStart(ConsultationUpcoming.doctor.doctor_id))}>
-                  <Button type="button" class="btn orange" text="Начать"/>
+                <Button type="button" class="btn orange" text="Начать" />
               </div>
-              
+
             )}
             {ConsultationUpcoming.can_reschedule && (
               <ModalCalendar />
             )}
             {ConsultationUpcoming.is_paid && (
               <div onClick={e => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}>
-                  <Button type="button" class="btn orange" text="Оплатить"/>
+                <Button type="button" class="btn orange" text="Оплатить" />
               </div>
             )}
           </div>

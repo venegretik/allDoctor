@@ -207,6 +207,10 @@ input[type=checkbox]:checked:after {
     letter-spacing: 0px;
     text-align: left;
 }
+.Payment a{
+    color: #407BFF;
+}
+
 @media(max-width:480px) {
     .Font_size24 {
         font-family: 'Exo', sans-serif;

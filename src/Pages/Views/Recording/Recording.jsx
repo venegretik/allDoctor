@@ -1,16 +1,16 @@
 import React from "react";
 import s from './Recording.module.css';
-import star from '../../../img/Rating_Star.png';
 import Reviews from './Reviews/Reviews';
 import { useParams } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Calendar from "../../../Components/Calendar/Calendar";
 import Stars from "../../../Components/Stars/Stars";
 import Loader from "../../../Components/Loading/Loader";
 import { useRef } from "react";
-import { axiosReview, axiosRecordingDoctor } from "../../../base/asyncActions/getReviews";
+import { axiosRecordingDoctor } from "../../../base/asyncActions/getReviews";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
+import { Link } from "react-router-dom";
 const Recording = () => {
     const params = useParams();
     let dispatch = useDispatch();
@@ -19,6 +19,14 @@ const Recording = () => {
         dispatch(getConfigHeaderAction("Запись"))
     }, []);
     let recording = useSelector(state => state.recording);
+    const inputElement = useRef();
+    useEffect(() => {
+        if (params.type === "Reviews")
+            if (inputElement.current)
+                inputElement.current.scrollIntoView();
+            else
+                window.scrollTo(0, 0);
+    }, [inputElement.current]);
     return (
         recording.reviews ? <>
             <div className={s.Container + " Container"}>
@@ -32,7 +40,7 @@ const Recording = () => {
                                 <div className={s.Doctor_avatar_info + " " + s.black}>
                                     <Stars num={recording.rate} />
                                     <p className={s.Font_size14}>{recording.recomends + "%"} пациентов рекомендуют врача</p>
-                                    <p className={s.Font_size14}>{recording.reviews} отзывов</p>
+                                    <p className={s.Font_size14 + " " + s.blueLink} onClick={e=>inputElement.current.scrollIntoView()}>{recording.reviews} отзывов</p>
                                 </div>
                             </div>
                             <div className={s.Doctor_info + " " + s.black}>
@@ -74,11 +82,11 @@ const Recording = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={s.Reviews}>
+                    <div className={s.Reviews} ref={inputElement}>
                         <div className={s.Reviews_title}>
                             <h1 className={s.Font_size24}>Отзывы</h1>
                         </div>
-                        <Reviews usId={params.id}/>
+                        <Reviews usId={params.id} />
                     </div>
                 </div>
             </div>

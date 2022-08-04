@@ -67,8 +67,8 @@ function App() {
             <Route path={"doctor-list/:id"} element={<DoctorList />} />
             <Route path={"consultation"} element={<Consultation />} />
             <Route path={"my-doctor"} element={<MyDoctor />} />
-            <Route path={"private/:type"} element={<PrivatePolice />}/>
-            <Route path={"recording/:id"} element={<Recording />} />
+            <Route path={"private/:type"} element={<PrivatePolice />} />
+            <Route path={"recording/:id/:type"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
             <Route path={"video"} element={<Video />} />
             <Route path="payment/:id/:slot" element={<Payment />} />

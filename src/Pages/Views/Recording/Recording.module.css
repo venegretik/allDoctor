@@ -8,6 +8,11 @@
     color: #FFFFFF;
 }
 
+.blueLink {
+    cursor: pointer;
+    color: #407BFF;
+}
+
 .Message_button_margin {
     margin-right: 20px;
 }

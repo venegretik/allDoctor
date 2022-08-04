@@ -43,14 +43,6 @@ const Local_Data = () => {
             <NavLink className={({ isActive }) =>
               isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
             }
-              to="../local-data">
-              <p>Анкета</p>
-            </NavLink>
-          </li>
-          <li>
-            <NavLink className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
               to="../med-cart">
               <p>Медицинская карта</p>
             </NavLink>
@@ -64,6 +56,14 @@ const Local_Data = () => {
             </NavLink>
           </li>
         </ul>
+        <div className={s.links}>
+            <Link to="../../private/services">
+              <p>Договор об указании услуг</p>
+            </Link>
+            <Link to="../../private/privacy">
+              <p>Политика конфиденциальности</p>
+            </Link>
+          </div>
       </div>
             <div className={s.My_content_title}>
                 <h1>Личные данные</h1>

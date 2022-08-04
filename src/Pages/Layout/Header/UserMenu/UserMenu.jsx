@@ -64,11 +64,6 @@ const UserMenu = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className={s.MenuLink} to={"profile/"}>
-                      Анкета
-                    </Link>
-                  </li>
-                  <li>
                     <Link className={s.MenuLink} to={"profile/med-cart"}>
                       Медицинская карта
                     </Link>

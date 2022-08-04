@@ -6,20 +6,19 @@ import { useSelector } from "react-redux/es/exports";
 import ChangeLogin from "../../../../Components/Modal/Change_login/Change_login";
 import { useDispatch } from "react-redux";
 import Message_Container from "../../../../Components/UploadFile/UploadFile";
+import ChangeData from "./ModalReplace/Change_data_modal";
 import { getShortInfo } from "../../../../base/asyncActions/getMainPageInfo";
 import {
   axiosProfileEdit,
   axiosProfile,
 } from "../../../../base/asyncActions/Profile";
-import { useEffect } from "react";
-import { getLoginModal } from "../../../../base/Reducers/modalReduces";
+import { useEffect, useState } from "react";
 
 const ReplaceData = () => {
   const dispatch = useDispatch(),
     profile = useSelector((state) => state.profile),
-    date = new Date().toISOString().split("T")[0],
-    showModal = useSelector((state) => state.modal.LoginModal);
-
+    date = new Date().toISOString().split("T")[0];
+    let [isShow, setShow] = useState(false);
   useEffect(() => {
     dispatch(axiosProfile());
   }, []);
@@ -34,6 +33,7 @@ const ReplaceData = () => {
     const response = await dispatch(axiosProfileEdit(obj));
     if(response.status){
       dispatch(getShortInfo());
+      setShow(true);
     } 
   };
 
@@ -42,6 +42,7 @@ const ReplaceData = () => {
       <div className={s.My_content_title}>
         <h1>Личные данные</h1>
       </div>
+      {isShow ? <ChangeData /> : ""}
       <div className={s.Profile_data}>
         <div className={s.Profile_data_download_img}>
           <img

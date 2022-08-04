@@ -1,9 +1,10 @@
 import React from "react";
 import s from '../Recording.module.css';
 const AnswerReviews = (props) => {
-    let answer =[]
+    let answer =[],
+    keyNum = 0;
     if(props.arrayAnswer){
-        answer = props.arrayAnswer.map(el => <div className={s.Doctor_message}>
+        answer = props.arrayAnswer.map(el => <div key={++keyNum} className={s.Doctor_message}>
             <div className={s.Doctor_message_avatar}>
                 <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
             </div>

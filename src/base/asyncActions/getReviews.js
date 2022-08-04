@@ -48,6 +48,5 @@ export const axiosRecordingCalculator = (doctor_id) => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}doctor/${doctor_id}/slots`);
         dispatch(recordingConsultationAction(response.data.data));
-        console.log(response.data.data)
     }
 }

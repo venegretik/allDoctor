@@ -8,14 +8,13 @@ import { Link } from 'react-router-dom';
 const Med_Cart = () => {
     let dispatch = useDispatch();
     let medCart = useSelector((state) => state.profile.med_cart);
-    console.log(medCart)
     useEffect(() => {
         dispatch(axiosProfileMedCart());
     }, []);
-
+    let keyNum = 0;
     if (medCart.fio) {
         let history = medCart.disease_history.map(el =>
-            <tr className={s.Font_size16}>
+            <tr key={++keyNum} className={s.Font_size16}>
                 <td data-label="ACCOUNT">{el.date}</td>
                 <td data-label="DUE DATE">{el.specialty}</td>
                 <td data-label="AMOUNT">{el.doctor}</td>
@@ -25,9 +24,9 @@ const Med_Cart = () => {
                 </Link></td>
             </tr>)
         let medical = medCart.medical_commissions.map(el =>
-            <tr className={s.Font_size16}>
+            <tr key={++keyNum} className={s.Font_size16}>
                 <td data-label="ACCOUNT">{el.date}</td>
-                <td data-label="DUE DATE">{el.doctors.map(el => <span className={s.sostav}>
+                <td data-label="DUE DATE">{el.doctors.map(el => <span key={++keyNum} className={s.sostav}>
                     <p>{el.specialty}</p>
                     <p>{el.fio}</p>
                 </span>)}</td>
@@ -35,11 +34,11 @@ const Med_Cart = () => {
                     Скачать
                 </Link></td>
             </tr>)
-        let operations = medCart.operations.map(el => <tr className={s.Font_size16}>
+        let operations = medCart.operations.map(el => <tr key={++keyNum} className={s.Font_size16}>
             <td data-label="ACCOUNT">{el.date}</td>
             <td data-label="DUE DATE">{el.operation}</td>
         </tr>)
-        let vaccinations = medCart.vaccinations.map(el => <tr className={s.Font_size16}>
+        let vaccinations = medCart.vaccinations.map(el => <tr key={++keyNum} className={s.Font_size16}>
             <td data-label="ACCOUNT">{el.date}</td>
             <td data-label="DUE DATE">{el.vaccination}</td>
         </tr>)

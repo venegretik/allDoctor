@@ -5,7 +5,9 @@
   color: white;
   right: 30px;
 }
-
+.blueLink {
+  color: #9DC3FF;
+}
 .Doctor_cart {
   position: relative;
   margin-top: 40px;

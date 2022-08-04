@@ -21,8 +21,20 @@ const ChangeLogin = (props) => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
+
+    if (isShown === 3) {
       dispatch(axiosProfileEmailEdit());
       setIsShown(++isShown);
+    }
+    if (isShown === 2) {
+      dispatch(axiosProfileEmailEdit(obj.code));
+      setIsShown(++isShown);
+    }
+    if (isShown === 1) {
+      dispatch(axiosProfileEmailEdit());
+      setIsShown(++isShown);
+    }
+
   };
   return (
     <div>
@@ -46,7 +58,7 @@ const ChangeLogin = (props) => {
                     Мы отправим код подтверждения на ваш текущий номер +7 999 156 46 75
                   </p>
                   <div className={s.ChangeLoginButton}>
-                    <div>
+                    <div className={s.ChangeMargin}>
                       <Button
                         text={"Получить код"}
                         class="blue btn"
@@ -63,10 +75,10 @@ const ChangeLogin = (props) => {
               <form>
                 <div className={s.ChangeLoginMain_step2}>
                   <Input pattern={'[0-9]{4}'} required placeholder={'Код из SMS'} type={'text'} className={'input'}
-                    maxLength={4} />
+                    maxLength={4} name="code" />
                   <p>Отправить другой код через 00:46</p>
                   <div className={s.ChangeLoginButton} >
-                    <div>
+                    <div className={s.ChangeMargin}>
                       <Button
                         text={"Подтвердить"}
                         class="blue btn"
@@ -88,7 +100,7 @@ const ChangeLogin = (props) => {
                       type={'email'}
                       name={'email'} />}
                   <div className={s.ChangeLoginButton} >
-                    <div>
+                    <div className={s.ChangeMargin}>
                       <Button
                         text={"Изменить"}
                         class="blue btn"

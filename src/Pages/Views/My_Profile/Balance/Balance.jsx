@@ -2,6 +2,7 @@ import React from "react";
 import s from './Balance.module.css';
 import pen from '../../../../img/pen.png';
 import { useEffect, useState } from "react";
+import Button from "../../../../Components/Button/Button";
 import { axiosProfileBalance, axiosProfileRefferal, axiosProfilePay, axiosProfileFriend, axiosProfileHistory } from "../../../../base/asyncActions/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, InpMask } from "../../../../Components/Input/Input";
@@ -10,14 +11,22 @@ const Balance = () => {
     const [isShown, setIsShown] = useState(false);
     const [message, setMessage] = useState("");
     let dispatch = useDispatch();
+    let keyNum = 0;
     const balance = useSelector((state) => state.profile.balance);
     const referral = useSelector((state) => state.profile.referral)
+    let total_page = useSelector((state) => state.profile.total_page)
+    let current_page = useSelector((state) => state.profile.current_page)
     const history = useSelector((state) => state.profile.history);
     useEffect(() => {
         dispatch(axiosProfileBalance());
         dispatch(axiosProfileRefferal());
         dispatch(axiosProfileHistory());
     }, []);
+    const ShowClick =() =>{
+        if(total_page > current_page++){
+            dispatch(axiosProfileHistory(current_page++))
+        }
+    }
     const sendForm = async (e) => {
         e.preventDefault()
         const data = await new FormData(e.target);
@@ -28,7 +37,7 @@ const Balance = () => {
         if (response.status && response.payment_url) {
             window.location.href = response.payment_url
         }
-        if(!response.status && !isShown) {
+        if (!response.status && !isShown) {
             setMessage(response.error.fields.summ)
             alert(response.success.fields.summ)
         }
@@ -40,8 +49,8 @@ const Balance = () => {
             setMessage(response.error.fields.summ)
     }
     let History = history.map(
-        el => <div>
-            <div className={s.History_data}>
+        el => <div key={++keyNum}>
+            <div  className={s.History_data}>
                 <p>{new Date(el.datetime).toLocaleString(
                     "ru",
                     {
@@ -79,10 +88,10 @@ const Balance = () => {
                 </div>
                 <div className={s.Balance_friend}>
                     <input type="checkbox" id="Register_checkbox" className={s.custom_checkbox} onChange={e => setIsShown((current) => !current)} />
-                    
+
                     <label htmlFor="Register_checkbox"></label>
                     <p>Пополнить другу</p>
-                    
+
                 </div>
                 <div className={s.Input_friend}>
                     {
@@ -108,8 +117,15 @@ const Balance = () => {
                     </h1>
                 </div>
                 <div className={s.History_content_full}>
-
                     {History}
+                    <div className={s.Message_button_margin} onClick={ShowClick}>
+                        <Button
+                            className={s.Show_more + " " + s.Font_size14}
+                            type={'submit'}
+                            class={'btn white'}
+                            text={'Показать ещё'}
+                        />
+                    </div>
                 </div>
 
             </div>

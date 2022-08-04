@@ -20,12 +20,13 @@ const Calendar = (props) => {
             return days[now.getDay()]
         }
     let slots = [];
+    let keyNum=0;
     useEffect(() => {
         dispatch(axiosRecordingCalculator());
     }, [])
     let OnCheck = async () => {
         let status = await dispatch(getPuymentInfo(props.usId, slot_id));
-        if (status.status == true)
+        if (status.status === true)
             setRedPayment(true)
         else
             dispatch(axiosRecordingCalculator());
@@ -52,7 +53,7 @@ const Calendar = (props) => {
                     minute: "numeric"
                 }
             )}</p>
-        </div> : slot_id == el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault} key={el.slot_id} onClick={e => setId(el.slot_id)}>
+        </div> : slot_id === el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault} key={el.slot_id} onClick={e => setId(el.slot_id)}>
             <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
@@ -71,9 +72,9 @@ const Calendar = (props) => {
                 )}</p>
             </div>
     )
-    let call = calendar.map(el => <li >
+    let call = calendar.map(el => <li key={++keyNum}>
         <p>{callendarDay(el.date)}</p>
-        <b className={DateStr == el.date ? s.Calendar_active : ""} onClick={e => slotsFunc(el)}>{new Date(el.date).toLocaleString(
+        <b className={DateStr === el.date ? s.Calendar_active : ""} onClick={e => slotsFunc(el)}>{new Date(el.date).toLocaleString(
             "ru",
             {
                 day: "numeric",
@@ -84,7 +85,7 @@ const Calendar = (props) => {
 
     return (
         slots[0] ? <div className={s.Calendar_full}>
-            {RedPayment == true ? <Navigate to={"../payment/" + props.usId + "/" + slot_id} /> : false}
+            {RedPayment === true ? <Navigate to={"../payment/" + props.usId + "/" + slot_id} /> : false}
             <div>
                 <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
             </div>
@@ -100,7 +101,7 @@ const Calendar = (props) => {
                 {slots}
             </div>
             <div className={s.Calendar_button}>
-                {props.type_el == "popup" ?
+                {props.type_el === "popup" ?
                     <button onClick={e => dispatch(axiosConsultationCalendar(props.usId, slot_id))}>записаться</button>
                     : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button> :
                         //<Link to={"../payment/" + props.usId + "/" + slot_id}>

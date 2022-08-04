@@ -1,8 +1,10 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
-import {ProfileAction, ProfileBalanceAction, ProfileReferralAction, ProfilePuyAction, 
+import {
+    ProfileAction, ProfileBalanceAction, ProfileReferralAction, ProfilePuyAction,
     ProfileFriendAction, ProfileHistoryAction, ProfileMedCartAction, ProfileResultAction,
-    ProfilePhotoAction} from "../Reducers/UserReducer";
+    ProfilePhotoAction
+} from "../Reducers/UserReducer";
 import { getShortInfo } from "./getMainPageInfo";
 export const axiosProfile = () => {
     return async function (dispatch) {
@@ -36,10 +38,10 @@ export const axiosProfilePay = (obj) => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}user/balance/pay`,{...obj});
+        const response = await axios.post(`${defaultUrl}user/balance/pay`, { ...obj });
         dispatch(ProfilePuyAction(response.data));
         return response.data;
-        
+
     }
 }
 export const axiosProfileFriend = (obj) => {
@@ -47,18 +49,18 @@ export const axiosProfileFriend = (obj) => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}user/balance/payout`,{...obj});
+        const response = await axios.post(`${defaultUrl}user/balance/payout`, { ...obj });
         dispatch(ProfileFriendAction(response.data));
         console.log(response.data)
         return response.data;
     }
 }
-export const axiosProfileHistory = (obj) => {
+export const axiosProfileHistory = (page = 1) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.get(`${defaultUrl}user/payment/history`);
+        const response = await axios.get(`${defaultUrl}user/payment/history?page=${page}`);
         dispatch(ProfileHistoryAction(response.data.data));
     }
 }
@@ -71,7 +73,7 @@ export const axiosProfileMedCart = (obj) => {
         dispatch(ProfileMedCartAction(response.data.data));
     }
 }
-export const axiosProfileResult = (page=1, type=0) => {
+export const axiosProfileResult = (page = 1, type = 0) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -85,30 +87,32 @@ export const axiosProfileEdit = (obj) => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}user`,{...obj});
+        const response = await axios.post(`${defaultUrl}user`, { ...obj });
         dispatch(ProfileAction(response.data.data));
         dispatch(getShortInfo());
+        return response.data
     }
 }
-export const axiosProfileEmailEdit = (obj={}) => {
+export const axiosProfileEmailEdit = (code=0, email=null) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}user/email`,{
-            params:{
-                ...obj
+        const response = await axios.post(`${defaultUrl}user/email`, {
+            params: {
+                code: code,
+                email: email
             }
         });
     }
 }
-export const axiosProfileUpload = (obj={}) => {
+export const axiosProfileUpload = (obj = {}) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}user/research`,{
-            params:{
+        const response = await axios.post(`${defaultUrl}user/research`, {
+            params: {
                 ...obj
             }
         });
@@ -137,9 +141,9 @@ export const axiosProfilePhotoUpload = (photo) => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}user/photo`,{
-            params:{
-                photo:photo
+        const response = await axios.post(`${defaultUrl}user/photo`, {
+            params: {
+                photo: photo
             }
         });
         dispatch(ProfilePhotoAction(response.data))

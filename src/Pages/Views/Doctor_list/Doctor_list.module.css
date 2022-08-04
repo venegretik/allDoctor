@@ -1,6 +1,11 @@
 .Skill {
   margin-top: 60px;
 }
+
+.blueLink {
+  color: #407BFF;
+}
+
 .DoctorOnline {
   width: 20px;
   height: 20px;
@@ -10,6 +15,7 @@
   right: 10px;
   bottom: 15px;
 }
+
 .Doctor_list {
   margin-left: 30px;
 }
@@ -21,13 +27,16 @@
 .Skill_title h1 {
   font-size: 40px;
 }
+
 .Doctor_button {
   display: flex;
   justify-content: center;
 }
+
 .Doctor_avatar_info p {
   text-align: center;
 }
+
 .Doctor_avatar {
   width: 162px;
   margin-right: 30px;
@@ -85,6 +94,7 @@
   transition-duration: 0.5s;
   border-radius: 10px;
 }
+
 .Doctor:hover {
   box-shadow: 0px 0px 10px 5px #f3f3f3;
 }
@@ -104,9 +114,10 @@
   list-style: none;
 }
 
-.Doctor_button{
+.Doctor_button {
   margin-bottom: 30px;
 }
+
 .Select_all {
   display: flex;
 }
@@ -138,6 +149,10 @@
 
 .Payment_block p {
   margin-bottom: 5px;
+}
+
+.blueLink {
+  color: #407BFF;
 }
 
 .Payment_block button {
@@ -201,26 +216,32 @@
     display: flex;
     flex-direction: column;
   }
-  .Skill{
+
+  .Skill {
     margin-top: 0px;
   }
+
   .Skill_select {
     width: 200px;
     display: flex;
   }
+
   .Sort_select {
     margin-left: 80px;
     width: 200px;
     display: flex;
   }
+
   .Sort_select {
     display: flex;
     flex-direction: column;
     margin-left: 30px !important;
   }
+
   .Doctor_avatar {
     padding-left: 0px;
   }
+
   .Skill_select {
     display: flex;
     flex-direction: column;
@@ -275,10 +296,12 @@
     letter-spacing: 0px !important;
     text-align: left;
   }
+
   .Skill_title {
     display: none;
   }
 }
+
 .select {
   position: relative;
   width: 100%;
@@ -372,22 +395,26 @@
   cursor: pointer;
   transition: 0.2s background-color ease-in-out;
 }
-@media(max-width:580px){
+
+@media(max-width:580px) {
   .Doctor_avatar_img {
     position: relative;
     width: 90px;
   }
 }
-@media(max-width:480px){
-  .Select_all{
+
+@media(max-width:480px) {
+  .Select_all {
     display: flex;
     flex-direction: column;
   }
-  .Sort_select{
-    margin-left: 0px!important;
+
+  .Sort_select {
+    margin-left: 0px !important;
     align-items: flex-start;
   }
-  .Skill_select{
+
+  .Skill_select {
     align-items: flex-start;
   }
 }

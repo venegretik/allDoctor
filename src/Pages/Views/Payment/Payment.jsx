@@ -8,6 +8,7 @@ import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
+import { Link } from "react-router-dom";
 const Payment = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -104,7 +105,7 @@ const Payment = () => {
                     <div className={s.Total_sum}>
                         <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
                         <button className={s.Font_size14} type="submit">Оплатить</button>
-                        <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия пользовательского соглашения и даю согласие на обработку персональных данных.</p>
+                        <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user">пользовательского соглашения</Link> и даю <Link to="../private/personal"> согласие на обработку персональных данных</Link>.</p>
                     </div>
                 </form>
             </div>

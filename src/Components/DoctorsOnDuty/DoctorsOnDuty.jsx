@@ -33,7 +33,7 @@ const DoctorsOnDuty = () => {
           ) : (
             Doctor.map((el) => (
               <Link
-                to={"#"}
+                to={"../recording/" + el.doctor_id + "/Default"}
                 style={{
                   maxWidth: "500px",
                   cursor: "pointer",
@@ -53,7 +53,9 @@ const DoctorsOnDuty = () => {
                       <p className={s.Font_size14}>
                         {el.recomends + " пациентов рекомендуют врача"}
                       </p>
-                      <p className={s.Font_size14}>{el.reviews + " отзывов"}</p>
+                      <Link to={"/recording/" + el.doctor_id + "/Reviews"}>
+                        <p className={s.Font_size14 + " " + s.blueLink}>{el.reviews + " отзывов"}</p>
+                      </Link>
                     </div>
                   </div>
                   <div className={s.Doctor_info + " " + s.black}>

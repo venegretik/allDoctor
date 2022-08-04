@@ -1,6 +1,5 @@
 import React from "react";
 import s from '../Recording.module.css';
-import star from '../../../../img/Rating_Star.png';
 import Stars from "../../../../Components/Stars/Stars";
 import AnswerReviews from "./answerReviews";
 import { Link } from "react-router-dom";
@@ -14,9 +13,10 @@ const Reviews = (props) => {
         dispatch(axiosReview(props.usId));
       }, []);
     let recording = useSelector(state => state.recording);
+    let keyNum =0;
     let page = useSelector(state => state.recording.current_page);
     let review = recording.reviewsArray.map(el =>
-        <div className={s.Doctor_infos}>
+        <div key={++keyNum} className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>
                     <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />

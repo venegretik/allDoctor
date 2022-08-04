@@ -46,7 +46,7 @@
 #Select-menu [type="radio"]:not(:checked) {
     outline-style: none;
     position: absolute;
-    width: 150px!important;
+    width: 100%!important;
     left: 0px;
     top: 0px;
     cursor: pointer;
