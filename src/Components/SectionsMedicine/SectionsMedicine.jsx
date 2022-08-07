@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getBranch, getOfline } from "../../base/asyncActions/getMainPageInfo";
 import s from "../../Pages/Views/Main/Main.module.css";
@@ -20,7 +20,7 @@ const SectionsMedicine = () => {
         setOfline(response.data.items);
       }
     };
-
+  const config = useSelector((state) => state.config.config);
   useEffect(() => {
     getInfo();
     getOff();
@@ -54,32 +54,35 @@ const SectionsMedicine = () => {
           )}
         </div>
       </section>
-      <section className={s.medicine + " " + s.container}>
-        <h2 className={s.medicine_title + " " + s.Font_size40}>
-          Оффлайн запись
-        </h2>
-        <div className={s.medicine_cards}>
-          {!Ofline ? (
-            <Loader />
-          ) : (
-            Ofline.map((el, key) =>
-              key < 4 ? (
-                <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"}>
-                  <div className={s.card_item} >
-                    <img src={el.image} alt="" />
-                    <div className={s.card_text_wrapper}>
-                      <div className={s.card_title}>{el.title}</div>
-                      <div className={s.card_subtitle}>{el.description}</div>
+      {config.module.offline_appointment ?
+        <section className={s.medicine + " " + s.container}>
+          <h2 className={s.medicine_title + " " + s.Font_size40}>
+            Оффлайн запись
+          </h2>
+          <div className={s.medicine_cards}>
+            {!Ofline ? (
+              <Loader />
+            ) : (
+              Ofline.map((el, key) =>
+                key < 4 ? (
+                  <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"}>
+                    <div className={s.card_item} >
+                      <img src={el.image} alt="" />
+                      <div className={s.card_text_wrapper}>
+                        <div className={s.card_title}>{el.title}</div>
+                        <div className={s.card_subtitle}>{el.description}</div>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ) : (
-                false
+                  </Link>
+                ) : (
+                  false
+                )
               )
-            )
-          )}
-        </div>
-      </section>
+            )}
+          </div>
+        </section> : ""
+      }
+
     </>
   );
 };

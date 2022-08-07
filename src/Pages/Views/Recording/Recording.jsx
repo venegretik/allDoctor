@@ -49,7 +49,7 @@ const Recording = () => {
                                 <p className={s.Staj + " " + s.Font_size14}>{recording.regalia.join(' • ')}</p>
                                 <div className={s.Doctor_buy}>
                                     <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-                                    <p className={s.buy}>{recording.price} ₽</p>
+                                    <p className={s.buy + " " + s.Font_size24}>{recording.price} ₽</p>
                                 </div>
                             </div>
                         </div>

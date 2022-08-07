@@ -51,7 +51,6 @@ export const axiosProfileFriend = (obj) => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.post(`${defaultUrl}user/balance/payout`, { ...obj });
         dispatch(ProfileFriendAction(response.data));
-        console.log(response.data)
         return response.data;
     }
 }

@@ -64,7 +64,7 @@ export const axiosConsultationCalendar = (consultation_id, slot_id) => {
                 slot_id: slot_id
             }
         });
-        return response.data.data
+        return response.data.status
     }
 }
 export const axiosConsultationStart = (consultation_id) => {

@@ -1,12 +1,13 @@
 import React from "react";
 import s from './Balance.module.css';
-import pen from '../../../../img/pen.png';
 import { useEffect, useState } from "react";
 import Button from "../../../../Components/Button/Button";
 import { axiosProfileBalance, axiosProfileRefferal, axiosProfilePay, axiosProfileFriend, axiosProfileHistory } from "../../../../base/asyncActions/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, InpMask } from "../../../../Components/Input/Input";
 import RequestMoney from "../../../../Components/Modal/Request_money/RequestMoney";
+import copy from "../../../../img/copy.png";
+import InfoModal from "../../../../Components/InfoText/InfoModal";
 const Balance = () => {
     const [isShown, setIsShown] = useState(false);
     const [message, setMessage] = useState("");
@@ -22,8 +23,8 @@ const Balance = () => {
         dispatch(axiosProfileRefferal());
         dispatch(axiosProfileHistory());
     }, []);
-    const ShowClick =() =>{
-        if(total_page > current_page++){
+    const ShowClick = () => {
+        if (total_page > current_page++) {
             dispatch(axiosProfileHistory(current_page++))
         }
     }
@@ -50,7 +51,7 @@ const Balance = () => {
     }
     let History = history.map(
         el => <div key={++keyNum}>
-            <div  className={s.History_data}>
+            <div className={s.History_data}>
                 <p>{new Date(el.datetime).toLocaleString(
                     "ru",
                     {
@@ -58,9 +59,9 @@ const Balance = () => {
                         year: "numeric",
                         day: "numeric",
                     }
-                )}</p>
+                )}</p> 
             </div> <div className={s.History_content}>
-                <p>{el.action.type}</p>
+                <p className={s.Font_size14}>{el.action.type}</p>
                 <div className={s.History_content_text}>
                     <b>{el.action.message}</b>
                     <b>-{el.summ}₽</b>
@@ -107,8 +108,12 @@ const Balance = () => {
             <div className={s.Referal}>
                 <div className={s.Referal_title}>
                     <h1>Реферальный код</h1>
+                    <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext"/>
                 </div>
-                <input type="text" />
+                <div className={s.Refferal_input}>
+                    <input type="text" defaultValue={referral} />
+                    <img className={s.Referal_img} src={copy} alt="" />
+                </div>
             </div>
             <div className={s.History}>
                 <div className={s.History_title}>

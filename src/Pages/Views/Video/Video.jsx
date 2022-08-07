@@ -15,7 +15,7 @@ const Video = () => {
             <div className={s.VideoBlock}>
                 <div className={s.VideoBlockImage}>
                     <img src={videoImage} alt="" />
-                    <ul>
+                    <ul className={s.videoDesctop}>
                         <li>
                             <div className={s.icon_back}>
                                 <img src={volume} alt="" />
@@ -24,13 +24,13 @@ const Video = () => {
                         </li>
                         <li>
                             <div className={s.icon_back}>
-                                <img src={volume} alt="" />
+                                <img src={micro_off} alt="" />
                             </div>
                             <p>Выключить микрофон</p>
                         </li>
                         <li>
                             <div className={s.icon_back}>
-                                <img src={volume} alt="" />
+                                <img src={videocam} alt="" />
                             </div>
                             <p>Выключить камеру</p>
                         </li>
@@ -47,11 +47,50 @@ const Video = () => {
                             <p>Настройки</p>
                         </li>
                     </ul>
+                    <ul className={s.videoMobile}>
+                        <li>
+                            <div className={s.icon_back}>
+                                <img src={volume} alt="" />
+                            </div>
+                            <p>Громкость</p>
+                        </li>
+                        <li>
+                            <div className={s.icon_back}>
+                                <img src={micro_off} alt="" />
+                            </div>
+                            <p>Выключить микрофон</p>
+                        </li>
+                        <li>
+                            <div className={s.icon_back}>
+                                <img src={videocam} alt="" />
+                            </div>
+                            <p>Выключить камеру</p>
+                        </li>
+                        <li>
+                            <div className={s.icon_back}>
+                                <img src={volume} alt="" />
+                            </div>
+                            <p>Завершить</p>
+                        </li>
+                    </ul>
                 </div>
                 <div className={s.VideoChat}>
                     <div className={s.VideoChatMessage}>
-                        <p className={s.VideoChatDoctor}>Значимость этих проблем настолько очевидна, что укрепление и развитие внутренней структуры способствует подготовке и реализации приоритизации разума над эмоциями.</p>
-                        <p className={s.VideoChatMy}>Здравствуйте</p>
+                        <div className={s.MessageDoctor}>
+                            <span >
+                                <p className={s.VideoChatDoctor}>Значимость этих проблем настолько очевидна, что укрепление и развитие внутренней структуры способствует подготовке и реализации приоритизации разума над эмоциями.</p>
+                            </span>
+                            <p>12:15</p>
+                        </div>
+                        <span>
+
+                            <div className={s.MessageDoctorMy}>
+                                <span >
+                                    <p className={s.VideoChatMy}>Здравствуйте</p>
+                                </span>
+                                <p>12:15</p>
+                            </div>
+                        </span>
                     </div>
                     <div className={s.MessageText}>
                         <input type="text" placeholder="Введите текст сообщения..." />

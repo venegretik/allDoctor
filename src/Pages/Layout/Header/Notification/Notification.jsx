@@ -15,7 +15,6 @@ const Notification = () => {
     const response = await dispatch(getNotification());
     if (response.status) {
       setNewMessage(response);
-      console.log(response)
     }
   };
   const options = {

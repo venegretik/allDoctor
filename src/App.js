@@ -28,6 +28,7 @@ import Utility from "./Pages/Views/My_Profile/Utility/Utility";
 import Messages from "./Pages/Views/My_Profile/Messages/Messages";
 import PrivatePolice from "./Pages/Views/PrivatePolice.jsx/PrivatePolice";
 import Video from "./Pages/Views/Video/Video";
+import SliderApp from "./Components/Sliders/SliderApp/SliderApp";
 import RazdeliOffline from "./Pages/Views/OfflineBranch/OfflineBranch";
 function App() {
   const dispatch = useDispatch();
@@ -75,6 +76,7 @@ function App() {
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
             <Route path={"*"} element={<NotFound />} />
             <Route path={"razdeli-offline"} element={<RazdeliOffline />} />
+            <Route path={"mobile"} element={<SliderApp />}/>
           </Route>
         </Routes>
       )}

@@ -7,6 +7,7 @@ import { Link, Navigate } from "react-router-dom";
 import Loader from "../Loading/Loader";
 import { axiosConsultationCalendar } from "../../base/asyncActions/getConsultation";
 import { getPuymentInfo } from "../../base/asyncActions/Payment";
+import { consultationModalAction } from "../../base/Reducers/ConsultationReducer";
 const Calendar = (props) => {
     const dispatch = useDispatch(),
         [DateStr, setDate] = useState(""),
@@ -24,6 +25,12 @@ const Calendar = (props) => {
     useEffect(() => {
         dispatch(axiosRecordingCalculator());
     }, [])
+    let Modal = async () => {
+        let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id))
+        if(status){
+            dispatch(consultationModalAction(status));
+        }
+    }
     let OnCheck = async () => {
         let status = await dispatch(getPuymentInfo(props.usId, slot_id));
         if (status.status === true)
@@ -102,7 +109,7 @@ const Calendar = (props) => {
             </div>
             <div className={s.Calendar_button}>
                 {props.type_el === "popup" ?
-                    <button onClick={e => dispatch(axiosConsultationCalendar(props.usId, slot_id))}>записаться</button>
+                    <button onClick={e => Modal()}>записаться</button>
                     : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button> :
                         //<Link to={"../payment/" + props.usId + "/" + slot_id}>
                         <button disabled={!slot_id ? true : false} onClick={OnCheck}>записаться</button>

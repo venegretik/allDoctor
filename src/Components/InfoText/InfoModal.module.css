@@ -1,0 +1,20 @@
+.infoFull {
+    position: relative;
+}
+
+.infoText {
+    position: absolute;
+    left: 25px;
+    top: 0px;
+    z-index: 10;
+    max-width: 120px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0px 20px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 7px;
+}
+.infoText p{
+    width: 100px;
+    display: block;
+    word-break: break-all;
+}

@@ -12,6 +12,7 @@
   position: relative;
   margin-top: 40px;
   width: 800px;
+  color: #ffffff;
   display: flex;
   padding-bottom: 22px;
   padding-top: 30px;
@@ -66,6 +67,7 @@
 .Doctor_skills p {
   display: flex;
   align-items: center;
+  height: 19px;
 }
 .Doctor_skills span {
   font-size: 30px;

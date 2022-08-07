@@ -8,7 +8,7 @@ import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 const Payment = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -44,72 +44,75 @@ const Payment = () => {
         dispatch(getPuymentPost(obj));
     }
     return (
-        <div className={s.Container + " Container"}>
-            <div className={s.Payment}>
-                <div className={s.Payment_title}>
-                    <h1>Запись на приём</h1>
-                </div>
-                <div className={s.Doctor}>
-                    <div className={s.Doctor_infos}>
-                        <div className={s.Doctor_avatar}>
-                            <div className={s.Doctor_avatar_img}>
-                                <img src={payment.photo} alt="" />
-                            </div>
-                            <div className={s.Doctor_avatar_info + " " + s.black}>
-                                <Stars num={payment.rate} />
-                                <p className={s.Font_size14}>{payment.recomends} пациентов рекомендуют врача</p>
-                                <p className={s.Font_size14}>{payment.reviews} отзывов</p>
-                            </div>
-                        </div>
-                        <div className={s.Doctor_info + " " + s.black}>
-                            <p className={s.gray + " " + s.Font_size14}>{payment.specialization.join(' • ')}</p>
-                            <h2 className={s.Font_size24}>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
-                            <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
-                            <div className={s.Doctor_buy}>
-                                <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-                                <p className={s.buy + " " + s.Font_size16}>{payment.checkout.price} ₽</p>
-                            </div>
-                            <div className={s.Doctor_buy}>
-                                <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-                                <p className={s.buy + " " + s.Font_size16}>{new Date(payment.consultation_datetime).toLocaleString(
-                                    "ru",
-                                    {
-                                        month: "long",
-                                        year: "numeric",
-                                        day: "numeric",
-                                    }
-                                )}</p>
-                            </div>
-                            <p className={s.Data_time + " " + s.Font_size14}>Изменить дату и время приёма</p>
-                        </div>
-                    </div>
-                </div>
-                <form onSubmit={(e) => sendForm(e)}>
-                    <div className={s.Summ}>
-                        <Input
-                            type="text"
-                            placeholder="Промо или реферальный код"
-                            name={'promocode'} value={Showtext} onChange={handleChange} />
-                    </div>
-                    <div className={s.Oplata}>
-                        <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
-                        <div className={s.Balance}>
-                            <Input
-                                type={'checkbox'}
-                                name={'use_balance'} onChange={handleChangeCheck} />
-                            <p className={s.Font_size14}>Оплатить с баланса</p>
-                        </div>
-                        <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span>
-                        <span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span>
-                    </div>
-                    <div className={s.Total_sum}>
-                        <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
-                        <button className={s.Font_size14} type="submit">Оплатить</button>
-                        <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user">пользовательского соглашения</Link> и даю <Link to="../private/personal"> согласие на обработку персональных данных</Link>.</p>
-                    </div>
-                </form>
+        payment.firstname?  <div className={s.Container + " Container"}>
+        <div className={s.Payment}>
+            <div className={s.Payment_title}>
+                <h1>Запись на приём</h1>
             </div>
+            <div className={s.Doctor}>
+                <div className={s.Doctor_infos}>
+                    <div className={s.Doctor_avatar}>
+                        <div className={s.Doctor_avatar_img}>
+                            <img src={payment.photo} alt="" />
+                        </div>
+                        <div className={s.Doctor_avatar_info + " " + s.black}>
+                            <Stars num={payment.rate} />
+                            <p className={s.Font_size14}>{payment.recomends} пациентов рекомендуют врача</p>
+                            <Link to={"../recording/" + params.id + "/Reviews"}>
+                                <p className={s.Font_size14}>{payment.reviews} отзывов</p>
+                            </Link>
+                        </div>
+                    </div>
+                    <div className={s.Doctor_info + " " + s.black}>
+                        <p className={s.gray + " " + s.Font_size14}>{payment.specialization.join(' • ')}</p>
+                        <h2 className={s.Font_size24}>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
+                        <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
+                        <div className={s.Doctor_buy}>
+                            <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
+                            <p className={s.buy + " " + s.Font_size16}>{payment.checkout.price} ₽</p>
+                        </div>
+                        <div className={s.Doctor_buy}>
+                            <p className={s.gray + " " + s.Font_size14}>Дата и время приёма:</p>
+                            <p className={s.buy + " " + s.Font_size16}>{new Date(payment.consultation_datetime).toLocaleString(
+                                "ru",
+                                {
+                                    month: "long",
+                                    year: "numeric",
+                                    day: "numeric",
+                                }
+                            )}</p>
+                        </div>
+                        <p className={s.Data_time + " " + s.Font_size14 + " " + s.link_blue}>Изменить дату и время приёма</p>
+                    </div>
+                </div>
+            </div>
+            <form onSubmit={(e) => sendForm(e)}>
+                <div className={s.Summ}>
+                    <Input
+                        type="text"
+                        placeholder="Промо или реферальный код"
+                        name={'promocode'} value={Showtext} onChange={handleChange} />
+                </div>
+                <div className={s.Oplata}>
+                    <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
+                    <div className={s.Balance}>
+                        <Input
+                            type={'checkbox'}
+                            name={'use_balance'} onChange={handleChangeCheck} />
+                        <p className={s.Font_size14}>Оплатить с баланса</p>
+                    </div>
+                    <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span>
+                    <span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span>
+                </div>
+                <div className={s.Total_sum}>
+                    <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
+                    <button className={s.Font_size14} type="submit">Оплатить</button>
+                    <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user">пользовательского соглашения</Link> и даю <Link to="../private/personal"> согласие на обработку персональных данных</Link>.</p>
+                </div>
+            </form>
         </div>
+    </div>:<Navigate to={`../recording/${params.id}/Default`} />
+       
     )
 }
 export default Payment;

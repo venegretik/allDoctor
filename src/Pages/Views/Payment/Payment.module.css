@@ -71,6 +71,7 @@ input[type=checkbox]:checked:after {
 }
 
 .Staj {
+    margin-bottom: 11px;
     margin-top: 8px;
 }
 
@@ -111,6 +112,13 @@ input[type=checkbox]:checked:after {
 
 .buy {
     font-size: 24px !important;
+    margin-bottom: 8px;
+    margin-top: 4px;
+}
+
+.link_blue{
+    color: #407BFF;
+    cursor: pointer;
 }
 
 .Data_time {

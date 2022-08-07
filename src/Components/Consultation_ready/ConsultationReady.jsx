@@ -4,7 +4,9 @@ import { useDispatch } from "react-redux";
 import Loader from "../../Components/Loading/Loader";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
+import { axiosConsultationDelete } from "../../base/asyncActions/getConsultation";
 import Stars from "../Stars/Stars";
+import Cancel_Record from "../Modal/Cancel_record/Cancel_Record";
 import { Link } from "react-router-dom";
 import { axiosConsultationStart, axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
 import ModalCalendar from "../Modal/Modal_calendar/Modal_calendar";
@@ -31,7 +33,7 @@ const ConsultationReady = (props) => {
     <section>
       {ConsultationUpcoming ? (
         <div className={s.Doctor_cart}>
-          <div className={s.Cart_close}>+</div>
+          {ConsultationUpcoming.can_cancel ? <Cancel_Record consultation_id={ConsultationUpcoming.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete}/> : ""}
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
               <img src={ConsultationUpcoming.doctor.photo} alt="" />
@@ -108,20 +110,14 @@ const ConsultationReady = (props) => {
                 </p>
               </div>
             </div>
-            {ConsultationUpcoming.can_start && (
-              <div onClick={e => dispatch(axiosConsultationStart(ConsultationUpcoming.doctor.doctor_id))}>
+            {
+              ConsultationUpcoming.can_start ? <Link to="../video" onClick={e => dispatch(axiosConsultationStart(ConsultationUpcoming.doctor.doctor_id))}>
                 <Button type="button" class="btn orange" text="Начать" />
-              </div>
-
-            )}
-            {ConsultationUpcoming.can_reschedule && (
-              <ModalCalendar />
-            )}
-            {ConsultationUpcoming.is_paid && (
-              <div onClick={e => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}>
-                <Button type="button" class="btn orange" text="Оплатить" />
-              </div>
-            )}
+              </Link> : ConsultationUpcoming.can_reschedule ? <ModalCalendar />
+                : ConsultationUpcoming.is_paid ? <div onClick={e => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}>
+                  <Button type="button" class="btn orange" text="Оплатить" />
+                </div> : ""
+            }
           </div>
         </div>
       ) : (

@@ -1,4 +1,4 @@
-.Utility_Check_video{
+.Utility_Check_video {
     margin-top: 20px;
     margin-bottom: 30px;
     width: 500px;
@@ -9,34 +9,43 @@
     background: #2E373D;
     border-radius: 16px;
 }
-.Utility_full{
+
+.Utility_full {
     padding-left: 75px;
 }
-.Utility_text p{
+
+.Utility_text p {
     margin: 12px 0px;
 }
-.Utility_configuration_video{
+
+.Utility_configuration_video {
     display: flex;
     flex-direction: column;
     max-width: 241px;
 }
-.Utility_configuration_volume{
-    max-width: 241px;
+
+.Utility_configuration_volume {
+    width: 250px;
     display: flex;
     flex-direction: column;
 }
-.Utility_configuration_volume input{
+
+.Utility_configuration_volume input {
     margin-top: 15px;
 }
-.Utility_configuration_video input{
+
+.Utility_configuration_video input {
     margin-top: 15px;
 }
-.Utility_Check_video_content{
-        flex-direction: column;
-        align-items: center;
+
+.Utility_Check_video_content {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
 }
+
 .Utility_Check_video_content button {
-    background: #407BFF;
+    background: #F6AE2D;
     border-radius: 16px;
     width: 240px;
     height: 60px;
@@ -44,25 +53,51 @@
     border: 0px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #000;
     padding: 22px 36px;
 }
-.Utility_configuration_full{
 
-}
-.check_volume{
+.Utility_configuration_full {}
+
+.check_volume {
     margin-bottom: 20px;
+    font-weight: bold;
 }
-.Utility_configuration_video{
+
+.Utility_configuration_video {
     margin-right: 18px;
+    width: 300px;
 }
-.Utility_configuration{
+
+.Utility_configuration {
     display: flex;
 }
-.Utility_configuration p{
+
+.Utility_configuration p {
     margin-bottom: 14px;
 }
-.Utility_volume p{
+
+.Utility_volume p {
     margin-top: 20px;
     margin-bottom: 14px;
+}
+
+.Utility_items {
+    display: flex;
+    margin-bottom: 80px;
+}
+
+.Utility_item_active {
+    width: 20px;
+    height: 10px;
+    background: #407BFF;
+    border-radius: 85px;
+    margin-right: 5px;
+}
+.Utility_item_unactive{
+    width: 20px;
+    height: 10px;
+    background: #EAF2FF;
+    border-radius: 85px;
+    margin-right: 5px;
 }

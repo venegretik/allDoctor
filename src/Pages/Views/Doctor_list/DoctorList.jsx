@@ -9,13 +9,13 @@ import Stars from "../../../Components/Stars/Stars";
 import { Link } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Button from "../../../Components/Button/Button";
+import Loader from "../../../Components/Loading/Loader";
 const DoctorList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getConfigHeaderAction("Доктора"))
   }, []);
-
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
   let Name = useSelector(state => state.doctorSpec.specialization_name);
@@ -119,7 +119,7 @@ const DoctorList = () => {
             </div>
           </div>
         </div>
-        {Doctor}
+        {Doctor[0] ? Doctor : <Loader />}
       </section>
       <div className={s.Doctor_button}>
         <div onClick={sendRequest}>

@@ -4,6 +4,7 @@ import pen from '../../../../img/pen.png'
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
+import Loader from "../../../../Components/Loading/Loader";
 import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
     let dispatch = useDispatch();
@@ -68,7 +69,7 @@ const Local_Data = () => {
             <div className={s.My_content_title}>
                 <h1>Личные данные</h1>
             </div>
-            <div className={s.My_content_container}>
+            {profile.lastname ? <div className={s.My_content_container}>
                 <div className={s.My_content_top}>
                     <div className={s.My_content_top_image}>
                         <img src={profile.photo} alt="" />
@@ -101,7 +102,7 @@ const Local_Data = () => {
                         <p>2400₽</p>
                     </span>
                 </div>
-            </div>
+            </div>:<Loader/>}
         </div>
     )
 }

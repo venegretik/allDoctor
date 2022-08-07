@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Utility.module.css";
 import Select_custom from "../../../../Components/Select/Select";
 import Slide from "../../../../Components/Slide/Slide";
+import photo from "../../../../img/photo.png"
 const Utility = () => {
   return (
     <div className={s.Utility_full}>
@@ -14,7 +15,7 @@ const Utility = () => {
       </div>
       <div className={s.Utility_Check_video}>
         <div className={s.Utility_Check_video_content}>
-          <img src="" alt="" />
+          <img src={photo} alt="" />
           <button>Проверить видео</button>
         </div>
       </div>
@@ -23,19 +24,40 @@ const Utility = () => {
         <div className={s.Utility_configuration}>
           <div className={s.Utility_configuration_video}>
             <p>Устройство ввода</p>
-            <select name="" id=""></select>
+            <Select_custom />
             <Slide />
           </div>
           <div className={s.Utility_configuration_volume}>
             <p>Устройство вывода</p>
-            <select name="" id=""></select>
+            <Select_custom />
             <Slide />
           </div>
         </div>
       </div>
       <div className={s.Utility_volume}>
         <p>Проверка микрофона</p>
-        <div></div>
+        <div className={s.Utility_items}>
+            <div className={s.Utility_item_active}></div>
+            <div className={s.Utility_item_active}></div>
+            <div className={s.Utility_item_active}></div>
+            <div className={s.Utility_item_active}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+            <div className={s.Utility_item_unactive}></div>
+        </div>
       </div>
     </div>
   );
