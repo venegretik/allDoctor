@@ -30,6 +30,10 @@
     flex-direction: column;
 }
 
+.Utility_Check_video video::-webkit-media-controls {
+    display: none !important;
+}
+
 .Utility_configuration_volume input {
     margin-top: 15px;
 }
@@ -94,7 +98,8 @@
     border-radius: 85px;
     margin-right: 5px;
 }
-.Utility_item_unactive{
+
+.Utility_item_unactive {
     width: 20px;
     height: 10px;
     background: #EAF2FF;

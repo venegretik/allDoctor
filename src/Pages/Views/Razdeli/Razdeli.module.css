@@ -54,8 +54,9 @@
 }
 .medicine_cards {
     display: flex;
+    max-width: 1170px;
     gap: 30px;
-    justify-content:space-around ;
+    justify-content:start ;
     flex-wrap: wrap;
 }
 .card_subtitle {

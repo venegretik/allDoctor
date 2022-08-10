@@ -47,14 +47,14 @@ const ChangeLogin = (props) => {
       {Modal ? <div className={s.ChangeLoginFull}>
         <div className={s.ChangeLogin}>
           <div className={s.ChangeLoginTitle}>
-            <h1>{props.type_el == "phone" ? "Изменить телефон" : "Изменить email"}</h1>
+            <h1 className={s.Font_size24}>{props.type_el == "phone" ? "Изменить телефон" : "Изменить email"}</h1>
           </div>
           <div className={s.ChangeLoginMain}>
 
             {isShown === 1 ? (
               <form onSubmit={(e) => { sendForm(e) }}>
                 <div className={s.ChangeLoginMain_step1}>
-                  <p>
+                  <p className={s.Font_size14}>
                     Мы отправим код подтверждения на ваш текущий номер +7 999 156 46 75
                   </p>
                   <div className={s.ChangeLoginButton}>
@@ -76,7 +76,7 @@ const ChangeLogin = (props) => {
                 <div className={s.ChangeLoginMain_step2}>
                   <Input pattern={'[0-9]{4}'} required placeholder={'Код из SMS'} type={'text'} className={'input'}
                     maxLength={4} name="code" />
-                  <p>Отправить другой код через 00:46</p>
+                  <p className={s.Font_size14}>Отправить другой код через 00:46</p>
                   <div className={s.ChangeLoginButton} >
                     <div className={s.ChangeMargin}>
                       <Button

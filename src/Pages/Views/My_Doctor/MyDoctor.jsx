@@ -26,7 +26,7 @@ const MyDoctor = () => {
         }
     }
     let Doctor = Doctors.map(el => <div className={s.Doctor} key={el.doctor_id}>
-        <Cancel_Record consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete}/>
+        <Cancel_Record consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete} typeModal={"record"}/>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>
@@ -52,7 +52,7 @@ const MyDoctor = () => {
             </div>
         </div>
         <div className={s.Doctor_button}>
-            <Link to={"../recording/" + el.doctor_id}>
+            <Link to={"../recording/" + el.doctor_id + "/Default"}>
                 <Button
                     className={s.Reviews_send + " " + s.Font_size14}
                     type={'submit'}

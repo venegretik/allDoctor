@@ -90,3 +90,15 @@
         max-height: 600px;
     }
 }
+@media(max-width:480px){
+    .Cancel_Record_block img{
+        display: none;
+    }
+    .Cancel_Record button {
+        margin-top: 20px;
+    }
+    .Cancel_Record_block{
+        top: 75%;
+        min-height: 400px;
+    }
+}

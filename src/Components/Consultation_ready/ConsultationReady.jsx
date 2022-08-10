@@ -33,7 +33,7 @@ const ConsultationReady = (props) => {
     <section>
       {ConsultationUpcoming ? (
         <div className={s.Doctor_cart}>
-          {ConsultationUpcoming.can_cancel ? <Cancel_Record consultation_id={ConsultationUpcoming.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete}/> : ""}
+          {ConsultationUpcoming.can_cancel ? <Cancel_Record consultation_id={ConsultationUpcoming.consultation_id} text={"Вы действительно хотите отменить запись?"} typeModal={""} func={axiosConsultationDelete}/> : ""}
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
               <img src={ConsultationUpcoming.doctor.photo} alt="" />

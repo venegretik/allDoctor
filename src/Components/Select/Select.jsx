@@ -14,7 +14,7 @@ const SelectCustom = () => {
   return (
     <div id="Select-hide" onClick={handleClick}>
       <div className="Select_content">
-        <p>Акушер</p>
+        <p></p>
         <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
       </div>
       {isShown && (

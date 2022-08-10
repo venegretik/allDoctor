@@ -14,7 +14,7 @@ const Header = () => {
       <Navigate to="login" /> : <div className={s.Header_container + " Container"}>
       <header className={s.Header_full}>
         <div className={s.Header_logo}>
-          <Link to={"/"}>
+          <Link to={"main"}>
             <img src={logo} alt="" />
           </Link>
         </div>

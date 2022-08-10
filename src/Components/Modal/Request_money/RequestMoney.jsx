@@ -19,8 +19,8 @@ const RequestMoney = (props) => {
                     <div className={s.Cart_close} onClick={e=>setWindow(false)}>
                         +
                     </div>
-                    <h1>Запросить средства</h1>
-                    <p>Сумма будет доступна в течении 3х рабочих дней</p>
+                    <h1 className={s.Font_size24}>Запросить средства</h1>
+                    <p className={s.Font_size14}>Сумма будет доступна в течении 3х рабочих дней</p>
                     <div className={s.Cancel_Record}>
                         <Input placeholder={'Сумма'}
                         type="text"

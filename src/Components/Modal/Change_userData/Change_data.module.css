@@ -42,3 +42,12 @@
 .Cancel_Record h1 {
     text-align: center;
 }
+
+@media(max-width:480px){
+    .Cancel_Record_block img{
+        display: none;
+    }
+    .buttonNo{
+        margin-top: 20px;
+    }
+}

@@ -1,6 +1,7 @@
 import React from "react";
 import s from './Chat.module.css';
 import chat from '../../img/chat.png'
+import chatMessage from '../../img/chat_message.png'
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosConsultationChat } from "../../base/asyncActions/getConsultation";
@@ -30,11 +31,26 @@ const Chat = () => {
                                 </div>
                             </div>
                             <div className={s.main_message}>
-
+                                <div className={s.main_messageText}>
+                                    <p className={s.Font_size14}>В сети</p>
+                                    <div className={s.MessageDoctor}>
+                                        <span >
+                                            <p className={s.MessageText}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                        </span>
+                                        <p>12:15</p>
+                                    </div>
+                                    <div className={s.MessageMe}>
+                                        <span >
+                                            <p className={s.MessageText}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                        </span>
+                                        <p>12:15</p>
+                                    </div>
+                                </div>
                             </div>
                             <div className={s.message_send}>
                                 <div>
                                     <input type="text" placeholder="Написать сообщение..." />
+                                    <img src={chatMessage} className={s.imgAbsol} alt="" />
                                 </div>
                             </div>
                         </div> : <div className={s.Chat_list}>

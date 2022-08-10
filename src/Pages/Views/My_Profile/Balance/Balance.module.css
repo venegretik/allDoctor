@@ -195,9 +195,9 @@
 
     .Balance button {
         padding: 13.5px 23.5px;
-        width: 130px;
         font-size: 10px;
         height: 40px;
+        width: 100%;
     }
 
     .Balance_add input {

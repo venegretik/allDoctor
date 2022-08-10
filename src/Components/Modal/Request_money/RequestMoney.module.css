@@ -10,12 +10,14 @@
     z-index: 20;
     top: 0px;
 }
-.Cancel_Record{
+
+.Cancel_Record {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
+
 .Cart_close {
     position: absolute;
     transform: rotate(-45deg);
@@ -24,15 +26,18 @@
     right: 10px;
     top: 0px;
 }
-.blue{
+
+.blue {
     display: flex;
     color: #407BFF;
     cursor: pointer;
     align-items: center;
 }
-.blue p{
+
+.blue p {
     margin-left: 10px;
 }
+
 .Cancel_Record_block {
     display: flex;
     position: relative;
@@ -51,4 +56,43 @@
     min-height: 250px;
     max-height: 300px;
     padding-bottom: 40px;
+}
+
+.Font_size24 {
+    font-family: 'Exo', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0px;
+}
+
+.Font_size14 {
+    font-family: 'Exo', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0px;
+}
+
+@media(max-width:480px) {
+    .Cancel_Record_block {
+        left: 50%;
+        top: 75%;
+    }
+
+    .Font_size24 {
+        font-family: 'Exo', sans-serif;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 19px !important;
+        letter-spacing: 0px !important;
+    }
+
+    .Font_size14 {
+        font-family: 'Exo', sans-serif;
+        font-size: 10px !important;
+        font-weight: 400;
+        line-height: 19px;
+        letter-spacing: 0px;
+    }
 }

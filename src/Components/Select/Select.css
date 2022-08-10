@@ -6,16 +6,20 @@
     align-items: center;
     height: 50px;
     box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
     position: relative;
     padding-left: 15px;
 }
-#Select-menu label:hover{
+
+#Select-menu label:hover {
     background-color: #ECECEE;
 }
+
 #Select-menu {
     width: 100%;
     position: absolute;
-    max-height: 300px;
+    max-height: 200px;
     overflow-y: auto;
     overflow-x: hidden;
     background: #fff;
@@ -39,14 +43,16 @@
     border-radius: 100%;
     background: #fff;
 }
+
 #Select-menu input[type=radio]:before {
     display: none;
 }
+
 #Select-menu [type="radio"]:checked,
 #Select-menu [type="radio"]:not(:checked) {
     outline-style: none;
     position: absolute;
-    width: 100%!important;
+    width: 100% !important;
     left: 0px;
     top: 0px;
     cursor: pointer;
@@ -75,6 +81,25 @@
     max-width: 300px;
 }
 
+#Select-hide1 {
+    width: 100%;
+    position: relative;
+    max-width: 300px;
+}
+
+#Select-hide1 p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    padding: 10px 0px;
+    padding-left: 16px;
+    margin: 0px;
+    margin-bottom: 10px;
+    border: 1px solid #9DC3FF;
+    border-radius: 7px;
+}
+
 #Select-hide p {
     padding: 10px 0px;
     padding-left: 16px;
@@ -90,7 +115,7 @@
 
 .Rotate_img {
     transform: rotate(-180deg);
-    
+
 }
 
 .Select_content img {

@@ -34,14 +34,25 @@
     text-align: left;
 }
 
+.Font_size24 {
+    font-family: 'Exo', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: 0px;
+}
+
 .ChangeLoginMain form {
     margin-bottom: 30px;
 }
 
 .ChangeLogin {
-    margin: 40px auto 0px auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     height: auto;
-    padding: 10px;
+    padding: 20px;
     height: 300px;
     background-color: #fff;
     border-radius: 5px;
@@ -81,13 +92,34 @@
     max-width: 400px;
 }
 
-@media(max-width:580px) {
+@media(max-width:480px) {
     .Font_size14 {
         font-family: 'Exo', sans-serif;
         font-size: 10px;
         font-weight: 400;
         line-height: 19px;
         letter-spacing: 0px;
-        text-align: left;
+    }
+    .ChangeLoginButton{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .ChangeMargin{
+        margin-bottom: 10px;
+        margin-right: 0px;
+    }
+    .Font_size24 {
+        font-family: 'Exo', sans-serif;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        line-height: 19px !important;
+        letter-spacing: 0px !important;
+    }
+
+    .ChangeLogin {
+        top: 75%;
+        width: 100%;
+        height: 350px;
     }
 }

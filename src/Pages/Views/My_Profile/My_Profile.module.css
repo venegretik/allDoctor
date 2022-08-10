@@ -84,18 +84,14 @@
     text-decoration: none;
     display: flex;
     min-height: 20px;
-    padding-bottom: 5px;
-    margin-bottom: 40px;
-    border-bottom: 4px solid #EAF2FF;
+    margin-bottom: 30px;
     transition-duration: 0.5s;
 }
 .navLink:hover{
-    color: #2E373D;
-    border-color: #407BFF;
+    color: #407BFF;
 }
 .headerActiveLink{
-    color: #2E373D;
-    border-color: #407BFF;
+    color: #407BFF;
 }
 .links{
     padding-bottom: 40px;

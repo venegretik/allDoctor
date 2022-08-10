@@ -22,7 +22,6 @@
     border-radius: 8px;
     max-width: 270px;
     width: 100%;
-    height: 100%;
 }
 
 .card_item img {
@@ -55,7 +54,8 @@
 .medicine_cards {
     display: flex;
     gap: 30px;
-    justify-content:space-around ;
+    max-width: 1170px;
+    justify-content:start ;
     flex-wrap: wrap;
 }
 .card_subtitle {

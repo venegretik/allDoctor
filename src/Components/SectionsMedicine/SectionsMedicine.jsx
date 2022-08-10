@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getBranch, getOfline } from "../../base/asyncActions/getMainPageInfo";
 import s from "../../Pages/Views/Main/Main.module.css";
 import Loader from "../Loading/Loader";
+import Button from "../Button/Button";
 const SectionsMedicine = () => {
   const [Sections, setSections] = useState([]),
     [Ofline, setOfline] = useState([]),
@@ -38,7 +39,7 @@ const SectionsMedicine = () => {
           ) : (
             Sections.map((el, key) =>
               key < 8 ? (
-                <Link key={el.branch_id} to={"/razdeli"}>
+                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id}>
                   <div className={s.card_item}>
                     <img src={el.image} alt="" />
                     <div className={s.card_text_wrapper}>
@@ -52,7 +53,16 @@ const SectionsMedicine = () => {
               )
             )
           )}
+
         </div>
+        <Link to={"/razdeli"}>
+          <Button
+            className={s.Show_more + " " + s.Font_size14}
+            type={'submit'}
+            class={'btn white'}
+            text={'Показать ещё'}
+          />
+        </Link>
       </section>
       {config.module.offline_appointment ?
         <section className={s.medicine + " " + s.container}>
@@ -79,7 +89,16 @@ const SectionsMedicine = () => {
                 )
               )
             )}
+
           </div>
+          <Link to={"/razdeli-offline"}>
+            <Button
+              className={s.Show_more + " " + s.Font_size14}
+              type={'submit'}
+              class={'btn white'}
+              text={'Показать ещё'}
+            />
+          </Link>
         </section> : ""
       }
 

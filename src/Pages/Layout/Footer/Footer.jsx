@@ -10,7 +10,7 @@ import NoteAct from "../../../img/note_active.png";
 import HomeAct from "../../../img/Home_active.png";
 import ProfAct from "../../../img/profile_active.png";
 import {NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
   let Text = useSelector(state => state.config.header_text);
