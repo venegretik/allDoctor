@@ -25,6 +25,9 @@
     list-style: none;
     position: absolute;
 }
+.icon_close{
+    background: #F14646!important;
+}
 .VideoBlockImage ul li{
     display: flex;
     flex-direction: column;
@@ -68,17 +71,35 @@
     padding: 10px;
     background: #E6E6E6;
 }
-
+.VideoBlockImage ul li p{
+    color: #fff;
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.8);
+}
 .VideoChatMy {
     border-radius: 7px;
     padding: 10px;
     margin-left: 10px;
     background: #EAF2FF;
 }
-
+.MessageText img{
+    margin-right: 10px;
+}
 .MessageText {
     position: absolute;
+    width: 300px;
+    display: flex;
+    align-items: center;
     bottom: 0px;
+}
+.MessageImg{
+    position: relative;
+    width: 100%;
+}
+.MessageImg img{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(-0%,-50%);
 }
 .MessageDoctor{
     display: flex;
@@ -90,6 +111,9 @@
     margin-top: 10px;
     flex-direction: row-reverse;
     align-items: center;
+}
+.videoMobile li p{
+    font-size: 8px;
 }
 @media(max-width:980px) {
     .VideoBlock {
@@ -132,18 +156,27 @@
         
         border-radius: 0px;
     }
-    .VideoChat{
-        display: none;
+    .VideoBlockImage ul {
+        width: 300px!important;
     }
 }
 @media(max-width:600px){
     .videoMobile{
         display: flex!important;
     }
+    .VideoChat{
+        display: none;
+    }
+    .VideoFull{
+        margin-top: 0px;
+    }
     .videoDesctop{
         display: none!important;
     }
     .VideoBlockImage ul{
     width: 400px;
+}
+.videoMobile li{
+    max-width: 40px!important;
 }
 }

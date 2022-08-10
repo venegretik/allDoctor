@@ -2,8 +2,12 @@ import React from "react";
 import s from "./Video.module.css";
 import videoImage from "../../../img/video_photo.png";
 import volume from "../../../img/volume_down.png";
+import close from "../../../img/close.png";
 import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
+import seeting from "../../../img/seeting.png";
+import cup from "../../../img/cup.png";
+import message from "../../../img/chat_message.png";
 const Video = () => {
     return (
         <div className={s.VideoFull + " " + s.Container + " Container"}>
@@ -35,14 +39,14 @@ const Video = () => {
                             <p>Выключить камеру</p>
                         </li>
                         <li>
-                            <div className={s.icon_back}>
-                                <img src={volume} alt="" />
+                            <div className={s.icon_back + " " + s.icon_close}>
+                            <img src={close} alt="" />
                             </div>
                             <p>Завершить</p>
                         </li>
                         <li>
                             <div className={s.icon_back}>
-                                <img src={volume} alt="" />
+                                <img src={seeting} alt="" />
                             </div>
                             <p>Настройки</p>
                         </li>
@@ -67,8 +71,8 @@ const Video = () => {
                             <p>Выключить камеру</p>
                         </li>
                         <li>
-                            <div className={s.icon_back}>
-                                <img src={volume} alt="" />
+                            <div className={s.icon_back + " " + s.icon_close}>
+                            <img src={close} alt="" />
                             </div>
                             <p>Завершить</p>
                         </li>
@@ -93,7 +97,12 @@ const Video = () => {
                         </span>
                     </div>
                     <div className={s.MessageText}>
+                        <img src={cup} alt="" />
+                        <div className={s.MessageImg}>
                         <input type="text" placeholder="Введите текст сообщения..." />
+                        <img src={message} alt="" />
+                        </div>
+                        
                     </div>
                 </div>
             </div>
