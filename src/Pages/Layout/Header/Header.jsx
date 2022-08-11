@@ -9,13 +9,14 @@ import { Navigate } from "react-router";
 const Header = () => {
   let Text = useSelector(state => state.config.header_text);
   const config = useSelector((state) => state.config.config);
+  console.log(config);
   return (
     config && !config.token ?
       <Navigate to="login" /> : <div className={s.Header_container + " Container"}>
       <header className={s.Header_full}>
         <div className={s.Header_logo}>
           <Link to={"main"}>
-            <img src={logo} alt="" />
+            <img src={config.config.logo} alt="" />
           </Link>
         </div>
         <div className={s.Header_nav}>

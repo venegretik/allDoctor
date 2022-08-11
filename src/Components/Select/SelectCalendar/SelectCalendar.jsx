@@ -7,7 +7,7 @@ import "../Select.css";
 import s from "./SelectCalendar.module.css";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css';
-import { axiosConsultationHistory } from "../../../base/asyncActions/getConsultation";
+import { consultationHistoryCons } from "../../../base/asyncActions/getConsultation";
 import * as rdrLocales from 'react-date-range/dist/locale';
 const SelectCalendar = (props) => {
     let dispatch = useDispatch();
@@ -27,7 +27,7 @@ const SelectCalendar = (props) => {
         }
     ]);
     useEffect(() => {
-        dispatch(axiosConsultationHistory(specialization, page, state[0].startDate, state[0].endDate));
+        dispatch(consultationHistoryCons(specialization, page, state[0].startDate, state[0].endDate));
         setNum(++isNum);
         if(isNum == 2) {
             setNum(0);

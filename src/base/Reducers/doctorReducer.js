@@ -31,7 +31,7 @@ export const doctorReducer = (state = defaultState, action) => {
             return {...state, 
                 branch_offline_array: [...action.branchOffline_array]}
         case DOCTORMY_ARRAY:
-            return {...state, DoctorMy_array:[...action.DoctorMy_array], page:action.page, totalPage:action.total_page}
+            return {...state, DoctorMy_array:state.DoctorMy_array.concat(action.DoctorMy_array), page:action.page, totalPage:action.total_page}
         case DOCTOR_DELETE:
             return{...state, DoctorMy_array: state.DoctorMy_array.filter(el => action.user_id != el.doctor_id)}
         case DOCTOR_NAME:

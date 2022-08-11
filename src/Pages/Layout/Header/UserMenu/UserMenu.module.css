@@ -105,6 +105,9 @@
   gap: 10px;
   cursor: pointer;
 }
+.Profile_text img{
+  width: 40px;
+}
 .Profile_menu {
   align-items: center;
   display: flex;

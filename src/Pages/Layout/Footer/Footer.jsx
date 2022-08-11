@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
   let Text = useSelector(state => state.config.header_text);
+  let config = useSelector(state => state.config.config);
   return (
     <section>
       <footer className={s.footer_full}>
@@ -28,7 +29,7 @@ const Footer = () => {
           className="Container"
         >
           <div className={s.footer_img}>
-            <img src={logo} alt="" />
+            <img src={config.config.logo_footer} alt="" />
           </div>
           <div className={s.footer_text}>
             <p>© ВсеДоктора 2022</p>

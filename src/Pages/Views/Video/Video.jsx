@@ -6,6 +6,7 @@ import close from "../../../img/close.png";
 import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
 import seeting from "../../../img/seeting.png";
+import ModalUtility from "../../../Components/Modal/ModalUtility/ModalUtility";
 import cup from "../../../img/cup.png";
 import message from "../../../img/chat_message.png";
 const Video = () => {
@@ -45,10 +46,7 @@ const Video = () => {
                             <p>Завершить</p>
                         </li>
                         <li>
-                            <div className={s.icon_back}>
-                                <img src={seeting} alt="" />
-                            </div>
-                            <p>Настройки</p>
+                            <ModalUtility />
                         </li>
                     </ul>
                     <ul className={s.videoMobile}>

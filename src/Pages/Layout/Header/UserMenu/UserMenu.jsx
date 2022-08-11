@@ -33,7 +33,7 @@ const UserMenu = () => {
             <Notification />
             <div onClick={() => setShow(true)} className={s.Profile_text}>
               <div className={s.Profile_avatar}>
-                <img src={avatar} alt="" />
+                <img src={info.data.photo} alt="" />
               </div>
               <div className={s.Profile_menu}>
                 <p>{info.data.short_name}</p>

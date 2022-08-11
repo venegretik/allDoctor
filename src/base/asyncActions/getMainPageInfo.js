@@ -10,6 +10,7 @@ export const getShortInfo = () => {
     if (token) {
       const response = await axios.get(`${defaultUrl}user/short`);
       dispatch(getShortNameAction(response.data));
+      console.log(response);
       return response.data.status;
     }
   };

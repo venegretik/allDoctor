@@ -43,13 +43,13 @@ const defaultState = {
         case FRIEND_REQUEST:
             return {...state, balance:action.obj.balance}
         case HISTORY_REQUEST:
-            return {...state,history:action.obj.items,
+            return {...state,history:state.history.concat(action.obj.items),
                 current_page:action.obj.pagination.current_page,
                 total_page:action.obj.pagination.total_page}
         case MED_CART:
             return {...state,med_cart:{...action.obj}}
         case RESULT:
-            return{...state, file_history:[...action.obj.items], 
+            return{...state, file_history:state.file_history.concat(action.obj.items), 
                 current_page:action.obj.pagination.current_page,
                 total_page:action.obj.pagination.total_page}
         case PHOTO:
