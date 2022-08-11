@@ -21,8 +21,16 @@ const Balance = () => {
     useEffect(() => {
         dispatch(axiosProfileBalance());
         dispatch(axiosProfileRefferal());
-        dispatch(axiosProfileHistory());
+        if (!history[0])
+            dispatch(axiosProfileHistory());
     }, []);
+    const CopyText = (e) => {
+        var copyText = document.querySelector(".refferal");
+        copyText.select();
+
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+    }
     const ShowClick = () => {
         if (total_page > current_page++) {
             dispatch(axiosProfileHistory(current_page++))
@@ -59,7 +67,7 @@ const Balance = () => {
                         year: "numeric",
                         day: "numeric",
                     }
-                )}</p> 
+                )}</p>
             </div> <div className={s.History_content}>
                 <p className={s.Font_size14}>{el.action.type}</p>
                 <div className={s.History_content_text}>
@@ -84,8 +92,12 @@ const Balance = () => {
                         type={'text'}
                         name={'summ'}
                     />
-                    <button>пополнить</button>
-
+                    <Button
+                        className={s.Font_size14}
+                        type={'submit'}
+                        class={'btn blue'}
+                        text={'пополнить'}
+                    />
                 </div>
                 <div className={s.Balance_friend}>
                     <input type="checkbox" id="Register_checkbox" className={s.custom_checkbox} onChange={e => setIsShown((current) => !current)} />
@@ -108,11 +120,18 @@ const Balance = () => {
             <div className={s.Referal}>
                 <div className={s.Referal_title}>
                     <h1>Реферальный код</h1>
-                    <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext"/>
+                    <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
                 </div>
                 <div className={s.Refferal_input}>
-                    <input type="text" defaultValue={referral} />
-                    <img className={s.Referal_img} src={copy} alt="" />
+                    <Input
+                        type={'text'}
+                        className="refferal"
+                        required
+                        pattern={'^[0-9]+$'}
+                        minLength={'2'}
+                        defaultValue={referral}
+                    />
+                    <img className={s.Referal_img} src={copy} onClick={CopyText} alt="" />
                 </div>
             </div>
             <div className={s.History}>

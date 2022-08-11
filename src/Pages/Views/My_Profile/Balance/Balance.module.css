@@ -104,11 +104,13 @@
 .Referal_title img{
     margin-left: 9.5px;
     width: 15px;
+    height: auto;
+    vertical-align: top;
     cursor: pointer;
 }
 .Referal input {
-    background: #FFFFFF;
-    border: 2px solid #EAF2FF;
+    background: #FFFFFF!important;
+    border: 2px solid #EAF2FF!important;
     border-radius: 16px;
     width: 100%;
     height: 60px;
@@ -153,7 +155,6 @@
         border-radius: 16px;
         margin-right: 20px;
         width: 130px;
-        height: 40px;
     }
 
     .History_title h1 {
@@ -181,14 +182,6 @@
         font-size: 14px;
     }
 
-    .Referal input {
-        height: 40px;
-    }
-
-    .Input_friend input {
-        height: 40px;
-    }
-
     .Balance_title h1 {
         font-size: 16px;
     }
@@ -196,18 +189,14 @@
     .Balance button {
         padding: 13.5px 23.5px;
         font-size: 10px;
-        height: 40px;
-    }
-
-    .Balance_add input {
-        height: 40px;
+        height: 60px;
     }
 }
 @media(max-width:480px){
     .Balance button {
         padding: 13.5px 23.5px;
         font-size: 10px;
-        height: 40px;
+        height: 60px;
         width: 130px ;
     }
     .Balance_add input{

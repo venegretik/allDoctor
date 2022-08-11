@@ -37,6 +37,7 @@ const ConsultationReady = (props) => {
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
               <img src={ConsultationUpcoming.doctor.photo} alt="" />
+              {ConsultationUpcoming.doctor.is_online && <div className={s.DoctorOnline}></div>}
             </div>
             <div className={s.Doctor_avatar_info}>
               <Stars num={ConsultationUpcoming.doctor.rate} />

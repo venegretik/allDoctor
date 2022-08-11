@@ -16,7 +16,7 @@ input[type=checkbox]:before {
     height: 24px;
     box-sizing: border-box;
     left: -20px;
-    top: 0px;
+    top: -4px;
 }
 input[type=checkbox]:checked:after {
     position: absolute;
@@ -25,7 +25,7 @@ input[type=checkbox]:checked:after {
     height: 24px;
     box-sizing: border-box;
     left: -20px;
-    top: 0px;
+    top: -4px;
 }
 .gray {
     color: #8B9BAB;

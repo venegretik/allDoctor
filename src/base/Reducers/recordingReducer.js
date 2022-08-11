@@ -26,7 +26,7 @@ export const recordingReducer = (state = defaultState, action) => {
     switch (action.type) {
         case RECORDING_ARRAY:
             return{...state,
-            reviewsArray:[...action.Reviews_array.items],
+            reviewsArray:state.reviewsArray.concat(action.Reviews_array.items),
             current_page:action.Reviews_array.pagination.current_page,
             total_page:action.Reviews_array.pagination.total_page}
         case RECORDING_INFO:

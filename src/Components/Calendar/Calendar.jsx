@@ -7,6 +7,7 @@ import { Link, Navigate } from "react-router-dom";
 import Loader from "../Loading/Loader";
 import { axiosConsultationCalendar } from "../../base/asyncActions/getConsultation";
 import { getPuymentInfo } from "../../base/asyncActions/Payment";
+import Button from "../Button/Button";
 import { consultationModalAction } from "../../base/Reducers/ConsultationReducer";
 const Calendar = (props) => {
     const dispatch = useDispatch(),
@@ -21,13 +22,13 @@ const Calendar = (props) => {
             return days[now.getDay()]
         }
     let slots = [];
-    let keyNum=0;
+    let keyNum = 0;
     useEffect(() => {
         dispatch(axiosRecordingCalculator());
     }, [])
     let Modal = async () => {
         let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id))
-        if(status){
+        if (status) {
             dispatch(consultationModalAction(status));
         }
     }
@@ -109,10 +110,28 @@ const Calendar = (props) => {
             </div>
             <div className={s.Calendar_button}>
                 {props.type_el === "popup" ?
-                    <button onClick={e => Modal()}>записаться</button>
-                    : !slot_id && !props.usId ? <button disabled={!slot_id ? true : false}>записаться</button> :
+                    <div onClick={e => Modal()}><Button
+                        className={s.Injoy1 + " " + s.Font_size14}
+                        type={'submit'}
+                        class={'btn blue'}
+                        text={'Перенести'}
+                    /></div>
+                    : !slot_id && !props.usId ?
+                        <div><Button
+                            className={s.Injoy1 + " " + s.Font_size14}
+                            type={'submit'}
+                            disabled={!slot_id ? true : false}
+                            class={'btn blue'}
+                            text={'записаться'}
+                        /></div> :
                         //<Link to={"../payment/" + props.usId + "/" + slot_id}>
-                        <button disabled={!slot_id ? true : false} onClick={OnCheck}>записаться</button>
+                        <div onClick={OnCheck}><Button
+                            className={s.Injoy1 + " " + s.Font_size14}
+                            type={'submit'}
+                            disabled={!slot_id ? true : false}
+                            class={'btn blue'}
+                            text={'записаться'}
+                        /></div> 
                     //</Link>
                 }
             </div>

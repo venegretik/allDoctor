@@ -44,6 +44,7 @@ const ConsultationNext = () => {
                                 <div className={s.Doctor_avatar}>
                                     <div className={s.Doctor_avatar_img}>
                                         <img src={el.doctor.photo} alt="" />
+                                        {el.doctor.is_online && <div className={s.DoctorOnline}></div>}
                                     </div>
                                     <div className={s.Doctor_avatar_info + " " + s.black}>
                                         <Stars num={el.doctor.rate} />
@@ -63,7 +64,7 @@ const ConsultationNext = () => {
                         <div className={s.Consultation_info}>
                             <div className={s.Consultation_info_text}>
                                 <p className={s.gray}>Консультация состоится:</p>
-                                <p>{new Date(el.datetime).toLocaleString(
+                                <p className={s.buy}>{new Date(el.datetime).toLocaleString(
                                     "ru",
                                     {
                                         month: "long",

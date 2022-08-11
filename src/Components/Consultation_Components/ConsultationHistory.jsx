@@ -58,7 +58,7 @@ const ConsultationHistory = () => {
                         </div>
                         <div className={s.Consultation_info_text}>
                             <p className={s.gray}>Консультация состоится:</p>
-                            <p>{new Date(el.datetime).toLocaleString(
+                            <p className={s.buy}>{new Date(el.datetime).toLocaleString(
                                 "ru",
                                 {
                                     month: "long",
@@ -97,7 +97,7 @@ const ConsultationHistory = () => {
                         <SelectConsultation array={branch} selectType={"history"} func={consultationHistoryCons} />
                     </div>
                     <div className={s.History_date}>
-                        <p className={s.Font_size14}>Специализация</p>
+                        <p className={s.Font_size14}>Дата приёма</p>
                         <SelectCalendar />
                     </div>
                 </div>

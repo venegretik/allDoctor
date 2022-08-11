@@ -17,13 +17,16 @@ const SelectLogin = (props) => {
     setIsShown((current) => !current);
   };
   useEffect(() => {
+    if (props.selectType == "sort" && Showtext == "...")
+      setShowText("По популярности");
+  }, []);
+  useEffect(() => {
     if (props.array[0]) {
       if (props.selectType == "specialization") {
         let filt = props.array.filter(el => el.branch_id == params.id);
         setShowText(filt[0].title)
       }
-      if (props.selectType == "sort")
-        setShowText("По популярности");
+
     }
   }, [props.array]);
   const handleClickChange = (changeEvent) => {

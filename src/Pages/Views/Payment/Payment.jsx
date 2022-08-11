@@ -17,6 +17,7 @@ const Payment = () => {
     }, []);
     let params = useParams();
     const [Showtext, setShowText] = useState("");
+    const [check, setcheck] = useState(false);
     let payment = useSelector((state) => state.payment);
     const sendForm = async (e) => {
         e.preventDefault()
@@ -30,6 +31,7 @@ const Payment = () => {
     }
     const handleChange = (e) => {
         setShowText(e.target.value);
+        console.log(e.target.value)
         let obj = {};
         obj.doctor_id = params.id;
         obj.slot_id = params.slot;
@@ -38,6 +40,7 @@ const Payment = () => {
     }
     const handleChangeCheck = (e) => {
         let obj = {};
+        setcheck(e.target.value);
         obj.doctor_id = params.id;
         obj.slot_id = params.slot;
         obj.use_balance = e.target.value;
@@ -96,13 +99,11 @@ const Payment = () => {
                 <div className={s.Oplata}>
                     <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
                     <div className={s.Balance}>
-                        <Input
-                            type={'checkbox'}
-                            name={'use_balance'} onChange={handleChangeCheck} />
+                            <input type="checkbox" id="Register_checkbox" name={'use_balance'} className={s.custom_checkbox} onChange={handleChangeCheck} />
                         <p className={s.Font_size14}>Оплатить с баланса</p>
                     </div>
-                    <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span>
-                    <span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span>
+                    {check ?<span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span> : ""}
+                    {Showtext ?<span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span> : ""}
                 </div>
                 <div className={s.Total_sum}>
                     <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>

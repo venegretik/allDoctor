@@ -408,7 +408,10 @@
     display: flex;
     flex-direction: column;
   }
-  
+  .Doctor {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
   .Sort_select {
     margin-left: 0px !important;
     align-items: flex-start;

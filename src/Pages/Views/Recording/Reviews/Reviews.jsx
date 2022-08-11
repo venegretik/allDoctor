@@ -10,11 +10,13 @@ import {axiosReview} from "../../../../base/asyncActions/getReviews";
 const Reviews = (props) => {
     let dispatch = useDispatch();
     useEffect(() => {
+        if(!recording?.reviewsArray[0])
         dispatch(axiosReview(props.usId));
       }, []);
     let recording = useSelector(state => state.recording);
     let keyNum =0;
     let page = useSelector(state => state.recording.current_page);
+    let total_page = useSelector(state => state.recording.total_page);
     let review = recording.reviewsArray.map(el =>
         <div key={++keyNum} className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
@@ -63,7 +65,10 @@ const Reviews = (props) => {
             {review}
             <div className={s.Reviews_buttons_full}>
                 <div className={s.Reviews_buttons}>
-                    <div className={s.Message_button_margin} onClick={e => dispatch(axiosReview(props.usId, ++page))}>
+                    <div className={s.Message_button_margin} onClick={e =>{
+                        if(page<total_page)
+                        dispatch(axiosReview(props.usId, ++page))
+                    }}>
                     <Button
                             className={s.Show_more + " " + s.Font_size14}
                             type={'submit'}

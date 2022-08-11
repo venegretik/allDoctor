@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SelectResult from "../../../../Components/Select/SelectResult/SelectResult";
 import { FileUploader } from "react-drag-drop-files";
+
 import Button from "../../../../Components/Button/Button";
 import { axiosProfileUpload } from "../../../../base/asyncActions/Profile";
 const Form_Result = () => {
@@ -44,6 +45,7 @@ const Form_Result = () => {
             <Input name={"name"}
                 minLength={'2'}
                 pattern={'^[А-Яа-яЁё\s]+$'}
+                required
                 value={Showtext}
                 onChange={onChangeInput}
                 type="text" placeholder="Название документа" />

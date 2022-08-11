@@ -17,7 +17,7 @@ const ModalCalendar = () => {
                 <Button
                     type={'submit'}
                     class={'btn orange'}
-                    text={'Записаться'}
+                    text={'перенести'}
                 />
             </div>
             {showWindow ? <div className={s.Cancel_Record_full}>
