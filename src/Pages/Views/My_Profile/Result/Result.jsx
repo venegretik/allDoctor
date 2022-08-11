@@ -20,7 +20,6 @@ const Form_Result = () => {
     const [file, setFile] = useState(null);
     const handleChange = (file) => {
         setFile(file);
-        console.log(file)
         if (radioValue && Showtext.length > 4) {
             let obj = {};
             obj.file = file;
@@ -88,6 +87,7 @@ const Result = () => {
     }]
     let file = useSelector((state) => state.profile.file_history)
     useEffect(() => {
+        if(!file[0])
         dispatch(axiosProfileResult());
     }, []);
     let keyNum=0;

@@ -16,7 +16,7 @@ const ModalCalendar = () => {
             <div onClick={e => setWindow(true)}>
                 <Button
                     type={'submit'}
-                    class={'btn blue'}
+                    class={'btn orange'}
                     text={'Записаться'}
                 />
             </div>

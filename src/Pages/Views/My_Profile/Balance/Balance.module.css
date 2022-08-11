@@ -197,10 +197,20 @@
         padding: 13.5px 23.5px;
         font-size: 10px;
         height: 40px;
-        width: 100%;
     }
 
     .Balance_add input {
         height: 40px;
+    }
+}
+@media(max-width:480px){
+    .Balance button {
+        padding: 13.5px 23.5px;
+        font-size: 10px;
+        height: 40px;
+        width: 130px ;
+    }
+    .Balance_add input{
+        margin-right: 10px;
     }
 }

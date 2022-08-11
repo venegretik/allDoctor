@@ -62,14 +62,14 @@ const ReplaceData = () => {
         </b>
       </div>
       <div className={s.Profile_replace_tel}>
-        <p className={s.Font_size16}>Телефон</p>
+        <p className={s.Font_size16 + " " + s.gray}>Телефон</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.phone}</p>
           <ChangeLogin type_el="phone" />
         </div>
       </div>
       <div className={s.Profile_replace_tel}>
-        <p className={s.Font_size16}>Электронная почта</p>
+        <p className={s.Font_size16 + " " + s.gray}>Электронная почта</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
           <p className={s.Font_size14}>

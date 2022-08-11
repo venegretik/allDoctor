@@ -17,6 +17,7 @@ const MyDoctor = () => {
     const totalPage = useSelector(state => state.doctorSpec.totalPage);
     const Doctors = useSelector(state => state.doctorSpec.DoctorMy_array);
     useEffect(() => {
+        if(!Doctors[0])
         dispatch(axiosMyDoctor(1));
         dispatch(getConfigHeaderAction("Мои врачи"))
     }, [])

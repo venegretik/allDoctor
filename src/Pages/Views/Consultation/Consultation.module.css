@@ -235,6 +235,29 @@
     text-align: center;
 }
 
+.Download_file {
+    width: 228px;
+    margin-left: 100px;
+    height: 221px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background: #EAF2FF;
+    border-radius: 24px;
+}
+
+.Download_img {
+    border-bottom: 2px #9DC3FF solid;
+}
+
+.Download_text p {
+    color: #407BFF;
+    width: 161px;
+    margin-top: 8px;
+    text-align: center;
+}
+
 .Show_more button {
     background: #FFFFFF;
     border: 1px solid #9DC3FF;
@@ -304,9 +327,37 @@
     .Doctor_cart {
         width: 500px;
     }
-
-    .Consultation_info div {
+    .Doctor_full1 .Consultation_info button{
         display: none;
+    }
+    .Download_file {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 82px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        background: #EAF2FF;
+        border-radius: 24px;
+    }
+
+    .Download_img {
+        border-bottom: 0px #9DC3FF solid;
+        border-right: 1px #9DC3FF solid;
+    }
+
+    .Download_img img {
+        width: 35.40px;
+        padding-right: 6px;
+    }
+
+    .Download_text p {
+        color: #407BFF;
+        width: 161px;
+        margin-top: 0px;
+        text-align: center;
     }
 
     .Doctor_full1 {
@@ -365,7 +416,7 @@
     }
 
     .Download_img img {
-        width: 70px;
+        width: 40px;
         margin-left: 20px;
     }
 
@@ -381,6 +432,10 @@
         font-weight: 700 !important;
         line-height: 19px !important;
         letter-spacing: 0px !important;
+    }
+
+    .Consultation_info_text {
+        display: none;
     }
 
     .History_special {
@@ -406,6 +461,10 @@
 
     .History_date {
         align-items: flex-start;
+    }
+
+    .Consultation_info {
+        margin-left: 0px;
     }
 
     .Font_size40 {

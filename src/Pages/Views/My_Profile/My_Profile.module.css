@@ -31,9 +31,11 @@
     font-size: 40px;
     margin-bottom: 24px;
 }
-.My_content_top_image{
+
+.My_content_top_image {
     width: 132px;
 }
+
 .My_content_top_image img {
     border-radius: 50%;
     width: 100%;
@@ -61,20 +63,25 @@
 .My_content_top_title {
     display: flex;
 }
-.My_content .Left_Position{
+
+.My_content .Left_Position {
     display: none;
 }
+
 .My_content_top_title img {
     height: 18px;
     margin-top: 10px;
 }
-.navLi:hover{
+
+.navLi:hover {
     border-color: #407BFF;
 }
-.Menu_mobile{
+
+.Menu_mobile {
     display: none;
 }
-.navLink{
+
+.navLink {
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
@@ -87,19 +94,24 @@
     margin-bottom: 30px;
     transition-duration: 0.5s;
 }
-.navLink:hover{
+
+.navLink:hover {
     color: #407BFF;
 }
-.headerActiveLink{
+
+.headerActiveLink {
     color: #407BFF;
 }
-.links{
+
+.links {
     padding-bottom: 40px;
 }
-.links a p{
+
+.links a p {
     color: #407BFF;
     margin-bottom: 5px;
 }
+
 @media(max-width:840px) {
     .My_content_title h1 {
         display: none;
@@ -116,17 +128,24 @@
 
     .My_content_top_title {
         height: 38px;
-        
+
     }
-    .My_content_top_title h1{
+
+    .My_content_top_title h1 {
         font-size: 14px;
         margin-top: auto;
         margin-right: 10px;
         margin-bottom: auto;
     }
-    .My_content_top_image img{
+
+    .My_content_top_image img {
         width: 70px;
     }
+
+    .My_content_top_image {
+        width: 70px;
+    }
+
     .My_Profile {
         flex-direction: column-reverse;
     }
@@ -138,35 +157,42 @@
         display: none;
         justify-content: center;
     }
-    .My_content{
+
+    .My_content {
         display: flex;
         flex-direction: column-reverse;
     }
-    .My_content .Left_Position{
+
+    .My_content .Left_Position {
         display: flex;
     }
+
     .My_content {
         margin-top: 0px;
         margin-left: 0px;
     }
-    .links{
+
+    .links {
         display: flex;
         align-items: center;
         flex-direction: column;
     }
-    
-    .My_content .Left_Position{
+
+    .My_content .Left_Position {
         display: flex;
         flex-direction: column;
     }
+
     .Left_Position ul li {
         display: flex;
         justify-content: center;
     }
 }
+
 @media (max-width:580px) {
     .My_Profile {
         margin-left: 20px;
         margin-right: 20px;
+        margin-top: 10px;
     }
 }
