@@ -9,13 +9,13 @@ import SliderArrow from "../../../Components/Sliders/SliderArrow/SliderArrow";
 import SliderDots from "../../../Components/Sliders/SliderDots/SliderDots";
 import SectionsMedicine from "../../../Components/SectionsMedicine/SectionsMedicine";
 import Chat from "../../../Components/Chat/Chat";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 const Main = (props) => {
   let dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getConfigHeaderAction("Главная"))
- }, []);
+    dispatch(getConfigHeaderAction("Главная"));
+  }, []);
   const config = useSelector((state) => state.config.config);
   return (
     <div>
@@ -23,9 +23,8 @@ const Main = (props) => {
         <ConsultationReady props={props} />
         <DoctorsOnDuty />
         {config.module.symptoms ? <SliderArrow /> : ""}
-        
       </div>
-      {config.module.slider ?<SliderDots /> : "" }
+      {config.module.slider ? <SliderDots /> : ""}
       <div className={s.Container + " Container"}>
         <SectionsMedicine />
       </div>
