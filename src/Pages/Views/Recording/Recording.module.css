@@ -309,4 +309,8 @@
         line-height: 13px !important;
         letter-spacing: 0px !important;
     }
+    .Recording_full {
+    margin-left: 10px;
+    margin-right: 10px;
+}
 }

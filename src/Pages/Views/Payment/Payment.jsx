@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
 import { Link, Navigate } from "react-router-dom";
+import ModalCalendar from "../../../Components/Modal/Modal_calendar/Modal_calendar";
 const Payment = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -85,8 +86,8 @@ const Payment = () => {
                                 }
                             )}</p>
                         </div>
-                        <p className={s.Data_time + " " + s.Font_size14 + " " + s.link_blue}>Изменить дату и время приёма</p>
-                    </div>
+                        <ModalCalendar type_of="1" usId={params.id}/>
+                    </div>  
                 </div>
             </div>
             <form onSubmit={(e) => sendForm(e)}>

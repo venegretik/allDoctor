@@ -216,7 +216,6 @@
     display: flex;
     flex-direction: column;
   }
-
   .Skill {
     margin-top: 0px;
   }
@@ -419,5 +418,8 @@
 
   .Skill_select {
     align-items: flex-start;
+  }
+  .DisplayNone{
+    display: none;
   }
 }

@@ -2,6 +2,7 @@
     background: #F6AE2D;
     border-radius: 16px;
     padding: 4px 15px;
+    color: black;
     margin-top: 10px;
 }
 
@@ -24,6 +25,10 @@
 .Chat_icon {
     position: relative;
     height: 50px;
+}
+.Chat_icon>img{
+
+    cursor: pointer;
 }
 
 .Chat_list ul {

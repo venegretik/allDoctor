@@ -3,8 +3,10 @@ import s from './Modal_calendar.module.css';
 import Button from "../../Button/Button";
 import Calendar from "../../Calendar/Calendar";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-const ModalCalendar = () => {
+import { useSelector,useDispatch } from "react-redux";
+import { consultationModalAction } from "../../../base/Reducers/ConsultationReducer";
+const ModalCalendar = (props) => {
+    let dispatch =useDispatch();
     let [showWindow, setWindow] = useState(false);
     let statusModal = useSelector((state) => state.consultation.statusModal)
     useEffect(() => {
@@ -13,12 +15,13 @@ const ModalCalendar = () => {
     }, [statusModal])
     return (
         <div>
-            <div onClick={e => setWindow(true)}>
-                <Button
+            <div onClick={e => {setWindow(true)
+            dispatch(consultationModalAction(false));}}>
+                {props.type_of == "1" ? <p className={s.link_blue}>Изменить дату и время приёма</p> :<Button
                     type={'submit'}
                     class={'btn orange'}
                     text={'перенести'}
-                />
+                />}
             </div>
             {showWindow ? <div className={s.Cancel_Record_full}>
                 <div className={s.Cancel_Record_block}>
