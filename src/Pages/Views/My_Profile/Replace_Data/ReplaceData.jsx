@@ -36,7 +36,30 @@ const ReplaceData = () => {
       setShow(true);
     } 
   };
-
+  let phone = "";
+  for (let i = 0; profile.phone.length > i; i++) {
+    if (i == 1) {
+      phone += " (";
+      phone += profile.phone[i];
+    }
+    else
+      if (i == 4) {
+        phone += ") ";
+        phone += profile.phone[i];
+      }
+      else
+      if (i == 7) {
+        phone += "-";
+        phone += profile.phone[i];
+      }
+      else
+      if (i == 9) {
+        phone += "-";
+        phone += profile.phone[i];
+      }
+      else
+        phone += profile.phone[i];
+  }
   return (
     <div className={s.ReplaceData}>
       <div className={s.My_content_title}>
@@ -64,7 +87,7 @@ const ReplaceData = () => {
       <div className={s.Profile_replace_tel}>
         <p className={s.Font_size16 + " " + s.gray}>Телефон</p>
         <div className={s.Profile_replace_tel_data}>
-          <p className={s.Font_size16}>{profile.phone}</p>
+          <p className={s.Font_size16}>{phone}</p>
           <ChangeLogin type_el="phone" />
         </div>
       </div>

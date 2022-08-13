@@ -19,20 +19,24 @@ const Payment = () => {
     let params = useParams();
     const [Showtext, setShowText] = useState("");
     const [check, setcheck] = useState(false);
+    const [Redirect, setRedirect] = useState(false);
     let payment = useSelector((state) => state.payment);
     const sendForm = async (e) => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
+        
         [...data].forEach(e => { obj[e[0]] = e[1] })
         obj.doctor_id = params.id;
         obj.use_balance = Boolean(obj.use_balance);
         obj.slot_id = params.slot;
-        dispatch(getPuymentPost(obj));
+        let status = await dispatch(getPuymentPost(obj));
+        if(status.status){
+            window.location.href = status.data.payment_url;
+        }
     }
     const handleChange = (e) => {
         setShowText(e.target.value);
-        console.log(e.target.value)
         let obj = {};
         obj.doctor_id = params.id;
         obj.slot_id = params.slot;
@@ -48,7 +52,7 @@ const Payment = () => {
         dispatch(getPuymentPost(obj));
     }
     return (
-        payment.firstname?  <div className={s.Container + " Container"}>
+        payment.firstname? <div className={s.Container + " Container"}>
         <div className={s.Payment}>
             <div className={s.Payment_title}>
                 <h1>Запись на приём</h1>

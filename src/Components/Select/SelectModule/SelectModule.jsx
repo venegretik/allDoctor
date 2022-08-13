@@ -7,7 +7,7 @@ import "../Select.css";
 const SelectModule = (props) => {
     let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
-    const [Showtext, setShowText] = useState("...");
+    const [Showtext, setShowText] = useState("Не найдено");
     const handleClick = (event) => {
         setIsShown((current) => !current);
     };
@@ -16,6 +16,7 @@ const SelectModule = (props) => {
     }
     useEffect(() => {
         if(props.array[0]){
+            if(!props.array[0].label == "")
             setShowText(props.array[0].label)
         }
     }, [props.array]);

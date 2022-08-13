@@ -400,6 +400,9 @@
     position: relative;
     width: 90px;
   }
+  .Doctor_avatar{
+    width: auto;
+}
 }
 
 @media(max-width:480px) {

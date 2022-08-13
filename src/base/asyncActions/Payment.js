@@ -8,7 +8,7 @@ export const getPuymentInfo = (id, slot) => {
       const response = await axios.post(`${defaultUrl}consultation/checkout`, {
         doctor_id: id,
         slot_id: slot,
-        promocode: "1234",
+        promocode: "",
         use_balance: true
       });
       dispatch(paymentInfoAction(response.data.data));
@@ -26,6 +26,7 @@ export const getPuymentPost = (obj) => {
           }
       });
       dispatch(paymentInfoAction(response.data.data));
+      return response.data;
     }
   };
 };

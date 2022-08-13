@@ -28,7 +28,6 @@ const ConsultationReady = (props) => {
   useEffect(() => {
     asyncCons();
   }, []);
-
   return (
     <section>
       {ConsultationUpcoming ? (
