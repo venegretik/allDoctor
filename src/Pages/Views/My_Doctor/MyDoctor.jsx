@@ -15,6 +15,7 @@ const MyDoctor = () => {
     const dispatch = useDispatch();
     const page = useSelector(state => state.doctorSpec.page);
     const totalPage = useSelector(state => state.doctorSpec.totalPage);
+    const config = useSelector((state) => state.config.config);
     const Doctors = useSelector(state => state.doctorSpec.DoctorMy_array);
     useEffect(() => {
         if(!Doctors[0])
@@ -26,7 +27,7 @@ const MyDoctor = () => {
             dispatch(axiosMyDoctor(page + 1));
         }
     }
-    let Doctor = Doctors.map(el => <div className={s.Doctor} key={el.doctor_id}>
+    let Doctor = Doctors.map(el => <div className={s.Doctor} key={el.doctor_id} style={{color: config?.config.colors.color2}}>
         <Cancel_Record consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete} typeModal={"record"}/>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
@@ -39,7 +40,7 @@ const MyDoctor = () => {
                 </div>
             </div>
             <div className={s.Doctor_info + " " + s.black}>
-                <p className={s.gray + " " + s.Font_size14}>{el.specialization.join(' • ')}</p>
+                <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>{el.specialization.join(' • ')}</p>
                 <h2 className={s.Font_size24}>{el.firstname + " " + el.lastname + " " + el.secondname}</h2>
                 <p className={s.Staj + " " + s.Font_size14}>{el.regalia.join(' • ')}</p>
                 <Link to={"../recording/" + el.doctor_id + "/Default"}>

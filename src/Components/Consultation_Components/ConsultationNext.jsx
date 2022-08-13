@@ -14,6 +14,7 @@ import Button from "../Button/Button";
 import Cancel_Record from "../Modal/Cancel_record/Cancel_Record";
 const ConsultationNext = () => {
     let dispatch = useDispatch();
+    const config = useSelector((state) => state.config.config);
     const PuyFunc = async (id) => {
         const response = await dispatch(axiosConsultationPuy(id));
         if (response.is_paid == false) {
@@ -36,7 +37,7 @@ const ConsultationNext = () => {
     return (
         <div>
             {consultation[0] ? consultation.map(
-                el => <div className={s.Doctor_full} key={el.consultation_id}>
+                el => <div className={s.Doctor_full} key={el.consultation_id} style={{color: config?.config.colors.color2}}>
                     {el.can_cancel ? <Cancel_Record consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
                     <div className={s.Doctor_full1}>
                         <div className={s.Doctor}>
@@ -52,7 +53,7 @@ const ConsultationNext = () => {
                                 </div>
                             </div>
                             <div className={s.Doctor_info + " " + s.black}>
-                                <p className={s.gray}>{el.doctor.specialization.join(" • ")}</p>
+                                <p className={s.gray} style={{color: config?.config.colors.color4}}>{el.doctor.specialization.join(" • ")}</p>
                                 <h2 className={s.Font_size24}>{el.doctor.firstname + " " + el.doctor.lastname + " " + el.doctor.secondname}</h2>
                                 <p className={s.Staj}>{el.doctor.regalia.join(" • ")}</p>
                                 <div className={s.Doctor_buy}>

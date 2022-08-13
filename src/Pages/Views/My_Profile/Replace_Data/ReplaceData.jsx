@@ -22,6 +22,7 @@ const ReplaceData = () => {
   useEffect(() => {
     dispatch(axiosProfile());
   }, []);
+  const config = useSelector(state => state.config.config);
 
   const sendForm = async (e) => {
     e.preventDefault();
@@ -61,7 +62,7 @@ const ReplaceData = () => {
         phone += profile.phone[i];
   }
   return (
-    <div className={s.ReplaceData}>
+    <div className={s.ReplaceData} style={{color: config?.config.colors.color2}}>
       <div className={s.My_content_title}>
         <h1>Личные данные</h1>
       </div>
@@ -127,13 +128,14 @@ const ReplaceData = () => {
           type={"text"}
           name={"secondname"}
         />
-        <div className={s.radio_block}>
+        <div className={s.radio_block} style={{color: config?.config.colors.color4}}>
           <p>Пол</p>
           <Input
             type={"radio"}
             required
             name={"gender"}
             labeltext={"Мужчина"}
+            label={{color: config?.config.colors.color4}}
             value={"0"}
           />
 
@@ -142,6 +144,7 @@ const ReplaceData = () => {
             required
             name={"gender"}
             labeltext={"Женщина"}
+            label={{color: config?.config.colors.color4}}
             value={"1"}
           />
         </div>

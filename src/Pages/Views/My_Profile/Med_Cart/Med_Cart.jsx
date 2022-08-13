@@ -5,7 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { axiosProfileMedCart } from '../../../../base/asyncActions/Profile';
 import Loader from '../../../../Components/Loading/Loader';
 import { Link } from 'react-router-dom';
+    
 const Med_Cart = () => {
+    const config = useSelector(state => state.config.config);
     let dispatch = useDispatch();
     let medCart = useSelector((state) => state.profile.med_cart);
     useEffect(() => {
@@ -44,7 +46,7 @@ const Med_Cart = () => {
         </tr>)
         return (
             medCart.vaccinations ?
-                <div className={s.Med_Cart}>
+                <div className={s.Med_Cart} style={{color: config?.config.colors.color2}}>
                     <div className={s.Med_Cart_Title}>
                         <h1>Медицинская карта</h1>
                     </div>

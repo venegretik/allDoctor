@@ -3,7 +3,7 @@ import style from "../../Pages/Views/Main/Main.module.css";
 import Loader from "../Loading/Loader";
 import Stars from "../Stars/Stars";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getDoctorDuty } from "../../base/asyncActions/getMainPageInfo";
 import { Link } from "react-router-dom";
@@ -17,14 +17,14 @@ const DoctorsOnDuty = () => {
         setDoctor(response.data.items);
       }
     };
-
+  const config = useSelector(state => state.config.config);
   useEffect(() => {
     getDoctor();
   }, []);
   return (
-    <section className={style.SectionDuty}>
+    <section className={style.SectionDuty} >
       <div className={style.Container_list}>
-        <div className={style.Title_list}>
+        <div className={style.Title_list} style={{color: config?.config.colors.color5}}>
           <h1 className={style.Font_size40}>Дежурные врачи</h1>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", columnGap: "30px" }}>
@@ -38,6 +38,9 @@ const DoctorsOnDuty = () => {
                   maxWidth: "500px",
                   cursor: "pointer",
                   textDecoration: "none",
+                  margin: "0px",
+                  padding: "20px",
+                  color: config?.config.colors.color2
                 }}
                 className={s.Doctor}
                 key={el.doctor_id}
@@ -46,20 +49,23 @@ const DoctorsOnDuty = () => {
                   <div className={s.Doctor_avatar}>
                     <div className={s.Doctor_avatar_img}>
                       <img src={el.photo} alt="" />
-                      {el.is_online && <div className={s.DoctorOnline}></div>}
+                      {el.is_online && <div className={s.DoctorOnline} style={{ background: config?.config.colors.color8 }}></div>}
                     </div>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                       <Stars num={el.rate} />
                       <p className={s.Font_size14 + " " + s.DisplayNone}>
                         {el.recomends + " пациентов рекомендуют врача"}
                       </p>
-                      <Link to={"/recording/" + el.doctor_id + "/Reviews"}>
+                      <Link to={"/recording/" + el.doctor_id + "/Reviews"} style={{ color: config?.config.colors.color10 }}>
                         <p className={s.Font_size14 + " " + s.blueLink + " " + s.DisplayNone}>{el.reviews + " отзывов"}</p>
                       </Link>
                     </div>
                   </div>
                   <div className={s.Doctor_info + " " + s.black}>
-                    <p className={s.gray}>{el.specialization.join(" • ")}</p>
+                    <div style={{ color: config?.config.colors.color4 }}>
+                      <p className={s.gray}>{el.specialization.join(" • ")}</p>
+                    </div>
+
                     <h2 className={s.Font_size24}>
                       {el.firstname + " " + el.lastname + " " + el.secondname}
                     </h2>

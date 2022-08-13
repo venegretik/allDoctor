@@ -120,15 +120,17 @@ const Calendar = (props) => {
                         <div><Button
                             className={s.Injoy1 + " " + s.Font_size14}
                             type={'submit'}
-                            disabled={!slot_id ? true : false}
+                            
                             class={'btn blue'}
                             text={'записаться'}
                         /></div> :
                         //<Link to={"../payment/" + props.usId + "/" + slot_id}>
-                        <div onClick={OnCheck}><Button
+                        <div onClick={e=>{
+                            if(slot_id)
+                            OnCheck()
+                        }} ><Button
                             className={s.Injoy1 + " " + s.Font_size14}
                             type={'submit'}
-                            disabled={!slot_id ? true : false}
                             class={'btn blue'}
                             text={'записаться'}
                         /></div> 

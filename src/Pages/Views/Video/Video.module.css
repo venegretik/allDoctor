@@ -9,6 +9,7 @@
 
 .VideoBlock {
     display: flex;
+    padding-bottom: 70px;
 }
 
 .VideoBlockImage {
@@ -52,6 +53,12 @@
 }
 .VideoBlockImage ul li img{
     width: 20px;
+}
+.MessageText input{
+    width: 100%;
+    max-width: 980px;
+    border: 1px solid #EAF2FF!important;
+    background: #fff!important;
 }
 .VideoChat {
     margin-left: 20px;
@@ -131,12 +138,6 @@
     .MessageText{
         width: 100%;
         padding-bottom: 40px;
-    }
-    .MessageText input{
-        width: 100%;
-        max-width: 980px;
-        border: 1px solid #EAF2FF!important;
-        background: #fff!important;
     }
 }
 @media(max-width:480px){

@@ -3,7 +3,9 @@
     justify-content: space-around;
     list-style: none;
 }
-
+.Doctor_full p,h1{
+    color: inherit;
+}
 .DoctorOnline {
     width: 20px;
     height: 20px;
@@ -21,10 +23,6 @@
 .My_consultation {
     margin-right: 35px;
     margin-left: 35px;
-}
-
-.black {
-    color: black !important;
 }
 
 .Doctor_cart {
@@ -70,13 +68,6 @@
 
 .Doctor_info p {
     font-size: 14px;
-}
-
-.Doctor_info {
-    display: flex;
-    color: #FFFFFF;
-    max-width: 335px;
-    flex-direction: column;
 }
 
 .Doctor_skills {

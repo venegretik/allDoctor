@@ -26,7 +26,7 @@ class UploadFile extends React.Component {
         var files = e.target.files;
         var filesArr = Array.prototype.slice.call(files);
         console.log(filesArr);
-        this.props.axiosProfilePhotoUpload(filesArr);
+        this.props.axiosProfilePhotoUpload([...filesArr]);
         this.setState({ files: [...this.state.files, ...filesArr] });
     }
 

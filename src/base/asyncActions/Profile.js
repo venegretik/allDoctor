@@ -92,7 +92,7 @@ export const axiosProfileEdit = (obj) => {
         return response.data
     }
 }
-export const axiosProfileEmailEdit = (code=0, email=null) => {
+export const axiosProfileEmailEdit = (code = 0, email = null) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -145,6 +145,8 @@ export const axiosProfilePhotoUpload = (photo) => {
                 photo: photo
             }
         });
+        if (!response.data.status)
+            alert(response.data.fields.photo)
         dispatch(ProfilePhotoAction(response.data))
         return response.data
     }

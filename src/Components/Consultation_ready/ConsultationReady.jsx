@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./Consultation.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../Components/Loading/Loader";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
@@ -25,13 +25,15 @@ const ConsultationReady = (props) => {
       window.location.href = response.payment_url
     }
   };
+  const config = useSelector(state => state.config.config);
   useEffect(() => {
     asyncCons();
   }, []);
   return (
     <section>
       {ConsultationUpcoming ? (
-        <div className={s.Doctor_cart}>
+        <div className={s.Doctor_cart} style={{color:config?.config.colors.color1,
+                                              backgroundColor:config?.config.colors.color10}}>
           {ConsultationUpcoming.can_cancel ? <Cancel_Record consultation_id={ConsultationUpcoming.consultation_id} text={"Вы действительно хотите отменить запись?"} typeModal={""} func={axiosConsultationDelete}/> : ""}
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
@@ -44,15 +46,15 @@ const ConsultationReady = (props) => {
                 {ConsultationUpcoming.doctor.recomends}% пациентов рекомендуют
                 врача
               </p>
-              <Link to={"/recording/" + ConsultationUpcoming.doctor.doctor_id + "/Reviews"}>
-                <p className={s.Font_size14 + " " + s.blueLink}>
+              <Link to={"/recording/" + ConsultationUpcoming.doctor.doctor_id + "/Reviews"} style={{color:config?.config.colors.color6}}>
+                <p className={s.Font_size14 + " " + s.blueLink} >
                   {ConsultationUpcoming.doctor.reviews} отзывов
                 </p>
               </Link>
             </div>
           </div>
           <div className={s.Doctor_info}>
-            <div className={s.Doctor_skills}>
+            <div className={s.Doctor_skills} style={{color:config?.config.colors.color6}}>
               {ConsultationUpcoming.doctor.specialization
                 ? ConsultationUpcoming.doctor.specialization.map(
                   (spec, key) => {
@@ -83,8 +85,8 @@ const ConsultationReady = (props) => {
                 })
                 : ""}
             </div>
-            <div className={s.Data}>
-              <div className={s.Data_consultation}>
+            <div className={s.Data} style={{color:config?.config.colors.color2}}>
+              <div className={s.Data_consultation} style={{backgroundColor:config?.config.colors.color1}}>
                 <img src="" alt="" />
                 <p className={s.Font_size16}>
                   {new Date(ConsultationUpcoming.datetime).toLocaleString(
@@ -97,7 +99,7 @@ const ConsultationReady = (props) => {
                   )}
                 </p>
               </div>
-              <div className={s.Data_time}>
+              <div className={s.Data_time} style={{backgroundColor:config?.config.colors.color1}}>
                 <img src="" alt="" />
                 <p className={s.Font_size16}>
                   {new Date(ConsultationUpcoming.datetime).toLocaleString(

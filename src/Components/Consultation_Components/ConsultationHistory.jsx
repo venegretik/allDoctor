@@ -16,6 +16,7 @@ const ConsultationHistory = () => {
     const page = useSelector(state => state.consultation.page);
     const date_from = useSelector(state => state.consultation.date_from);
     const date_to = useSelector(state => state.consultation.date_to);
+    const config = useSelector((state) => state.config.config);
     const totalPage = useSelector(state => state.consultation.totalPage);
     let specialization_id = useSelector(state => state.consultation.specialization_id);
     let consultationHistory = useSelector((state) => state.consultation.consultationHistory);
@@ -30,7 +31,7 @@ const ConsultationHistory = () => {
     }
     
     let history = consultationHistory.map(
-        el => <div className={s.Doctor_full} key={el.consultation_id}>
+        el => <div className={s.Doctor_full} key={el.consultation_id} style={{color: config?.config.colors.color2}}>
             {el.can_cancel ? <div className={s.Cart_close + " " + s.black} onClick={() => { DoctorDelete(el.consultation_id) }}>
                 +
             </div> : ""}
@@ -49,15 +50,15 @@ const ConsultationHistory = () => {
                         </div>
                     </div>
                     <div className={s.Doctor_info + " " + s.black}>
-                        <p className={s.gray}>{el.doctor.specialization.join(" • ")}</p>
+                        <p className={s.gray} style={{color: config?.config.colors.color4}}>{el.doctor.specialization.join(" • ")}</p>
                         <h2 className={s.Font_size24}>{el.doctor.firstname + " " + el.doctor.lastname + " " + el.doctor.secondname}</h2>
                         <p className={s.Staj}>{el.doctor.regalia.join(" • ")}</p>
                         <div className={s.Doctor_buy}>
-                            <p className={s.gray}>Стоимость консультации:</p>
+                            <p className={s.gray} style={{color: config?.config.colors.color4}}>Стоимость консультации:</p>
                             <p className={s.buy}>{el.price} ₽</p>
                         </div>
                         <div className={s.Consultation_info_text}>
-                            <p className={s.gray}>Консультация состоится:</p>
+                            <p className={s.gray} style={{color: config?.config.colors.color4}}>Консультация состоится:</p>
                             <p className={s.buy}>{new Date(el.datetime).toLocaleString(
                                 "ru",
                                 {
@@ -77,7 +78,7 @@ const ConsultationHistory = () => {
                                 <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
                             </div>
                             <div className={s.Download_text}>
-                                <p className={s.Font_size14}>Скачать заключение врача</p>
+                                <p className={s.Font_size14} style={{color: config?.config.colors.color10}}>Скачать заключение врача</p>
                             </div>
                         </div>
                     </Link>

@@ -18,6 +18,7 @@ const Balance = () => {
     let total_page = useSelector((state) => state.profile.total_page)
     let current_page = useSelector((state) => state.profile.current_page)
     const history = useSelector((state) => state.profile.history);
+    const config = useSelector(state => state.config.config);
     useEffect(() => {
         dispatch(axiosProfileBalance());
         dispatch(axiosProfileRefferal());
@@ -58,8 +59,8 @@ const Balance = () => {
             setMessage(response.error.fields.summ)
     }
     let History = history.map(
-        el => <div key={++keyNum}>
-            <div className={s.History_data}>
+        el => <div key={++keyNum} style={{color: config?.config.colors.color2}}>
+            <div className={s.History_data} >
                 <p>{new Date(el.datetime).toLocaleString(
                     "ru",
                     {
@@ -79,7 +80,7 @@ const Balance = () => {
     )
     return (
         <div className={s.Balance}>
-            <div className={s.Balance_title}>
+            <div className={s.Balance_title} style={{color: config?.config.colors.color2}}>
                 <h1>Баланс: {balance}₽</h1>
             </div>
             <form onSubmit={(e) => sendForm(e)}>
@@ -99,7 +100,7 @@ const Balance = () => {
                         text={'пополнить'}
                     />
                 </div>
-                <div className={s.Balance_friend}>
+                <div className={s.Balance_friend} style={{color: config?.config.colors.color2}}>
                     <input type="checkbox" id="Register_checkbox" className={s.custom_checkbox} onChange={e => setIsShown((current) => !current)} />
 
                     <label htmlFor="Register_checkbox"></label>
@@ -118,7 +119,7 @@ const Balance = () => {
                 </div>
             </form>
             <div className={s.Referal}>
-                <div className={s.Referal_title}>
+                <div className={s.Referal_title} style={{color: config?.config.colors.color2}}>
                     <h1>Реферальный код</h1>
                     <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
                 </div>
@@ -135,7 +136,7 @@ const Balance = () => {
                 </div>
             </div>
             <div className={s.History}>
-                <div className={s.History_title}>
+                <div className={s.History_title} style={{color: config?.config.colors.color2}}>
                     <h1>
                         История
                     </h1>

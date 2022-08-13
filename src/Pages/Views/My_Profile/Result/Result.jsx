@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Input } from "../../../../Components/Input/Input";
 import { axiosProfileResult } from "../../../../base/asyncActions/Profile";
 import { useEffect, useState } from "react";
+import InfoModal from "../../../../Components/InfoText/InfoModal";
 import { useDispatch, useSelector } from "react-redux";
 import SelectResult from "../../../../Components/Select/SelectResult/SelectResult";
 import { FileUploader } from "react-drag-drop-files";
@@ -18,6 +19,7 @@ const Form_Result = () => {
     const fileTypes = ["JPG", "PNG", "GIF"];
     const [Showtext, setShowText] = useState("");
     const [radioValue, setRadioValue] = useState(null);
+    const config = useSelector(state => state.config.config);
     const [file, setFile] = useState(null);
     const handleChange = (file) => {
         setFile(file);
@@ -50,10 +52,20 @@ const Form_Result = () => {
                 onChange={onChangeInput}
                 type="text" placeholder="Название документа" />
             <div className={s.Form_Radio}>
-                <Input id="Register_radio1" value={'0'} type="radio" name={"type"} onChange={onChangeRadio} />
-                <label htmlFor="Register_radio1" className={s.gray + " " + s.Register_radio2 + " " + s.Font_size14}>Лабороторные</label>
-                <Input id="Register_radio2" value={'1'} type="radio" name={"type"} onChange={onChangeRadio} />
-                <label htmlFor="Register_radio2" className={s.gray + " " + s.Register_radio2 + " " + s.Font_size14}>Функциональные</label>
+                <div className={s.Form_Input} style={{}}>
+                    <Input id="Register_radio1" value={'0'} type="radio" name={"type"} onChange={onChangeRadio} labeltext={"Лабороторные"} label={{
+                        margin: "0px 10px 0px 10px",
+                        color: config?.config.colors.color4
+                    }} />
+                    <InfoModal className={s.Info} text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
+                </div>
+                <div className={s.Form_Input}>
+                    <Input id="Register_radio2" value={'1'} type="radio" name={"type"} onChange={onChangeRadio} labeltext={"Функциональные"} label={{
+                        margin: "0px 10px 0px 40px",
+                        color: config?.config.colors.color4
+                    }} />
+                    <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
+                </div>
             </div>
             <div className={s.Form_Download}>
                 <FileUploader handleChange={handleChange} label="Нажмите или перетащите сюда файл" name="file" types={fileTypes} />
@@ -66,6 +78,7 @@ const Form_Result = () => {
 
 const Result = () => {
     let dispatch = useDispatch();
+    const config = useSelector(state => state.config.config);
     let page = useSelector((state) => state.profile.current_page);
     let total_page = useSelector((state) => state.profile.total_page);
     const onClickShow = () => {
@@ -89,10 +102,10 @@ const Result = () => {
     }]
     let file = useSelector((state) => state.profile.file_history)
     useEffect(() => {
-        if(!file[0])
-        dispatch(axiosProfileResult());
+        if (!file[0])
+            dispatch(axiosProfileResult());
     }, []);
-    let keyNum=0;
+    let keyNum = 0;
     let file_array = file.map(
         el => <div key={++keyNum} className={s.Download_File_block}>
             <div className={s.Download_File_left}>
@@ -111,22 +124,22 @@ const Result = () => {
             </div>
             <div className={s.Download_File_right}>
                 <Link to={el.file} target="_blank" download>
-                    <div className={s.Download_File_right_text}>
+                    <div className={s.Download_File_right_text} style={{color: config?.config.colors.color2}}>
                         <img src={download} alt="" />
                         <p className={s.Font_size14}>604КВ</p>
                     </div>
                 </Link>
-                <p className={s.Font_size14 + " " + s.gray}>{el.type == 1 ? "лабораторные" : "функциональные"}</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>{el.type == 1 ? "лабораторные" : "функциональные"}</p>
             </div>
         </div>
     )
     return (
-        <div className={s.ResultFull}>
-            <div className={s.title}>
+        <div className={s.ResultFull} style={{color: config?.config.colors.color2}}>
+            <div className={s.title} >
                 <h1>Результаты исследований</h1>
             </div>
             <div className={s.formDownload}>
-                <p className={s.Font_size14 + " " + s.gray}>Загрузить документ</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>Загрузить документ</p>
                 <Form_Result />
             </div>
             <div className={s.Download_File}>

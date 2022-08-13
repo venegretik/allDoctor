@@ -19,12 +19,21 @@
     display: flex;
     justify-content: center;
 }
+.Form_Input{
+    display: flex;
+    align-items: center;
+}
 .Form_Radio{
     margin-top: 10px;
+    display: flex;
     margin-left: 30px;
+}
+.Info{
+    margin-left: 10px;
 }
 .Form_Radio label {
     margin-left: 0px;
+    width: auto;
 }
 .Register_radio2{
     margin-right: 40px;
@@ -140,6 +149,20 @@
 @media (max-width:840px){
     .ResultFull{
         padding-left: 0px;
+    }
+}
+@media(max-width:580px){
+    .Form_Radio{
+        flex-direction: column;
+    }
+    .Form_Input{
+        margin-top: 10px;
+    }
+    .Form_Input label{
+        margin-left: 10px!important;
+    }
+    form input {
+        margin-bottom: 4px;
     }
 }
 @media (max-width:480px) {

@@ -29,7 +29,7 @@ const SectionsMedicine = () => {
 
   return (
     <>
-      <section className={s.medicine + " " + s.container}>
+      <section className={s.medicine + " " + s.container} style={{color: config?.config.colors.color5}}>
         <h2 className={s.medicine_title + " " + s.Font_size40}>
           Разделы медицины
         </h2>
@@ -39,7 +39,7 @@ const SectionsMedicine = () => {
           ) : (
             Sections.map((el, key) =>
               key < 8 ? (
-                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id}>
+                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id} style={{color: config?.config.colors.color5}}>
                   <div className={s.card_item}>
                     <img src={el.image} alt="" />
                     <div className={s.card_text_wrapper}>
@@ -66,7 +66,7 @@ const SectionsMedicine = () => {
       </section>
       {config.module.offline_appointment ?
         <section className={s.medicine + " " + s.container}>
-          <h2 className={s.medicine_title + " " + s.Font_size40}>
+          <h2 className={s.medicine_title + " " + s.Font_size40} style={{color: config?.config.colors.color5}}>
             Оффлайн запись
           </h2>
           <div className={s.medicine_cards}>
@@ -75,7 +75,7 @@ const SectionsMedicine = () => {
             ) : (
               Ofline.map((el, key) =>
                 key < 4 ? (
-                  <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"}>
+                  <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"} style={{color: config?.config.colors.color5}}>
                     <div className={s.card_item} >
                       <img src={el.image} alt="" />
                       <div className={s.card_text_wrapper}>

@@ -9,6 +9,7 @@ import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
   let dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
+  const config = useSelector(state => state.config.config);
   useEffect(() => {
     dispatch(axiosProfile());
   }, []);
@@ -90,11 +91,11 @@ const Local_Data = () => {
           </Link>
         </div>
       </div>
-      <div className={s.My_content_title}>
+      <div className={s.My_content_title} style={{color: config?.config.colors.color2}}>
         <h1>Личные данные</h1>
       </div>
-      {profile.lastname ? <div className={s.My_content_container}>
-        <div className={s.My_content_top}>
+      {profile.lastname ? <div className={s.My_content_container} style={{color: config?.config.colors.color2}}>
+        <div className={s.My_content_top} >
           <div className={s.My_content_top_image}>
             <img src={profile.photo} alt="" />
           </div>

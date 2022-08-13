@@ -5,7 +5,9 @@
 .blueLink {
   color: #407BFF;
 }
-
+.SectionDuty p,h2{
+  color: inherit;
+}
 .DoctorOnline {
   width: 20px;
   height: 20px;
@@ -44,7 +46,6 @@
   flex-direction: column;
   align-items: center;
   padding-left: 14px;
-  color: #ffffff;
 }
 
 .Doctor_avatar_img {
@@ -67,7 +68,6 @@
 
 .Doctor_info {
   display: flex;
-  color: #ffffff;
   max-width: 335px;
   flex-direction: column;
 }
@@ -87,20 +87,17 @@
 
 .Doctor {
   display: flex;
-  margin-top: 40px;
+  margin-top: 10px;
   width: 925px;
+  padding: 20px;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   transition-duration: 0.5s;
   border-radius: 10px;
 }
 
 .Doctor:hover {
   box-shadow: 0px 0px 10px 5px #f3f3f3;
-}
-
-.black {
-  color: black !important;
 }
 
 .Doctor_list {

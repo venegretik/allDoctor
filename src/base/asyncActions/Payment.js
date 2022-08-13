@@ -12,6 +12,8 @@ export const getPuymentInfo = (id, slot) => {
         use_balance: true
       });
       dispatch(paymentInfoAction(response.data.data));
+      if (!response.data.status)
+        alert(response.data.error.message)
       return response.data
     }
   };
@@ -20,12 +22,14 @@ export const getPuymentPost = (obj) => {
   return async (dispatch) => {
     const token = localStorage.getItem('token');
     if (token) {
-      const response = await axios.post(`${defaultUrl}consultation/pay`,{
-          params:{
-            ...obj
-          }
+      const response = await axios.post(`${defaultUrl}consultation/pay`, {
+        params: {
+          ...obj
+        }
       });
       dispatch(paymentInfoAction(response.data.data));
+      if (!response.data.status)
+        alert(response.data.error.message)
       return response.data;
     }
   };
