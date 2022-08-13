@@ -234,9 +234,6 @@
   }
 }
 @media (max-width: 480px) {
-  .Doctor_cart {
-    max-width: 400px;
-  }
 
   .Doctor_info button {
     width: 100%;
