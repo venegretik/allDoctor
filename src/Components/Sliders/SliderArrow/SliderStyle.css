@@ -29,7 +29,8 @@
   object-fit: cover;
 }
 .swiperCard {
-  max-width: 180px;
+  max-width: 200px;
+  width: 100%;
   border: 2px solid #eaf2ff;
   border-radius: 40px;
   padding: 40px 30px 35px 30px;
@@ -75,7 +76,7 @@
   color: #2e373d;
   font-size: 30px;
 }
-@media(max-width:980px){
+@media (max-width: 980px) {
   .swiperCard {
     max-width: 240px;
     width: 100%;
@@ -95,11 +96,11 @@
     margin-bottom: 25px;
   }
 }
-@media(max-width:600px){
+@media (max-width: 600px) {
   .swiperCardImg {
     max-width: 50px;
     margin: 0 auto 12px auto;
-    height: 50px!important;
+    height: 50px !important;
     object-fit: contain !important;
   }
   .swiperCard {
@@ -113,7 +114,7 @@
     height: 100%;
     text-decoration: none;
   }
-  .switepCardText{
+  .switepCardText {
     font-size: 10px;
   }
   .CardSwiperTitle {
