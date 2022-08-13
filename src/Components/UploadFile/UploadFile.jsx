@@ -33,7 +33,11 @@ class UploadFile extends React.Component {
     return (
       <div style={styles}>
         <label className="custom-file-upload">
-          <input type="file" onChange={this.onChange} />
+          <input
+            type="file"
+            accept=".png, .jpeg, .webp"
+            onChange={this.onChange}
+          />
           <img src={upload} alt="" />
         </label>
       </div>
