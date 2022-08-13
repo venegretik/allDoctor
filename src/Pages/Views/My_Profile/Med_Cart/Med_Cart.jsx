@@ -113,7 +113,7 @@ const Med_Cart = () => {
                         <table>
                             <thead>
                                 <tr className={s.Font_size16}>
-                                    <th scope="col">Датф</th>
+                                    <th scope="col">Дата</th>
                                     <th scope="col">Специальность</th>
                                     <th scope="col">Врач</th>
                                     <th scope="col">Диагноз</th>

@@ -18,7 +18,7 @@ const ReplaceData = () => {
   const dispatch = useDispatch(),
     profile = useSelector((state) => state.profile),
     date = new Date().toISOString().split("T")[0];
-    let [isShow, setShow] = useState(false);
+  let [isShow, setShow] = useState(false);
   useEffect(() => {
     dispatch(axiosProfile());
   }, []);
@@ -32,34 +32,26 @@ const ReplaceData = () => {
       obj[e[0]] = e[1];
     });
     const response = await dispatch(axiosProfileEdit(obj));
-    if(response.status){
+    if (response.status) {
       dispatch(getShortInfo());
       setShow(true);
-    } 
+    }
   };
   let phone = "";
   for (let i = 0; profile.phone.length > i; i++) {
     if (i == 1) {
       phone += " (";
       phone += profile.phone[i];
-    }
-    else
-      if (i == 4) {
-        phone += ") ";
-        phone += profile.phone[i];
-      }
-      else
-      if (i == 7) {
-        phone += "-";
-        phone += profile.phone[i];
-      }
-      else
-      if (i == 9) {
-        phone += "-";
-        phone += profile.phone[i];
-      }
-      else
-        phone += profile.phone[i];
+    } else if (i == 4) {
+      phone += ") ";
+      phone += profile.phone[i];
+    } else if (i == 7) {
+      phone += "-";
+      phone += profile.phone[i];
+    } else if (i == 9) {
+      phone += "-";
+      phone += profile.phone[i];
+    } else phone += profile.phone[i];
   }
   return (
     <div className={s.ReplaceData} style={{color: config?.config.colors.color2}}>
@@ -69,10 +61,7 @@ const ReplaceData = () => {
       {isShow ? <ChangeData /> : ""}
       <div className={s.Profile_data}>
         <div className={s.Profile_data_download_img}>
-          <img
-            src={profile.photo}
-            alt=""
-          />
+          <img src={profile.photo} alt="" />
           <div className={s.upload}>
             <Message_Container />
           </div>
@@ -96,9 +85,7 @@ const ReplaceData = () => {
         <p className={s.Font_size16 + " " + s.gray}>Электронная почта</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
-          <p className={s.Font_size14}>
-
-          </p>
+          <p className={s.Font_size14}></p>
           <ChangeLogin type_el="email" />
         </div>
       </div>

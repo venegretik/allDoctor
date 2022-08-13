@@ -11,10 +11,12 @@ import Loader from "../../Loading/Loader";
 import { Link } from "react-router-dom";
 
 const SliderArrow = () => {
-  const availableScreenWidth = window.screen.availWidth
+  const availableScreenWidth = window.screen.availWidth;
   let slide = 5;
-  if(availableScreenWidth <= 768){
+  if (availableScreenWidth <= 768 && availableScreenWidth > 420) {
     slide = 4;
+  } else if (availableScreenWidth <= 420) {
+    slide = 3;
   }
   const [Symptoms, setSymptoms] = useState([]),
     dispatch = useDispatch(),
@@ -36,7 +38,7 @@ const SliderArrow = () => {
           spaceBetween={10}
           slidesPerGroup={1}
           loop={true}
-          navigation={slide == 4 ? false : true}
+          navigation={slide <= 4 ? false : true}
           modules={[Navigation]}
           className="mySwiper"
         >

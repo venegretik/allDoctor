@@ -22,7 +22,7 @@ const SliderDots = () => {
     SliderInfo();
   }, []);
   return (
-    <section style={{ marginBottom: "70px" }}>
+    <section style={{ marginBottom: "40px" }}>
       {!Slider ? (
         <Loader />
       ) : (

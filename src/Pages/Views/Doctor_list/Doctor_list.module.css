@@ -3,7 +3,7 @@
 }
 
 .blueLink {
-  color: #407BFF;
+  color: #407bff;
 }
 .SectionDuty p,h2{
   color: inherit;
@@ -84,10 +84,10 @@
   margin-top: 21px;
 }
 
-
 .Doctor {
   display: flex;
-  margin-top: 10px;
+  margin-top: 40px;
+  padding: 20px;
   width: 925px;
   padding: 20px;
   justify-content: space-between;
@@ -149,7 +149,7 @@
 }
 
 .blueLink {
-  color: #407BFF;
+  color: #407bff;
 }
 
 .Payment_block button {
@@ -392,17 +392,17 @@
   transition: 0.2s background-color ease-in-out;
 }
 
-@media(max-width:580px) {
+@media (max-width: 580px) {
   .Doctor_avatar_img {
     position: relative;
     width: 90px;
   }
-  .Doctor_avatar{
+  .Doctor_avatar {
     width: auto;
-}
+  }
 }
 
-@media(max-width:480px) {
+@media (max-width: 480px) {
   .Select_all {
     display: flex;
     flex-direction: column;
@@ -419,7 +419,7 @@
   .Skill_select {
     align-items: flex-start;
   }
-  .DisplayNone{
+  .DisplayNone {
     display: none;
   }
 }

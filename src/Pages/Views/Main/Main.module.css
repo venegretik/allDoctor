@@ -10,19 +10,19 @@
   padding-left: 31px;
   padding-right: 31px;
 }
-.ClassNull{
+.ClassNull {
   text-decoration: none;
 }
-.medicine a{
+.medicine a {
   text-align: center;
 }
-.medicine>a{
+.medicine > a {
   margin-top: 10px;
 }
-.medicine{
- display: flex;
- flex-direction: column;
- align-items: center;
+.medicine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .black {
   color: black !important;
@@ -223,6 +223,23 @@
     width: 280px;
   }
 
+  .card_item {
+    max-width: 160px;
+  }
+  .card_item img {
+    max-width: 160px;
+    max-height: 90px;
+  }
+  .card_title {
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  .card_subtitle {
+    font-size: 10px;
+  }
+  .card_text_wrapper {
+    padding: 10px;
+  }
   .Doctor_avatar_info p {
     display: none;
   }
@@ -230,7 +247,7 @@
     margin-top: 30px;
     text-align: center;
     margin-bottom: 0px;
-}
+  }
   .Doctor_avatar_img {
     width: 70px;
   }

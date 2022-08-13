@@ -10,11 +10,15 @@ const Notification = () => {
   const dispatch = useDispatch();
   const [NewMessage, setNewMessage] = useState(true);
   const [Show, setShow] = useState(false);
+  const [Notice, setNotice] = useState(false);
 
   const asyncNotification = async () => {
     const response = await dispatch(getNotification());
     if (response.status) {
-      setNewMessage(response);
+      setNewMessage(await response);
+      if (response.pagination.total_items === 0) {
+        setNotice(true);
+      }
     }
   };
   const options = {
@@ -32,13 +36,16 @@ const Notification = () => {
 
   return (
     <div
-      onClick={() => setShow(Show ? false : true)}
+      onClick={() => {
+        setShow(Show ? false : true);
+        asyncNotification();
+      }}
       className={s.Profile_logo}
     >
-      {NewMessage.status ? (
-        <img src={newNotice} alt="" />
-      ) : (
+      {Notice ? (
         <img src={message_img} alt="" />
+      ) : (
+        <img src={newNotice} alt="" />
       )}
       {Show && (
         <div className={s.notice_back}>
