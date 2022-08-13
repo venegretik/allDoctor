@@ -14,6 +14,7 @@ import { Input, InpMask } from "../../../../Components/Input/Input";
 import RequestMoney from "../../../../Components/Modal/Request_money/RequestMoney";
 import copy from "../../../../img/copy.png";
 import InfoModal from "../../../../Components/InfoText/InfoModal";
+import FormErrors from "../../../../Components/FormError/FormError";
 const Balance = () => {
   const [isShown, setIsShown] = useState(false);
   const [message, setMessage] = useState("");
@@ -85,6 +86,22 @@ const Balance = () => {
       </div>
     </div>
   ));
+
+  const errorMessage = {
+    status: false,
+    error: {
+      message: "Ошибка совершения оплаты",
+    },
+  };
+  const errorType = {
+    status: false,
+    error: {
+      fields: {
+        email: ["Поле Электронная почта должно быть заполнено."],
+      },
+    },
+  };
+
   return (
     <div className={s.Balance}>
       <div className={s.Balance_title}>
@@ -107,6 +124,7 @@ const Balance = () => {
             text={"пополнить"}
           />
         </div>
+        <FormErrors error={errorType.error.fields.email[0]} />
         <div className={s.Balance_friend}>
           <input
             type="checkbox"
