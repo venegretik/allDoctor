@@ -6,12 +6,13 @@
   right: 30px;
 }
 .blueLink {
-  color: #9DC3FF;
+  color: #9dc3ff;
 }
 .Doctor_cart {
   position: relative;
   margin-top: 40px;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   color: #ffffff;
   display: flex;
   padding-bottom: 22px;
@@ -92,6 +93,7 @@
 }
 .Data {
   display: flex;
+  gap: 10px;
   margin-top: 11px;
   margin-bottom: 20px;
 }
@@ -99,9 +101,10 @@
 .Data_consultation {
   padding: 13px 11.5px;
   width: 117px;
-  margin-right: 10px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 5px;
   border-radius: 15px;
   max-height: 40px;
   padding-left: 16px;
@@ -126,11 +129,18 @@
   width: 107px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 5px;
   border-radius: 15px;
   height: 40px;
   padding-left: 16px;
   color: black;
   background-color: #ffffff;
+}
+.Data_consultation svg,
+.Data_time svg {
+  width: 15px;
+  height: 15px;
 }
 
 .Data_consultation p {
@@ -186,38 +196,11 @@
   text-align: left;
 }
 
-@media (max-width: 980px) {
-  .Doctor_cart {
-    width: 500px;
-  }
-}
 @media (max-width: 580px) {
   .Doctor_cart {
-    width: 380px;
-  }
-  .Data_consultation {
-    padding: 13px 11.5px;
-    width: 80px;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
     border-radius: 15px;
-    max-height: 40px;
-    padding-left: 16px;
-    color: black;
-    background-color: #ffffff;
   }
-  .Data_time {
-    padding: 13px 9px;
-    width: 80px;
-    display: flex;
-    justify-content: center;
-    border-radius: 15px;
-    height: 40px;
-    padding-left: 16px;
-    color: black;
-    background-color: #ffffff;
-  }
+
   .Font_size24 {
     font-family: "Exo", sans-serif;
     font-size: 14px !important;
@@ -253,13 +236,38 @@
 @media (max-width: 480px) {
   .Doctor_cart {
     max-width: 400px;
-    width: 100%;
   }
 
+  .Doctor_info button {
+    width: 100%;
+  }
+  .Data_consultation svg,
+  .Data_time svg {
+    width: 7px;
+    height: 7px;
+  }
+  .Data_consultation {
+    padding: 3px 6px;
+    max-width: 67px;
+    border-radius: 15px;
+    max-height: 20px;
+    border-radius: 5px;
+    color: black;
+    background-color: #ffffff;
+  }
+  .Data_time {
+    padding: 3px 6px;
+    max-width: 67px;
+    border-radius: 15px;
+    max-height: 20px;
+    border-radius: 5px;
+    color: black;
+    background-color: #ffffff;
+  }
   .Doctor_avatar_info p {
     display: none;
   }
-  .Doctor_skills{
+  .Doctor_skills {
     align-items: flex-start;
   }
   .Doctor_avatar_img {
@@ -269,16 +277,11 @@
   .Doctor_avatar_info ul li img {
     width: 13px;
   }
-  .Cart_close{
+  .Cart_close {
     right: 15px;
   }
   .Doctor_avatar {
     margin-right: 10px;
-  }
-
-  .Data_consultation p {
-    text-align: center;
-    height: 14px;
   }
 
   .Injoy {
@@ -300,7 +303,6 @@
   }
 
   .Doctor_info {
-    max-width: 180px;
     width: 70%;
   }
 }
