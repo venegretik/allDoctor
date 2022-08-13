@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosBranch } from "../../../base/asyncActions/getDoctors";
 import { NavLink } from 'react-router-dom';
 import Loader from "../../../Components/Loading/Loader";
+import search from "../../../img/search.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 const Razdeli = () => {
     const dispatch = useDispatch();
@@ -38,8 +39,9 @@ const Razdeli = () => {
     return (
         <section className={s.medicine + " " + s.container}>
             <h2 className={s.medicine_title + " " + s.Font_size40}>Разделы медицины</h2>
-            <div>
+            <div className={s.medicine_input}>
                 <input type="text" placeholder="Поиск по разделам" className={s.Register_form} value={Showtext} onChange={handleChange} />
+                <img src={search} alt="" />
             </div>
             <div className={s.medicine_cards}>
                 {!Branch_list[0] ? (

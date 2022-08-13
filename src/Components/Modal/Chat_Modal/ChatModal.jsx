@@ -2,7 +2,7 @@ import React from "react";
 import s from './ChatModal.module.css';
 import chat from '../../../img/Chat_icon.png';
 import chatMessage from '../../../img/chat_message.png'
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosConsultationChat } from "../../../base/asyncActions/getConsultation";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
@@ -50,7 +50,7 @@ const ChatModal = () => {
                         </div>
                     </div>
                     <div className={s.message_send}>
-                        <div>
+                        <div className={s.message_input}>
                             <input type="text" placeholder="Написать сообщение..." />
                             <img src={chatMessage} className={s.imgAbsol} alt="" />
                         </div>

@@ -12,7 +12,9 @@
     background-color: #8B9BAB;
     height: 132px;
 }
-
+.gray {
+    color: #8B9BAB;
+}
 .upload {
     display: none;
 }
@@ -159,7 +161,19 @@ form input {
         line-height: 13px !important;
         letter-spacing: 0px !important;
     }
-
+    .My_content_title{
+        display: none;
+    }
+    .Profile_data{
+        margin-top: 0px;
+    }
+    
+    .Profile_data b{
+        display: none;
+    }
+    .Profile_data {
+        justify-content: center;
+    }
     .radio_block {
         display: flex;
         align-items: center;

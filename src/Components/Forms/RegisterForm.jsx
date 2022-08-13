@@ -92,11 +92,11 @@ const RegisterForm = () => {
 
         <p className={style.policy}>
           Я принимаю{" "}
-          <Link className={style.policyLink} to={"../private"}>
+          <Link className={style.policyLink} to={"../private/user"}>
             условия пользовательского соглашения
           </Link>{" "}
           и даю своё согласие на{" "}
-          <Link className={style.policyLink} to={"../private"}>
+          <Link className={style.policyLink} to={"../private/perosnal"}>
             обработку персональных данных
           </Link>
         </p>

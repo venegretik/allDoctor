@@ -1,10 +1,17 @@
 .footer_full{
     width: 100%;
-    background: #407BFF;
     height: 126px;
     display: flex;
+    width: 90.89%;
+    max-width:1920px;
+    margin: 0px auto;
     justify-content: space-around;
     align-items: center;
+}
+.footer_container {
+    display: flex;
+    justify-content: center;
+    background: #407BFF;
 }
 .footer_img img{
     width: 154px;

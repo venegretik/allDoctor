@@ -50,11 +50,11 @@ const DoctorsOnDuty = () => {
                     </div>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                       <Stars num={el.rate} />
-                      <p className={s.Font_size14}>
+                      <p className={s.Font_size14 + " " + s.DisplayNone}>
                         {el.recomends + " пациентов рекомендуют врача"}
                       </p>
                       <Link to={"/recording/" + el.doctor_id + "/Reviews"}>
-                        <p className={s.Font_size14 + " " + s.blueLink}>{el.reviews + " отзывов"}</p>
+                        <p className={s.Font_size14 + " " + s.blueLink + " " + s.DisplayNone}>{el.reviews + " отзывов"}</p>
                       </Link>
                     </div>
                   </div>

@@ -216,7 +216,6 @@
     display: flex;
     flex-direction: column;
   }
-
   .Skill {
     margin-top: 0px;
   }
@@ -401,6 +400,9 @@
     position: relative;
     width: 90px;
   }
+  .Doctor_avatar{
+    width: auto;
+}
 }
 
 @media(max-width:480px) {
@@ -408,7 +410,10 @@
     display: flex;
     flex-direction: column;
   }
-
+  .Doctor {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
   .Sort_select {
     margin-left: 0px !important;
     align-items: flex-start;
@@ -416,5 +421,8 @@
 
   .Skill_select {
     align-items: flex-start;
+  }
+  .DisplayNone{
+    display: none;
   }
 }

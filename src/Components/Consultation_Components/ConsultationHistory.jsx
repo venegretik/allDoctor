@@ -10,6 +10,7 @@ import { axiosConsultationHistory, axiosConsultationDelete, consultationHistoryC
 import { axiosBranch } from "../../base/asyncActions/getDoctors";
 import SelectConsultation from "../Select/SelectConsultation/SelectConsultation";
 import SelectCalendar from "../Select/SelectCalendar/SelectCalendar";
+import { Link } from "react-router-dom";
 const ConsultationHistory = () => {
     const branch = useSelector(state => state.doctorSpec.branch_array);
     const page = useSelector(state => state.consultation.page);
@@ -17,15 +18,17 @@ const ConsultationHistory = () => {
     const date_to = useSelector(state => state.consultation.date_to);
     const totalPage = useSelector(state => state.consultation.totalPage);
     let specialization_id = useSelector(state => state.consultation.specialization_id);
+    let consultationHistory = useSelector((state) => state.consultation.consultationHistory);
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(axiosBranch());
+        if(!consultationHistory[0])
         dispatch(axiosConsultationHistory());
     }, [])
     let DoctorDelete = (consultation_id) => {
         dispatch(axiosConsultationDelete(consultation_id));
     }
-    let consultationHistory = useSelector((state) => state.consultation.consultationHistory);
+    
     let history = consultationHistory.map(
         el => <div className={s.Doctor_full} key={el.consultation_id}>
             {el.can_cancel ? <div className={s.Cart_close + " " + s.black} onClick={() => { DoctorDelete(el.consultation_id) }}>
@@ -53,22 +56,31 @@ const ConsultationHistory = () => {
                             <p className={s.gray}>Стоимость консультации:</p>
                             <p className={s.buy}>{el.price} ₽</p>
                         </div>
+                        <div className={s.Consultation_info_text}>
+                            <p className={s.gray}>Консультация состоится:</p>
+                            <p className={s.buy}>{new Date(el.datetime).toLocaleString(
+                                "ru",
+                                {
+                                    month: "long",
+                                    day: "numeric",
+                                    hour: "numeric",
+                                    minute: "numeric"
+                                }
+                            )}</p>
+                        </div>
                     </div>
                 </div>
                 <div className={s.Consultation_info}>
-                    <div className={s.Consultation_info_text}>
-                        <p className={s.gray}>Консультация состоится:</p>
-                        <p>{new Date(el.datetime).toLocaleString(
-                            "ru",
-                            {
-                                month: "long",
-                                day: "numeric",
-                                hour: "numeric",
-                                minute: "numeric"
-                            }
-                        )}</p>
-                    </div>
-                    {el.paid ? <button className={s.Injoy1}>Оплатить</button> : el.can_reschedule ? <button className={s.Injoy1}>Оплатить</button> : ""}
+                    <Link to={el.file} target="_blank" download>
+                        <div className={s.Download_file}>
+                            <div className={s.Download_img}>
+                                <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
+                            </div>
+                            <div className={s.Download_text}>
+                                <p className={s.Font_size14}>Скачать заключение врача</p>
+                            </div>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -85,7 +97,7 @@ const ConsultationHistory = () => {
                         <SelectConsultation array={branch} selectType={"history"} func={consultationHistoryCons} />
                     </div>
                     <div className={s.History_date}>
-                        <p className={s.Font_size14}>Специализация</p>
+                        <p className={s.Font_size14}>Дата приёма</p>
                         <SelectCalendar />
                     </div>
                 </div>

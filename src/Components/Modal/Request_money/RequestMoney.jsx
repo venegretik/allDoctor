@@ -24,6 +24,8 @@ const RequestMoney = (props) => {
                     <div className={s.Cancel_Record}>
                         <Input placeholder={'Сумма'}
                         type="text"
+                        required
+                        pattern={'^[0-9]+$'}
                         />
                         <Button
                             class={'btn orange'}

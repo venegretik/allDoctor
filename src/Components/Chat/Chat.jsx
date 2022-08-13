@@ -48,7 +48,7 @@ const Chat = () => {
                                 </div>
                             </div>
                             <div className={s.message_send}>
-                                <div>
+                                <div className={s.message_input}>
                                     <input type="text" placeholder="Написать сообщение..." />
                                     <img src={chatMessage} className={s.imgAbsol} alt="" />
                                 </div>

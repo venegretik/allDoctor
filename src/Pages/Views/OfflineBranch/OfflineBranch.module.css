@@ -3,23 +3,25 @@
     padding-bottom: 150px;
 }
 
-.medicine_title{
+.medicine_title {
     font-weight: 700;
     font-size: 40px;
     line-height: 53px;
-    text-align: center!important;
+    text-align: center !important;
     color: #2E373D;
     margin-bottom: 27px;
 }
+
 .medicine_cards {
     display: flex;
     gap: 30px;
-    justify-content:space-around ;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
+
 .card_item {
     background: #EAF2FF;
-    border-radius: 8px;
+    border-radius: 30px;
     max-width: 270px;
     width: 100%;
 }
@@ -30,19 +32,25 @@
     margin: 0 auto;
     height: 136px;
 }
-.medicine{
+
+.medicine {
     padding-left: 30px;
     padding-right: 30px;
 }
-.Register_form{
-    
+
+.Register_form {
+
     margin-bottom: 24px;
     border-radius: 16px;
     border: 1px #EAF2FF solid;
     padding: 20px 0px;
     width: 570px;
 }
-.Register_form[type="text"]{padding-left: 28px;}
+
+.Register_form[type="text"] {
+    padding-left: 28px;
+}
+
 .card_title {
     font-weight: 700;
     font-size: 24px;
@@ -51,24 +59,47 @@
     margin-bottom: 11px;
     margin-top: 25px;
 }
+
 .medicine_cards {
     display: flex;
     gap: 30px;
     max-width: 1170px;
-    justify-content:start ;
+    justify-content: start;
     flex-wrap: wrap;
 }
+
 .card_subtitle {
     font-weight: 400;
     font-size: 16px;
     line-height: 21px;
     color: #2E373D;
 }
+
 .card_text_wrapper {
     padding: 0 30px 50px 30px;
 }
-@media(max-width:680px){
-    .Register_form{
+
+.medicine_input img {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+.medicine_input {
+    position: relative;
+    margin-bottom: 24px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.medicine_input input {
+    height: 48px;
+    border: 2px solid #EAF2FF !important;
+    background: #fff !important;
+}
+
+@media(max-width:680px) {
+    .Register_form {
         margin-bottom: 24px;
         border-radius: 16px;
         border: 1px #EAF2FF solid;

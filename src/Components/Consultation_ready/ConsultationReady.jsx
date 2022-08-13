@@ -28,7 +28,6 @@ const ConsultationReady = (props) => {
   useEffect(() => {
     asyncCons();
   }, []);
-
   return (
     <section>
       {ConsultationUpcoming ? (
@@ -37,6 +36,7 @@ const ConsultationReady = (props) => {
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
               <img src={ConsultationUpcoming.doctor.photo} alt="" />
+              {ConsultationUpcoming.doctor.is_online && <div className={s.DoctorOnline}></div>}
             </div>
             <div className={s.Doctor_avatar_info}>
               <Stars num={ConsultationUpcoming.doctor.rate} />
@@ -116,7 +116,7 @@ const ConsultationReady = (props) => {
               </Link> : ConsultationUpcoming.can_reschedule ? <ModalCalendar />
                 : ConsultationUpcoming.is_paid ? <div onClick={e => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}>
                   <Button type="button" class="btn orange" text="Оплатить" />
-                </div> : ""
+                </div> : ConsultationUpcoming.can_reschedule ? <ModalCalendar /> : ""
             }
           </div>
         </div>

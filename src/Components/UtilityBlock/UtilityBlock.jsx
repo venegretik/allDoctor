@@ -75,7 +75,7 @@ const UtilityBlock = () => {
         for (var i = 0; i < elem_range.length; i++) {
 
             // console.log(elem_range[i]);
-            elem_range[i].style.backgroundColor = "#69ce2b";
+            elem_range[i].style.backgroundColor = "#407BFF";
         }
     }
     return (

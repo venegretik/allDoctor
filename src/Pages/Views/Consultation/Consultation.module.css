@@ -195,6 +195,7 @@
 .History_special {
     display: flex;
     width: 70%;
+    align-items: center;
     max-width: 440px;
     margin-right: 80px;
 }
@@ -206,6 +207,7 @@
 .History_date {
     display: flex;
     max-width: 440px;
+    align-items: center;
     width: 70%;
 }
 
@@ -218,6 +220,29 @@
     margin-left: 100px;
     height: 221px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #EAF2FF;
+    border-radius: 24px;
+}
+
+.Download_img {
+    border-bottom: 2px #9DC3FF solid;
+}
+
+.Download_text p {
+    color: #407BFF;
+    width: 161px;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.Download_file {
+    width: 228px;
+    margin-left: 100px;
+    height: 221px;
+    display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     background: #EAF2FF;
@@ -286,7 +311,9 @@
     line-height: 21px;
     letter-spacing: 0px;
 }
-
+.buy{
+    font-size: 24px!important;
+}
 .Injoy1 {
     width: 240px;
     padding: 20.5px 37.5px;
@@ -304,9 +331,44 @@
     .Doctor_cart {
         width: 500px;
     }
-
-    .Consultation_info div {
+    .Consultation_info_text {
         display: none;
+    }
+    .Consultation_title {
+        margin-top: 40px;
+        text-align: center;
+    }
+    .Doctor_full1 .Consultation_info button{
+        display: none;
+    }
+    .Download_file {
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 82px;
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        background: #EAF2FF;
+        border-radius: 24px;
+    }
+
+    .Download_img {
+        border-bottom: 0px #9DC3FF solid;
+        border-right: 1px #9DC3FF solid;
+    }
+
+    .Download_img img {
+        width: 35.40px;
+        padding-right: 6px;
+    }
+
+    .Download_text p {
+        color: #407BFF;
+        width: 161px;
+        margin-top: 0px;
+        text-align: center;
     }
 
     .Doctor_full1 {
@@ -317,6 +379,7 @@
     .ButtonMobile button {
         width: 100%;
         margin-top: 20px;
+        max-width:380px;
         display: block;
     }
 }
@@ -326,6 +389,9 @@
 }
 
 @media(max-width:780px) {
+    .Doctor_info{
+        max-width: 250px;
+    }
     .Download_file {
         align-self: center;
         display: flex;
@@ -342,10 +408,12 @@
     .History_special {
         display: flex;
         flex-direction: column;
+        align-items:flex-start!important;
     }
 
     .History_date {
         display: flex;
+        align-items: flex-start!important;
         flex-direction: column;
     }
 
@@ -365,7 +433,7 @@
     }
 
     .Download_img img {
-        width: 70px;
+        width: 40px;
         margin-left: 20px;
     }
 
@@ -381,6 +449,12 @@
         font-weight: 700 !important;
         line-height: 19px !important;
         letter-spacing: 0px !important;
+    }
+    .buy{
+        font-size: 14px!important;
+    }
+    .Consultation_title {
+        display: none;
     }
 
     .History_special {
@@ -406,6 +480,10 @@
 
     .History_date {
         align-items: flex-start;
+    }
+
+    .Consultation_info {
+        margin-left: 0px;
     }
 
     .Font_size40 {
@@ -488,4 +566,5 @@
         max-width: 180px;
         text-align: left;
     }
+    
 }

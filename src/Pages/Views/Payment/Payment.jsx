@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
 import { Link, Navigate } from "react-router-dom";
+import ModalCalendar from "../../../Components/Modal/Modal_calendar/Modal_calendar";
 const Payment = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -17,16 +18,22 @@ const Payment = () => {
     }, []);
     let params = useParams();
     const [Showtext, setShowText] = useState("");
+    const [check, setcheck] = useState(false);
+    const [Redirect, setRedirect] = useState(false);
     let payment = useSelector((state) => state.payment);
     const sendForm = async (e) => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
+        
         [...data].forEach(e => { obj[e[0]] = e[1] })
         obj.doctor_id = params.id;
         obj.use_balance = Boolean(obj.use_balance);
         obj.slot_id = params.slot;
-        dispatch(getPuymentPost(obj));
+        let status = await dispatch(getPuymentPost(obj));
+        if(status.status){
+            window.location.href = status.data.payment_url;
+        }
     }
     const handleChange = (e) => {
         setShowText(e.target.value);
@@ -38,13 +45,14 @@ const Payment = () => {
     }
     const handleChangeCheck = (e) => {
         let obj = {};
+        setcheck(e.target.value);
         obj.doctor_id = params.id;
         obj.slot_id = params.slot;
         obj.use_balance = e.target.value;
         dispatch(getPuymentPost(obj));
     }
     return (
-        payment.firstname?  <div className={s.Container + " Container"}>
+        payment.firstname? <div className={s.Container + " Container"}>
         <div className={s.Payment}>
             <div className={s.Payment_title}>
                 <h1>Запись на приём</h1>
@@ -82,8 +90,8 @@ const Payment = () => {
                                 }
                             )}</p>
                         </div>
-                        <p className={s.Data_time + " " + s.Font_size14 + " " + s.link_blue}>Изменить дату и время приёма</p>
-                    </div>
+                        <ModalCalendar type_of="1" usId={params.id}/>
+                    </div>  
                 </div>
             </div>
             <form onSubmit={(e) => sendForm(e)}>
@@ -96,13 +104,11 @@ const Payment = () => {
                 <div className={s.Oplata}>
                     <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
                     <div className={s.Balance}>
-                        <Input
-                            type={'checkbox'}
-                            name={'use_balance'} onChange={handleChangeCheck} />
+                            <input type="checkbox" id="Register_checkbox" name={'use_balance'} className={s.custom_checkbox} onChange={handleChangeCheck} />
                         <p className={s.Font_size14}>Оплатить с баланса</p>
                     </div>
-                    <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span>
-                    <span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span>
+                    {check ?<span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span> : ""}
+                    {Showtext ?<span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span> : ""}
                 </div>
                 <div className={s.Total_sum}>
                     <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
