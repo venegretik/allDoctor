@@ -124,7 +124,11 @@ const Balance = () => {
             text={"пополнить"}
           />
         </div>
-        <FormErrors error={errorType.error.fields.email[0]} />
+
+        {/* КОМПОНЕНТ ОШИБКИ */}
+        <FormErrors error={errorMessage.error.message} />
+        {/* КОМПОНЕНТ ОШИБКИ */}
+
         <div className={s.Balance_friend}>
           <input
             type="checkbox"
