@@ -1,6 +1,6 @@
 import React from "react";
-import s from '../My_Profile.module.css';
-import pen from '../../../../img/pen.png'
+import s from "../My_Profile.module.css";
+import pen from "../../../../img/pen.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
@@ -17,66 +17,68 @@ const Local_Data = () => {
     if (i == 1) {
       phone += " (";
       phone += profile.phone[i];
-    }
-    else
-      if (i == 4) {
-        phone += ") ";
-        phone += profile.phone[i];
-      }
-      else
-      if (i == 7) {
-        phone += "-";
-        phone += profile.phone[i];
-      }
-      else
-      if (i == 9) {
-        phone += "-";
-        phone += profile.phone[i];
-      }
-      else
-        phone += profile.phone[i];
+    } else if (i == 4) {
+      phone += ") ";
+      phone += profile.phone[i];
+    } else if (i == 7) {
+      phone += "-";
+      phone += profile.phone[i];
+    } else if (i == 9) {
+      phone += "-";
+      phone += profile.phone[i];
+    } else phone += profile.phone[i];
   }
   return (
     <div className={s.My_content}>
       <div className={s.Left_Position}>
         <ul>
           <li>
-            <NavLink className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-              to="../local-data">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              to="../local-data"
+            >
               <p>Личные данные</p>
             </NavLink>
           </li>
           <li>
-            <NavLink className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-              to="../message">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              to="../message"
+            >
               <p>Уведомления</p>
             </NavLink>
           </li>
           <li>
-            <NavLink className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-              to="../balance">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              to="../balance"
+            >
               <p>Баланс</p>
             </NavLink>
           </li>
           <li>
-            <NavLink className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-              to="../med-cart">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              to="../med-cart"
+            >
               <p>Медицинская карта</p>
             </NavLink>
           </li>
           <li>
-            <NavLink className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-              to="../result">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              to="../result"
+            >
               <p>Результаты использований</p>
             </NavLink>
           </li>
@@ -93,41 +95,47 @@ const Local_Data = () => {
       <div className={s.My_content_title}>
         <h1>Личные данные</h1>
       </div>
-      {profile.lastname ? <div className={s.My_content_container}>
-        <div className={s.My_content_top}>
-          <div className={s.My_content_top_image}>
-            <img src={profile.photo} alt="" />
-          </div>
-          <div className={s.My_content_top_content}>
-            <div className={s.My_content_top_title}>
-              <h1>{profile.firstname + " " + profile.lastname + " " + profile.secondname}</h1>
-              <Link to={"../replace-data"}>
-                <img src={pen} alt="" />
-              </Link>
+      {profile.lastname ? (
+        <div className={s.My_content_container}>
+          <div className={s.My_content_top}>
+            <div className={s.My_content_top_image}>
+              <img src={profile.photo} alt="" />
             </div>
-            <p>{phone}</p>
+            <div className={s.My_content_top_content}>
+              <div className={s.My_content_top_title}>
+                <h1>
+                  {profile.firstname +
+                    " " +
+                    profile.lastname +
+                    " " +
+                    profile.secondname}
+                </h1>
+                <Link to={"../replace-data"}>
+                  <img src={pen} alt="" />
+                </Link>
+              </div>
+              <p>{phone}</p>
+            </div>
+          </div>
+          <div className={s.My_content_bottom}>
+            <span>
+              <p>Дата рождения: {profile.birthday}</p>
+            </span>
+            <span>
+              <p>Электронная почта: {profile.email}</p>
+            </span>
+            <span>
+              <p>Пол: {profile.gender == 1 ? "Женский" : "Мужской"}</p>
+            </span>
+            <span>
+              <p>Баланс: {profile.balance}₽</p>
+            </span>
           </div>
         </div>
-        <div className={s.My_content_bottom}>
-          <span>
-            <p>Дата рождения:</p>
-            <p>{profile.birthday}</p>
-          </span>
-          <span>
-            <p>Электронная почта:</p>
-            <p>{profile.email}</p>
-          </span>
-          <span>
-            <p>Пол:</p>
-            <p>{profile.gender == 1 ? "Женский" : "Мужской"}</p>
-          </span>
-          <span>
-            <p>Баланс:</p>
-            <p>2400₽</p>
-          </span>
-        </div>
-      </div> : <Loader />}
+      ) : (
+        <Loader />
+      )}
     </div>
-  )
-}
+  );
+};
 export default Local_Data;
