@@ -155,31 +155,6 @@ const ConsultationReady = (props) => {
                   )}
                 </p>
               </div>
-              <div className={s.Data_consultation}>
-                <svg
-                  width="10"
-                  height="10"
-                  viewBox="0 0 10 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M7.91667 8.99647H2.08333C1.6231 8.99647 1.25 8.63031 1.25 8.17861V2.45359C1.25 2.0019 1.6231 1.63573 2.08333 1.63573H2.91667V0.817871H3.75V1.63573H6.25V0.817871H7.08333V1.63573H7.91667C8.3769 1.63573 8.75 2.0019 8.75 2.45359V8.17861C8.75 8.63031 8.3769 8.99647 7.91667 8.99647ZM2.08333 4.08931V8.17861H7.91667V4.08931H2.08333ZM2.08333 2.45359V3.27145H7.91667V2.45359H2.08333ZM4.58333 7.53005L3.03875 6.01415L3.62792 5.43592L4.58333 6.3736L6.37208 4.61806L6.96125 5.19629L4.58333 7.52964V7.53005Z"
-                    fill="#2E373D"
-                  />
-                </svg>
-
-                <p className={s.Font_size16}>
-                  {new Date(ConsultationUpcoming.datetime).toLocaleDateString(
-                    "ru",
-                    {
-                      month: "numeric",
-                      year: "2-digit",
-                      day: "numeric",
-                    }
-                  )}
-                </p>
-              </div>
             </div>
             {ConsultationUpcoming.can_start ? (
               <Link
