@@ -6,21 +6,21 @@
   right: 30px;
 }
 .blueLink {
-  color: #9DC3FF;
+  color: #9dc3ff;
 }
 .Doctor_cart {
   position: relative;
   margin-top: 40px;
-  width: 800px;
+  max-width: 800px;
+  width: 100%;
   color: #ffffff;
   display: flex;
   padding-bottom: 22px;
   padding-top: 30px;
+  background-color: #407bff;
   border-radius: 40px;
 }
-.Doctor_cart p{
-  color:inherit!important;
-}
+
 .Doctor_avatar_info p {
   text-align: center;
 }
@@ -32,6 +32,7 @@
   flex-direction: column;
   align-items: center;
   padding-left: 14px;
+  color: #ffffff;
 }
 
 .Doctor_avatar_img {
@@ -53,6 +54,7 @@
 
 .Doctor_info {
   display: flex;
+  color: #ffffff;
   max-width: 335px;
   flex-direction: column;
 }
@@ -61,7 +63,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  
+  color: #9dc3ff;
 }
 .Doctor_skills p {
   display: flex;
@@ -106,7 +108,8 @@
   border-radius: 15px;
   max-height: 40px;
   padding-left: 16px;
-  
+  color: black;
+  background-color: #ffffff;
 }
 
 .Doctor_avatar_info ul {
@@ -133,6 +136,11 @@
   padding-left: 16px;
   color: black;
   background-color: #ffffff;
+}
+.Data_consultation svg,
+.Data_time svg {
+  width: 15px;
+  height: 15px;
 }
 
 .Data_consultation p {
@@ -191,22 +199,8 @@
 @media (max-width: 580px) {
   .Doctor_cart {
     border-radius: 15px;
-    max-height: 40px;
-    padding-left: 16px;
-    color: black;
-    background-color: #ffffff;
   }
-  .Data_time {
-    padding: 13px 9px;
-    width: 80px;
-    display: flex;
-    justify-content: center;
-    border-radius: 15px;
-    height: 40px;
-    padding-left: 16px;
-    color: black;
-    background-color: #ffffff;
-  }
+
   .Font_size24 {
     font-family: "Exo", sans-serif;
     font-size: 14px !important;
