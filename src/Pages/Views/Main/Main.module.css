@@ -136,7 +136,8 @@
 .medicine_cards {
   display: flex;
   gap: 30px;
-  justify-content: start;
+  
+  justify-content: center;
   flex-wrap: wrap;
 }
 
