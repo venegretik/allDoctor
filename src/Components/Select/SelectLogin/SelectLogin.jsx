@@ -11,6 +11,7 @@ const SelectLogin = (props) => {
   const specialization = useSelector(state => state.doctorSpec.specialization_id);
   const page = useSelector(state => state.doctorSpec.page);
   const sort = useSelector(state => state.doctorSpec.sort);
+  const config = useSelector((state) => state.config.config);
   const [isShown, setIsShown] = useState(false);
   const [Showtext, setShowText] = useState("...");
   const handleClick = (event) => {
@@ -45,9 +46,10 @@ const SelectLogin = (props) => {
       {el.title}
     </label>)
   return (
-    <div id="Select-hide" onClick={handleClick}>
+    <div id="Select-hide" onClick={handleClick} >
       <div className="Select_content">
-        <p>{Showtext}</p>
+        <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
+      color:config?.config.colors.color2}}>{Showtext}</p>
         <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
       </div>
       {isShown && (

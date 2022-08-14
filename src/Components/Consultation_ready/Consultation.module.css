@@ -5,13 +5,20 @@
   color: white;
   right: 30px;
 }
-.blueLink {
-  color: #9DC3FF;
-}
+
 .Doctor_cart {
   position: relative;
   margin-top: 40px;
   width: 800px;
+}
+.blueLink {
+  color: #9dc3ff;
+}
+.Doctor_cart {
+  position: relative;
+  margin-top: 40px;
+  max-width: 800px;
+  width: 100%;
   color: #ffffff;
   display: flex;
   padding-bottom: 22px;
@@ -131,8 +138,12 @@
   border-radius: 15px;
   height: 40px;
   padding-left: 16px;
-  color: black;
-  background-color: #ffffff;
+  
+}
+.Data_consultation svg,
+.Data_time svg {
+  width: 15px;
+  height: 15px;
 }
 
 .Data_consultation p {
@@ -193,8 +204,8 @@
     border-radius: 15px;
     max-height: 40px;
     padding-left: 16px;
-    color: black;
-    background-color: #ffffff;
+
+    
   }
   .Data_time {
     padding: 13px 9px;
@@ -204,9 +215,8 @@
     border-radius: 15px;
     height: 40px;
     padding-left: 16px;
-    color: black;
-    background-color: #ffffff;
   }
+
   .Font_size24 {
     font-family: "Exo", sans-serif;
     font-size: 14px !important;

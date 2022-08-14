@@ -10,6 +10,7 @@ import { getPuymentInfo } from "../../base/asyncActions/Payment";
 import Button from "../Button/Button";
 import { consultationModalAction } from "../../base/Reducers/ConsultationReducer";
 const Calendar = (props) => {
+    const config = useSelector((state) => state.config.config);
     const dispatch = useDispatch(),
         [DateStr, setDate] = useState(""),
         [RedPayment, setRedPayment] = useState(false),
@@ -53,7 +54,7 @@ const Calendar = (props) => {
         setSlot(el.slots);
     }
     slots = Slot.map(
-        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive} key={el.slot_id}>
+        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive} style={{background: config?.config.colors.color3}} key={el.slot_id}>
             <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
@@ -61,7 +62,7 @@ const Calendar = (props) => {
                     minute: "numeric"
                 }
             )}</p>
-        </div> : slot_id === el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault} key={el.slot_id} onClick={e => setId(el.slot_id)}>
+        </div> : slot_id === el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault} style={{background: config?.config.colors.color7}} key={el.slot_id} onClick={e => setId(el.slot_id)}>
             <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
@@ -70,7 +71,7 @@ const Calendar = (props) => {
                 }
             )}</p>
         </div> :
-            <div className={s.Calendar_rasp + " " + s.colorOnClick} key={el.slot_id} onClick={e => setId(el.slot_id)}>
+            <div className={s.Calendar_rasp + " " + s.colorOnClick} key={el.slot_id} style={{background: config?.config.colors.color10}} onClick={e => setId(el.slot_id)}>
                 <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                     "ru",
                     {
@@ -82,7 +83,7 @@ const Calendar = (props) => {
     )
     let call = calendar.map(el => <li key={++keyNum}>
         <p>{callendarDay(el.date)}</p>
-        <b className={DateStr === el.date ? s.Calendar_active : ""} onClick={e => slotsFunc(el)}>{new Date(el.date).toLocaleString(
+        <b style={DateStr === el.date ? {background: config?.config.colors.color7} : {}} className={s.Calendar_active} onClick={e => slotsFunc(el)}>{new Date(el.date).toLocaleString(
             "ru",
             {
                 day: "numeric",
@@ -92,10 +93,10 @@ const Calendar = (props) => {
 
 
     return (
-        slots[0] ? <div className={s.Calendar_full}>
+        slots[0] ? <div className={s.Calendar_full} style={{color: config?.config.colors.color2}}>
             {RedPayment === true ? <Navigate to={"../payment/" + props.usId + "/" + slot_id} /> : false}
             <div>
-                <p className={s.Font_size14 + " " + s.gray}>Выберите дату и время для записи:</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>Выберите дату и время для записи:</p>
             </div>
             <div className={s.Calendar_main}>
                 <ul className={s.Font_size14}>
@@ -103,7 +104,7 @@ const Calendar = (props) => {
                 </ul>
             </div>
             <div>
-                <p className={s.Font_size14 + " " + s.gray}>Онлайн-расписание на 25 марта:</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>Онлайн-расписание на 25 марта:</p>
             </div>
             <div className={s.Calendar_rasp_top}>
                 {slots}

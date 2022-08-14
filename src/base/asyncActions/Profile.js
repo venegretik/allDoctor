@@ -128,6 +128,7 @@ export const axiosProfileUpload = (obj = {}) => {
         ...obj,
       },
     });
+    return response.data
   };
 };
 export const axiosProfileDeleteNot = (notification_id) => {
@@ -163,3 +164,4 @@ export const axiosProfilePhotoUpload = (photo) => {
         dispatch(ProfilePhotoAction(response.data))
         return response.data
     }
+  }

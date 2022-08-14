@@ -9,6 +9,7 @@ const ModalCalendar = (props) => {
     let dispatch =useDispatch();
     let [showWindow, setWindow] = useState(false);
     let statusModal = useSelector((state) => state.consultation.statusModal)
+    const config = useSelector((state) => state.config.config);
     useEffect(() => {
         if (statusModal)
             setWindow(false);
@@ -17,7 +18,7 @@ const ModalCalendar = (props) => {
         <div>
             <div onClick={e => {setWindow(true)
             dispatch(consultationModalAction(false));}}>
-                {props.type_of == "1" ? <p className={s.link_blue}>Изменить дату и время приёма</p> :<Button
+                {props.type_of == "1" ? <p className={s.link_blue} style={{color: config?.config.colors.color10}}>Изменить дату и время приёма</p> :<Button
                     type={'submit'}
                     class={'btn orange'}
                     text={'перенести'}
@@ -29,7 +30,7 @@ const ModalCalendar = (props) => {
                         +
                     </div>
                     <div>
-                        <h1 className={s.title}>Перенести запись</h1>
+                        <h1 className={s.title} style={{color: config?.config.colors.color2}}>Перенести запись</h1>
                     </div>
                     <Calendar type_el="popup" />
                 </div>

@@ -33,12 +33,15 @@ export const axiosRecordingDoctor = (doctor_id) => {
         dispatch(recordingInfoAction(response.data.data));
     }
 }
-export const axiosPostReviews = (doctor_id) => {
+export const axiosPostReviews = (doctor_id, obj) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.post(`${defaultUrl}doctor/${doctor_id}/review`);
+        const response = await axios.post(`${defaultUrl}doctor/${doctor_id}/review`,{
+            ...obj
+        });
+        return response.data
     }
 }
 export const axiosRecordingCalculator = (doctor_id) => {

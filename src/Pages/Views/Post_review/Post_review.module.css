@@ -8,14 +8,6 @@
     border-radius: 50%;
 }
 
-.black {
-    color: black !important;
-}
-
-.gray {
-    color: #8B9BAB;
-}
-
 .Grade > ul li {
     margin-top: 10px;
 }
@@ -38,7 +30,6 @@
 
 .Doctor_info {
     display: flex;
-    color: #FFFFFF;
     max-width: 335px;
     flex-direction: column;
 }

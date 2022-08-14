@@ -14,9 +14,11 @@ import { useParams } from "react-router-dom";
 const PrivatePolice = (props) => {
   let dispatch = useDispatch(),
     params = useParams();
+
   let HTML = useSelector((state) => state.config.text_police);
   let file = useSelector((state) => state.config.file);
   let title = useSelector((state) => state.config.title);
+  const config = useSelector((state) => state.config.config);
   useEffect(() => {
     if (params.type == "privacy") dispatch(axiosPrivacy());
     if (params.type == "services") dispatch(axiosServices());
@@ -25,10 +27,10 @@ const PrivatePolice = (props) => {
   }, []);
   return (
     <div className={s.PrivatePoliceFull + " " + s.Container}>
-      <div>
+      <div style={{color: config?.config.colors.color2}}>
         <h1 className={s.Font_size24}>{title}</h1>
       </div>
-      <Link to={file ? file : "/"} target="_blank" download>
+      <Link to={file ? file : "/"} target="_blank" download style={{color: config?.config.colors.color2}}>
         <div className={s.FileBlock}>
           <img src={PDF} alt="" />
           <div className={s.FileText}>

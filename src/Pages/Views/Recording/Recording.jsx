@@ -18,7 +18,9 @@ const Recording = () => {
         dispatch(axiosRecordingDoctor(params.id));
         dispatch(getConfigHeaderAction("Запись"))
     }, []);
+    
     let recording = useSelector(state => state.recording);
+    const config = useSelector((state) => state.config.config);
     const inputElement = useRef();
     useEffect(() => {
         if (params.type === "Reviews")
@@ -29,8 +31,8 @@ const Recording = () => {
     }, [inputElement.current]);
     return (
         recording.reviews ? <>
-            <div className={s.Container + " Container"}>
-                <div className={s.Recording_full}>
+            <div className={s.Container + " Container"} >
+                <div className={s.Recording_full} style={{color: config?.config.colors.color2}}>
                     <div className={s.Doctor_calendar}>
                         <div className={s.Doctor_infos}>
                             <div className={s.Doctor_avatar}>
@@ -40,11 +42,11 @@ const Recording = () => {
                                 <div className={s.Doctor_avatar_info + " " + s.black}>
                                     <Stars num={recording.rate} />
                                     <p className={s.Font_size14}>{recording.recomends + "%"} пациентов рекомендуют врача</p>
-                                    <p className={s.Font_size14 + " " + s.blueLink} onClick={e=>inputElement.current.scrollIntoView()}>{recording.reviews} отзывов</p>
+                                    <p className={s.Font_size14 + " " + s.blueLink} style={{color: config?.config.colors.color10}} onClick={e=>inputElement.current.scrollIntoView()}>{recording.reviews} отзывов</p>
                                 </div>
                             </div>
                             <div className={s.Doctor_info + " " + s.black}>
-                                <p className={s.gray + " " + s.Font_size14}>{recording.specialization.join(' • ')}</p>
+                                <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>{recording.specialization.join(' • ')}</p>
                                 <h2 className={s.Font_size24}>{recording.firstname + " " + recording.lastname + " " + recording.secondname}</h2>
                                 <p className={s.Staj + " " + s.Font_size14}>{recording.regalia.join(' • ')}</p>
                                 <div className={s.Doctor_buy}>

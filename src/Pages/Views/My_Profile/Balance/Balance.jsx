@@ -17,7 +17,6 @@ import InfoModal from "../../../../Components/InfoText/InfoModal";
 import FormErrors from "../../../../Components/FormError/FormError";
 const Balance = () => {
   const [isShown, setIsShown] = useState(false);
-  const [message, setMessage] = useState("");
   let dispatch = useDispatch();
   let keyNum = 0;
   const balance = useSelector((state) => state.profile.balance);
@@ -25,7 +24,22 @@ const Balance = () => {
   let total_page = useSelector((state) => state.profile.total_page);
   let current_page = useSelector((state) => state.profile.current_page);
   const history = useSelector((state) => state.profile.history);
-    const config = useSelector(state => state.config.config);
+  const config = useSelector(state => state.config.config);
+  let [errorType, seterrorType] = useState({
+    status: false,
+    error: {
+        fields: {
+            summ: [],
+            friend: [],
+        },
+    },
+});
+let [errorMessage, seterrorMessage] = useState({
+    status: false,
+    error: {
+        message: "",
+    },
+});
   useEffect(() => {
     dispatch(axiosProfileBalance());
     dispatch(axiosProfileRefferal());
@@ -53,22 +67,28 @@ const Balance = () => {
     });
     !isShown
       ? (response = await dispatch(axiosProfilePay(obj)))
-      : (response = await dispatch(axiosProfileFriend(obj)));
+      : (response = await dispatch(axiosProfilePay(obj)));
     if (response.status && response.payment_url) {
       window.location.href = response.payment_url;
     }
-    if (!response.status && !isShown) {
-      setMessage(response.error.fields.summ);
-      alert(response.success.fields.summ);
+    if (!response.status) {
+      seterrorType(errorType => ({
+        error: {
+            fields: {
+                summ: response.error?.fields.summ? [...response.error?.fields.summ]: [],
+                friend: response.error?.fields.friend? [...response.error?.fields.friend]: []
+            }
+        }
+    }))
+    seterrorMessage(errorMessage => ({
+        error: {
+            message: response.error?.message
+        }
+    }));
     }
-    if (isShown && response.status) {
-      setMessage(response.success.fields.summ);
-      alert(response.success.fields.summ);
-    }
-    if (isShown && !response.status) setMessage(response.error.fields.summ);
   };
   let History = history.map((el) => (
-    <div key={++keyNum} style={{color: config?.config.colors.color2}}>
+    <div key={++keyNum} style={{ color: config?.config.colors.color2 }}>
       <div className={s.History_data} >
         <p>
           {new Date(el.datetime).toLocaleString("ru", {
@@ -88,24 +108,9 @@ const Balance = () => {
     </div>
   ));
 
-  const errorMessage = {
-    status: false,
-    error: {
-      message: "Ошибка совершения оплаты",
-    },
-  };
-  const errorType = {
-    status: false,
-    error: {
-      fields: {
-        email: ["Поле Электронная почта должно быть заполнено."],
-      },
-    },
-  };
-
   return (
     <div className={s.Balance}>
-      <div className={s.Balance_title} style={{color: config?.config.colors.color2}}>
+      <div className={s.Balance_title} style={{ color: config?.config.colors.color2 }}>
         <h1>Баланс: {balance}₽</h1>
       </div>
       <form onSubmit={(e) => sendForm(e)}>
@@ -118,6 +123,9 @@ const Balance = () => {
             type={"number"}
             name={"summ"}
           />
+          {/* КОМПОНЕНТ ОШИБКИ */}
+          <FormErrors error={errorType.error.fields.summ} />
+          {/* КОМПОНЕНТ ОШИБКИ */}
           <Button
             className={s.Font_size14}
             type={"submit"}
@@ -130,7 +138,7 @@ const Balance = () => {
         <FormErrors error={errorMessage.error.message} />
         {/* КОМПОНЕНТ ОШИБКИ */}
 
-        <div className={s.Balance_friend} style={{color: config?.config.colors.color2}}>
+        <div className={s.Balance_friend} style={{ color: config?.config.colors.color2 }}>
           <input
             type="checkbox"
             id="Register_checkbox"
@@ -153,14 +161,17 @@ const Balance = () => {
           ) : (
             ""
           )}
-          <div className={s.Remove_balance}>
-            <img src="" alt="" />
-            <RequestMoney />
-          </div>
+          {/* КОМПОНЕНТ ОШИБКИ */}
+          <FormErrors error={errorType.error.fields.friend} />
+          {/* КОМПОНЕНТ ОШИБКИ */}
+
         </div>
       </form>
+      <div className={s.Remove_balance}>
+        <RequestMoney />
+      </div>
       <div className={s.Referal}>
-        <div className={s.Referal_title} style={{color: config?.config.colors.color2}}>
+        <div className={s.Referal_title} style={{ color: config?.config.colors.color2 }}>
           <h1>Реферальный код</h1>
           <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
         </div>
@@ -177,7 +188,7 @@ const Balance = () => {
         </div>
       </div>
       <div className={s.History}>
-        <div className={s.History_title} style={{color: config?.config.colors.color2}}>
+        <div className={s.History_title} style={{ color: config?.config.colors.color2 }}>
           <h1>История</h1>
         </div>
         <div className={s.History_content_full}>

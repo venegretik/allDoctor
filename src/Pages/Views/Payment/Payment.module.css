@@ -38,10 +38,9 @@ input[type=checkbox]:checked:after {
     justify-content: space-between;
     margin-bottom: 40px;
 }
-
-.black {
-    color: black !important;
-}
+.Payment p,h1,h2{
+    color: inherit;
+  }
 
 .Doctor_list {
     display: flex;
@@ -65,7 +64,6 @@ input[type=checkbox]:checked:after {
 
 .Doctor_info {
     display: flex;
-    color: #FFFFFF;
     max-width: 400px;
     flex-direction: column;
 }
@@ -89,7 +87,6 @@ input[type=checkbox]:checked:after {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #FFFFFF;
 }
 
 .Doctor_avatar_img {

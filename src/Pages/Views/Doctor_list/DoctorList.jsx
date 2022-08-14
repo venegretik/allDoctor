@@ -48,9 +48,10 @@ const DoctorList = () => {
     setPageNumber(++pageNumber);
     dispatch(axiosDoctor(pageNumber));
   }
+  const config = useSelector((state) => state.config.config);
 
   let Doctor = Doctors.map(el =>
-    <div className={s.Doctor} key={el.doctor_id}>
+    <div className={s.Doctor} key={el.doctor_id}  style={{color: config?.config.colors.color2}}>
       <div className={s.Doctor_infos}>
         <div className={s.Doctor_avatar}>
           <div className={s.Doctor_avatar_img}>
@@ -60,23 +61,23 @@ const DoctorList = () => {
             <Stars num={el.rate} />
             <p className={s.Font_size14}>{el.recomends + " пациентов рекомендуют врача"}</p>
             <Link to={"/recording/" + el.doctor_id + "/Reviews"}>
-              <p className={s.Font_size14 + " " + s.blueLink}>{el.reviews + " отзывов"}</p>
+              <p className={s.Font_size14 + " " + s.blueLink} style={{color: config?.config.colors.color10}}>{el.reviews + " отзывов"}</p>
             </Link>
           </div>
         </div>
         <div className={s.Doctor_info + " " + s.black}>
-          <p className={s.gray}>{el.specialization.join(' • ')}</p>
+          <p className={s.gray} style={{color: config?.config.colors.color4}}>{el.specialization.join(' • ')}</p>
           <h2 className={s.Font_size24}>{el.firstname + " " + el.lastname + " " + el.secondname}</h2>
           <p className={s.Staj + " " + s.Font_size14}>{el.regalia.join(' • ')}</p>
           <div className={s.Doctor_buy}>
-            <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
+            <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>Стоимость консультации:</p>
             <p className={s.buy + " " + s.Font_size24}>1500 ₽</p>
           </div>
         </div>
       </div>
       <div className={s.Payment_block}>
         <div className={s.Payment_block_p}>
-          <p className={s.gray + " " + s.Font_size14}>Ближайшая запись:</p>
+          <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>Ближайшая запись:</p>
           <p className={s.Font_size14}>
             {new Date(el.closest_datetime).toLocaleString(
               "ru",

@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Post_review.module.css';
 import star from '../../../img/Rating_Star.png';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
@@ -10,6 +10,8 @@ import SelectReview from "../../../Components/Select/SelectReview/SelectReview";
 import StarComponent from "./StarComponent";
 import { axiosPostReviews } from "../../../base/asyncActions/getReviews";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
+import Button from "../../../Components/Button/Button";
+import FormErrors from "../../../Components/FormError/FormError";
 import { Star1Action, Star2Action, Star3Action, Star4Action, Star5Action } from "../../../base/Reducers/reviewsReducer";
 const PostRewiew = () => {
     const params = useParams();
@@ -19,12 +21,19 @@ const PostRewiew = () => {
         window.scrollTo(0, 0);
         dispatch(getConfigHeaderAction("Оставить отзыв"))
     }, []);
+    let [errorMessage, seterrorMessage] = useState({
+        status: false,
+        error: {
+          message: "",
+        },
+      });
     const star1 = useSelector(state => state.review.star1);
     const star2 = useSelector(state => state.review.star2);
     const star3 = useSelector(state => state.review.star3);
     const star4 = useSelector(state => state.review.star4);
     const star5 = useSelector(state => state.review.star5);
     const idCons = useSelector(state => state.review.idCons);
+    const config = useSelector((state) => state.config.config);
     const review = useSelector((state) => state.review);
     const sendForm = async (e) => {
         e.preventDefault()
@@ -37,13 +46,21 @@ const PostRewiew = () => {
         obj.attitude = star3;
         obj.informing = star4;
         obj.recommend = star5;
-        dispatch(axiosPostReviews(obj))
+        let response = await dispatch(axiosPostReviews(params.id, obj))
+        if (response.status) {
+            seterrorMessage(errorMessage => ({
+                error: {
+                  message: response.error?.message
+                }
+              }));
+        }
     }
+    
     return (
         <div className={s.Container + " Container"}>
-            <div className={s.Review_full}>
+            <div className={s.Review_full} style={{ color: config?.config.colors.color2 }}>
                 <div className={s.Review_title}>
-                    <h1 className={s.Font_size24}>Оставить отзыв</h1>
+                    <h1 className={s.Font_size24} style={{ color: config?.config.colors.color4 }}>Оставить отзыв</h1>
                 </div>
                 <div className={s.Doctor_infos}>
                     <div className={s.Doctor_avatar}>
@@ -51,8 +68,8 @@ const PostRewiew = () => {
                             <img src={review.photo} alt="" />
                         </div>
                     </div>
-                    <div className={s.Doctor_info + " " + s.black}>
-                        <p className={s.gray + " " + s.Font_size14}>{review.specialization.join(' • ')}</p>
+                    <div className={s.Doctor_info + " " + s.black} >
+                        <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>{review.specialization.join(' • ')}</p>
                         <h2 className={s.Font_size24}>{review.firstname + " " + review.lastname + " " + review.secondname}</h2>
                         <p className={s.Staj + " " + s.Font_size14}>{review.regalia.join(' • ')}</p>
                     </div>
@@ -95,24 +112,27 @@ const PostRewiew = () => {
                     <form onSubmit={(e) => sendForm(e)}>
                         <div className={s.select_consultation}>
                             <p className={s.Font_size24}>Выберите консультацию</p>
-                            <SelectReview array={review.consultations} />
+                            <SelectReview required array={review.consultations} />
                         </div>
                         <div className={s.select_consultation + " " + s.select_margin}>
                             <p className={s.Font_size24}>Ваша история</p>
-                            <textarea name="comment" placeholder="Расскажите, как обратились к врачу, как прошла консультация, помогло ли лечение" />
+                            <textarea name="comment" required minLength={10} placeholder="Расскажите, как обратились к врачу, как прошла консультация, помогло ли лечение" />
                         </div>
                         <div className={s.select_consultation + " " + s.select_margin}>
                             <p className={s.Font_size24}>Понравилось</p>
-                            <textarea name="like" placeholder="Здесь можно указать главные плюсы" />
+                            <textarea name="like" required minLength={10} placeholder="Здесь можно указать главные плюсы" />
                         </div>
                         <div className={s.select_consultation + " " + s.select_margin}>
                             <p className={s.Font_size24}>Не понравилось</p>
-                            <textarea name="not_like" placeholder="Какие недостатки вы отметили?" />
+                            <textarea name="not_like" required minLength={10} placeholder="Какие недостатки вы отметили?" />
                         </div>
                         <div className={s.otziv}>
-                            <button type={'submit'} disabled={idCons && star1 && star2 && star3 && star4 && star5 ? false : true} className={s.Font_size14}>Оставить отзыв</button>
+                            <Button class="btn blue" type="submit" text="Оставить отзыв" />
                         </div>
                     </form>
+                    {/* КОМПОНЕНТ ОШИБКИ */}
+                    <FormErrors error={errorMessage.error.message} />
+                    {/* КОМПОНЕНТ ОШИБКИ */}
                 </div>
             </div>
         </div>

@@ -4,13 +4,14 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "./SliderStyle.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getSymptoms } from "../../../base/asyncActions/getMainPageInfo";
 import Loader from "../../Loading/Loader";
 import { Link } from "react-router-dom";
 
 const SliderArrow = () => {
+  const config = useSelector((state) => state.config.config);
   const availableScreenWidth = window.screen.availWidth;
   let slide = 5;
   if (availableScreenWidth <= 768 && availableScreenWidth > 420) {
@@ -49,7 +50,7 @@ const SliderArrow = () => {
               <SwiperSlide key={item.symptom_id}>
                 <Link to={"/razdeli"} className="swiperCard">
                   <img className="swiperCardImg" src={item.image} alt="" />
-                  <p className="switepCardText">{item.title}</p>
+                  <p className="switepCardText" style={{color: config?.config.colors.color2}}>{item.title}</p>
                 </Link>
               </SwiperSlide>
             ))

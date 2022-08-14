@@ -14,7 +14,6 @@
   font-weight: 700;
   font-size: 40px;
   line-height: 48px;
-  color: #2e373d;
   max-width: 490px;
   margin-bottom: 32px;
 }
@@ -28,7 +27,6 @@
   font-weight: 400;
   font-size: 24px;
   line-height: 32px;
-  color: #000000;
   margin-bottom: 7px;
 }
 
@@ -45,9 +43,8 @@
   line-height: 16px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #8b9bab;
   padding: 18px 30px;
-  border-bottom: 4px solid #407bff;
+  
   max-width: 124px;
   text-align: center;
   margin: 0 auto;

@@ -12,6 +12,7 @@ import * as rdrLocales from 'react-date-range/dist/locale';
 const SelectCalendar = (props) => {
     let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
+    const config = useSelector((state) => state.config.config);
     let [isNum, setNum] = useState(0);
     const specialization = useSelector(state => state.consultation.specialization_id);
     const page = useSelector(state => state.consultation.page);
@@ -37,7 +38,8 @@ const SelectCalendar = (props) => {
     return (
         <div id="Select-hide">
             <div className="Select_content" onClick={handleClick}>
-                <p>{new Date(state[0].startDate).toLocaleString(
+                <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
+      color:config?.config.colors.color2}}>{new Date(state[0].startDate).toLocaleString(
                     "ru",
                     {
                       month: "numeric",

@@ -42,7 +42,7 @@ const ConsultationHistory = () => {
                         <div className={s.Doctor_avatar}>
                             <div className={s.Doctor_avatar_img}>
                                 <img src={el.doctor.photo} alt="" />
-                                {el.doctor.is_online && <div className={s.DoctorOnline}></div>}
+                                {el.doctor.is_online && <div style={{background: config?.config.colors.color8}} className={s.DoctorOnline}></div>}
                             </div>
                             <div className={s.Doctor_avatar_info + " " + s.black}>
                                 <Stars num={el.doctor.rate} />
@@ -92,7 +92,7 @@ const ConsultationHistory = () => {
                 <div className={s.History_title}>
                     <h1>История</h1>
                 </div>
-                <div className={s.History_select}>
+                <div className={s.History_select} style={{color: config?.config.colors.color2}}>
                     <div className={s.History_special}>
                         <p className={s.Font_size14}>Специализация</p>
                         <SelectConsultation array={branch} selectType={"history"} func={consultationHistoryCons} />

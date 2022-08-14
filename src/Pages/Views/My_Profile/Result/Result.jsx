@@ -11,7 +11,7 @@ import InfoModal from "../../../../Components/InfoText/InfoModal";
 import { useDispatch, useSelector } from "react-redux";
 import SelectResult from "../../../../Components/Select/SelectResult/SelectResult";
 import { FileUploader } from "react-drag-drop-files";
-
+import FormErrors from "../../../../Components/FormError/FormError";
 import Button from "../../../../Components/Button/Button";
 import { axiosProfileUpload } from "../../../../base/asyncActions/Profile";
 const Form_Result = () => {
@@ -21,15 +21,22 @@ const Form_Result = () => {
     const [radioValue, setRadioValue] = useState(null);
     const config = useSelector(state => state.config.config);
     const [file, setFile] = useState(null);
-    const handleChange = (file) => {
+    const handleChange = async (file) => {
         setFile(file);
         if (radioValue && Showtext.length > 4) {
             let obj = {};
             obj.file = file;
             obj.name = Showtext;
             obj.type = radioValue;
-            dispatch(axiosProfileUpload(obj))
+           let response = await dispatch(axiosProfileUpload(obj));
             setFile(null);
+            if(!response.status){
+                seterrorMessage(errorMessage => ({
+                    error: {
+                        message: response.error?.message
+                    }
+                }))
+            }
         }
         else {
             alert('Заполните все поля');
@@ -42,6 +49,12 @@ const Form_Result = () => {
     const onChangeRadio = async (e) => {
         setRadioValue(e.target.value);
     }
+    let [errorMessage, seterrorMessage] = useState({
+        status: false,
+        error: {
+            message: "",
+        },
+    });
     return (
         <form>
             <Input name={"name"}
@@ -72,6 +85,9 @@ const Form_Result = () => {
             </div>
             <button>выбрать файл</button>
             <div className={s.Form_Line}></div>
+            {/* КОМПОНЕНТ ОШИБКИ */}
+            <FormErrors error={errorMessage.error.message} />
+            {/* КОМПОНЕНТ ОШИБКИ */}
         </form>
     )
 }
@@ -124,22 +140,22 @@ const Result = () => {
             </div>
             <div className={s.Download_File_right}>
                 <Link to={el.file} target="_blank" download>
-                    <div className={s.Download_File_right_text} style={{color: config?.config.colors.color2}}>
+                    <div className={s.Download_File_right_text} style={{ color: config?.config.colors.color2 }}>
                         <img src={download} alt="" />
                         <p className={s.Font_size14}>604КВ</p>
                     </div>
                 </Link>
-                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>{el.type == 1 ? "лабораторные" : "функциональные"}</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>{el.type == 1 ? "лабораторные" : "функциональные"}</p>
             </div>
         </div>
     )
     return (
-        <div className={s.ResultFull} style={{color: config?.config.colors.color2}}>
+        <div className={s.ResultFull} style={{ color: config?.config.colors.color2 }}>
             <div className={s.title} >
                 <h1>Результаты исследований</h1>
             </div>
             <div className={s.formDownload}>
-                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>Загрузить документ</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>Загрузить документ</p>
                 <Form_Result />
             </div>
             <div className={s.Download_File}>

@@ -10,13 +10,14 @@ const Login = (props) => {
 
   const error = useSelector(state => state.login.error)
   const log_in = localStorage.getItem('login')
+  const config = useSelector((state) => state.config.config);
   return (
     <div className={'Container'}>
       {log_in ? <Navigate to={'/register'}/> : false }
       <div className={style.login_container}>
-        <div className={style.login_text}>
+        <div className={style.login_text} style={{color: config?.config.colors.color2}}>
           <img className={style.login_image} src={logo} alt=""/>
-          <h1 className={style.login_title}>Советуйтесь с врачом, а не с форумом</h1>
+          <h1 className={style.login_title} style={{color: config?.config.colors.color5}}>Советуйтесь с врачом, а не с форумом</h1>
           <ul className={style.login_list}>
             <li className={style.login_item}>консультации квалифицированных врачей — для себя, детей и родителей</li>
             <li className={style.login_item}>врачи на связи круглосуточно</li>
@@ -27,7 +28,7 @@ const Login = (props) => {
           </ul>
         </div>
         <div style={{maxWidth: '400px', width: '100%'}}>
-          <p className={style.login_form_text}>ВОЙТИ</p>
+          <p className={style.login_form_text} style={{color: config?.config.colors.color4,borderBottom: `4px solid ${config?.config.colors.color10}`}}>ВОЙТИ</p>
           {
             error ? <p style={{color: 'red', marginBottom: '10px'}}>{error}</p> : ''
           }

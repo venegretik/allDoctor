@@ -9,6 +9,7 @@ import search from "../../../img/search.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 const Razdeli = () => {
     const dispatch = useDispatch();
+    const config = useSelector((state) => state.config.config);
     
     let Branch = useSelector(state => state.doctorSpec.branch_array);
     const [BranchSort, setShowBranchSort] = useState(Branch);
@@ -27,7 +28,7 @@ const Razdeli = () => {
         setShowBranchSort(BranchSort1);
     }
     const BranchOffline = useSelector(state => state.doctorSpec.branch_offline_array);
-    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id} key={el.branch_id}>
+    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id} key={el.branch_id} style={{color: config?.config.colors.color5}}>
         <div className={s.card_item}>
             <img src={el.image} alt="" />
             <div className={s.card_text_wrapper}>
@@ -38,7 +39,7 @@ const Razdeli = () => {
     </ NavLink>)
     return (
         <section className={s.medicine + " " + s.container}>
-            <h2 className={s.medicine_title + " " + s.Font_size40}>Разделы медицины</h2>
+            <h2 className={s.medicine_title + " " + s.Font_size40} style={{color: config?.config.colors.color5}}>Разделы медицины</h2>
             <div className={s.medicine_input}>
                 <input type="text" placeholder="Поиск по разделам" className={s.Register_form} value={Showtext} onChange={handleChange} />
                 <img src={search} alt="" />

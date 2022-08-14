@@ -97,7 +97,7 @@ const Med_Cart = () => {
                                 </li>
                             </ul>
                         </div>
-                        <Link to={medCart.file} target="_blank" download>
+                        <Link to={medCart.file} target="_blank" download style={{color: config?.config.colors.color10}}>
 
                             <div className={s.Download_file}>
                                 <div className={s.Download_img}>

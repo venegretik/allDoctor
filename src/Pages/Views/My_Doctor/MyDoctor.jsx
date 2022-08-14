@@ -33,7 +33,7 @@ const MyDoctor = () => {
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>
                     <img src={el.photo} alt="" />
-                    {el.is_online && <div className={s.DoctorOnline}></div>}
+                    {el.is_online && <div style={{background: config?.config.colors.color8}} className={s.DoctorOnline}></div>}
                 </div>
                 <div className={s.Doctor_avatar_info + " " + s.black}>
                     <Stars num={el.rate} />

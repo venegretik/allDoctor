@@ -12,7 +12,6 @@
 }
 
 .Cancel_Record h1 {
-  color: black;
   margin-top: 32px;
 }
 
@@ -24,7 +23,10 @@
   text-transform: uppercase;
   border-radius: 16px;
 }
-
+.Cancel_Record_button{
+  display: flex;
+  gap: 30px;
+}
 .Cancel_Record_block {
   display: flex;
   flex-direction: column;
@@ -148,19 +150,13 @@
 
 @media (max-width:480px) {
 
-  .Cancel_Record_button button {
-    width: 80px;
-    height: 40px;
-    padding: 13px 31px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 10px;
-  }
-
   .Cart_close {
     right: 20px;
   }
-
+  .Cancel_Record_button{
+    display: flex;
+    gap: 10px;
+  }
   .Cancel_Record_block {
     position: absolute;
     left: 50%;

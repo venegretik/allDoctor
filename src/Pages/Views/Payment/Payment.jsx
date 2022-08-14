@@ -8,7 +8,9 @@ import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
+import FormErrors from "../../../Components/FormError/FormError";
 import { Link, Navigate } from "react-router-dom";
+import Button from "../../../Components/Button/Button";
 import ModalCalendar from "../../../Components/Modal/Modal_calendar/Modal_calendar";
 const Payment = () => {
     const dispatch = useDispatch();
@@ -16,23 +18,54 @@ const Payment = () => {
         window.scrollTo(0, 0);
         dispatch(getConfigHeaderAction("Оплата"))
     }, []);
+    let [errorType, seterrorType] = useState({
+        status: false,
+        error: {
+            fields: {
+                summ: [],
+                friend: [],
+            },
+        },
+    });
+    let [errorMessage, seterrorMessage] = useState({
+        status: false,
+        error: {
+            message: "",
+        },
+    });
     let params = useParams();
     const [Showtext, setShowText] = useState("");
     const [check, setcheck] = useState(false);
-    const [Redirect, setRedirect] = useState(false);
     let payment = useSelector((state) => state.payment);
+    const config = useSelector((state) => state.config.config);
     const sendForm = async (e) => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
-        
+
         [...data].forEach(e => { obj[e[0]] = e[1] })
         obj.doctor_id = params.id;
         obj.use_balance = Boolean(obj.use_balance);
         obj.slot_id = params.slot;
-        let status = await dispatch(getPuymentPost(obj));
-        if(status.status){
-            window.location.href = status.data.payment_url;
+        
+        let response = await dispatch(getPuymentPost(obj));
+        if (response.status) {
+            window.location.href = response.data.payment_url;
+        }
+        if (!response.status) {
+            seterrorType(errorType => ({
+                error: {
+                    fields: {
+                        summ: response.error?.fields.summ? [...response.error?.fields.summ]: [],
+                        friend: response.error?.fields.friend? [...response.error?.fields.friend]: []
+                    }
+                }
+            }))
+            seterrorMessage(errorMessage => ({
+                error: {
+                    message: response.error?.message
+                }
+            }));
         }
     }
     const handleChange = (e) => {
@@ -52,73 +85,77 @@ const Payment = () => {
         dispatch(getPuymentPost(obj));
     }
     return (
-        payment.firstname? <div className={s.Container + " Container"}>
-        <div className={s.Payment}>
-            <div className={s.Payment_title}>
-                <h1>Запись на приём</h1>
-            </div>
-            <div className={s.Doctor}>
-                <div className={s.Doctor_infos}>
-                    <div className={s.Doctor_avatar}>
-                        <div className={s.Doctor_avatar_img}>
-                            <img src={payment.photo} alt="" />
+        payment.firstname ? <div className={s.Container + " Container"}>
+            <div className={s.Payment} style={{ color: config?.config.colors.color2 }}>
+                <div className={s.Payment_title} style={{ color: config?.config.colors.color2 }}>
+                    <h1>Запись на приём</h1>
+                </div>
+                <div className={s.Doctor}>
+                    <div className={s.Doctor_infos}>
+                        <div className={s.Doctor_avatar}>
+                            <div className={s.Doctor_avatar_img}>
+                                <img src={payment.photo} alt="" />
+                            </div>
+                            <div className={s.Doctor_avatar_info + " " + s.black}>
+                                <Stars num={payment.rate} />
+                                <p className={s.Font_size14}>{payment.recomends} пациентов рекомендуют врача</p>
+                                <Link to={"../recording/" + params.id + "/Reviews"} style={{ color: config?.config.colors.color10 }}>
+                                    <p className={s.Font_size14}>{payment.reviews} отзывов</p>
+                                </Link>
+                            </div>
                         </div>
-                        <div className={s.Doctor_avatar_info + " " + s.black}>
-                            <Stars num={payment.rate} />
-                            <p className={s.Font_size14}>{payment.recomends} пациентов рекомендуют врача</p>
-                            <Link to={"../recording/" + params.id + "/Reviews"}>
-                                <p className={s.Font_size14}>{payment.reviews} отзывов</p>
-                            </Link>
+                        <div className={s.Doctor_info + " " + s.black}>
+                            <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>{payment.specialization.join(' • ')}</p>
+                            <h2 className={s.Font_size24}>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
+                            <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
+                            <div className={s.Doctor_buy}>
+                                <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>Стоимость консультации:</p>
+                                <p className={s.buy + " " + s.Font_size16}>{payment.checkout.price} ₽</p>
+                            </div>
+                            <div className={s.Doctor_buy}>
+                                <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>Дата и время приёма:</p>
+                                <p className={s.buy + " " + s.Font_size16}>{new Date(payment.consultation_datetime).toLocaleString(
+                                    "ru",
+                                    {
+                                        month: "long",
+                                        year: "numeric",
+                                        day: "numeric",
+                                    }
+                                )}</p>
+                            </div>
+                            <ModalCalendar type_of="1" usId={params.id} />
                         </div>
                     </div>
-                    <div className={s.Doctor_info + " " + s.black}>
-                        <p className={s.gray + " " + s.Font_size14}>{payment.specialization.join(' • ')}</p>
-                        <h2 className={s.Font_size24}>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
-                        <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
-                        <div className={s.Doctor_buy}>
-                            <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
-                            <p className={s.buy + " " + s.Font_size16}>{payment.checkout.price} ₽</p>
-                        </div>
-                        <div className={s.Doctor_buy}>
-                            <p className={s.gray + " " + s.Font_size14}>Дата и время приёма:</p>
-                            <p className={s.buy + " " + s.Font_size16}>{new Date(payment.consultation_datetime).toLocaleString(
-                                "ru",
-                                {
-                                    month: "long",
-                                    year: "numeric",
-                                    day: "numeric",
-                                }
-                            )}</p>
-                        </div>
-                        <ModalCalendar type_of="1" usId={params.id}/>
-                    </div>  
                 </div>
-            </div>
-            <form onSubmit={(e) => sendForm(e)}>
-                <div className={s.Summ}>
-                    <Input
-                        type="text"
-                        placeholder="Промо или реферальный код"
-                        name={'promocode'} value={Showtext} onChange={handleChange} />
-                </div>
-                <div className={s.Oplata}>
-                    <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
-                    <div className={s.Balance}>
+                <form onSubmit={(e) => sendForm(e)}>
+                    <div className={s.Summ}>
+                        <Input
+                            type="text"
+                            placeholder="Промо или реферальный код"
+                            name={'promocode'} value={Showtext} onChange={handleChange} />
+                            
+                    </div>
+                    <div className={s.Oplata} style={{ color: config?.config.colors.color2 }}>
+                        <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
+                        <div className={s.Balance}>
                             <input type="checkbox" id="Register_checkbox" name={'use_balance'} className={s.custom_checkbox} onChange={handleChangeCheck} />
-                        <p className={s.Font_size14}>Оплатить с баланса</p>
+                            <p className={s.Font_size14}>Оплатить с баланса</p>
+                        </div>
+                        {check ? <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span> : ""}
+                        {Showtext ? <span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span> : ""}
                     </div>
-                    {check ?<span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span> : ""}
-                    {Showtext ?<span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span> : ""}
-                </div>
-                <div className={s.Total_sum}>
-                    <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
-                    <button className={s.Font_size14} type="submit">Оплатить</button>
-                    <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user">пользовательского соглашения</Link> и даю <Link to="../private/personal"> согласие на обработку персональных данных</Link>.</p>
-                </div>
-            </form>
-        </div>
-    </div>:<Navigate to={`../recording/${params.id}/Default`} />
-       
+                    <div className={s.Total_sum} style={{ color: config?.config.colors.color2 }}>
+                        <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
+                        <Button class="btn blue" type="submit" text="Оплатить" />
+                        <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user">пользовательского соглашения</Link> и даю <Link to="../private/personal"> согласие на обработку персональных данных</Link>.</p>
+                    </div>
+                </form>
+                {/* КОМПОНЕНТ ОШИБКИ */}
+                <FormErrors error={errorMessage.error.message} />
+                {/* КОМПОНЕНТ ОШИБКИ */}
+            </div>
+        </div> : <Navigate to={`../recording/${params.id}/Default`} />
+
     )
 }
 export default Payment;

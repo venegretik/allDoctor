@@ -61,7 +61,9 @@
   padding-bottom: 40px;
   border-radius: 16px;
 }
-
+.Cancel_Record button{
+  margin-top: 10px;
+}
 .Font_size24 {
   font-family: "Exo", sans-serif;
   font-size: 24px;

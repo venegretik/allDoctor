@@ -9,7 +9,6 @@
     margin-top: 30px;
 }
 .Calendar_active{
-    background: #F6AE2D;
     width: 100%;
     border-radius: 50%;
     justify-content: center;
@@ -57,9 +56,6 @@
 
 }
 
-.gray {
-    color: #8B9BAB;
-}
 
 .Calendar_main {
     margin-bottom: 10px;
@@ -80,13 +76,13 @@
 }
 .colorUnactive{
     cursor: default;
-    background: #EAF2FF!important;
+    background: #EAF2FF;
 }
 .colorOnClick{
-    background: #407BFF!important;
+    background: #407BFF;
 }
 .colorDefault{
-    background: #F6AE2D!important;
+    background: #F6AE2D;
 }
 .Calendar_button button {
     margin-top: 14px;

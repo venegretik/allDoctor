@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    color: #FFFFFF;
 }
 
 .blueLink {
@@ -16,7 +15,9 @@
 .Message_button_margin {
     margin-right: 20px;
 }
-
+.Recording_full p,h1,h2{
+    color: inherit;
+  }
 .DoctorOnline {
     width: 20px;
     height: 20px;
@@ -48,7 +49,6 @@
 
 .Doctor_info {
     display: flex;
-    color: #FFFFFF;
     max-width: 335px;
     flex-direction: column;
 }
@@ -76,9 +76,6 @@
     margin-top: 21px;
 }
 
-.black {
-    color: black !important;
-}
 
 .Doctor_list {
     display: flex;
@@ -90,10 +87,6 @@
     display: flex;
     justify-content: space-around;
     list-style: none;
-}
-
-.gray {
-    color: #8B9BAB;
 }
 
 .Doctor_text {
