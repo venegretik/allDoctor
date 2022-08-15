@@ -28,13 +28,15 @@ const Calendar = (props) => {
         dispatch(axiosRecordingCalculator());
     }, [])
     let Modal = async () => {
-        let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id))
+        let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id, DateStr))
+        
         if (status) {
             dispatch(consultationModalAction(status));
         }
     }
     let OnCheck = async () => {
         let status = await dispatch(getPuymentInfo(props.usId, slot_id));
+        
         if (status.status === true)
             setRedPayment(true)
         else

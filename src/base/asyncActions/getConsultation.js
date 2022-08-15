@@ -1,6 +1,7 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
 import { consultationAction, consultationHistoryAction, consultationHistoryConsAction, consultationDeleteAction, consultationStartAction } from "../Reducers/ConsultationReducer";
+import { paymentDateTimeAction } from "../Reducers/paymentReducer";
 export const axiosConsultation = () => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
@@ -79,7 +80,7 @@ export const axiosConsultationPuy = (consultation_id) => {
         return response.data.data
     }
 }
-export const axiosConsultationCalendar = (consultation_id, slot_id) => {
+export const axiosConsultationCalendar = (consultation_id, slot_id, DateStr=1) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -89,8 +90,7 @@ export const axiosConsultationCalendar = (consultation_id, slot_id) => {
                 slot_id: slot_id
             }
         });
-        if (!response.data.status)
-            alert(response.data.error.message)
+        dispatch(paymentDateTimeAction(DateStr))
         return response.data.status
     }
 }
@@ -101,8 +101,7 @@ export const axiosConsultationStart = (consultation_id) => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}consultation/${consultation_id}/start`);
         dispatch(consultationStartAction(response.data.data.doctor))
-        if (!response.data.status)
-            alert(response.data.error.message)
+        
     }
 }
 export const axiosConsultationChat = () => {
