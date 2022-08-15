@@ -16,7 +16,7 @@ const Footer = () => {
   let Text = useSelector(state => state.config.header_text);
   let config = useSelector(state => state.config.config);
   return (
-    <section className={s.footer_container}>
+    <section className={s.footer_container} style={{background:config?.config.colors.color10}}>
       <footer className={s.footer_full}>
         <div
           style={{
