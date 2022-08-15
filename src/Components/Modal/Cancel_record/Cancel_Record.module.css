@@ -7,13 +7,12 @@
   display: flex;
   justify-content: center;
   left: 0px;
-  z-index: 10;
+  z-index: 21;
   top: 0px;
 }
 
 .Cancel_Record h1 {
   margin-top: 32px;
-  min-width: 515px;
 }
 .Cancel_close {
   position: absolute;
