@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import s from "./Header.module.css";
-import logo from "../../../img/logo.png";
 import arrow_back from "../../../img/arrow-back.png";
 import { UserMenu } from "./UserMenu/UserMenu";
 import { useSelector } from "react-redux/es/exports";
