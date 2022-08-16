@@ -17,6 +17,7 @@
   display: flex;
   padding-bottom: 22px;
   padding-top: 30px;
+  padding-right: 40px;
   background-color: #407bff;
   border-radius: 40px;
 }
@@ -199,6 +200,7 @@
 @media (max-width: 580px) {
   .Doctor_cart {
     border-radius: 15px;
+    padding-right:10px;
   }
 
   .Font_size24 {

@@ -66,7 +66,7 @@ const DoctorList = () => {
           </div>
         </div>
         <div className={s.Doctor_info + " " + s.black}>
-          <p className={s.gray} style={{color: config?.config.colors.color4}}>{el.specialization.join(' • ')}</p>
+          <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>{el.specialization.join(' • ')}</p>
           <h2 className={s.Font_size24}>{el.firstname + " " + el.lastname + " " + el.secondname}</h2>
           <p className={s.Staj + " " + s.Font_size14}>{el.regalia.join(' • ')}</p>
           <div className={s.Doctor_buy}>

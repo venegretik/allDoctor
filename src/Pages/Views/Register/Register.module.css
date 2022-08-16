@@ -1,6 +1,7 @@
 .form_container {
   padding-top: 5vw;
   max-width: 720px;
+  padding: 5vw 20px;
   margin: 0 auto;
 }
 .title {
@@ -50,4 +51,13 @@
   line-height: 21px;
   color: #407bff;
   text-decoration: none;
+}
+@media(max-width:678px){
+    .title{
+      font-size: 16px;
+      line-height: 21px;
+    }
+    .radio_block {
+      column-gap: 45px;
+    }
 }

@@ -70,7 +70,6 @@ const RegisterForm = () => {
           flexDirection: "column-reverse",
           gap: "10px",
         }}
-        labeltext={"Дата рождения"}
         max={date}
         name={"birthday"}
       />

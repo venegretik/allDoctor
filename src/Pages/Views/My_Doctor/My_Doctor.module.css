@@ -152,8 +152,11 @@
     display: none;
 }
 @media(max-width:580px){
-    .Doctor_info{
-        max-width: 200px;
+    .Doctor_avatar{
+        margin-right: 10px;
+    }
+    .Doctor_infos{
+        padding-right: 35px;
     }
 }
 @media(max-width:480px) {

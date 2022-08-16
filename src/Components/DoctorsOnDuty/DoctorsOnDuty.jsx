@@ -63,7 +63,7 @@ const DoctorsOnDuty = () => {
                   </div>
                   <div className={s.Doctor_info + " " + s.black}>
                     <div style={{ color: config?.config.colors.color4 }}>
-                      <p className={s.gray}>{el.specialization.join(" • ")}</p>
+                      <p className={s.gray + " " + s.Font_size14}>{el.specialization.join(" • ")}</p>
                     </div>
 
                     <h2 className={s.Font_size24}>

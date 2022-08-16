@@ -82,6 +82,10 @@
   .login_title {
     display: none;
   }
+  .login_container {
+    flex-direction: column;
+    justify-content: center;
+  }
   .login_image {
     width: 280px;
   }

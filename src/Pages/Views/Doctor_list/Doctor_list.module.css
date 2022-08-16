@@ -62,13 +62,10 @@
   font-size: 24px;
 }
 
-.Doctor_info p {
-  font-size: 14px;
-}
-
 .Doctor_info {
   display: flex;
-  max-width: 335px;
+  max-width: 325px;
+  padding-right: 10px;
   flex-direction: column;
 }
 
@@ -86,12 +83,10 @@
 
 .Doctor {
   display: flex;
-  margin-top: 40px;
+  margin-top: 10px;
   padding: 20px;
   width: 925px;
-  padding: 20px;
   justify-content: space-between;
-  margin-bottom: 10px;
   transition-duration: 0.5s;
   border-radius: 10px;
 }
@@ -157,8 +152,6 @@
   padding: 20.5px 44px;
   background: #407bff;
   font-weight: 700;
-  font-size: 14px;
-  line-height: 19px;
   border: 0px;
   border-radius: 16px;
   color: #ffffff;
@@ -212,6 +205,10 @@
   .Doctor {
     display: flex;
     flex-direction: column;
+  }
+  .Doctor_avatar{
+    max-width: 132px;
+    width: auto;
   }
   .Skill {
     margin-top: 0px;
@@ -270,7 +267,7 @@
     font-family: "Exo", sans-serif;
     font-size: 16px !important;
     font-weight: 700 !important;
-    line-height: 53px !important;
+    line-height: 21px !important;
     letter-spacing: 0px !important;
     text-align: left;
   }
@@ -279,7 +276,7 @@
     font-family: "Exo", sans-serif;
     font-size: 10px !important;
     font-weight: 400;
-    line-height: 19px;
+    line-height: 13px;
     letter-spacing: 0px;
     text-align: left;
   }
@@ -395,11 +392,21 @@
 @media (max-width: 580px) {
   .Doctor_avatar_img {
     position: relative;
-    width: 90px;
+    width: 70px;
   }
-  .Doctor_avatar {
-    width: auto;
+  .Doctor_avatar_info ul li{
+    max-width: 20%;
   }
+  .Doctor_avatar_info ul li img{
+    max-width: 100%;
+  }
+  .Staj{
+    margin-top: 0px;
+}
+.Doctor_buy {
+  margin-top: 4px;
+}
+  
 }
 
 @media (max-width: 480px) {
@@ -407,8 +414,21 @@
     display: flex;
     flex-direction: column;
   }
+  .Doctor_avatar {
+    max-width: 70px;
+    width: auto;
+  }
+  .Doctor_list {
+    margin-left: 20px;
+  }
+  .Payment_block button{
+    width: 100%;
+    margin-top: 5px;
+    padding: 13.5px 20px;
+  }
   .Doctor {
-    margin-top: 20px;
+    margin-top: 0px;
+    padding: 10px 0px;
     margin-bottom: 20px;
   }
   .Sort_select {

@@ -85,11 +85,19 @@
   .Header_container {
     width: 100%;
   }
-
+  .Menu_mobile img{
+    position: absolute;
+    left: 30px;
+    top: 12px;
+  }
+  .Menu_mobile_title h1{
+    text-align: center;
+  }
   .Menu_mobile {
     display: flex;
     width: 100%;
     height: 41px;
+    padding: 0px 20px;
     align-items: center;
     justify-content: center;
     position: fixed;
@@ -101,12 +109,6 @@
 
   .Header_full {
     display: none;
-  }
-
-  .Menu_mobile_back {
-    position: absolute;
-    left: 30px;
-    top: 12px;
   }
 
   .Menu_mobile_title h1 {
