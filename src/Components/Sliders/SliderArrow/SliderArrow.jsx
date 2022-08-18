@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 const SliderArrow = () => {
   const config = useSelector((state) => state.config.config);
   const availableScreenWidth = window.screen.availWidth;
-  let slide = 5;
+  let slide = 5.3;
   if (availableScreenWidth <= 768 && availableScreenWidth > 420) {
-    slide = 4;
+    slide = 3.6;
   } else if (availableScreenWidth <= 420) {
-    slide = 3;
+    slide = 2.6;
   }
   const [Symptoms, setSymptoms] = useState([]),
     dispatch = useDispatch(),
@@ -29,6 +29,7 @@ const SliderArrow = () => {
     };
   useEffect(() => {
     SymptomInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section style={{ marginBottom: "80px" }}>
@@ -38,7 +39,9 @@ const SliderArrow = () => {
           slidesPerView={slide}
           spaceBetween={10}
           slidesPerGroup={1}
+          initialSlide={4}
           loop={true}
+          centeredSlides ={true} 
           navigation={slide <= 4 ? false : true}
           modules={[Navigation]}
           className="mySwiper"
@@ -48,7 +51,7 @@ const SliderArrow = () => {
           ) : (
             Symptoms.map((item) => (
               <SwiperSlide key={item.symptom_id}>
-                <Link to={"/razdeli"} className="swiperCard">
+                <Link to={"/doctor-list/" + item.branch_id} className="swiperCard">
                   <img className="swiperCardImg" src={item.image} alt="" />
                   <p className="switepCardText" style={{color: config?.config.colors.color2}}>{item.title}</p>
                 </Link>

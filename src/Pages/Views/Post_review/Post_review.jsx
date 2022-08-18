@@ -116,15 +116,15 @@ const PostRewiew = () => {
                         </div>
                         <div className={s.select_consultation + " " + s.select_margin}>
                             <p className={s.Font_size24}>Ваша история</p>
-                            <textarea name="comment" required minLength={10} placeholder="Расскажите, как обратились к врачу, как прошла консультация, помогло ли лечение" />
+                            <textarea name="comment" className={s.Font_size14} required minLength={10}  placeholder="Расскажите, как обратились к врачу, как прошла консультация, помогло ли лечение" />
                         </div>
                         <div className={s.select_consultation + " " + s.select_margin}>
                             <p className={s.Font_size24}>Понравилось</p>
-                            <textarea name="like" required minLength={10} placeholder="Здесь можно указать главные плюсы" />
+                            <textarea name="like" className={s.Font_size14} required minLength={10} placeholder="Здесь можно указать главные плюсы" />
                         </div>
                         <div className={s.select_consultation + " " + s.select_margin}>
                             <p className={s.Font_size24}>Не понравилось</p>
-                            <textarea name="not_like" required minLength={10} placeholder="Какие недостатки вы отметили?" />
+                            <textarea name="not_like" className={s.Font_size14} required minLength={10} placeholder="Какие недостатки вы отметили?" />
                         </div>
                         <div className={s.otziv}>
                             <Button class="btn blue" type="submit" text="Оставить отзыв" />

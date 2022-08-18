@@ -88,7 +88,7 @@ const SectionsMedicine = () => {
                 )
               )
             )}
-            <Link to={"/razdeli"} style={{ color: config?.config.colors.color5 }}>
+            <Link to={"/razdeli-offline"} style={{ color: config?.config.colors.color5 }}>
               <div className={s.card_item} style={{ background: config?.config.colors.color3 }}>
                 <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
                 <div className={s.card_text_wrapper}>

@@ -127,8 +127,7 @@
     margin-bottom: 0px;
   }
 }
-
-@media (max-width: 480px) {
+@media(max-width:580px){
   .Font_size40 {
     font-family: "Exo", sans-serif;
     font-size: 20px !important;
@@ -144,6 +143,9 @@
     line-height: 13px !important;
     letter-spacing: 0px !important;
   }
+}
+@media (max-width: 480px) {
+  
 
   .Cancel_Record_block {
     padding: 0px 20px;

@@ -15,7 +15,7 @@ const RazdeliOffline = () => {
     useEffect(() => {
         dispatch(axiosBranchOffline());
         window.scrollTo(0, 0);
-        dispatch(getConfigHeaderAction("Разделы медицины"))
+        dispatch(getConfigHeaderAction("Оффлайн записи"))
     }, []);
     useEffect(() => {
         setShowBranchSort(BranchOffline)

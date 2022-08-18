@@ -58,6 +58,7 @@
 .medicine {
   padding-left: 30px;
   padding-right: 30px;
+  padding-bottom: 30px;
 }
 
 .medicine_input img {
@@ -120,6 +121,7 @@
 
   .medicine {
     padding: 20px;
+    padding-bottom: 40px;
   }
 
   .card_item img {

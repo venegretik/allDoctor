@@ -1,58 +1,67 @@
 .Chat_list ul li {
-    background: #F6AE2D;
+    background: #f6ae2d;
     border-radius: 16px;
     padding: 4px 15px;
+    color: black;
     margin-top: 10px;
-    color: #000;
-}
-.Chat_icon .Chat_mod{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-.Chat_list {
+  }
+  .Chat_mod{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.Chat_icon>img {
+  }
+  .Chat_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .Chat_icon > img {
     position: fixed;
     right: 15px;
     z-index: 99;
     bottom: 15px;
     padding: 15px;
-    background: #9DC3FF;
+    background: #9dc3ff;
     border-radius: 16px;
-}
-
-.Chat_list ul {
+  }
+  
+  .Chat_icon {
+    position: relative;
+  }
+  .Chat_icon > img {
+    cursor: pointer;
+  }
+  
+  .Chat_list ul {
     display: flex;
     list-style: none;
     flex-direction: column;
     align-items: center;
-}
-
-.Cart_slose {
+  }
+  
+  .Cart_slose {
     position: absolute;
+    font-size: 30px;
     right: 20px;
     top: 20px;
     cursor: pointer;
-}
-
-.imgAbsol {
+    z-index: 3;
+  }
+  
+  .imgAbsol {
     position: absolute;
     right: 10px;
     top: 50%;
-    transform: translate(-50%, -50%)
-}
-
-.Chat_full {
+    transform: translate(-50%, -50%);
+  }
+  
+  .Chat_full {
     max-width: 400px;
     width: 100%;
     height: 600px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 16px 16px 0px 0px;
+    border-radius: 16px;
     display: flex;
     z-index: 100;
     background: #ffffff;
@@ -61,11 +70,11 @@
     position: fixed;
     bottom: 0px;
     right: 0px;
-}
-
-.Chat_list button {
+  }
+  
+  .Chat_list button {
     padding: 20.5px 66px;
-    background: #407BFF;
+    background: #407bff;
     border-radius: 16px;
     margin-top: 40px;
     cursor: pointer;
@@ -73,132 +82,147 @@
     border: 0px;
     color: #ffffff;
     text-transform: uppercase;
-}
-
-.Chat_message_title {
+  }
+  
+  .Chat_message_title {
+    position: relative;
     display: flex;
     align-items: center;
     height: 80px;
-}
-.message_send{
+  }
+  .DoctorName {
+    max-width: 160px;
+  }
+  .GreenDot {
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background-color: #22e112;
+    border-radius: 50%;
+    left: 40px;
+    bottom: 15px;
+  }
+  .Chat_message_title img {
+    border-radius: 50%;
+  }
+  .message_send {
     display: flex;
     align-items: center;
     width: 100%;
-}
-.message_input{
+  }
+  .message_input {
     display: flex;
     align-items: center;
     width: 100%;
     height: 44px;
-}
-.message_input input{
+  }
+  .message_input input {
     height: 44px;
-    background: #ffff!important;
-    border: 2px solid #EAF2FF!important;
-}
-.Chat_message {
+    background: #ffff !important;
+    border: 2px solid #eaf2ff !important;
+  }
+  .Chat_message {
     padding: 12px 20px;
     width: 100%;
-}
-
-.Chat_message_title>img {
+  }
+  
+  .Chat_message_title > img {
     width: 52px;
     margin-right: 14px;
-}
-
-.main_message {
+  }
+  .TimeMess {
+    font-size: 12px;
+  }
+  .main_message {
     height: 440px;
     overflow-y: auto;
     display: flex;
+    border-top: 1px solid #eaf2ff;
     align-items: flex-end;
-}
-.MessageText{
-    color: black;
-}
-.Chat_message_title b{
-    color: black;
-}
-.main_messageText {
+    border-bottom: 1px solid #eaf2ff;
+  }
+  
+  .main_messageText {
     width: 100%;
     padding-bottom: 17px;
-}
-
-.main_messageText>p {
+  }
+  
+  .main_messageText > p {
     text-align: center;
     margin-bottom: 15px;
-}
-
-.message_send {
+  }
+  
+  .message_send {
     height: 70px;
     position: relative;
-}
-
-.MessageDoctor {
+  }
+  
+  .MessageDoctor {
     display: flex;
     margin-top: 10px;
     align-items: center;
-}
-
-.MessageDoctor .MessageText {
+  }
+  
+  .MessageDoctor .MessageText {
     margin-right: 10px;
     max-width: 227px;
     padding: 5px 11px;
     border-radius: 7px 7px 7px 0px;
     width: 100%;
-    background: #E6E6E6;
-}
-
-.MessageMe .MessageText {
+    background: #e6e6e6;
+  }
+  
+  .MessageMe .MessageText {
     margin-left: 10px;
     max-width: 227px;
     padding: 5px 11px;
     border-radius: 7px 7px 7px 0px;
     width: 100%;
-    background: #EAF2FF;
-
-}
-
-.MessageMe {
+    background: #eaf2ff;
+  }
+  
+  .MessageMe {
     display: flex;
     flex-direction: row-reverse;
     margin-top: 10px;
     align-items: center;
-}
-
-.Font_size24 {
+  }
+  
+  .Font_size24 {
     font-family: "Exo", sans-serif;
     font-size: 24px;
     font-weight: 700;
     line-height: 32px;
     letter-spacing: 0px;
     text-align: left;
-}
-
-.Font_size40 {
+  }
+  
+  .Font_size40 {
     font-family: "Exo", sans-serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 53px;
     letter-spacing: 0px;
     text-align: left;
-}
-
-.Font_size14 {
+  }
+  
+  .Font_size14 {
     font-family: "Exo", sans-serif;
     font-size: 14px;
     line-height: 19px;
     letter-spacing: 0px;
     text-align: left;
-}
-
-.Font_size16 {
+  }
+  
+  .Font_size16 {
     font-family: "Exo", sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 21px;
     letter-spacing: 0px;
     text-align: left;
-}
+  }
+
 @media (max-width:480px) {
     .main_message {
         height: 235px;
@@ -206,26 +230,41 @@
         display: flex;
         align-items: flex-end;
     }
+
     .Cart_slose {
         position: absolute;
         right: 20px;
         top: 10px;
         cursor: pointer;
     }
-    
+
+    .Chat_close {
+        position: fixed;
+        cursor: default;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: calc(100% - 400px);
+    }
+
     .Chat_full {
-        max-width: 400px;
+        max-width: 480px;
         width: 100%;
         height: 400px;
         box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
         border-radius: 16px 16px 0px 0px;
         display: flex;
-        z-index: 100px;
+        z-index: 20;
         background: #ffffff;
         align-items: center;
         justify-content: center;
         position: fixed;
         bottom: 0px;
         right: 0px;
+    }
+    .Chat_message_title{
+        padding-right: 30px;
     }
 }

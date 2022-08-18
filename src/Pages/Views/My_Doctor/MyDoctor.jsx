@@ -1,12 +1,11 @@
 import React from "react";
 import s from './My_Doctor.module.css';
-import star from '../../../img/Rating_Star.png';
 import { useEffect } from "react";
 import Stars from "../../../Components/Stars/Stars";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosMyDoctor, axiosDoctorDelete } from "../../../base/asyncActions/getDoctors";
 import { Link } from "react-router-dom";
-import Cancel_Record from "../../../Components/Modal/Cancel_record/Cancel_Record";
+import CancelRecord from "../../../Components/Modal/Cancel_record/Cancel_Record";
 import Button from "../../../Components/Button/Button";
 import Loader from "../../../Components/Loading/Loader";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
@@ -21,6 +20,7 @@ const MyDoctor = () => {
         if(!Doctors[0])
         dispatch(axiosMyDoctor(1));
         dispatch(getConfigHeaderAction("Мои врачи"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let showMore = () => {
         if (page + 1 <= totalPage) {
@@ -28,7 +28,7 @@ const MyDoctor = () => {
         }
     }
     let Doctor = Doctors.map(el => <div className={s.Doctor} key={el.doctor_id} style={{color: config?.config.colors.color2}}>
-        <Cancel_Record consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete} typeModal={"record"}/>
+        <CancelRecord consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete} typeModal={"record"}/>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>

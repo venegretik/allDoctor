@@ -15,6 +15,7 @@
 }
 .notice_back {
   position: fixed;
+  cursor: default;
   z-index: 20;
   left: 0;
   top: 0;
@@ -40,7 +41,7 @@
 }
 .notice_item {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   column-gap: 10px;
   text-decoration: none;
   padding-bottom: 7px;

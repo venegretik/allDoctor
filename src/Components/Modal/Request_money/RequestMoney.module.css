@@ -85,8 +85,11 @@
   .Cancel_Record_block {
     left: 50%;
     top: auto;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
     transform: translate(-50%, 0%);
     bottom: 0px;
+    padding:20px;
   }
 
   .Font_size24 {

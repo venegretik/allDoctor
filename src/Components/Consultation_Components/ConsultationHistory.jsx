@@ -25,13 +25,14 @@ const ConsultationHistory = () => {
         dispatch(axiosBranch());
         if(!consultationHistory[0])
         dispatch(axiosConsultationHistory());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let DoctorDelete = (consultation_id) => {
         dispatch(axiosConsultationDelete(consultation_id));
     }
     
     let history = consultationHistory.map(
-        el => <div className={s.Doctor_full} key={el.consultation_id} style={{color: config?.config.colors.color2}}>
+        (el, key) => <div className={s.Doctor_full} key={key} style={{color: config?.config.colors.color2}}>
             {el.can_cancel ? <div className={s.Cart_close + " " + s.black} onClick={() => { DoctorDelete(el.consultation_id) }}>
                 +
             </div> : ""}

@@ -1,7 +1,5 @@
 import React from "react";
 import s from './Result.module.css';
-import { reduxForm } from "redux-form";
-import file from "../../../../img/file.png";
 import download from "../../../../img/download_file.png";
 import { Link } from "react-router-dom";
 import { Input } from "../../../../Components/Input/Input";
@@ -14,22 +12,19 @@ import { FileUploader } from "react-drag-drop-files";
 import FormErrors from "../../../../Components/FormError/FormError";
 import Button from "../../../../Components/Button/Button";
 import { axiosProfileUpload } from "../../../../base/asyncActions/Profile";
-const Form_Result = () => {
+import "./drop.css"
+const FormResult = () => {
     let dispatch = useDispatch();
-    const fileTypes = ["JPG", "PNG", "GIF"];
     const [Showtext, setShowText] = useState("");
     const [radioValue, setRadioValue] = useState(null);
     const config = useSelector(state => state.config.config);
-    const [file, setFile] = useState(null);
     const handleChange = async (file) => {
-        setFile(file);
         if (radioValue && Showtext.length > 4) {
             let obj = {};
             obj.file = file;
             obj.name = Showtext;
             obj.type = radioValue;
            let response = await dispatch(axiosProfileUpload(obj));
-            setFile(null);
             if(!response.status){
                 seterrorMessage(errorMessage => ({
                     error: {
@@ -40,7 +35,6 @@ const Form_Result = () => {
         }
         else {
             alert('Заполните все поля');
-            setFile(null)
         }
     };
     const onChangeInput = async (e) => {
@@ -59,7 +53,7 @@ const Form_Result = () => {
         <form>
             <Input name={"name"}
                 minLength={'2'}
-                pattern={'^[А-Яа-яЁё\s]+$'}
+                pattern={'^[А-Яа-яЁё]+$'}
                 required
                 value={Showtext}
                 onChange={onChangeInput}
@@ -81,7 +75,7 @@ const Form_Result = () => {
                 </div>
             </div>
             <div className={s.Form_Download}>
-                <FileUploader handleChange={handleChange} label="Нажмите или перетащите сюда файл" name="file" types={fileTypes} />
+                <FileUploader handleChange={handleChange} label="Нажмите или перетащите сюда файл" name="file" classes="drop_area" />
             </div>
             <button>выбрать файл</button>
             <div className={s.Form_Line}></div>
@@ -95,6 +89,13 @@ const Form_Result = () => {
 const Result = () => {
     let dispatch = useDispatch();
     const config = useSelector(state => state.config.config);
+    let file = useSelector((state) => state.profile.file_history)
+    useEffect(() => {
+        
+        if (!file[0])
+            dispatch(axiosProfileResult());
+            // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [file]);
     let page = useSelector((state) => state.profile.current_page);
     let total_page = useSelector((state) => state.profile.total_page);
     const onClickShow = () => {
@@ -116,11 +117,6 @@ const Result = () => {
         title: "Функциональные",
         branch_id: "2"
     }]
-    let file = useSelector((state) => state.profile.file_history)
-    useEffect(() => {
-        if (!file[0])
-            dispatch(axiosProfileResult());
-    }, []);
     let keyNum = 0;
     let file_array = file.map(
         el => <div key={++keyNum} className={s.Download_File_block}>
@@ -145,7 +141,7 @@ const Result = () => {
                         <p className={s.Font_size14}>604КВ</p>
                     </div>
                 </Link>
-                <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>{el.type == 1 ? "лабораторные" : "функциональные"}</p>
+                <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>{el.type === 1 ? "лабораторные" : "функциональные"}</p>
             </div>
         </div>
     )
@@ -156,7 +152,7 @@ const Result = () => {
             </div>
             <div className={s.formDownload}>
                 <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>Загрузить документ</p>
-                <Form_Result />
+                <FormResult />
             </div>
             <div className={s.Download_File}>
                 <SelectResult array={arraySort} />

@@ -3,7 +3,7 @@
     margin-bottom: 9px;
 }
 .ResultFull{
-    padding-left: 95px;
+    padding-left: 45px;
     margin-bottom: 30px;
 }
 .formDownload {
@@ -11,6 +11,12 @@
 }
 .formDownload input {
     width: 100%;
+}
+.Form_Download label svg{
+    display: none;
+}
+.Form_Download label span{
+    text-align: center;
 }
 .Form_Download label{
     height: 100%;

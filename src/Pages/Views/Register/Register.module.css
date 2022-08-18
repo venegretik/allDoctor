@@ -41,7 +41,7 @@
 }
 .policyBlock {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   padding-left: 30px;
   width: 100%;
 }

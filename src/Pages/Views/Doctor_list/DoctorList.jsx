@@ -14,7 +14,7 @@ const DoctorList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getConfigHeaderAction("Направление"))
+    
   }, []);
   let callendarDay = (date) => {
     const days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота"],
@@ -42,12 +42,14 @@ const DoctorList = () => {
     dispatch(axiosBranch())
 
   }
-  if (Name == "" && branch[0]) {
-    let filt = branch.filter(el => el.branch_id == params.id);
+  if (Name === "" && branch[0]) {
+    let filt = branch.filter(el => el.branch_id === params.id);
     Name = filt[0].title
+    dispatch(getConfigHeaderAction(Name))
   }
   useEffect(() => {
     dispatch(axiosDoctor(params.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const sendRequest = () => {
     setPageNumber(++pageNumber);
@@ -55,8 +57,8 @@ const DoctorList = () => {
   }
   const config = useSelector((state) => state.config.config);
 
-  let Doctor = Doctors.map(el =>
-    <div className={s.Doctor} key={el.doctor_id}  style={{color: config?.config.colors.color2}}>
+  let Doctor = Doctors.map((el,key) =>
+    <div className={s.Doctor} key={key}  style={{color: config?.config.colors.color2}}>
       <div className={s.Doctor_infos}>
         <div className={s.Doctor_avatar}>
           <div className={s.Doctor_avatar_img}>

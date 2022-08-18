@@ -205,6 +205,7 @@
 }
 .Download_Doctor{
     justify-content: space-between;
+    padding-right: 0px!important;
 }
 .Download_file {
     width: 228px;
@@ -341,10 +342,6 @@
     }
 }
 
-.Message_button_margin {
-    margin-right: 20px;
-}
-
 @media(max-width:780px) {
     .Download_file {
         align-self: center;
@@ -411,7 +408,9 @@
     .Consultation_title {
         display: none;
     }
-
+    .ButtonMobile button{
+        max-width:none;
+    }
     .History_special {
         display: flex;
         max-width: 440px;

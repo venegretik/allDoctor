@@ -171,6 +171,9 @@
     .Profile_data b{
         display: none;
     }
+    .ReplaceData form button{
+        width: 100%;
+    }
     .Profile_data {
         justify-content: center;
     }

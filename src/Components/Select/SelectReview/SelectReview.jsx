@@ -8,7 +8,7 @@ const SelectReview = (props) => {
     let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
     const config = useSelector((state) => state.config.config);
-    const [Showtext, setShowText] = useState("...");
+    const [Showtext, setShowText] = useState("Выберите текст");
     const handleClick = (event) => {
         setIsShown((current) => !current);
     };
@@ -39,7 +39,7 @@ const SelectReview = (props) => {
         <div id="Select-hide" onClick={handleClick}>
             <div className="Select_content">
                 <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
-      color:config?.config.colors.color2}}>{Showtext}</p>
+      color:config?.config.colors.color4}}>{Showtext}</p>
                 <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
             </div>
             {isShown && (

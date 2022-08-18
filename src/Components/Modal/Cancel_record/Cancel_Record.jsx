@@ -3,6 +3,7 @@ import s from "./Cancel_Record.module.css";
 import { axiosConsultationDelete } from "../../../base/asyncActions/getConsultation";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import { BottomSheet } from 'react-spring-bottom-sheet'
 import Button from "../../Button/Button";
 const Cancel_Record = (props) => {
   let dispatch = useDispatch();
@@ -29,7 +30,9 @@ const Cancel_Record = (props) => {
       >
         &times;
       </div>
+      
       {showWindow ? (
+        
         <div className={s.Cancel_Record_full} onClick={() => setWindow(false)}>
           <div className={s.Cancel_Record_block}>
             <div className={s.ImgNone}>
