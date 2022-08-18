@@ -36,7 +36,7 @@ const ConsultationHistory = () => {
                 +
             </div> : ""}
 
-            <div className={s.Doctor_full1}>
+            <div className={s.Doctor_full1 + " " + s.Download_Doctor}>
                 <div className={s.Doctor}>
                     <div className={s.Doctor_infos}>
                         <div className={s.Doctor_avatar}>
@@ -94,11 +94,11 @@ const ConsultationHistory = () => {
                 </div>
                 <div className={s.History_select} style={{color: config?.config.colors.color2}}>
                     <div className={s.History_special}>
-                        <p className={s.Font_size14}>Специализация</p>
+                        <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>Специализация</p>
                         <SelectConsultation array={branch} selectType={"history"} func={consultationHistoryCons} />
                     </div>
                     <div className={s.History_date}>
-                        <p className={s.Font_size14}>Дата приёма</p>
+                        <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>Дата приёма</p>
                         <SelectCalendar />
                     </div>
                 </div>

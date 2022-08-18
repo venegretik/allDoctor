@@ -2,12 +2,14 @@
   padding-top: 64px;
   padding-bottom: 150px;
 }
+
 .container {
   max-width: 1260px;
   margin: 0 auto;
   width: 100%;
   padding: 0 30px;
 }
+
 .medicine_title {
   font-weight: 700;
   font-size: 40px;
@@ -16,54 +18,65 @@
   color: #2e373d;
   margin-bottom: 27px;
 }
+
 .medicine_cards {
   display: flex;
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .card_item {
   background: #eaf2ff;
   border-radius: 30px;
   max-width: 270px;
+  overflow: hidden;
   width: 100%;
   height: 100%;
 }
+
 .medicine_input {
   position: relative;
   margin-bottom: 24px;
   max-width: 400px;
   width: 100%;
 }
+
 .medicine_input input {
   height: 48px;
   border: 2px solid #eaf2ff !important;
   background: #fff !important;
 }
+
 .card_item img {
   max-width: 270px;
   display: block;
   margin: 0 auto;
   height: 136px;
 }
+
 .medicine {
   padding-left: 30px;
   padding-right: 30px;
 }
+
 .medicine_input img {
   position: absolute;
   right: 15px;
   top: 15px;
 }
+
 .Register_form {
   border-radius: 16px;
   border: 1px #eaf2ff solid;
   padding: 20px 0px;
   width: 570px;
 }
+
 .Register_form[type="text"] {
   padding-left: 28px;
 }
+
 .card_title {
   font-weight: 700;
   font-size: 24px;
@@ -71,14 +84,17 @@
   margin-bottom: 11px;
   margin-top: 25px;
 }
+
 .card_subtitle {
   font-weight: 400;
   font-size: 16px;
   line-height: 21px;
 }
+
 .card_text_wrapper {
   padding: 0 30px 50px 30px;
 }
+
 @media (max-width: 680px) {
   .Register_form {
     margin-bottom: 24px;
@@ -88,24 +104,41 @@
     width: 300px;
   }
 }
+
 @media (max-width: 650px) {
   .card_item {
     max-width: 130px;
     border-radius: 10px;
   }
+
+  .medicine_cards {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .medicine {
+    padding: 20px;
+  }
+
   .card_item img {
     max-width: 130px;
+    width: 130px;
     max-height: 60px;
   }
+
   .card_text_wrapper {
     padding: 10px;
   }
+
   .card_title {
     font-size: 14px;
     margin-top: 5px;
     margin-bottom: 5px;
     line-height: 14px;
   }
+
   .card_subtitle {
     font-size: 10px;
     line-height: 13px;

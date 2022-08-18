@@ -88,7 +88,8 @@
   .Menu_mobile img{
     position: absolute;
     left: 30px;
-    top: 12px;
+    top: 50%;
+    transform: translate(-0%, -50%);
   }
   .Menu_mobile_title h1{
     text-align: center;

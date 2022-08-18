@@ -56,7 +56,8 @@ const Calendar = (props) => {
         setSlot(el.slots);
     }
     slots = Slot.map(
-        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive} style={{background: config?.config.colors.color3}} key={el.slot_id}>
+        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive} style={{background: config?.config.colors.color3,
+            color: config?.config.colors.color4}} key={el.slot_id}>
             <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
@@ -73,7 +74,8 @@ const Calendar = (props) => {
                 }
             )}</p>
         </div> :
-            <div className={s.Calendar_rasp + " " + s.colorOnClick} key={el.slot_id} style={{background: config?.config.colors.color10}} onClick={e => setId(el.slot_id)}>
+            <div className={s.Calendar_rasp + " " + s.colorOnClick} key={el.slot_id} style={{background: config?.config.colors.color10,
+                color: config?.config.colors.color1}} onClick={e => setId(el.slot_id)}>
                 <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                     "ru",
                     {

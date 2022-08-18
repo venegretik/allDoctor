@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Cancel_Record.module.css";
 import { axiosConsultationDelete } from "../../../base/asyncActions/getConsultation";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../Button/Button";
 const Cancel_Record = (props) => {
   let dispatch = useDispatch();
@@ -11,6 +11,15 @@ const Cancel_Record = (props) => {
     dispatch(props.func(consultation_id));
     setWindow(false);
   };
+  useEffect(() => {
+    if(!showWindow){
+      document.body.style.overflow = "auto"
+    }
+    if(showWindow){
+      document.body.style.overflow = "hidden"
+    }
+  }, [showWindow])
+  
   const config = useSelector((state) => state.config.config);
   return (
     <div>
@@ -18,10 +27,10 @@ const Cancel_Record = (props) => {
         className={s.Cart_close + " " + s.black}
         onClick={(e) => setWindow(true)}
       >
-        +
+        &times;
       </div>
       {showWindow ? (
-        <div className={s.Cancel_Record_full}>
+        <div className={s.Cancel_Record_full} onClick={() => setWindow(false)}>
           <div className={s.Cancel_Record_block}>
             <div className={s.ImgNone}>
               <img

@@ -14,8 +14,13 @@ const DoctorList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getConfigHeaderAction("Доктора"))
+    dispatch(getConfigHeaderAction("Направление"))
   }, []);
+  let callendarDay = (date) => {
+    const days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Субота"],
+        now = new Date(date);
+    return days[now.getDay()]
+}
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
   let Name = useSelector(state => state.doctorSpec.specialization_name);
@@ -79,7 +84,7 @@ const DoctorList = () => {
         <div className={s.Payment_block_p}>
           <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>Ближайшая запись:</p>
           <p className={s.Font_size14}>
-            {new Date(el.closest_datetime).toLocaleString(
+            {callendarDay(el.closest_datetime) + "," + new Date(el.closest_datetime).toLocaleString(
               "ru",
               {
                 month: "long",
@@ -111,11 +116,11 @@ const DoctorList = () => {
           </div>
           <div className={s.Select_all}>
             <div className={s.Skill_select}>
-              <p className={s.Font_size14}>Специализация</p>
+              <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>Специализация</p>
               <SelectLogin array={branch} selectType={"specialization"} func={axiosDoctor} category_id={params.id} />
             </div>
             <div className={s.Sort_select}>
-              <p className={s.Font_size14}>Сортировка</p>
+              <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>Сортировка</p>
               <SelectLogin array={arraySort} selectType={"sort"} func={axiosDoctor} />
             </div>
           </div>

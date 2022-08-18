@@ -19,7 +19,7 @@ const AnswerReviews = (props) => {
                       day: "numeric",
                     }
                   )}</p>
-                <p className={s.Font_size14}>{el.comment}</p>
+                <p className={s.Font_size14 + " " + s.Comment}>{el.comment}</p>
             </div>
         </div>)
     }

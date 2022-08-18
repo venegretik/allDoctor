@@ -50,7 +50,7 @@ const Recording = () => {
                                 <h2 className={s.Font_size24}>{recording.firstname + " " + recording.lastname + " " + recording.secondname}</h2>
                                 <p className={s.Staj + " " + s.Font_size14}>{recording.regalia.join(' • ')}</p>
                                 <div className={s.Doctor_buy}>
-                                    <p className={s.gray + " " + s.Font_size14}>Стоимость консультации:</p>
+                                    <p className={s.gray + " " + s.Font_size14} style={{color: config?.config.colors.color4}}>Стоимость консультации:</p>
                                     <p className={s.buy + " " + s.Font_size24}>{recording.price} ₽</p>
                                 </div>
                             </div>

@@ -7,6 +7,8 @@
 
 .Calendar_full {
     margin-top: 30px;
+    max-width: 400px;
+    width: 100%;
 }
 .Calendar_active{
     width: 100%;
@@ -34,6 +36,7 @@
     margin-top: 10px;
     display: flex;
     max-width: 400px;
+    width: 100%;
     max-height: 100px;
     overflow-x: hidden;
     flex-wrap: wrap;

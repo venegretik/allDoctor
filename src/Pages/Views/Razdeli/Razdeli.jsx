@@ -27,8 +27,9 @@ const Razdeli = () => {
         let BranchSort1 = Branch.filter(el => el.keywords.indexOf(e.target.value.toLowerCase()) !== -1);
         setShowBranchSort(BranchSort1);
     }
-    const BranchOffline = useSelector(state => state.doctorSpec.branch_offline_array);
-    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id} key={el.branch_id} style={{color: config?.config.colors.color5}}>
+    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id} key={el.branch_id} style={{color: config?.config.colors.color5,
+    background:config?.config.colors.color3,
+    borderRadius: "30px"}}>
         <div className={s.card_item}>
             <img src={el.image} alt="" />
             <div className={s.card_text_wrapper}>

@@ -110,11 +110,11 @@ const Payment = () => {
                             <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
                             <div className={s.Doctor_buy}>
                                 <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>Стоимость консультации:</p>
-                                <p className={s.buy + " " + s.Font_size16}>{payment.checkout.price} ₽</p>
+                                <p className={s.buy + " " + s.Font_size24}>{payment.checkout.price} ₽</p>
                             </div>
                             <div className={s.Doctor_buy}>
                                 <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>Дата и время приёма:</p>
-                                <p className={s.buy + " " + s.Font_size16}>{new Date(payment.consultation_datetime).toLocaleString(
+                                <p className={s.buy + " " + s.Font_size24}>{new Date(payment.consultation_datetime).toLocaleString(
                                     "ru",
                                     {
                                         month: "long",

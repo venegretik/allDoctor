@@ -103,13 +103,9 @@ input[type=checkbox]:checked:after {
     font-size: 24px;
 }
 
-.Doctor_info p {
-    font-size: 14px;
-}
-
 .buy {
-    font-size: 24px !important;
     margin-bottom: 8px;
+    font-weight: 400!important;
     margin-top: 4px;
 }
 
@@ -231,6 +227,47 @@ input[type=checkbox]:checked:after {
     }
     .Doctor_avatar{
         margin-right: 10px;
+        max-width: 70px;
+        width: 100%;
+    }
+    .Oplata span {
+        margin-top: 5px;
+    }
+    .Balance{
+        margin-bottom: 12px;
+    }
+    .Doctor_avatar_info ul{
+        max-width: 70px;
+    }
+    .Doctor_avatar_info ul li{
+        width: 20%;
+    }
+    .Doctor_avatar_info ul li img{
+        width: 100%;
+    }
+    .Summ {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .Total_sum button {
+        width: 100%;
+        border: 0px;
+        color: #FFFFFF;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+        text-align: center;
+        height: auto;
+        padding: 13.5px 41px;
+        border-radius: 16px;
+    }
+    .Staj{
+        margin-top: 6px;
+        margin-bottom: 4px;
+    }
+    .buy{
+        margin-bottom: 2px;
+        margin-top: 3px;
     }
     .Font_size40 {
         font-family: 'Exo', sans-serif;
@@ -247,7 +284,7 @@ input[type=checkbox]:checked:after {
         font-family: 'Exo', sans-serif;
         font-size: 10px !important;
         font-weight: 400;
-        line-height: 19px;
+        line-height: 13px;
         letter-spacing: 0px;
     }
 

@@ -29,7 +29,7 @@ const SectionsMedicine = () => {
 
   return (
     <>
-      <section className={s.medicine + " " + s.container} style={{color: config?.config.colors.color5}}>
+      <section className={s.medicine + " " + s.container} style={{ color: config?.config.colors.color5 }}>
         <h2 className={s.medicine_title + " " + s.Font_size40}>
           Разделы медицины
         </h2>
@@ -38,8 +38,8 @@ const SectionsMedicine = () => {
             <Loader />
           ) : (
             Sections.map((el, key) =>
-              key < 8 ? (
-                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id} style={{color: config?.config.colors.color5}}>
+              key < 7 ? (
+                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id} style={{ color: config?.config.colors.color5 }}>
                   <div className={s.card_item}>
                     <img src={el.image} alt="" />
                     <div className={s.card_text_wrapper}>
@@ -53,20 +53,19 @@ const SectionsMedicine = () => {
               )
             )
           )}
-
+          <Link to={"/razdeli"} style={{ color: config?.config.colors.color5 }}>
+            <div className={s.card_item} style={{ background: config?.config.colors.color3 }}>
+              <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
+              <div className={s.card_text_wrapper}>
+                <div className={s.card_title}>Посмотреть все разделы медицины</div>
+              </div>
+            </div>
+          </Link>
         </div>
-        <Link to={"/razdeli"}>
-          <Button
-            className={s.Show_more + " " + s.Font_size14}
-            type={'submit'}
-            class={'btn white'}
-            text={'Показать ещё'}
-          />
-        </Link>
       </section>
       {config.module.offline_appointment ?
         <section className={s.medicine + " " + s.container}>
-          <h2 className={s.medicine_title + " " + s.Font_size40} style={{color: config?.config.colors.color5}}>
+          <h2 className={s.medicine_title + " " + s.Font_size40} style={{ color: config?.config.colors.color5 }}>
             Оффлайн запись
           </h2>
           <div className={s.medicine_cards}>
@@ -74,8 +73,8 @@ const SectionsMedicine = () => {
               <Loader />
             ) : (
               Ofline.map((el, key) =>
-                key < 4 ? (
-                  <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"} style={{color: config?.config.colors.color5}}>
+                key < 3 ? (
+                  <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"} style={{ color: config?.config.colors.color5 }}>
                     <div className={s.card_item} >
                       <img src={el.image} alt="" />
                       <div className={s.card_text_wrapper}>
@@ -89,16 +88,15 @@ const SectionsMedicine = () => {
                 )
               )
             )}
-
+            <Link to={"/razdeli"} style={{ color: config?.config.colors.color5 }}>
+              <div className={s.card_item} style={{ background: config?.config.colors.color3 }}>
+                <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
+                <div className={s.card_text_wrapper}>
+                  <div className={s.card_title}>Посмотреть все разделы медицины</div>
+                </div>
+              </div>
+            </Link> 
           </div>
-          <Link to={"/razdeli-offline"}>
-            <Button
-              className={s.Show_more + " " + s.Font_size14}
-              type={'submit'}
-              class={'btn white'}
-              text={'Показать ещё'}
-            />
-          </Link>
         </section> : ""
       }
 

@@ -28,18 +28,18 @@ const Balance = () => {
   let [errorType, seterrorType] = useState({
     status: false,
     error: {
-        fields: {
-            summ: [],
-            friend: [],
-        },
+      fields: {
+        summ: [],
+        friend: [],
+      },
     },
-});
-let [errorMessage, seterrorMessage] = useState({
+  });
+  let [errorMessage, seterrorMessage] = useState({
     status: false,
     error: {
-        message: "",
+      message: "",
     },
-});
+  });
   useEffect(() => {
     dispatch(axiosProfileBalance());
     dispatch(axiosProfileRefferal());
@@ -74,17 +74,17 @@ let [errorMessage, seterrorMessage] = useState({
     if (!response.status) {
       seterrorType(errorType => ({
         error: {
-            fields: {
-                summ: response.error?.fields.summ? [...response.error?.fields.summ]: [],
-                friend: response.error?.fields.friend? [...response.error?.fields.friend]: []
-            }
+          fields: {
+            summ: response.error?.fields.summ ? [...response.error?.fields.summ] : [],
+            friend: response.error?.fields.friend ? [...response.error?.fields.friend] : []
+          }
         }
-    }))
-    seterrorMessage(errorMessage => ({
+      }))
+      seterrorMessage(errorMessage => ({
         error: {
-            message: response.error?.message
+          message: response.error?.message
         }
-    }));
+      }));
     }
   };
   let History = history.map((el) => (
@@ -123,9 +123,6 @@ let [errorMessage, seterrorMessage] = useState({
             type={"number"}
             name={"summ"}
           />
-          {/* КОМПОНЕНТ ОШИБКИ */}
-          <FormErrors error={errorType.error.fields.summ} />
-          {/* КОМПОНЕНТ ОШИБКИ */}
           <Button
             className={s.Font_size14}
             type={"submit"}
@@ -134,6 +131,9 @@ let [errorMessage, seterrorMessage] = useState({
           />
         </div>
 
+        {/* КОМПОНЕНТ ОШИБКИ */}
+        <FormErrors error={errorType.error.fields.summ} />
+        {/* КОМПОНЕНТ ОШИБКИ */}
         {/* КОМПОНЕНТ ОШИБКИ */}
         <FormErrors error={errorMessage.error.message} />
         {/* КОМПОНЕНТ ОШИБКИ */}

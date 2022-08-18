@@ -140,8 +140,6 @@
 
 .Doctor {
     display: flex;
-    max-width: 525px;
-    justify-content: space-between;
 }
 
 .gray {
@@ -205,10 +203,11 @@
 .History_date p {
     margin-right: 14px;
 }
-
+.Download_Doctor{
+    justify-content: space-between;
+}
 .Download_file {
     width: 228px;
-    margin-left: 100px;
     height: 221px;
     display: flex;
     flex-direction: column;
@@ -230,7 +229,6 @@
 
 .Download_file {
     width: 228px;
-    margin-left: 100px;
     height: 221px;
     display: flex;
     justify-content: center;
@@ -242,13 +240,6 @@
 
 .Download_img {
     border-bottom: 2px #9DC3FF solid;
-}
-
-.Download_text p {
-    color: #407BFF;
-    width: 161px;
-    margin-top: 8px;
-    text-align: center;
 }
 
 .Show_more button {
@@ -332,39 +323,14 @@
     .Doctor_full1 .Consultation_info button{
         display: none;
     }
-    .Download_file {
-        width: 70%;
-        margin-left: auto;
-        margin-right: auto;
-        height: 82px;
-        display: flex;
-        justify-content: center;
-        flex-direction: row;
-        align-items: center;
-        background: #EAF2FF;
-        border-radius: 24px;
-    }
 
     .Download_img {
-        border-bottom: 0px #9DC3FF solid;
-        border-right: 1px #9DC3FF solid;
-    }
-
-    .Download_img img {
-        width: 35.40px;
-        padding-right: 6px;
-    }
-
-    .Download_text p {
-        color: #407BFF;
-        width: 161px;
-        margin-top: 0px;
-        text-align: center;
+        border-bottom: 1px #9DC3FF solid;
     }
 
     .Doctor_full1 {
         display: flex;
-        flex-direction: column;
+        padding-right: 40px;
     }
 
     .ButtonMobile button {
@@ -380,18 +346,17 @@
 }
 
 @media(max-width:780px) {
-    .Doctor_info{
-        max-width: 250px;
-    }
     .Download_file {
         align-self: center;
         display: flex;
-        width: 340px;
-        height: 82px;
+        width: 100%;
+        height: 102px;
         margin-left: 0px;
         flex-direction: row;
     }
-
+    .Doctor_full1 {
+        flex-direction: column;
+    }
     .Download_file {
         margin-top: 14px;
     }
@@ -418,14 +383,13 @@
     }
 
     .Download_text p {
-        width: 200px;
         margin-top: 0px;
         margin-left: 20px;
     }
 
     .Download_img img {
         width: 40px;
-        margin-left: 20px;
+        padding-right: 10px;
     }
 
     .Doctor_full {
@@ -455,13 +419,9 @@
         margin-right: 0px;
     }
 
-    .Doctor_full {
-        max-width: 330px;
-    }
-
     .History_select {
         display: flex;
-        flex-direction: column;
+        gap: 20px;
         margin-bottom: 40px;
     }
 
@@ -540,7 +500,7 @@
     }
 
     .Doctor_info {
-        width: 180px;
+        width: auto;
     }
 
     .My_consultation {
@@ -549,12 +509,14 @@
     }
 
     .Download_file {
-        width: 280px;
+        width: 100%;
+        height: 82px;
     }
 
     .Download_file p {
         margin-left: 10px;
-        max-width: 180px;
+        font-size: 14px!important;
+        width: auto;
         text-align: left;
     }
     
