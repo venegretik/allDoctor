@@ -125,7 +125,7 @@ const Result = () => {
     }]
     let keyNum = 0;
     let file_array = file.map(
-        el => <div className={s.Download_File_PDF}><div key={++keyNum} className={s.Download_File_block}>
+        el => <div className={s.Download_File_PDF} key={++keyNum}><div className={s.Download_File_block}>
             <div className={s.Download_File_left}>
                 <img src={file} alt="" />
                 <div className={s.Download_File_left_text}>

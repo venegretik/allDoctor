@@ -75,7 +75,9 @@
     flex-direction: column;
     align-items: center;
 }
-
+.ChangeLoginTitle h1{
+    text-align: center;
+}
 .ChangeLoginMain_step2 {
     width: 100%;
     display: flex;
@@ -142,9 +144,13 @@
         bottom: 0px;
         position: absolute;
         top:auto;
+        display:none;
         transform: translate(-50%,0%);
         border-radius: 16px 16px 0px 0px;
         width: 100%;
         height: auto;
+    }
+    .ChangeLoginFull{
+        display:none;
     }
 }

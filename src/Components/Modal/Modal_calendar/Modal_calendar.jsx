@@ -5,6 +5,7 @@ import Calendar from "../../Calendar/Calendar";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { consultationModalAction } from "../../../base/Reducers/ConsultationReducer";
+import { BottomSheet } from 'react-spring-bottom-sheet'
 const ModalCalendar = (props) => {
     let dispatch = useDispatch();
     let [showWindow, setWindow] = useState(false);
@@ -22,6 +23,7 @@ const ModalCalendar = (props) => {
             document.body.style.overflow = "hidden";
         }
     }, [showWindow])
+    const availableScreenWidth = window.screen.availWidth;
     return (
         <div>
             <div onClick={e => {
@@ -34,17 +36,33 @@ const ModalCalendar = (props) => {
                     text={'перенести'}
                 />}
             </div>
-            {showWindow ? <div className={s.Cancel_Record_full}>
-                <div className={s.Cancel_Record_block}>
-                    <div className={s.Cart_close + " " + s.black} onClick={e => setWindow(false)}>
-                        &times;
-                    </div>
+            {showWindow ? <>
+                {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
+                    onDismiss={() => setWindow(false)}>
                     <div>
-                        <h1 className={s.title} style={{ color: config?.config.colors.color2 }}>Перенести запись</h1>
+                        <div className={s.Cancel_Record_block}>
+                            <div className={s.Cart_close + " " + s.black} onClick={e => setWindow(false)}>
+                                &times;
+                            </div>
+                            <div>
+                                <h1 className={s.title} style={{ color: config?.config.colors.color2 }}>Перенести запись</h1>
+                            </div>
+                            <Calendar type_el="popup" />
+                        </div>
                     </div>
-                    <Calendar type_el="popup" />
-                </div>
-            </div> : ""
+                </BottomSheet> : <div className={s.Cancel_Record_full}>
+                    <div className={s.Cancel_Record_block}>
+                        <div className={s.Cart_close + " " + s.black} onClick={e => setWindow(false)}>
+                            &times;
+                        </div>
+                        <div>
+                            <h1 className={s.title} style={{ color: config?.config.colors.color2 }}>Перенести запись</h1>
+                        </div>
+                        <Calendar type_el="popup" />
+                    </div>
+                </div>}
+
+            </> : ""
             }
         </div>
     )

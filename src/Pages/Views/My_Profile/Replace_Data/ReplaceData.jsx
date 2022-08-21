@@ -14,12 +14,17 @@ import {
   axiosProfile,
 } from "../../../../base/asyncActions/Profile";
 import { useEffect, useState } from "react";
-
+import { ProfileUtilityAction } from "../../../../base/Reducers/UserReducer";
 const ReplaceData = () => {
   const dispatch = useDispatch(),
     profile = useSelector((state) => state.profile),
     date = new Date().toISOString().split("T")[0];
   let [isShow, setShow] = useState(false);
+  let isState = useSelector((state) => state.profile.utitlityShow);
+  useEffect(() => {
+    setShow(isState);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isState]);
   let [errorType, seterrorType] = useState({
     status: false,
     error: {
@@ -52,7 +57,7 @@ const ReplaceData = () => {
     const response = await dispatch(axiosProfileEdit(obj));
     if (response.status) {
       dispatch(getShortInfo());
-      setShow(true);
+      dispatch(ProfileUtilityAction(true));
     }
     else {
       seterrorType(errorType => ({

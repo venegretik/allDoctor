@@ -133,11 +133,12 @@
 
     .Cancel_Record_block {
         bottom: 0px;
-        position: absolute;
+        position: static;
         top:auto;
-        transform: translate(-50%,0%);
+        transform: translate(0%,0%);
         width: 100%;
         border-radius: 16px;
+        left:0px;
         padding-bottom: 0px;
         height: 100%;
         max-height: 300px;

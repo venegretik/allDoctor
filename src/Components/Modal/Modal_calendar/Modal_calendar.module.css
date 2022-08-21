@@ -69,18 +69,21 @@ body.Cancel_Record_full{
         z-index: 100;
         top: 0px;
     }
-
+    .Cart_close {
+        display: none;
+    }
     .Cancel_Record_block {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        position: absolute;
+        position: static;
         width: 100%;
-        left: 50%;
+        left: 0%;
         top: unset;
+        border-radius: 16px 16px 0px 0px;
         bottom: 0px;
-        transform: translate(-50%, 0%);
+        transform: translate(0%, 0%);
         max-width: 800px;
         padding: 0px 10px;
         background-color: #ffffff;

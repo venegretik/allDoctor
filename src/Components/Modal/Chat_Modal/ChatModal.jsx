@@ -5,6 +5,7 @@ import chatMessage from '../../../img/chat_message.png'
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosConsultationChat } from "../../../base/asyncActions/getConsultation";
+import {BottomSheet} from 'react-spring-bottom-sheet'
 const ChatModal = () => {
     let dispatch = useDispatch();
     const config = useSelector((state) => state.config.config);
@@ -32,57 +33,108 @@ const ChatModal = () => {
                 <img src={chat} alt="" />
                 <p>Чат</p>
             </div>
-            {showWindow ? <div className={s.Chat_full}>
-                <div className={s.Chat_close} onClick={e => setWindow(false)}>
+            {showWindow ? <>
+                {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
+                    onDismiss={() => setWindow(false)}>
+                    <div>
+                        <div className={s.Cart_slose} onClick={e => setWindow(false)} style={{ color: config?.config.colors.color2 }}>
+                            &times;
+                        </div>
 
-                </div>
-                <div className={s.Cart_slose} onClick={e => setWindow(false)} style={{ color: config?.config.colors.color2 }}>
-                    &times;
-                </div>
+                        {chatShow ? <div className={s.Chat_message}>
+                            <div className={s.Chat_message_title}>
+                                <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                                <div className={s.GreenDot}></div>
+                                <div className={s.ChatText} style={{ color: config?.config.colors.color2 }}>
+                                    <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
+                                    <p className={s.Font_size14}>В сети</p>
+                                </div>
+                            </div>
+                            <div className={s.main_message} style={{ color: config?.config.colors.color2 }}>
+                                <div className={s.main_messageText}>
+                                    <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>В сети</p>
+                                    <div className={s.MessageDoctor}>
+                                        <span >
+                                            <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                        </span>
+                                        <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                    </div>
+                                    <div className={s.MessageMe} >
+                                        <span >
+                                            <p className={s.MessageText} style={{ background: config?.config.colors.color3 }}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                        </span>
+                                        <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={s.message_send}>
+                                <div className={s.message_input}>
+                                    <input type="text" placeholder="Написать сообщение..." />
+                                    <img src={chatMessage} className={s.imgAbsol} alt="" />
+                                </div>
+                            </div>
+                        </div> : <div className={s.Chat_list}>
+                            <ul>
+                                {itemChat}
+                            </ul>
+                            <button onClick={e => {
+                                dispatch(axiosConsultationChat())
+                                setChat(true);
+                            }}>начать чат</button>
+                        </div>}
+                    </div>
+                </BottomSheet> : <div className={s.Chat_full}>
+                    <div className={s.Chat_close} onClick={e => setWindow(false)}>
 
-                {chatShow ? <div className={s.Chat_message}>
-                    <div className={s.Chat_message_title}>
-                        <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
-                        <div className={s.GreenDot}></div>
-                        <div className={s.ChatText} style={{ color: config?.config.colors.color2 }}>
-                            <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
-                            <p className={s.Font_size14}>В сети</p>
-                        </div>
                     </div>
-                    <div className={s.main_message} style={{ color: config?.config.colors.color2 }}>
-                        <div className={s.main_messageText}>
-                            <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>В сети</p>
-                            <div className={s.MessageDoctor}>
-                                <span >
-                                    <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>
-                                </span>
-                                <p style={{ color: config?.config.colors.color4 }}>12:15</p>
-                            </div>
-                            <div className={s.MessageMe} >
-                                <span >
-                                    <p className={s.MessageText} style={{ background: config?.config.colors.color3 }}>Здравствуйте, чем мы можем Вам помочь?</p>
-                                </span>
-                                <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                    <div className={s.Cart_slose} onClick={e => setWindow(false)} style={{ color: config?.config.colors.color2 }}>
+                        &times;
+                    </div>
+
+                    {chatShow ? <div className={s.Chat_message}>
+                        <div className={s.Chat_message_title}>
+                            <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                            <div className={s.GreenDot}></div>
+                            <div className={s.ChatText} style={{ color: config?.config.colors.color2 }}>
+                                <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
+                                <p className={s.Font_size14}>В сети</p>
                             </div>
                         </div>
-                    </div>
-                    <div className={s.message_send}>
-                        <div className={s.message_input}>
-                            <input type="text" placeholder="Написать сообщение..." />
-                            <img src={chatMessage} className={s.imgAbsol} alt="" />
+                        <div className={s.main_message} style={{ color: config?.config.colors.color2 }}>
+                            <div className={s.main_messageText}>
+                                <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>В сети</p>
+                                <div className={s.MessageDoctor}>
+                                    <span >
+                                        <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                    </span>
+                                    <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                </div>
+                                <div className={s.MessageMe} >
+                                    <span >
+                                        <p className={s.MessageText} style={{ background: config?.config.colors.color3 }}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                    </span>
+                                    <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div> : <div className={s.Chat_list}>
-                    <ul>
-                        {itemChat}
-                    </ul>
-                    <button onClick={e => {
-                        dispatch(axiosConsultationChat())
-                        setChat(true);
-                    }}>начать чат</button>
-                </div>}
-            </div> : ""}
+                        <div className={s.message_send}>
+                            <div className={s.message_input}>
+                                <input type="text" placeholder="Написать сообщение..." />
+                                <img src={chatMessage} className={s.imgAbsol} alt="" />
+                            </div>
+                        </div>
+                    </div> : <div className={s.Chat_list}>
+                        <ul>
+                            {itemChat}
+                        </ul>
+                        <button onClick={e => {
+                            dispatch(axiosConsultationChat())
+                            setChat(true);
+                        }}>начать чат</button>
+                    </div>}
+                </div>} </> : ""}
         </div>
+
     )
 }
 export default ChatModal;

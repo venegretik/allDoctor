@@ -3,6 +3,7 @@ import s from "./My_Profile.module.css";
 import { Outlet } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect } from "react";
+import Chat from "../../../Components/Chat/Chat";
 const MyProfile = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -72,6 +73,7 @@ const MyProfile = () => {
         </div>
         <Outlet />
       </div>
+      <Chat/>
     </div >
   );
 };

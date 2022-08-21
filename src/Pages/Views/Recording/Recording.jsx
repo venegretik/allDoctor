@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Calendar from "../../../Components/Calendar/Calendar";
 import Stars from "../../../Components/Stars/Stars";
+import Chat from "../../../Components/Chat/Chat";
 import Loader from "../../../Components/Loading/Loader";
 import { useRef } from "react";
 import { axiosRecordingDoctor } from "../../../base/asyncActions/getReviews";
@@ -92,6 +93,7 @@ const Recording = () => {
                         <Reviews usId={params.id} />
                     </div>
                 </div>
+                <Chat />
             </div>
         </> : <Loader />
     );

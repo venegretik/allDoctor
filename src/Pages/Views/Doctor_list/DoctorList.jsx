@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { axiosDoctor, axiosBranch } from "../../../base/asyncActions/getDoctors";
 import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Stars from "../../../Components/Stars/Stars";
 import { Link } from "react-router-dom";
+import Chat from "../../../Components/Chat/Chat";
 import Button from "../../../Components/Button/Button";
 import Loader from "../../../Components/Loading/Loader";
 const DoctorList = () => {
@@ -48,6 +50,7 @@ const DoctorList = () => {
   }, [])
   useEffect(() => {
     setBranchTitle(Title);
+    dispatch(getConfigHeaderAction(Title))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Title])
   const sendRequest = () => {
@@ -138,6 +141,7 @@ const DoctorList = () => {
           />
         </div>
       </div>
+      <Chat />
     </div>
 
 

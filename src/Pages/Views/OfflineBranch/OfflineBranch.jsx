@@ -6,6 +6,7 @@ import { axiosBranchOffline } from "../../../base/asyncActions/getDoctors";
 import Loader from "../../../Components/Loading/Loader";
 import search from "../../../img/search.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
+import Chat from "../../../Components/Chat/Chat";
 const RazdeliOffline = () => {
     const dispatch = useDispatch();
     const config = useSelector((state) => state.config.config);
@@ -52,7 +53,7 @@ const RazdeliOffline = () => {
                     <Loader />
                 ) : (Branch_list)}
             </div>
-
+            <Chat/>
         </section>
     )
 }

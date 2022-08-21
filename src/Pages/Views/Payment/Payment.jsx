@@ -9,6 +9,7 @@ import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import { Input } from "../../../Components/Input/Input";
 import FormErrors from "../../../Components/FormError/FormError";
 import { Link, Navigate } from "react-router-dom";
+import Chat from "../../../Components/Chat/Chat";
 import Button from "../../../Components/Button/Button";
 import ModalCalendar from "../../../Components/Modal/Modal_calendar/Modal_calendar";
 const Payment = () => {
@@ -137,6 +138,7 @@ const Payment = () => {
                 <FormErrors error={errorMessage.error.message} />
                 {/* КОМПОНЕНТ ОШИБКИ */}
             </div>
+            <Chat/>
         </div> : <Navigate to={`../recording/${params.id}/Default`} />
 
     )

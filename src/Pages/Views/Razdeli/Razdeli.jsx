@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import Loader from "../../../Components/Loading/Loader";
 import search from "../../../img/search.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
+import Chat from "../../../Components/Chat/Chat";
 const Razdeli = () => {
     const dispatch = useDispatch();
     const config = useSelector((state) => state.config.config);
@@ -52,7 +53,7 @@ const Razdeli = () => {
                     <Loader />
                 ) : (Branch_list)}
             </div>
-
+            <Chat/>
         </section>
     )
 }
