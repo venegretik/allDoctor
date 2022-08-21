@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { axiosProfileMedCart } from '../../../../base/asyncActions/Profile';
 import Loader from '../../../../Components/Loading/Loader';
 import { Link } from 'react-router-dom';
+import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
     
 const Med_Cart = () => {
     const config = useSelector(state => state.config.config);
@@ -12,6 +13,8 @@ const Med_Cart = () => {
     let medCart = useSelector((state) => state.profile.med_cart);
     useEffect(() => {
         dispatch(axiosProfileMedCart());
+        dispatch(getConfigHeaderAction("Медицинская карта"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     let keyNum = 0;
     if (medCart.fio) {

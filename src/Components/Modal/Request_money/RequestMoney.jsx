@@ -55,6 +55,7 @@ const RequestMoney = (props) => {
       </div>
       {showWindow ? (
         <div className={s.Cancel_Record_full} style={{ color: config?.config.colors.color2 }}>
+          <div className={s.background} onClick={() => setWindow(false)}></div>
           <div className={s.Cancel_Record_block}>
             <div className={s.Cart_close} onClick={(e) => setWindow(false)}>
               +

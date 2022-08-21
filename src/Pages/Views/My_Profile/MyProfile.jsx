@@ -3,13 +3,9 @@ import s from "./My_Profile.module.css";
 import { Outlet } from "react-router-dom";
 import { NavLink, Link } from "react-router-dom";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 const MyProfile = () => {
-  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo(0, 0);
-    dispatch(getConfigHeaderAction("Профиль"))
   }, []);
   return (
     <div className={s.Container + " Container"}>

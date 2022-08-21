@@ -3,7 +3,6 @@ import s from './OfflineBranch.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosBranchOffline } from "../../../base/asyncActions/getDoctors";
-import { NavLink } from 'react-router-dom';
 import Loader from "../../../Components/Loading/Loader";
 import search from "../../../img/search.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
@@ -16,9 +15,11 @@ const RazdeliOffline = () => {
         dispatch(axiosBranchOffline());
         window.scrollTo(0, 0);
         dispatch(getConfigHeaderAction("Оффлайн записи"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
         setShowBranchSort(BranchOffline)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [BranchOffline]);
     const [Showtext, setShowText] = useState("");
 

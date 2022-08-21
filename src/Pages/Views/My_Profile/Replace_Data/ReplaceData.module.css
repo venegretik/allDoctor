@@ -177,6 +177,7 @@
     .Profile_data {
         justify-content: center;
     }
+    
     .radio_block {
         display: flex;
         align-items: center;
@@ -187,5 +188,19 @@
         line-height: 20px;
         color: #8B9BAB;
         margin-bottom: 20px;
+    }
+}
+@media(max-width:480px){
+    .ReplaceData form button {
+        padding: 13.5px;
+        min-width: 130px;
+        border-radius: 16px;
+        height: auto;
+        color: #ffffff;
+        border: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        letter-spacing: 2px;
+        text-transform: uppercase;
     }
 }

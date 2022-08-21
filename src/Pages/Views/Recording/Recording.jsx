@@ -10,13 +10,13 @@ import Loader from "../../../Components/Loading/Loader";
 import { useRef } from "react";
 import { axiosRecordingDoctor } from "../../../base/asyncActions/getReviews";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
-import { Link } from "react-router-dom";
 const Recording = () => {
     const params = useParams();
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(axiosRecordingDoctor(params.id));
         dispatch(getConfigHeaderAction("Запись"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     let recording = useSelector(state => state.recording);
@@ -28,6 +28,7 @@ const Recording = () => {
                 inputElement.current.scrollIntoView();
             else
                 window.scrollTo(0, 0);
+                // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [inputElement.current]);
     return (
         recording.reviews ? <>

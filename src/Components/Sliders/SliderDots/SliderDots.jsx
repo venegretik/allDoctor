@@ -20,6 +20,7 @@ const SliderDots = () => {
 
   useEffect(() => {
     SliderInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section style={{ marginBottom: "40px" }}>

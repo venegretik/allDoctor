@@ -1,12 +1,15 @@
 .ChangeLoginFull {
     width: 100%;
-    height: 2000px;
+    height: calc(100%);
     background-color: rgba(0, 0, 0, 0.5);
-    overflow: hidden;
     position: fixed;
     left: 0px;
-    z-index: 20;
+    z-index: 30;
     top: 0px;
+}
+.ChangeLoginMain_step2 p{
+    color: #407BFF;
+    cursor: pointer;
 }
 
 .ChangeLoginButton {
@@ -52,16 +55,21 @@
     left: 50%;
     transform: translate(-50%, -50%);
     height: auto;
+    max-width: 800px;
+    width: 100%;
     padding: 20px;
-    height: 300px;
+    height: auto;
+    z-index: 30;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-
+.ChangeLoginMain_step1 p{
+    text-align: center;
+}
 .ChangeLoginMain {
     display: flex;
     flex-direction: column;
@@ -91,6 +99,13 @@
     width: 100%;
     max-width: 400px;
 }
+.Cart_close {
+    position: absolute;
+    font-size: 30px;
+    top: 10px;
+    cursor: pointer;
+    right: 10px;
+}
 @media(max-width:580px) {
     .Font_size14 {
         font-family: 'Exo', sans-serif;
@@ -101,6 +116,9 @@
     }
 }
 @media(max-width:480px) {
+    .Cart_close {
+       display: none;
+    }
     .Font_size14 {
         font-family: 'Exo', sans-serif;
         font-size: 10px;
@@ -110,12 +128,7 @@
     }
     .ChangeLoginButton{
         display: flex;
-        flex-direction: column;
         align-items: center;
-    }
-    .ChangeMargin{
-        margin-bottom: 10px;
-        margin-right: 0px;
     }
     .Font_size24 {
         font-family: 'Exo', sans-serif;
@@ -126,8 +139,12 @@
     }
 
     .ChangeLogin {
-        top: 75%;
+        bottom: 0px;
+        position: absolute;
+        top:auto;
+        transform: translate(-50%,0%);
+        border-radius: 16px 16px 0px 0px;
         width: 100%;
-        height: 350px;
+        height: auto;
     }
 }

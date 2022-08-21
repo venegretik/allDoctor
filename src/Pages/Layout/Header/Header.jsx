@@ -101,7 +101,7 @@ const Header = () => {
         <UserMenu type="login" />
       </header>
       <div className={s.Menu_mobile}>
-        {Text != "Главная" ? <img src={arrow_back} alt="" onClick={e => window.history.back()}/> : ""}
+        {Text !== "Главная" ? <img src={arrow_back} alt="" onClick={e => window.history.back()}/> : ""}
         <div className={s.Menu_mobile_title}>
           <h1>{Text}</h1>
         </div>

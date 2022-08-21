@@ -20,6 +20,7 @@ const DoctorsOnDuty = () => {
   const config = useSelector(state => state.config.config);
   useEffect(() => {
     getDoctor();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section className={style.SectionDuty} >

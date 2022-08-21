@@ -69,7 +69,7 @@ const Chat = () => {
                       <span>
                         <p
                           className={s.MessageText}
-                          style={{ background: config?.config.colors.color4 }}
+                          style={{ background: config?.config.colors.color11 }}
                         >
                           Здравствуйте, чем мы можем Вам помочь?
                         </p>

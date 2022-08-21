@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Main.module.css";
-import { Link } from "react-router-dom";
 import ConsultationReady from "../../../Components/Consultation_ready/ConsultationReady";
 import DoctorsOnDuty from "../../../Components/DoctorsOnDuty/DoctorsOnDuty";
 import { useEffect } from "react";
@@ -15,6 +14,7 @@ const Main = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getConfigHeaderAction("Главная"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const config = useSelector((state) => state.config.config);
   return (

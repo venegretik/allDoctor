@@ -11,18 +11,19 @@ import { axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
 import { Navigate } from "react-router-dom";
 import Button from "../Button/Button";
 
-import Cancel_Record from "../Modal/Cancel_record/Cancel_Record";
+import CancelRecord from "../Modal/Cancel_record/Cancel_Record";
 const ConsultationNext = () => {
     let dispatch = useDispatch();
     const config = useSelector((state) => state.config.config);
     const PuyFunc = async (id) => {
         const response = await dispatch(axiosConsultationPuy(id));
-        if (response.is_paid == false) {
+        if (response.is_paid === false) {
           window.location.href = response.payment_url
         }
       };
     useEffect(() => {
         dispatch(axiosConsultation());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const onClickPuy = async () => {
         const response = await dispatch(axiosConsultationPuy());
@@ -38,7 +39,7 @@ const ConsultationNext = () => {
         <div>
             {consultation[0] ? consultation.map(
                 el => <div className={s.Doctor_full} key={el.consultation_id} style={{color: config?.config.colors.color2}}>
-                    {el.can_cancel ? <Cancel_Record consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
+                    {el.can_cancel ? <CancelRecord consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
                     <div className={s.Doctor_full1}>
                         <div className={s.Doctor}>
                             <div className={s.Doctor_infos}>

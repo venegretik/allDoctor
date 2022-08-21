@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { getBranch, getOfline } from "../../base/asyncActions/getMainPageInfo";
 import s from "../../Pages/Views/Main/Main.module.css";
 import Loader from "../Loading/Loader";
-import Button from "../Button/Button";
 const SectionsMedicine = () => {
   const [Sections, setSections] = useState([]),
     [Ofline, setOfline] = useState([]),
@@ -25,6 +24,7 @@ const SectionsMedicine = () => {
   useEffect(() => {
     getInfo();
     getOff();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

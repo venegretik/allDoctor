@@ -1,19 +1,30 @@
 import React from "react";
 import s from "./Change_login.module.css";
 import Button from "../../Button/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux/es/hooks/useDispatch";
-import { axiosProfileEmailEdit } from "../../../base/asyncActions/Profile";
+import { axiosProfileEmailEdit, axiosProfilePhoneEdit } from "../../../base/asyncActions/Profile";
 import { Input } from "../../Input/Input";
 import { InpMask } from "../../Input/Input";
+import Timer from "../../Timer/Timer";
+import FormErrors from "../../FormError/FormError";
 const ChangeLogin = (props) => {
   let [Modal, setModal] = useState(false),
+    [Error, setError] = useState(""),
     [isShown, setIsShown] = useState(1),
     dispatch = useDispatch(),
     showFunc = () => {
       setModal(true);
       setIsShown(1);
     }
+  useEffect(() => {
+    if (!Modal) {
+      document.body.style.overflow = "auto";
+    }
+    if (Modal) {
+      document.body.style.overflow = "hidden";
+    }
+  }, [Modal])
   const sendForm = async (e) => {
     e.preventDefault();
     const data = await new FormData(e.target);
@@ -23,15 +34,20 @@ const ChangeLogin = (props) => {
     });
 
     if (isShown === 3) {
-      dispatch(axiosProfileEmailEdit());
-      setIsShown(++isShown);
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(obj.code, obj.phone)) : await dispatch(axiosProfileEmailEdit(obj.code, obj.email));
+      if (responce.status)
+        setModal(false);
+      setError("");
     }
     if (isShown === 2) {
-      dispatch(axiosProfileEmailEdit(obj.code));
-      setIsShown(++isShown);
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(obj.code)) : await dispatch(axiosProfileEmailEdit(obj.code));
+      if (responce.status)
+        setIsShown(++isShown);
+      else
+        setError("Неверный код, попробуйте ещё раз");
     }
     if (isShown === 1) {
-      dispatch(axiosProfileEmailEdit());
+      props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit()) : await dispatch(axiosProfileEmailEdit());
       setIsShown(++isShown);
     }
 
@@ -46,8 +62,11 @@ const ChangeLogin = (props) => {
       </p>
       {Modal ? <div className={s.ChangeLoginFull}>
         <div className={s.ChangeLogin}>
+          <div className={s.Cart_close + " " + s.black} onClick={e => setModal(false)}>
+            &times;
+          </div>
           <div className={s.ChangeLoginTitle}>
-            <h1 className={s.Font_size24}>{props.type_el == "phone" ? "Изменить телефон" : "Изменить email"}</h1>
+            <h1 className={s.Font_size24}>{props.type_el === "phone" ? "Изменить телефон" : "Изменить email"}</h1>
           </div>
           <div className={s.ChangeLoginMain}>
 
@@ -65,41 +84,48 @@ const ChangeLogin = (props) => {
                         type="submit"
                       />
                     </div>
-                    <div onClick={e => setModal(false)}>
+                    <div onClick={e => {
+                      setModal(false)
+                      setError("")
+                    }}>
                       <Button text="отмена" class="btn white" />
                     </div>
                   </div>
                 </div>
               </form>
             ) : isShown === 2 ? (
-              <form>
+              <form onSubmit={(e) => { sendForm(e) }}>
                 <div className={s.ChangeLoginMain_step2}>
                   <Input pattern={'[0-9]{4}'} required placeholder={'Код из SMS'} type={'text'} className={'input'}
                     maxLength={4} name="code" />
-                  <p className={s.Font_size14}>Отправить другой код через 00:46</p>
+                  <FormErrors className={s.Font_size14} error={Error} />
+                  <p className={s.Font_size14} >Отправить код повторно
+                    <Timer /></p>
                   <div className={s.ChangeLoginButton} >
                     <div className={s.ChangeMargin}>
                       <Button
                         text={"Подтвердить"}
                         class="blue btn"
-                        type="submit"
                       />
                     </div>
-                    <div onClick={e => setModal(false)}>
+                    <div onClick={e => {
+                      setModal(false)
+                      setError("")
+                    }}>
                       <Button text="отмена" class="btn white" />
                     </div>
                   </div>
                 </div>
               </form>
             ) : isShown === 3 ? (
-              <form>
+              <form onSubmit={(e) => { sendForm(e) }}>
                 <div className={s.ChangeLoginMain_step3}>
-                  {props.type_el == "phone" ? <InpMask pattern={'[+][7]\\s[(][0-9]{3}[)]\\s[0-9]{3}-[0-9]{2}-[0-9]{2}'} required
-                    placeholder={'Номер телефона'} type={'tel'} className={'input'} /> : <Input required
+                  {props.type_el === "phone" ? <InpMask pattern={'[+][7]\\s[(][0-9]{3}[)]\\s[0-9]{3}-[0-9]{2}-[0-9]{2}'} required
+                    placeholder={'Номер телефона'} type={'tel'} className={'input'} name={'phone'} /> : <Input required
                       placeholder={'Электронная почта'}
                       type={'email'}
                       name={'email'} />}
-                  <div className={s.ChangeLoginButton} >
+                  <div className={s.ChangeLoginButton}>
                     <div className={s.ChangeMargin}>
                       <Button
                         text={"Изменить"}
@@ -107,7 +133,10 @@ const ChangeLogin = (props) => {
                         type="submit"
                       />
                     </div>
-                    <div onClick={e => setModal(false)}>
+                    <div onClick={e => {
+                      setModal(false)
+                      setError("")
+                    }}>
                       <Button text="отмена" class="btn white" />
                     </div>
                   </div>

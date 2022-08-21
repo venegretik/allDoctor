@@ -35,7 +35,9 @@ export const axiosBranch = () => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}branch`);
         dispatch(branchArrayAction(response.data.data.items));
+        return response.data
     }
+    
 }
 
 //Получение оффлайновых разделов
@@ -69,5 +71,6 @@ export const axiosDoctorDelete = (user_id) => {
     return async function (dispatch) {
         const response = await axios.delete(`${defaultUrl}doctors/my/${user_id}`);
         dispatch(DoctorMyDelete(user_id));
+        return response.data
     }
 }

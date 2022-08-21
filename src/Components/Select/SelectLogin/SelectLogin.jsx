@@ -5,6 +5,7 @@ import arrow from "../../../img/arrow.png";
 import { useParams } from "react-router";
 import "../Select.css";
 import { DoctorMyName } from "../../../base/Reducers/doctorReducer";
+import { getConfigHeaderAction, getConfigTitleAction } from "../../../base/Reducers/configReducer";
 const SelectLogin = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -18,26 +19,30 @@ const SelectLogin = (props) => {
     setIsShown((current) => !current);
   };
   useEffect(() => {
-    if (props.selectType == "sort" && Showtext == "...")
+    if (props.selectType === "sort" && Showtext === "...")
       setShowText("По популярности");
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
     if (props.array[0]) {
-      if (props.selectType == "specialization") {
-        let filt = props.array.filter(el => el.branch_id == params.id);
+      if (props.selectType === "specialization") {
+        let filt = props.array.filter(el => el.branch_id === Number(params.id));
         setShowText(filt[0].title)
+        dispatch(getConfigTitleAction(filt[0]?.title));
       }
-
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.array]);
   const handleClickChange = (changeEvent) => {
     setShowText(changeEvent.target.title);
-    if (props.selectType == "specialization") {
+    if (props.selectType === "specialization") {
       dispatch(props.func(page, Number(changeEvent.target.value), sort));
       dispatch(DoctorMyName(changeEvent.target.title));
+      dispatch(getConfigHeaderAction(changeEvent.target.title));
+      dispatch(getConfigTitleAction(changeEvent.target.title));
     }
 
-    if (props.selectType == "sort")
+    if (props.selectType === "sort")
       dispatch(props.func(page, specialization, changeEvent.target.value));
   }
   let arrayItems = props.array.map(el =>

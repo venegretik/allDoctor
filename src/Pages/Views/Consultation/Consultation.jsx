@@ -11,6 +11,7 @@ const Consultation = () => {
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(getConfigHeaderAction("Мои записи"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
     
     return (

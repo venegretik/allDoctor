@@ -1,5 +1,4 @@
 import React from "react";
-import s from './NotFound.module.css';
 const NotFound = (props) => {
     return(
         <div>

@@ -18,12 +18,24 @@
 .Form_Download label span{
     text-align: center;
 }
+.Download_file_flex{
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 6px;
+}
+.Download_File_PDF .Form_Line{
+    margin-top: 0px;
+    margin-bottom: 21px;
+}
 .Form_Download label{
     height: 100%;
+    border: 2px dashed #EAF2FF;
+    border-radius: 24px;
+    text-decoration: none;
 }
 .Message_button_margin{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .Form_Input{
     display: flex;
@@ -155,6 +167,11 @@
 @media (max-width:840px){
     .ResultFull{
         padding-left: 0px;
+    }
+}
+@media(max-width:768px){
+    .title {
+        display: none;
     }
 }
 @media(max-width:580px){

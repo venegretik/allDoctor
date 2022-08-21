@@ -67,7 +67,7 @@ export const axiosConsultationDelete = (consultation_id) => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.delete(`${defaultUrl}consultation/${consultation_id}`);
+        axios.delete(`${defaultUrl}consultation/${consultation_id}`);
         dispatch(consultationDeleteAction(consultation_id));
     }
 }
@@ -80,7 +80,7 @@ export const axiosConsultationPuy = (consultation_id) => {
         return response.data.data
     }
 }
-export const axiosConsultationCalendar = (consultation_id, slot_id, DateStr=1) => {
+export const axiosConsultationCalendar = (consultation_id, slot_id, DateStr = 1) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -101,7 +101,7 @@ export const axiosConsultationStart = (consultation_id) => {
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.get(`${defaultUrl}consultation/${consultation_id}/start`);
         dispatch(consultationStartAction(response.data.data.doctor))
-        
+
     }
 }
 export const axiosConsultationChat = () => {
@@ -109,6 +109,6 @@ export const axiosConsultationChat = () => {
         const token = localStorage.getItem('token');
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
-        const response = await axios.get(`${defaultUrl}chat`);
+        axios.get(`${defaultUrl}chat`);
     }
 }

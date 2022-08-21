@@ -6,7 +6,6 @@ import {
   axiosProfileBalance,
   axiosProfileRefferal,
   axiosProfilePay,
-  axiosProfileFriend,
   axiosProfileHistory,
 } from "../../../../base/asyncActions/Profile";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,6 +14,7 @@ import RequestMoney from "../../../../Components/Modal/Request_money/RequestMone
 import copy from "../../../../img/copy.png";
 import InfoModal from "../../../../Components/InfoText/InfoModal";
 import FormErrors from "../../../../Components/FormError/FormError";
+import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
 const Balance = () => {
   const [isShown, setIsShown] = useState(false);
   let dispatch = useDispatch();
@@ -43,7 +43,9 @@ const Balance = () => {
   useEffect(() => {
     dispatch(axiosProfileBalance());
     dispatch(axiosProfileRefferal());
+    dispatch(getConfigHeaderAction("Баланс"))
     if (!history[0]) dispatch(axiosProfileHistory());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const CopyText = (e) => {
     var copyText = document.querySelector(".refferal");
@@ -65,9 +67,12 @@ const Balance = () => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
+    if (isShown)
+      obj.friend.replace(/[\D]+/g, "");
     !isShown
       ? (response = await dispatch(axiosProfilePay(obj)))
       : (response = await dispatch(axiosProfilePay(obj)));
+
     if (response.status && response.payment_url) {
       window.location.href = response.payment_url;
     }
@@ -156,6 +161,7 @@ const Balance = () => {
               required
               placeholder={"Номер телефона друга"}
               type={"tel"}
+              name={"friend"}
               className={"input"}
             />
           ) : (
@@ -173,7 +179,7 @@ const Balance = () => {
       <div className={s.Referal}>
         <div className={s.Referal_title} style={{ color: config?.config.colors.color2 }}>
           <h1>Реферальный код</h1>
-          <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
+          <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" classtwo="infoFuncpop" class="infoFunc"/>
         </div>
         <div className={s.Refferal_input}>
           <Input

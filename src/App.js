@@ -21,8 +21,8 @@ import PostRewiew from "./Pages/Views/Post_review/Post_review";
 import NotFound from "./Pages/Views/NotFound/NotFound";
 import Balance from "./Pages/Views/My_Profile/Balance/Balance";
 import Result from "./Pages/Views/My_Profile/Result/Result";
-import Med_Cart from "./Pages/Views/My_Profile/Med_Cart/Med_Cart";
-import Local_Data from "./Pages/Views/My_Profile/Local_Data/Local_Data";
+import MedCart from "./Pages/Views/My_Profile/Med_Cart/Med_Cart";
+import LocalData from "./Pages/Views/My_Profile/Local_Data/Local_Data";
 import ReplaceData from "./Pages/Views/My_Profile/Replace_Data/ReplaceData";
 import Utility from "./Pages/Views/My_Profile/Utility/Utility";
 import Messages from "./Pages/Views/My_Profile/Messages/Messages";
@@ -36,6 +36,7 @@ function App() {
   const loading = useSelector((state) => state.config.loading);
   useEffect(() => {
     dispatch(axiosConfig());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <>
@@ -59,8 +60,8 @@ function App() {
             <Route path={"profile"} element={<MyProfile />}>
               <Route path={"balance"} element={<Balance />} />
               <Route path={"result"} element={<Result />} />
-              <Route path={"med-cart"} element={<Med_Cart />} />
-              <Route path={"local-data"} element={<Local_Data />} />
+              <Route path={"med-cart"} element={<MedCart />} />
+              <Route path={"local-data"} element={<LocalData />} />
               <Route path={"replace-data"} element={<ReplaceData />} />
               <Route path={"utility"} element={<Utility />} />
               <Route path={"message"} element={<Messages />} />

@@ -1,6 +1,6 @@
 import React from "react";
 import s from './ChatModal.module.css';
-import chat from '../../../img/Chat_icon.png';
+import chat from '../../../img/Chat_icon.svg';
 import chatMessage from '../../../img/chat_message.png'
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -51,18 +51,18 @@ const ChatModal = () => {
                     </div>
                     <div className={s.main_message} style={{ color: config?.config.colors.color2 }}>
                         <div className={s.main_messageText}>
-                            <p className={s.Font_size14}>В сети</p>
+                            <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>В сети</p>
                             <div className={s.MessageDoctor}>
                                 <span >
-                                    <p className={s.MessageText} style={{ background: config?.config.colors.color4 }}>Здравствуйте, чем мы можем Вам помочь?</p>
+                                    <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>
                                 </span>
-                                <p>12:15</p>
+                                <p style={{ color: config?.config.colors.color4 }}>12:15</p>
                             </div>
                             <div className={s.MessageMe} >
                                 <span >
                                     <p className={s.MessageText} style={{ background: config?.config.colors.color3 }}>Здравствуйте, чем мы можем Вам помочь?</p>
                                 </span>
-                                <p>12:15</p>
+                                <p style={{ color: config?.config.colors.color4 }}>12:15</p>
                             </div>
                         </div>
                     </div>

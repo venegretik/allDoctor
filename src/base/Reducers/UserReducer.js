@@ -11,6 +11,7 @@ const defaultState = {
     referral: "",
     has_notifications: true,
     balance: 9000,
+    utitlityShow:false,
     payment_url:"",
     history:[],
     med_cart:{},
@@ -27,6 +28,8 @@ const defaultState = {
   const MED_CART = 'MED_CART';
   const RESULT = 'RESULT';
   const PHOTO = 'PHOTO';
+  const RESULT_SELECT = 'RESULT_SELECT';
+  const UTILITY = 'UTILITY';
   export const profileReducer = (state = defaultState, action) => {
     switch (action.type) {
         case USER_ARRAY:
@@ -52,10 +55,21 @@ const defaultState = {
             return{...state, file_history:state.file_history.concat(action.obj.items), 
                 current_page:action.obj.pagination.current_page,
                 total_page:action.obj.pagination.total_page}
+        case RESULT_SELECT:
+            return{
+                ...state, file_history:[...action.obj.items], 
+                current_page:action.obj.pagination.current_page,
+                total_page:action.obj.pagination.total_page
+            }
         case PHOTO:
             return {
                 ...state,
                 photo:action.obj.photo
+            }
+        case UTILITY:
+            return{
+                ...state,
+                utitlityShow:action.Show
             }
         default:
             return state
@@ -69,4 +83,6 @@ export const ProfileFriendAction = (obj) =>({ type: FRIEND_REQUEST, obj});
 export const ProfileHistoryAction = (obj) =>({ type: HISTORY_REQUEST, obj});
 export const ProfileMedCartAction = (obj) =>({ type: MED_CART, obj});
 export const ProfileResultAction = (obj) =>({ type: RESULT, obj});
+export const ProfileResultSelectAction = (obj) =>({ type: RESULT_SELECT, obj});
 export const ProfilePhotoAction = (obj) =>({ type: PHOTO, obj});
+export const ProfileUtilityAction = (Show) =>({ type: UTILITY, Show});

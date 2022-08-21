@@ -12,6 +12,7 @@ const Reviews = (props) => {
     useEffect(() => {
         if (!recording?.reviewsArray[0])
             dispatch(axiosReview(props.usId));
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     let recording = useSelector(state => state.recording);
     let keyNum = 0;

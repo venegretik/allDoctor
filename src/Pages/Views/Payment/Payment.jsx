@@ -1,8 +1,7 @@
 import React from "react";
 import s from './Payment.module.css';
-import star from '../../../img/Rating_Star.png'
 import { useState, useEffect } from "react";
-import { getPuymentInfo, getPuymentPost } from "../../../base/asyncActions/Payment";
+import {getPuymentPost } from "../../../base/asyncActions/Payment";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
@@ -16,17 +15,9 @@ const Payment = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         window.scrollTo(0, 0);
-        dispatch(getConfigHeaderAction("Оплата"))
+        dispatch(getConfigHeaderAction("Оплата"));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    let [errorType, seterrorType] = useState({
-        status: false,
-        error: {
-            fields: {
-                summ: [],
-                friend: [],
-            },
-        },
-    });
     let [errorMessage, seterrorMessage] = useState({
         status: false,
         error: {
@@ -53,14 +44,6 @@ const Payment = () => {
             window.location.href = response.data.payment_url;
         }
         if (!response.status) {
-            seterrorType(errorType => ({
-                error: {
-                    fields: {
-                        summ: response.error?.fields.summ? [...response.error?.fields.summ]: [],
-                        friend: response.error?.fields.friend? [...response.error?.fields.friend]: []
-                    }
-                }
-            }))
             seterrorMessage(errorMessage => ({
                 error: {
                     message: response.error?.message

@@ -21,17 +21,10 @@ const Notification = () => {
       }
     }
   };
-  const options = {
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timezone: "UTC",
-  };
 
   useEffect(() => {
     asyncNotification();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

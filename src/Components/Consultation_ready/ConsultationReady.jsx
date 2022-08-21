@@ -6,7 +6,7 @@ import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo
 import Button from "../../Components/Button/Button";
 import { axiosConsultationDelete } from "../../base/asyncActions/getConsultation";
 import Stars from "../Stars/Stars";
-import Cancel_Record from "../Modal/Cancel_record/Cancel_Record";
+import CancelRecord from "../Modal/Cancel_record/Cancel_Record";
 import { Link } from "react-router-dom";
 import {
   axiosConsultationStart,
@@ -24,13 +24,14 @@ const ConsultationReady = (props) => {
   };
   const PuyFunc = async (id) => {
     const response = await dispatch(axiosConsultationPuy(id));
-    if (response.is_paid == false) {
+    if (response.is_paid === false) {
       window.location.href = response.payment_url;
     }
   };
   const config = useSelector(state => state.config.config);
   useEffect(() => {
     asyncCons();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <section>
@@ -38,7 +39,7 @@ const ConsultationReady = (props) => {
         <div className={s.Doctor_cart} style={{color:config?.config.colors.color1,
                                               backgroundColor:config?.config.colors.color10}}>
           {ConsultationUpcoming.can_cancel ? (
-            <Cancel_Record
+            <CancelRecord
               consultation_id={ConsultationUpcoming.consultation_id}
               text={"Вы действительно хотите отменить запись?"}
               typeModal={""}

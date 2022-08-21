@@ -1,11 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 import arrow from "../../../img/arrow.png";
-import { reviewCosultationAction } from "../../../base/Reducers/reviewsReducer";
 import "../Select.css";
 const SelectModule = (props) => {
-    let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
     const config = useSelector((state) => state.config.config);
     const [Showtext, setShowText] = useState("Не найдено");
@@ -17,7 +15,7 @@ const SelectModule = (props) => {
     }
     useEffect(() => {
         if(props.array[0]){
-            if(!props.array[0].label == "")
+            if(!props.array[0].label === "")
             setShowText(props.array[0].label)
         }
     }, [props.array]);

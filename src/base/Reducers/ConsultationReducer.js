@@ -40,7 +40,7 @@ export const consultationReducer = (state = defaultState, action) => {
                 date_to: action.consultation_array.date_to
             }
         case CONSULTATION_DELETE:
-            return { ...state, consultation: state.consultation.filter(el => action.user_id != el.consultation_id) }
+            return { ...state, consultation: state.consultation.filter(el => action.user_id !== el.consultation_id) }
         case CONSULTATION_START:
             return { ...state, doctor: { ...action.Doctor } }
         case CONSULTATION_MODAL:

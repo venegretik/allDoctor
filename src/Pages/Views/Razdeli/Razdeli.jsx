@@ -17,9 +17,11 @@ const Razdeli = () => {
         dispatch(axiosBranch());
         window.scrollTo(0, 0);
         dispatch(getConfigHeaderAction("Разделы медицины"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
         setShowBranchSort(Branch)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Branch]);
     const [Showtext, setShowText] = useState("");
     function handleChange(e) {

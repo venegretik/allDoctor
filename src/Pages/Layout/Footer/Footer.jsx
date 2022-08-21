@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Footer.module.css";
-import logo from "../../../img/logo-white.svg";
 import Doctor from "../../../img/Doctor_icon.png";
 import Note from "../../../img/note_icon.png";
 import Home from "../../../img/Home_icon.png";
@@ -9,8 +8,8 @@ import DoctorAct from "../../../img/Doctor_active.png";
 import NoteAct from "../../../img/note_active.png";
 import HomeAct from "../../../img/Home_active.png";
 import ProfAct from "../../../img/profile_active.png";
-import {NavLink, Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import {NavLink} from "react-router-dom";
+import { useSelector} from "react-redux";
 import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
   let Text = useSelector(state => state.config.header_text);

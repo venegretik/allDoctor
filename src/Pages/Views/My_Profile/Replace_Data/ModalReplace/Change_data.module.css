@@ -7,23 +7,40 @@
     display: flex;
     justify-content: center;
     left: 0px;
-    z-index: 20;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px 16px 16px 16px;
+    z-index: 30;
     top: 0px;
 }
 
 .Cancel_Record_button button {
-    width: 240px;
-    height: 60px;
-    padding: 22px 41px;
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    padding: 22px 10px;
     letter-spacing: 2px;
     margin-top: 45px;
     text-transform: uppercase;
     border-radius: 16px;
 }
+.Cart_close {
+    position: absolute;
+    font-size: 30px;
+    top: 10px;
+    cursor: pointer;
+    right: 10px;
+}
+.Cancel_Record_button {
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+}
 
 .Cancel_Record_block {
     display: flex;
     flex-direction: column;
+    padding: 0px 40px;
     justify-content: center;
     align-items: center;
     max-width: 800px;
@@ -33,8 +50,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    min-height: 400px;
-    max-height: 500px;
+    border-radius: 16px;
     padding-bottom: 40px;
 }
 
@@ -66,12 +82,14 @@
     line-height: 32px;
     letter-spacing: 0px;
 }
+
 @media (max-width:520px) {
-    .Cancel_Record_button{
+    .Cancel_Record_button {
         display: flex;
-        flex-direction: column;
+        gap: 30px;
         align-items: center;
     }
+
     .Font_size24 {
         font-family: 'Exo', sans-serif;
         font-size: 14px !important;
@@ -79,23 +97,50 @@
         line-height: 19px !important;
         letter-spacing: 0px !important;
     }
-    .buttonActive{
-        margin-right: 0px;
-        margin-top: 25px!important;
+
+    .Cancel_Record button {
+        max-width: 240px;
+        width: 100%;
+        height: auto;
+        padding: 13.5px 18px;
+        cursor: pointer;
+        letter-spacing: 2px;
+        margin-top: 25px;
+        text-transform: uppercase;
+        border-radius: 16px;
     }
-    .Cancel_Record_block{
+
+    .buttonActive {
+        margin-right: 0px;
+        margin-top: 25px !important;
+    }
+
+    .Cancel_Record_block {
         max-height: 600px;
     }
 }
-@media(max-width:480px){
-    .Cancel_Record_block img{
+
+@media(max-width:480px) {
+    .Cancel_Record_block img {
         display: none;
     }
+    .Cart_close {
+        display: none;
+     }
     .Cancel_Record button {
         margin-top: 20px;
     }
-    .Cancel_Record_block{
-        top: 75%;
-        min-height: 400px;
+
+    .Cancel_Record_block {
+        bottom: 0px;
+        position: absolute;
+        top:auto;
+        transform: translate(-50%,0%);
+        width: 100%;
+        border-radius: 16px;
+        padding-bottom: 0px;
+        height: 100%;
+        max-height: 300px;
+        min-height: auto;
     }
 }

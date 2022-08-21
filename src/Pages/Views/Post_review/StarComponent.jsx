@@ -1,7 +1,5 @@
 import React from "react";
 import './Stars.css'
-import { useState } from "react";
-import star from '../../../img/Rating_Star.png';
 import { useDispatch } from "react-redux";
 const StarComponent = (props) => {
     let dispatch = useDispatch()

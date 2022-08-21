@@ -3,7 +3,7 @@ import s from './Calendar.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosRecordingCalculator } from "../../base/asyncActions/getReviews";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import Loader from "../Loading/Loader";
 import { axiosConsultationCalendar } from "../../base/asyncActions/getConsultation";
 import { getPuymentInfo } from "../../base/asyncActions/Payment";
@@ -26,6 +26,7 @@ const Calendar = (props) => {
     let keyNum = 0;
     useEffect(() => {
         dispatch(axiosRecordingCalculator());
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let Modal = async () => {
         let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id, DateStr))
@@ -46,10 +47,11 @@ const Calendar = (props) => {
         if (calendar[0]) {
             setDate(calendar[0].date);
             if (!slots[0]) {
-                slots = [...calendar[0].slots]
+                let slots = [...calendar[0].slots]
                 setSlot(slots)
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [calendar]);
     let slotsFunc = (el) => {
         setDate(el.date);

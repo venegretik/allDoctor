@@ -7,16 +7,20 @@ import { axiosProfileResult } from "../../../../base/asyncActions/Profile";
 import { useEffect, useState } from "react";
 import InfoModal from "../../../../Components/InfoText/InfoModal";
 import { useDispatch, useSelector } from "react-redux";
+import PDF from "../../../../img/file.png";
 import SelectResult from "../../../../Components/Select/SelectResult/SelectResult";
 import { FileUploader } from "react-drag-drop-files";
 import FormErrors from "../../../../Components/FormError/FormError";
 import Button from "../../../../Components/Button/Button";
+import MessageContainer from "../../../../Components/UploadFile/UploadFile";
 import { axiosProfileUpload } from "../../../../base/asyncActions/Profile";
+import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
 import "./drop.css"
 const FormResult = () => {
     let dispatch = useDispatch();
     const [Showtext, setShowText] = useState("");
     const [radioValue, setRadioValue] = useState(null);
+    let [submit, setsubmit] = useState(null);
     const config = useSelector(state => state.config.config);
     const handleChange = async (file) => {
         if (radioValue && Showtext.length > 4) {
@@ -24,8 +28,9 @@ const FormResult = () => {
             obj.file = file;
             obj.name = Showtext;
             obj.type = radioValue;
-           let response = await dispatch(axiosProfileUpload(obj));
-            if(!response.status){
+            let response = await dispatch(axiosProfileUpload(obj));
+            setsubmit(obj)
+            if (!response.status) {
                 seterrorMessage(errorMessage => ({
                     error: {
                         message: response.error?.message
@@ -64,20 +69,20 @@ const FormResult = () => {
                         margin: "0px 10px 0px 10px",
                         color: config?.config.colors.color4
                     }} />
-                    <InfoModal className={s.Info} text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
+                    <InfoModal className={s.Info} text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" classtwo="infoLabpop" class="infoLab"/>
                 </div>
                 <div className={s.Form_Input}>
                     <Input id="Register_radio2" value={'1'} type="radio" name={"type"} onChange={onChangeRadio} labeltext={"Функциональные"} label={{
                         margin: "0px 10px 0px 40px",
                         color: config?.config.colors.color4
                     }} />
-                    <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" />
+                    <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" classtwo="infoFuncpop" class="infoFunc" />
                 </div>
             </div>
             <div className={s.Form_Download}>
                 <FileUploader handleChange={handleChange} label="Нажмите или перетащите сюда файл" name="file" classes="drop_area" />
             </div>
-            <button>выбрать файл</button>
+            <MessageContainer data={submit} type={"button"} />
             <div className={s.Form_Line}></div>
             {/* КОМПОНЕНТ ОШИБКИ */}
             <FormErrors error={errorMessage.error.message} />
@@ -91,9 +96,10 @@ const Result = () => {
     const config = useSelector(state => state.config.config);
     let file = useSelector((state) => state.profile.file_history)
     useEffect(() => {
-        
+
         if (!file[0])
             dispatch(axiosProfileResult());
+            dispatch(getConfigHeaderAction("Результаты"))
             // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [file]);
     let page = useSelector((state) => state.profile.current_page);
@@ -119,11 +125,14 @@ const Result = () => {
     }]
     let keyNum = 0;
     let file_array = file.map(
-        el => <div key={++keyNum} className={s.Download_File_block}>
+        el => <div className={s.Download_File_PDF}><div key={++keyNum} className={s.Download_File_block}>
             <div className={s.Download_File_left}>
                 <img src={file} alt="" />
                 <div className={s.Download_File_left_text}>
-                    <p className={s.Font_size16}>{el.name}</p>
+                    <div className={s.Download_file_flex}>
+                        <img src={PDF} alt="" />
+                        <b className={s.Font_size16}>{el.name}</b>
+                    </div>
                     <p className={s.Font_size14 + " " + s.gray}>{new Date(el.datetime).toLocaleString(
                         "ru",
                         {
@@ -144,6 +153,8 @@ const Result = () => {
                 <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>{el.type === 1 ? "лабораторные" : "функциональные"}</p>
             </div>
         </div>
+            <div className={s.Form_Line}></div>
+        </div>
     )
     return (
         <div className={s.ResultFull} style={{ color: config?.config.colors.color2 }}>
@@ -161,7 +172,6 @@ const Result = () => {
                     {file_array}
                     <div className={s.Message_button_margin} onClick={onClickShow}>
                         <Button
-
                             className={s.Show_more + " " + s.Font_size14}
                             type={'submit'}
                             class={'btn white'}
@@ -169,7 +179,6 @@ const Result = () => {
                         />
                     </div>
                 </div>
-                <div className={s.Form_Line}></div>
 
             </div>
         </div>

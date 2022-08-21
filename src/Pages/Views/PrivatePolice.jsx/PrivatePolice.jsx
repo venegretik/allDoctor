@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PDF from "../../../img/filePdf.png";
+import { getConfigHeaderAction} from "../../../base/Reducers/configReducer";
 import {
   axiosPrivacy,
   axiosServices,
@@ -20,10 +21,12 @@ const PrivatePolice = (props) => {
   let title = useSelector((state) => state.config.title);
   const config = useSelector((state) => state.config.config);
   useEffect(() => {
-    if (params.type == "privacy") dispatch(axiosPrivacy());
-    if (params.type == "services") dispatch(axiosServices());
-    if (params.type == "user") dispatch(axiosPersonal());
-    if (params.type == "personal") dispatch(axiosAgreemet());
+    if (params.type === "privacy") dispatch(axiosPrivacy());
+    if (params.type === "services") dispatch(axiosServices());
+    if (params.type === "user") dispatch(axiosPersonal());
+    if (params.type === "personal") dispatch(axiosAgreemet());
+    dispatch(getConfigHeaderAction("Политика конфидециальности"))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className={s.PrivatePoliceFull + " " + s.Container}>

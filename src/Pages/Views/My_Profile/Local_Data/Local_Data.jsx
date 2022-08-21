@@ -4,6 +4,7 @@ import pen from "../../../../img/pen.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
+import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
 import Loader from "../../../../Components/Loading/Loader";
 import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
@@ -12,19 +13,21 @@ const Local_Data = () => {
   const config = useSelector(state => state.config.config);
   useEffect(() => {
     dispatch(axiosProfile());
+    dispatch(getConfigHeaderAction("Профиль"))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   let phone = "";
   for (let i = 0; profile.phone.length > i; i++) {
-    if (i == 1) {
+    if (i === 1) {
       phone += " (";
       phone += profile.phone[i];
-    } else if (i == 4) {
+    } else if (i === 4) {
       phone += ") ";
       phone += profile.phone[i];
-    } else if (i == 7) {
+    } else if (i === 7) {
       phone += "-";
       phone += profile.phone[i];
-    } else if (i == 9) {
+    } else if (i === 9) {
       phone += "-";
       phone += profile.phone[i];
     } else phone += profile.phone[i];
@@ -126,7 +129,7 @@ const Local_Data = () => {
               <p>Электронная почта: {profile.email}</p>
             </span>
             <span>
-              <p>Пол: {profile.gender == 1 ? "Женский" : "Мужской"}</p>
+              <p>Пол: {profile.gender === 1 ? "Женский" : "Мужской"}</p>
             </span>
             <span>
               <p>Баланс: {profile.balance}₽</p>

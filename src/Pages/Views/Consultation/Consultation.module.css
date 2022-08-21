@@ -258,7 +258,7 @@
 
 .Show_more {
     display: flex;
-    justify-content: center;
+    margin-left: 192px;
     margin-bottom: 64px;
 }
 
@@ -313,6 +313,12 @@
 @media(max-width:980px) {
     .Doctor_cart {
         width: 500px;
+    }
+    .Show_more {
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+        margin-bottom: 64px;
     }
     .Consultation_info_text {
         display: none;

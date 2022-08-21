@@ -33,7 +33,7 @@
 
 .Doctor_button {
   display: flex;
-  justify-content: center;
+  margin-left: 236px;
 }
 
 .Doctor_avatar_info p {
@@ -200,6 +200,14 @@
   .Doctor {
     width: 100%;
   }
+  .Doctor_button {
+    display: flex;
+    margin-left: 0px;
+    justify-content: center;
+  }
+  .Doctor_button {
+    margin-bottom: 50px;
+}
 }
 
 @media (max-width: 768px) {
@@ -405,6 +413,10 @@
     position: relative;
     width: 70px;
   }
+  .Doctor_avatar {
+    max-width: 70px;
+    width: auto;
+  }
   .Doctor_avatar_info ul li{
     max-width: 20%;
   }
@@ -421,11 +433,6 @@
 }
 
 @media (max-width: 480px) {
-  
-  .Doctor_avatar {
-    max-width: 70px;
-    width: auto;
-  }
   .Doctor_list {
     margin-left: 20px;
     margin-right: 20px;

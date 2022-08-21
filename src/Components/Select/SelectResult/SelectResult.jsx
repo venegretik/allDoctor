@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import arrow from "../../../img/arrow.png";
-import { axiosProfileResult } from "../../../base/asyncActions/Profile";
+import { axiosProfileResultSelect } from "../../../base/asyncActions/Profile";
 import "../Select.css";
 const SelectResult = (props) => {
     let dispatch = useDispatch();
@@ -14,7 +14,7 @@ const SelectResult = (props) => {
     };
     const handleClickChange = (changeEvent) => {
         setShowText(changeEvent.target.title);
-        dispatch(axiosProfileResult(1,changeEvent.target.value));
+        dispatch(axiosProfileResultSelect(1,changeEvent.target.value));
     }
     let arrayItems = props.array.map(el =>
         <label htmlFor={el.branch_id} key={el.branch_id}>

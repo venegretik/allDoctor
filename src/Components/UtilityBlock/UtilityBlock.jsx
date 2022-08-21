@@ -5,15 +5,16 @@ import Slide from "../Slide/Slide"
 import photo from "../../img/photo.png"
 import { useEffect, useState, useRef } from "react";
 const UtilityBlock = () => {
-    let webcamStream;
+    
     useEffect(() => {
         Device();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     let Device = async () => {
         const devices = await navigator.mediaDevices.enumerateDevices()
-        setvideoArray([...devices.filter(el => el.kind == "videoinput")]);
-        setaudioArray([...devices.filter(el => el.kind == "audioinput")]);
-        setoutputArray([...devices.filter(el => el.kind == "audiooutput")]);
+        setvideoArray([...devices.filter(el => el.kind === "videoinput")]);
+        setaudioArray([...devices.filter(el => el.kind === "audioinput")]);
+        setoutputArray([...devices.filter(el => el.kind === "audiooutput")]);
         navigator.mediaDevices.getUserMedia({
             audio: true,
             video: true
@@ -55,10 +56,13 @@ const UtilityBlock = () => {
             audio: true,
             video: true
         }).then((stream) => {
+            let webcamStream;
             inputElement.current.srcObject = stream;
             inputElement.current.play();
             setvideoStatus(true);
+            // eslint-disable-next-line
             webcamStream = stream;
+            
 
         }).catch((error) => {
             console.log(error);
@@ -69,10 +73,10 @@ const UtilityBlock = () => {
         let all_pids = [...document.querySelectorAll('.pid')];
         let amout_of_pids = Math.round(vol / 10);
         let elem_range = all_pids.slice(0, amout_of_pids)
-        for (var i = 0; i < all_pids.length; i++) {
+        for (let i = 0; i < all_pids.length; i++) {
             all_pids[i].style.backgroundColor = "#e6e7e8";
         }
-        for (var i = 0; i < elem_range.length; i++) {
+        for (let i = 0; i < elem_range.length; i++) {
 
             // console.log(elem_range[i]);
             elem_range[i].style.backgroundColor = "#407BFF";

@@ -16,6 +16,7 @@
 
 .Utility_text p {
     margin: 12px 0px;
+    text-align: left;
 }
 
 .Utility_configuration_video {
@@ -61,11 +62,10 @@
     padding: 22px 36px;
 }
 
-.Utility_configuration_full {}
-
 .check_volume {
     margin-bottom: 20px;
     font-weight: bold;
+    text-align: left;
 }
 
 .Utility_configuration_video {
@@ -79,10 +79,12 @@
 
 .Utility_configuration p {
     margin-bottom: 14px;
+    text-align: left;
 }
 
 .Utility_volume p {
     margin-top: 20px;
+    text-align: left;
     margin-bottom: 14px;
 }
 

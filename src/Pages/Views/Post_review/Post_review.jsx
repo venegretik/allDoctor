@@ -1,9 +1,7 @@
 import React from "react";
 import s from './Post_review.module.css';
-import star from '../../../img/Rating_Star.png';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { useParams } from "react-router";
 import { axiosReviews } from "../../../base/asyncActions/getReviews";
 import SelectReview from "../../../Components/Select/SelectReview/SelectReview";
@@ -20,6 +18,7 @@ const PostRewiew = () => {
         dispatch(axiosReviews(params.id));
         window.scrollTo(0, 0);
         dispatch(getConfigHeaderAction("Оставить отзыв"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     let [errorMessage, seterrorMessage] = useState({
         status: false,

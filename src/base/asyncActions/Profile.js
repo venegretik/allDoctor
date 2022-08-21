@@ -10,6 +10,7 @@ import {
   ProfileMedCartAction,
   ProfileResultAction,
   ProfilePhotoAction,
+  ProfileResultSelectAction
 } from "../Reducers/UserReducer";
 import { getShortInfo } from "./getMainPageInfo";
 export const axiosProfile = () => {
@@ -94,6 +95,17 @@ export const axiosProfileResult = (page = 1, type = 0) => {
     dispatch(ProfileResultAction(response.data.data));
   };
 };
+export const axiosProfileResultSelect = (page = 1, type = 0) => {
+  return async function (dispatch) {
+    const token = localStorage.getItem("token");
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const response = await axios.get(
+      `${defaultUrl}user/research?page=${page}&type=${type}`
+    );
+    dispatch(ProfileResultSelectAction(response.data.data));
+  };
+};
 export const axiosProfileEdit = (obj) => {
   return async function (dispatch) {
     const token = localStorage.getItem("token");
@@ -116,6 +128,21 @@ export const axiosProfileEmailEdit = (code = 0, email = null) => {
         email: email,
       },
     });
+    return response.data
+  };
+};
+export const axiosProfilePhoneEdit = (code = 0, phone = null) => {
+  return async function (dispatch) {
+    const token = localStorage.getItem("token");
+    if (token)
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    const response = await axios.post(`${defaultUrl}user/phone`, {
+      params: {
+        code: code,
+        phone: phone,
+      },
+    });
+    return response.data
   };
 };
 export const axiosProfileUpload = (obj = {}) => {

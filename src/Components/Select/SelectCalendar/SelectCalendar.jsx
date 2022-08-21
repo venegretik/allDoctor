@@ -20,6 +20,14 @@ const SelectCalendar = (props) => {
         setIsShown((current) => !current);
         setNum(0);
     };
+    useEffect(() => {
+        if (!isShown) {
+            document.body.style.overflow = "auto";
+        }
+        if (isShown) {
+            document.body.style.overflow = "hidden";
+        }
+    }, [isShown])
     const [state, setState] = useState([
         {
             startDate: new Date(),
@@ -30,35 +38,38 @@ const SelectCalendar = (props) => {
     useEffect(() => {
         dispatch(consultationHistoryCons(specialization, page, state[0].startDate, state[0].endDate));
         setNum(++isNum);
-        if(isNum == 2) {
+        if (isNum === 2) {
             setNum(0);
             setIsShown(false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state])
     return (
         <div id="Select-hide">
             <div className="Select_content" onClick={handleClick}>
-                <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
-      color:config?.config.colors.color2}}>{new Date(state[0].startDate).toLocaleString(
+                <p style={{
+                    border: ` 1px solid ${config?.config.colors.color6}`,
+                    color: config?.config.colors.color2
+                }}>{new Date(state[0].startDate).toLocaleString(
                     "ru",
                     {
-                      month: "numeric",
-                      day: "numeric",
+                        month: "numeric",
+                        day: "numeric",
                     }
-                  ) + "/" + new Date(state[0].endDate).toLocaleString(
+                ) + "/" + new Date(state[0].endDate).toLocaleString(
                     "ru",
                     {
-                      month: "numeric",
-                      day: "numeric",
+                        month: "numeric",
+                        day: "numeric",
                     }
-                  )}</p>
+                )}</p>
                 <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
             </div>
             {isShown && (
                 <div className={s.Cancel_Record_full}>
                     <div className={s.Cancel_Record_block}>
                         <div className={s.Cart_close} onClick={handleClick}>
-                            +
+                            &times;
                         </div>
                         <DateRange
                             locale={rdrLocales.ru}

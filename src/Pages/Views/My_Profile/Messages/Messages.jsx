@@ -4,10 +4,10 @@ import Button from "../../../../Components/Button/Button";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNotification } from "../../../../base/asyncActions/getMainPageInfo";
+import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
 import { axiosProfileDeleteNot, axiosProfileDeleteNotAll } from "../../../../base/asyncActions/Profile";
 const Messages = () => {
     let dispatch = useDispatch();
-    const [NewMessage, setNewMessage] = useState(true);
     let [num, setInt] = useState(1);
     const [NewArray, setNewArray] = useState([]);
     const asyncNotification = async () => {
@@ -32,10 +32,11 @@ const Messages = () => {
             setInt(num)
         else
             setInt(++num)
-        const response = await dispatch(getNotification(num));
     };
     useEffect(() => {
         asyncNotification();
+        dispatch(getConfigHeaderAction("Уведомления"))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const config = useSelector(state => state.config.config);
     return (

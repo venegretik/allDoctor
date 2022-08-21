@@ -5,20 +5,19 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "../SliderDots/SliderDots.css";
 import { Pagination } from "swiper";
-import { getSlider } from "../../../base/asyncActions/getMainPageInfo";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Loader from "../../Loading/Loader";
 
 const SliderApp = () => {
     const [Slider, setSlider] = useState([]),
         config = useSelector((state) => state.config.config),
-        dispatch = useDispatch(),
         SliderInfo = async () => {
             setSlider(config?.module.welcome_screen.screen);
         };
 
     useEffect(() => {
         SliderInfo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     return (
         <section style={{ marginBottom: "70px" }}>

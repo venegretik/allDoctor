@@ -1,11 +1,10 @@
 import React from "react";
 import s from "./ReplaceData.module.css";
-import upload from "../../../../img/upload.png";
 import { Input } from "../../../../Components/Input/Input";
 import { useSelector } from "react-redux/es/exports";
 import ChangeLogin from "../../../../Components/Modal/Change_login/Change_login";
 import { useDispatch } from "react-redux";
-import Message_Container from "../../../../Components/UploadFile/UploadFile";
+import MessageContainer from "../../../../Components/UploadFile/UploadFile";
 import ChangeData from "./ModalReplace/Change_data_modal";
 import { getShortInfo } from "../../../../base/asyncActions/getMainPageInfo";
 import Button from "../../../../Components/Button/Button";
@@ -40,7 +39,7 @@ const ReplaceData = () => {
   });
   useEffect(() => {
     dispatch(axiosProfile());
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const config = useSelector(state => state.config.config);
   const sendForm = async (e) => {
@@ -75,16 +74,16 @@ const ReplaceData = () => {
   };
   let phone = "";
   for (let i = 0; profile.phone.length > i; i++) {
-    if (i == 1) {
+    if (i === 1) {
       phone += " (";
       phone += profile.phone[i];
-    } else if (i == 4) {
+    } else if (i === 4) {
       phone += ") ";
       phone += profile.phone[i];
-    } else if (i == 7) {
+    } else if (i === 7) {
       phone += "-";
       phone += profile.phone[i];
-    } else if (i == 9) {
+    } else if (i === 9) {
       phone += "-";
       phone += profile.phone[i];
     } else phone += profile.phone[i];
@@ -99,7 +98,7 @@ const ReplaceData = () => {
         <div className={s.Profile_data_download_img}>
           <img src={profile.photo} alt="" />
           <div className={s.upload}>
-            <Message_Container />
+            <MessageContainer />
           </div>
         </div>
         <b className={s.Font_size24}>

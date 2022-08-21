@@ -8,6 +8,7 @@
   .Chat_mod{
     display: flex;
     flex-direction: column;
+    cursor: pointer;
     align-items: center;
   }
   .Chat_list {
@@ -71,7 +72,6 @@
     bottom: 0px;
     right: 0px;
   }
-  
   .Chat_list button {
     padding: 20.5px 66px;
     background: #407bff;
@@ -266,5 +266,8 @@
     }
     .Chat_message_title{
         padding-right: 30px;
+    }
+    body.Chat_full{
+      overflow: hidden;
     }
 }

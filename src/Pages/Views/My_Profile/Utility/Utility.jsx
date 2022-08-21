@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Utility.module.css";
 import UtilityBlock from "../../../../Components/UtilityBlock/UtilityBlock";
-import { useEffect, useState, useRef } from "react";
 import "./Sound.css";
 const Utility = () => {
   

@@ -5,11 +5,12 @@ import volume from "../../../img/volume_down.png";
 import close from "../../../img/close.png";
 import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
-import seeting from "../../../img/seeting.png";
+import { useSelector } from "react-redux";
 import ModalUtility from "../../../Components/Modal/ModalUtility/ModalUtility";
 import cup from "../../../img/cup.png";
 import message from "../../../img/chat_message.png";
 const Video = () => {
+    let status = useSelector((state) => state.profile.utitlityShow);
     return (
         <div className={s.VideoFull + " " + s.Container + " Container"}>
             <div className={s.VideoTitle}>
@@ -20,26 +21,28 @@ const Video = () => {
             <div className={s.VideoBlock}>
                 <div className={s.VideoBlockImage}>
                     <img src={videoImage} alt="" />
-                    <ul className={s.videoDesctop}>
-                        <li>
+                    <ul className={s.videoDesctop} style={status?{width:"100%",
+                height:"100vh",transform:"none",left:"0px"}:{width:"500px",
+                height:"auto",transform:"translate(-50%,0%)"}}>
+                        <li style={status?{display:"none"}:{display:"flex"}}>
                             <div className={s.icon_back}>
                                 <img src={volume} alt="" />
                             </div>
                             <p>Громкость</p>
                         </li>
-                        <li>
+                        <li style={status?{display:"none"}:{display:"flex"}}>
                             <div className={s.icon_back}>
                                 <img src={micro_off} alt="" />
                             </div>
                             <p>Выключить микрофон</p>
                         </li>
-                        <li>
+                        <li style={status?{display:"none"}:{display:"flex"}}>
                             <div className={s.icon_back}>
                                 <img src={videocam} alt="" />
                             </div>
                             <p>Выключить камеру</p>
                         </li>
-                        <li>
+                        <li style={status?{display:"none"}:{display:"flex"}}>
                             <div className={s.icon_back + " " + s.icon_close}>
                             <img src={close} alt="" />
                             </div>
