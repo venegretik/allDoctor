@@ -2,58 +2,86 @@ import React from "react";
 import s from "../../Pages/Views/My_Profile/Utility/Utility.module.css";
 import SelectModule from "../Select/SelectModule/SelectModule";
 import Slide from "../Slide/Slide"
+import { useSelector } from "react-redux";
 import photo from "../../img/photo.png"
 import { useEffect, useState, useRef } from "react";
 const UtilityBlock = () => {
-    
+    const [Id, setId] = useState("");
+    const [statusModule, setStatusModule] = useState(false);
+    let inputElement = useRef(null),
+    [videoStatus, setvideoStatus] = useState(""),
+    [videoArray, setvideoArray] = useState([]),
+    [audioArray, setaudioArray] = useState([]),
+    [outputArray, setoutputArray] = useState([]);
+
     useEffect(() => {
+        //код закрывающий все треки
+        window.localStream?.getTracks().forEach((track) => {
+            track.stop();
+        });
+        //функция создания трека
         Device();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [Id]);
+    //получаем id трека из select для того чтобы поменять устройтво
+    let deviceAudioId = useSelector(state => state.profile.UtilityAudioId);
+    useEffect(() => {
+        if (deviceAudioId) {
+            if (Id !== deviceAudioId) {
+                setStatusModule(true)
+                setId(deviceAudioId);
+            }
+            setId(deviceAudioId);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [deviceAudioId]);
     let Device = async () => {
         const devices = await navigator.mediaDevices.enumerateDevices()
         setvideoArray([...devices.filter(el => el.kind === "videoinput")]);
         setaudioArray([...devices.filter(el => el.kind === "audioinput")]);
         setoutputArray([...devices.filter(el => el.kind === "audiooutput")]);
         navigator.mediaDevices.getUserMedia({
-            audio: true,
-            video: true
+            //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
+            audio: { deviceId: { exact: Id !== "" ? Id : "default" } }
         }).then((stream) => {
+            window.localStream = stream;
+            console.log(stream.getAudioTracks())
             let audioContext = new AudioContext();
             let analyser = audioContext.createAnalyser();
             let microphone = audioContext.createMediaStreamSource(stream);
             let javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
-
             analyser.smoothingTimeConstant = 0.8;
             analyser.fftSize = 1024;
             microphone.connect(analyser);
             analyser.connect(javascriptNode);
+            console.log(stream.getTracks())
             javascriptNode.connect(audioContext.destination);
+            //основная проблема с этим кодом, я не знаю как остановить его выполнение, 
+            //трек выключаеться, но этот код продолжает работу(это можно увидеть в настройке звука, начинают очень сильно мигать ячейки)
             javascriptNode.onaudioprocess = function () {
                 var array = new Uint8Array(analyser.frequencyBinCount);
                 analyser.getByteFrequencyData(array);
                 var values = 0;
-
                 var length = array.length;
-                for (var i = 0; i < length; i++) {
+                for (let i = 0; i < length; i++) {
                     values += (array[i]);
                 }
-
                 var average = values / length;
                 colorPids(average);
+                if (statusModule) {
+                    //вот эта строка заставляет выключиться текущий поток, нам нужно выключить прошлый
+                    javascriptNode.onaudioprocess = null;
+                    setStatusModule(false)
+                }
             }
         }).catch((error) => {
             console.log(error);
         });
     }
-    let inputElement = useRef(null);
-    let [videoStatus, setvideoStatus] = useState("");
-    let [videoArray, setvideoArray] = useState([]);
-    let [audioArray, setaudioArray] = useState([]);
-    let [outputArray, setoutputArray] = useState([]);
+
+    //вебка
     async function startWebcam() {
         navigator.mediaDevices.getUserMedia({
-            audio: true,
             video: true
         }).then((stream) => {
             let webcamStream;
@@ -62,8 +90,6 @@ const UtilityBlock = () => {
             setvideoStatus(true);
             // eslint-disable-next-line
             webcamStream = stream;
-            
-
         }).catch((error) => {
             console.log(error);
         });

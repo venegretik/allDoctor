@@ -17,12 +17,15 @@ const defaultState = {
     med_cart:{},
     file_history:[],
     current_page:1,
-    total_page:1
+    total_page:1,
+    UtilityAudioId:"",
+    UtilityVideoId:""
   }
   const USER_ARRAY = 'USER_ARRAY';
   const BALANCE = 'BALANCE';
   const REFFERAL = 'REFFERAL';
   const URL = 'URL';
+  const UTILITYAUDIO = 'UTILITYAUDIO';
   const FRIEND_REQUEST = 'FRIEND_REQUEST';
   const HISTORY_REQUEST = 'HISTORY_REQUEST';
   const MED_CART = 'MED_CART';
@@ -71,6 +74,11 @@ const defaultState = {
                 ...state,
                 utitlityShow:action.Show
             }
+        case UTILITYAUDIO:
+            return{
+                ...state,
+                UtilityAudioId:action.Id
+            }
         default:
             return state
     }
@@ -86,3 +94,4 @@ export const ProfileResultAction = (obj) =>({ type: RESULT, obj});
 export const ProfileResultSelectAction = (obj) =>({ type: RESULT_SELECT, obj});
 export const ProfilePhotoAction = (obj) =>({ type: PHOTO, obj});
 export const ProfileUtilityAction = (Show) =>({ type: UTILITY, Show});
+export const ProfileUtilityAudioAction = (Id) =>({ type: UTILITYAUDIO, Id});

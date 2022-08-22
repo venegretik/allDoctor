@@ -45,6 +45,13 @@
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
 }
+.ImageVideo{
+    position: absolute;
+    right: 20px;
+    width: 200px !important;;
+    height: 130px!important;
+    bottom: 120px;
+}
 .videoMobile{
     display: none;
 }
@@ -170,6 +177,13 @@
 @media(max-width:600px){
     .videoMobile{
         display: flex!important;
+    }
+    .ImageVideo{
+        position: absolute;
+        right: 10px;
+        width: 200px !important;;
+        height: 130px!important;
+        bottom: 80px;
     }
     .VideoChat{
         display: none;

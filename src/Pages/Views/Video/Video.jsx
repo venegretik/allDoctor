@@ -3,12 +3,14 @@ import s from "./Video.module.css";
 import videoImage from "../../../img/video_photo.png";
 import volume from "../../../img/volume_down.png";
 import close from "../../../img/close.png";
+import PacientVideo from "../../../img/PacientVideo.png";
 import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
 import { useSelector } from "react-redux";
 import ModalUtility from "../../../Components/Modal/ModalUtility/ModalUtility";
 import cup from "../../../img/cup.png";
 import message from "../../../img/chat_message.png";
+import ModalUnityChat from "../../../Components/Modal/UtilityModal_Chat/UtilityChat";
 const Video = () => {
     let status = useSelector((state) => state.profile.utitlityShow);
     return (
@@ -20,6 +22,7 @@ const Video = () => {
             </div>
             <div className={s.VideoBlock}>
                 <div className={s.VideoBlockImage}>
+                    <img src={PacientVideo} alt="" className={s.ImageVideo}/>
                     <img src={videoImage} alt="" />
                     <ul className={s.videoDesctop} style={status?{width:"100%",
                 height:"100vh",transform:"none",left:"0px"}:{width:"500px",
@@ -53,12 +56,7 @@ const Video = () => {
                         </li>
                     </ul>
                     <ul className={s.videoMobile}>
-                        <li>
-                            <div className={s.icon_back}>
-                                <img src={volume} alt="" />
-                            </div>
-                            <p>Громкость</p>
-                        </li>
+                        
                         <li>
                             <div className={s.icon_back}>
                                 <img src={micro_off} alt="" />
@@ -77,6 +75,7 @@ const Video = () => {
                             </div>
                             <p>Завершить</p>
                         </li>
+                        <ModalUnityChat />
                     </ul>
                 </div>
                 <div className={s.VideoChat}>

@@ -12,6 +12,7 @@
 
 .Utility_full {
     padding-left: 75px;
+    min-height: 700px;
 }
 
 .Utility_text p {
@@ -35,11 +36,11 @@
     display: none !important;
 }
 
-.Utility_configuration_volume input {
+.Utility_configuration_volume>input {
     margin-top: 15px;
 }
 
-.Utility_configuration_video input {
+.Utility_configuration_video>input {
     margin-top: 15px;
 }
 
