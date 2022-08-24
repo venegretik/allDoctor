@@ -7,7 +7,8 @@ import "../SliderDots/SliderDots.css";
 import { Pagination } from "swiper";
 import { useSelector } from "react-redux";
 import Loader from "../../Loading/Loader";
-
+import Button from "../../Button/Button";
+import { Link } from "react-router-dom";
 const SliderApp = () => {
     const [Slider, setSlider] = useState([]),
         config = useSelector((state) => state.config.config),
@@ -44,7 +45,17 @@ const SliderApp = () => {
                                     <h1>{el.title}</h1>
                                     <p>{el.description}</p>
                                 </div>
-                                <img src={el.image} alt="" />
+                                <div className={s.Button_Reviws}>
+                                    <img src={el.image} alt="" />
+                                    <Link to="../login">
+                                        <Button
+                                            className={s.Reviews_send + " " + s.Font_size14}
+                                            type={'submit'}
+                                            class={'btn orange'}
+                                            text={'Начать'}
+                                        />
+                                    </Link>
+                                </div>
                             </div>
                         </SwiperSlide>
                     ))}

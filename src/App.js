@@ -44,14 +44,15 @@ function App() {
         <Preloader />
       ) : (
         <Routes>
-          <Route
+          {config.module.landing.is_active ? <Route
             index
             element={
               <LandingLoader>
                 <Landing html={config.module.landing.html} />
               </LandingLoader>
             }
-          />
+          /> : config.module.welcome_screen.is_active ? <Route index element={<SliderApp />}/> : ""}
+          
 
           <Route path={"login"} element={<Login />} />
           <Route path={"register"} element={<Register />} />
@@ -77,7 +78,7 @@ function App() {
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
             <Route path={"*"} element={<NotFound />} />
             <Route path={"razdeli-offline"} element={<RazdeliOffline />} />
-            <Route path={"mobile"} element={<SliderApp />}/>
+            
           </Route>
         </Routes>
       )}
