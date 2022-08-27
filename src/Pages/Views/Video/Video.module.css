@@ -165,13 +165,26 @@
     .VideoFull{
         height: 100%;
     }
+    .VideoBlock{
+        padding-bottom: 0px;
+        margin-top: -60px;
+    }
     .VideoBlockImage img {
         width: 100%;
         
         border-radius: 0px;
     }
+    .ImageVideo1{
+        width: 100%;
+        position: relative;
+        top: 0px;
+        z-index: 3;
+        height: 100vh;
+        border-radius: 0px;
+    }
     .VideoBlockImage ul {
         width: 300px!important;
+        z-index: 3;
     }
 }
 @media(max-width:600px){

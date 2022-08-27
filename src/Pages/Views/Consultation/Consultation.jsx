@@ -18,7 +18,7 @@ const Consultation = () => {
         <div className={s.Container + " Container"}>
             <div className={s.My_consultation}>
                 <div className={s.Consultation_title}>
-                    <h1 className={s.Font_size24}>Предстоящая консультация</h1>
+                    <h1 className={s.Font_size24 + " title_config"}>Предстоящая консультация</h1>
                 </div>
                 <ConsultationReady />
                 <ConsultationNext />

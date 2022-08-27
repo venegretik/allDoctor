@@ -62,13 +62,13 @@ const Notification = () => {
                       <circle cx="2.5" cy="2.5" r="2.5" fill="#F40101" />
                     </svg>
                     <div className={s.notice_item_block}>
-                      <div className={s.notice_item_block_title}>
+                      <div className={s.notice_item_block_title + " title_config"}>
                         {item.title}
                       </div>
-                      <div className={s.notice_item_block_text}>
+                      <div className={s.notice_item_block_text + " black_config"}>
                         {item.description}
                       </div>
-                      <div className={s.notice_item_block_date}>
+                      <div className={s.notice_item_block_date + " gray_config"}>
                         {new Date(item.datetime).toLocaleString("ru", {
                           year: "numeric",
                           month: "long",
@@ -82,9 +82,9 @@ const Notification = () => {
                 );
               })
             ) : (
-              <h4 className={s.text_notice}>Новых уведомлений нет</h4>
+              <h4 className={s.text_notice + " gray_config"}>Новых уведомлений нет</h4>
             )}
-            <Link to={"profile/message"} className={s.notice_readAll}>
+            <Link to={"profile/message"} className={s.notice_readAll + " blue_config"}>
               Посмотреть все уведомления
             </Link>
           </div>

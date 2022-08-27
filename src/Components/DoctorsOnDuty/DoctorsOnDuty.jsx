@@ -3,11 +3,10 @@ import style from "../../Pages/Views/Main/Main.module.css";
 import Loader from "../Loading/Loader";
 import Stars from "../Stars/Stars";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { getDoctorDuty } from "../../base/asyncActions/getMainPageInfo";
 import { Link } from "react-router-dom";
-
 const DoctorsOnDuty = () => {
   const [Doctor, setDoctor] = useState([]),
     dispatch = useDispatch(),
@@ -17,7 +16,6 @@ const DoctorsOnDuty = () => {
         setDoctor(response.data.items);
       }
     };
-  const config = useSelector(state => state.config.config);
   useEffect(() => {
     getDoctor();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -25,7 +23,7 @@ const DoctorsOnDuty = () => {
   return (
     <section className={style.SectionDuty} >
       <div className={style.Container_list}>
-        <div className={style.Title_list} style={{color: config?.config.colors.color5}}>
+        <div className={style.Title_list + " title_config"}>
           <h1 className={style.Font_size40}>Дежурные врачи</h1>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", columnGap: "30px" }}>
@@ -40,31 +38,24 @@ const DoctorsOnDuty = () => {
                   cursor: "pointer",
                   textDecoration: "none",
                   margin: "0px",
-                  padding: "20px",
-                  color: config?.config.colors.color2
+                  padding: "20px"
                 }}
-                className={s.Doctor}
+                className={s.Doctor + " black_config"}
                 key={el.doctor_id}
               >
                 <div className={s.Doctor_infos}>
                   <div className={s.Doctor_avatar}>
                     <div className={s.Doctor_avatar_img}>
                       <img src={el.photo} alt="" />
-                      {el.is_online && <div className={s.DoctorOnline} style={{ background: config?.config.colors.color8 }}></div>}
+                      {el.is_online && <div className={s.DoctorOnline + " green_config"}></div>}
                     </div>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                       <Stars num={el.rate} />
-                      <p className={s.Font_size14 + " " + s.DisplayNone}>
-                        {el.recomends + " пациентов рекомендуют врача"}
-                      </p>
-                      <Link to={"/recording/" + el.doctor_id + "/Reviews"} style={{ color: config?.config.colors.color10 }}>
-                        <p className={s.Font_size14 + " " + s.blueLink + " " + s.DisplayNone}>{el.reviews + " отзывов"}</p>
-                      </Link>
                     </div>
                   </div>
                   <div className={s.Doctor_info + " " + s.black}>
-                    <div style={{ color: config?.config.colors.color4 }}>
-                      <p className={s.gray + " " + s.Font_size14}>{el.specialization.join(" • ")}</p>
+                    <div className=" gray_config">
+                      <p className={s.Font_size14 + " gray_config"}>{el.specialization.join(" • ")}</p>
                     </div>
 
                     <h2 className={s.Font_size24}>

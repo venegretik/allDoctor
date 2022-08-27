@@ -38,7 +38,7 @@ const ConsultationNext = () => {
     return (
         <div>
             {consultation[0] ? consultation.map(
-                el => <div className={s.Doctor_full} key={el.consultation_id} style={{color: config?.config.colors.color2}}>
+                el => <div className={s.Doctor_full + " black_config"} key={el.consultation_id}>
                     {el.can_cancel ? <CancelRecord consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
                     <div className={s.Doctor_full1}>
                         <div className={s.Doctor}>
@@ -46,7 +46,7 @@ const ConsultationNext = () => {
                                 <div className={s.Doctor_avatar}>
                                     <div className={s.Doctor_avatar_img}>
                                         <img src={el.doctor.photo} alt="" />
-                                        {el.doctor.is_online && <div style={{background: config?.config.colors.color8}} className={s.DoctorOnline}></div>}
+                                        {el.doctor.is_online && <div className={s.DoctorOnline + " green_config"}></div>}
                                     </div>
                                     <div className={s.Doctor_avatar_info + " " + s.black}>
                                         <Stars num={el.doctor.rate} />
@@ -54,18 +54,18 @@ const ConsultationNext = () => {
                                 </div>
                             </div>
                             <div className={s.Doctor_info + " " + s.black}>
-                                <p className={s.gray} style={{color: config?.config.colors.color4}}>{el.doctor.specialization.join(" • ")}</p>
+                                <p className={"gray_config"} style={{color: config?.config.colors.color4}}>{el.doctor.specialization.join(" • ")}</p>
                                 <h2 className={s.Font_size24}>{el.doctor.firstname + " " + el.doctor.lastname + " " + el.doctor.secondname}</h2>
                                 <p className={s.Staj}>{el.doctor.regalia.join(" • ")}</p>
                                 <div className={s.Doctor_buy}>
-                                    <p className={s.gray} style={{color: config?.config.colors.color4}}>Стоимость консультации:</p>
+                                    <p className={"gray_config"} style={{color: config?.config.colors.color4}}>Стоимость консультации:</p>
                                     <p className={s.buy}>{el.price} ₽</p>
                                 </div>
                             </div>
                         </div>
                         <div className={s.Consultation_info}>
                             <div className={s.Consultation_info_text}>
-                                <p className={s.gray} style={{color: config?.config.colors.color4}}>Консультация состоится:</p>
+                                <p className={"gray_config"} style={{color: config?.config.colors.color4}}>Консультация состоится:</p>
                                 <p className={s.buy}>{new Date(el.datetime).toLocaleString(
                                     "ru",
                                     {

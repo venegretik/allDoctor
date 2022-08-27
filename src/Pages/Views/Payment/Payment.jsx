@@ -70,8 +70,8 @@ const Payment = () => {
     }
     return (
         payment.firstname ? <div className={s.Container + " Container"}>
-            <div className={s.Payment} style={{ color: config?.config.colors.color2 }}>
-                <div className={s.Payment_title} style={{ color: config?.config.colors.color2 }}>
+            <div className={s.Payment + " black_config"}>
+                <div className={s.Payment_title + " title_config"}>
                     <h1>Запись на приём</h1>
                 </div>
                 <div className={s.Doctor}>
@@ -84,20 +84,20 @@ const Payment = () => {
                                 <Stars num={payment.rate} />
                                 <p className={s.Font_size14}>{payment.recomends} пациентов рекомендуют врача</p>
                                 <Link to={"../recording/" + params.id + "/Reviews"} style={{ color: config?.config.colors.color10 }}>
-                                    <p className={s.Font_size14}>{payment.reviews} отзывов</p>
+                                    <p className={s.Font_size14 + " blue_config"}>{payment.reviews} отзывов</p>
                                 </Link>
                             </div>
                         </div>
                         <div className={s.Doctor_info + " " + s.black}>
-                            <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>{payment.specialization.join(' • ')}</p>
+                            <p className={s.gray + " " + s.Font_size14 + " gray_config"}>{payment.specialization.join(' • ')}</p>
                             <h2 className={s.Font_size24}>{payment.firstname + " " + payment.lastname + " " + payment.secondname}</h2>
                             <p className={s.Staj + " " + s.Font_size14}>{payment.regalia.join(' • ')}</p>
                             <div className={s.Doctor_buy}>
-                                <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>Стоимость консультации:</p>
+                                <p className={s.gray + " " + s.Font_size14 + " gray_config"}>Стоимость консультации:</p>
                                 <p className={s.buy + " " + s.Font_size24}>{payment.checkout.price} ₽</p>
                             </div>
                             <div className={s.Doctor_buy}>
-                                <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>Дата и время приёма:</p>
+                                <p className={s.gray + " " + s.Font_size14 + " gray_config"}>Дата и время приёма:</p>
                                 <p className={s.buy + " " + s.Font_size24}>{new Date(payment.consultation_datetime).toLocaleString(
                                     "ru",
                                     {
@@ -107,7 +107,7 @@ const Payment = () => {
                                     }
                                 )}</p>
                             </div>
-                            <ModalCalendar type_of="1" usId={params.id} />
+                            <ModalCalendar type_of="1" doctor_id={params.id} usId={params.id} />
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ const Payment = () => {
                             name={'promocode'} value={Showtext} onChange={handleChange} />
                             
                     </div>
-                    <div className={s.Oplata} style={{ color: config?.config.colors.color2 }}>
+                    <div className={s.Oplata + " black_config"}>
                         <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
                         <div className={s.Balance}>
                             <input type="checkbox" id="Register_checkbox" name={'use_balance'} className={s.custom_checkbox} onChange={handleChangeCheck} />
@@ -128,10 +128,10 @@ const Payment = () => {
                         {check ? <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span> : ""}
                         {Showtext ? <span><p className={s.Font_size16}>Скидка (PROMO): </p><b className={s.Font_size16}> -{payment.checkout.used_promo} ₽</b></span> : ""}
                     </div>
-                    <div className={s.Total_sum} style={{ color: config?.config.colors.color2 }}>
+                    <div className={s.Total_sum + " black   _config"}>
                         <span className={s.Font_size24}><p>Всего: </p> <b>{payment.checkout.total} ₽</b></span>
                         <Button class="btn blue" type="submit" text="Оплатить" />
-                        <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user">пользовательского соглашения</Link> и даю <Link to="../private/personal"> согласие на обработку персональных данных</Link>.</p>
+                        <p className={s.Font_size14}>Нажимая «Записаться», я принимаю условия <Link to="../private/user" className="blue_config">пользовательского соглашения</Link> и даю <Link to="../private/personal" className="blue_config"> согласие на обработку персональных данных</Link>.</p>
                     </div>
                 </form>
                 {/* КОМПОНЕНТ ОШИБКИ */}

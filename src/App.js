@@ -15,6 +15,7 @@ import { axiosConfig } from "./base/asyncActions/getConfig";
 import { Login } from "./Pages/Views/Login/Login";
 import Recording from "./Pages/Views/Recording/Recording";
 import Razdeli from "./Pages/Views/Razdeli/Razdeli";
+import { getShortInfo } from "./base/asyncActions/getMainPageInfo";
 import { Register } from "./Pages/Views/Register/Register";
 import Payment from "./Pages/Views/Payment/Payment";
 import PostRewiew from "./Pages/Views/Post_review/Post_review";
@@ -29,6 +30,7 @@ import Messages from "./Pages/Views/My_Profile/Messages/Messages";
 import PrivatePolice from "./Pages/Views/PrivatePolice.jsx/PrivatePolice";
 import Video from "./Pages/Views/Video/Video";
 import SliderApp from "./Components/Sliders/SliderApp/SliderApp";
+import './config.css';
 import RazdeliOffline from "./Pages/Views/OfflineBranch/OfflineBranch";
 function App() {
   const dispatch = useDispatch();
@@ -36,8 +38,20 @@ function App() {
   const loading = useSelector((state) => state.config.loading);
   useEffect(() => {
     dispatch(axiosConfig());
+    dispatch(getShortInfo());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    document.documentElement.style.setProperty('--black', config?.config.colors.color10);
+    document.documentElement.style.setProperty('--blueOpacity', config?.config.colors.color5);
+    document.documentElement.style.setProperty('--title', config?.config.colors.color7);
+    document.documentElement.style.setProperty('--white', config?.config.colors.color7);
+    document.documentElement.style.setProperty('--blue', config?.config.colors.color9);
+    document.documentElement.style.setProperty('--green', config?.config.colors.color1);
+    document.documentElement.style.setProperty('--gray', config?.config.colors.color2);
+    document.documentElement.style.setProperty('--orange', config?.config.colors.color3);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [config]);
   return (
     <>
       {!loading ? (
@@ -67,7 +81,7 @@ function App() {
               <Route path={"utility"} element={<Utility />} />
               <Route path={"message"} element={<Messages />} />
             </Route>
-            <Route path={"doctor-list/:id"} element={<DoctorList />} />
+            <Route path={"doctor-list/:id/:spec_id"} element={<DoctorList />} />
             <Route path={"consultation"} element={<Consultation />} />
             <Route path={"my-doctor"} element={<MyDoctor />} />
             <Route path={"private/:type"} element={<PrivatePolice />} />

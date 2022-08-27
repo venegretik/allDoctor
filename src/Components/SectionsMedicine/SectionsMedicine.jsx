@@ -29,7 +29,7 @@ const SectionsMedicine = () => {
 
   return (
     <>
-      <section className={s.medicine + " " + s.container} style={{ color: config?.config.colors.color5 }}>
+      <section className={s.medicine + " " + s.container + " title_config"}>
         <h2 className={s.medicine_title + " " + s.Font_size40}>
           Разделы медицины
         </h2>
@@ -39,12 +39,12 @@ const SectionsMedicine = () => {
           ) : (
             Sections.map((el, key) =>
               key < 7 ? (
-                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id} style={{ color: config?.config.colors.color5 }}>
-                  <div className={s.card_item}>
+                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/1"}>
+                  <div className={s.card_item  + " opacityBlue"}>
                     <img src={el.image} alt="" />
                     <div className={s.card_text_wrapper}>
-                      <div className={s.card_title}>{el.title}</div>
-                      <div className={s.card_subtitle}>{el.description}</div>
+                      <div className={s.card_title + " title_config"}>{el.title}</div>
+                      <div className={s.card_subtitle + " title_config"}>{el.description}</div>
                     </div>
                   </div>
                 </Link>
@@ -53,8 +53,8 @@ const SectionsMedicine = () => {
               )
             )
           )}
-          <Link to={"/razdeli"} style={{ color: config?.config.colors.color5 }}>
-            <div className={s.card_item} style={{ background: config?.config.colors.color3 }}>
+          <Link to={"/razdeli"} className=" title_config">
+            <div className={s.card_item + " opacityBlue"}>
               <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
               <div className={s.card_text_wrapper}>
                 <div className={s.card_title}>Посмотреть все разделы медицины</div>
@@ -65,7 +65,7 @@ const SectionsMedicine = () => {
       </section>
       {config.module.offline_appointment ?
         <section className={s.medicine + " " + s.container}>
-          <h2 className={s.medicine_title + " " + s.Font_size40} style={{ color: config?.config.colors.color5 }}>
+          <h2 className={s.medicine_title + " " + s.Font_size40 + " title_config"}>
             Оффлайн запись
           </h2>
           <div className={s.medicine_cards}>
@@ -74,12 +74,12 @@ const SectionsMedicine = () => {
             ) : (
               Ofline.map((el, key) =>
                 key < 3 ? (
-                  <Link className={s.ClassNull} key={el.branch_id} to={"/razdeli-offline"} style={{ color: config?.config.colors.color5 }}>
-                    <div className={s.card_item} >
+                  <Link className={s.ClassNull + " title_config"} key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/1"}>
+                    <div className={s.card_item + " opacityBlue"} >
                       <img src={el.image} alt="" />
                       <div className={s.card_text_wrapper}>
-                        <div className={s.card_title}>{el.title}</div>
-                        <div className={s.card_subtitle}>{el.description}</div>
+                        <div className={s.card_title + " title_config"}>{el.title}</div>
+                        <div className={s.card_subtitle + " title_config"}>{el.description}</div>
                       </div>
                     </div>
                   </Link>
@@ -88,11 +88,11 @@ const SectionsMedicine = () => {
                 )
               )
             )}
-            <Link to={"/razdeli-offline"} style={{ color: config?.config.colors.color5 }}>
-              <div className={s.card_item} style={{ background: config?.config.colors.color3 }}>
+            <Link to={"/razdeli-offline"}>
+              <div className={s.card_item + " opacityBlue"}>
                 <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
                 <div className={s.card_text_wrapper}>
-                  <div className={s.card_title}>Посмотреть все разделы медицины</div>
+                  <div className={s.card_title + " title_config"}>Посмотреть все разделы медицины</div>
                 </div>
               </div>
             </Link> 

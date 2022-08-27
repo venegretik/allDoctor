@@ -94,8 +94,8 @@ const ReplaceData = () => {
     } else phone += profile.phone[i];
   }
   return (
-    <div className={s.ReplaceData} style={{ color: config?.config.colors.color2 }}>
-      <div className={s.My_content_title} >
+    <div className={s.ReplaceData  + " black_config"} >
+      <div className={s.My_content_title  + " title_config"} >
         <h1>Личные данные</h1>
       </div>
       {isShow ? <ChangeData /> : ""}
@@ -115,14 +115,14 @@ const ReplaceData = () => {
         </b>
       </div>
       <div className={s.Profile_replace_tel}>
-        <p className={s.Font_size16 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>Телефон</p>
+        <p className={s.Font_size16 + " " + s.gray + " gray_config"}>Телефон</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{phone}</p>
           <ChangeLogin type_el="phone" />
         </div>
       </div>
       <div className={s.Profile_replace_tel}>
-        <p className={s.Font_size16 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>Электронная почта</p>
+        <p className={s.Font_size16 + " " + s.gray + " gray_config"}>Электронная почта</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
           <p className={s.Font_size14}></p>
@@ -164,7 +164,7 @@ const ReplaceData = () => {
         {/* КОМПОНЕНТ ОШИБКИ */}
         <FormErrors error={errorType.error?.fields.secondname} />
         {/* КОМПОНЕНТ ОШИБКИ */}
-        <div className={s.radio_block} style={{ color: config?.config.colors.color4 }}>
+        <div className={s.radio_block + " gray_config"}>
           <p>Пол</p>
           <Input
             type={"radio"}

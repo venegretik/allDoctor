@@ -1,7 +1,7 @@
 import React from "react";
 import s from "../Chat_Modal/ChatModal.module.css";
 import { useEffect, useState } from "react";
-import volume from "../../../img/volume_down.png"
+import volume from "../../../img/chat_utility.png"
 import { useSelector } from "react-redux";
 import { BottomSheet } from "react-spring-bottom-sheet";
 const ModalUnityChat = () => {

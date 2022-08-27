@@ -24,7 +24,6 @@ const Balance = () => {
   let total_page = useSelector((state) => state.profile.total_page);
   let current_page = useSelector((state) => state.profile.current_page);
   const history = useSelector((state) => state.profile.history);
-  const config = useSelector(state => state.config.config);
   let [errorType, seterrorType] = useState({
     status: false,
     error: {
@@ -67,8 +66,6 @@ const Balance = () => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
-    if (isShown)
-      obj.friend.replace(/[\D]+/g, "");
     !isShown
       ? (response = await dispatch(axiosProfilePay(obj)))
       : (response = await dispatch(axiosProfilePay(obj)));
@@ -93,7 +90,7 @@ const Balance = () => {
     }
   };
   let History = history.map((el) => (
-    <div key={++keyNum} style={{ color: config?.config.colors.color2 }}>
+    <div key={++keyNum} className="black_config">
       <div className={s.History_data} >
         <p>
           {new Date(el.datetime).toLocaleString("ru", {
@@ -115,7 +112,7 @@ const Balance = () => {
 
   return (
     <div className={s.Balance}>
-      <div className={s.Balance_title} style={{ color: config?.config.colors.color2 }}>
+      <div className={s.Balance_title + " title_config"}>
         <h1>Баланс: {balance}₽</h1>
       </div>
       <form onSubmit={(e) => sendForm(e)}>
@@ -143,7 +140,7 @@ const Balance = () => {
         <FormErrors error={errorMessage.error.message} />
         {/* КОМПОНЕНТ ОШИБКИ */}
 
-        <div className={s.Balance_friend} style={{ color: config?.config.colors.color2 }}>
+        <div className={s.Balance_friend + " black_config"}>
           <input
             type="checkbox"
             id="Register_checkbox"
@@ -177,7 +174,7 @@ const Balance = () => {
         <RequestMoney />
       </div>
       <div className={s.Referal}>
-        <div className={s.Referal_title} style={{ color: config?.config.colors.color2 }}>
+        <div className={s.Referal_title + " title_config"}>
           <h1>Реферальный код</h1>
           <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" classtwo="infoFuncpop" class="infoFunc"/>
         </div>
@@ -194,7 +191,7 @@ const Balance = () => {
         </div>
       </div>
       <div className={s.History}>
-        <div className={s.History_title} style={{ color: config?.config.colors.color2 }}>
+        <div className={s.History_title + " title_config"}>
           <h1>История</h1>
         </div>
         <div className={s.History_content_full}>

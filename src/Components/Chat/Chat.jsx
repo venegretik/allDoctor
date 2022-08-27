@@ -30,9 +30,8 @@ const Chat = () => {
         {showWindow ? (
           <div className={s.Chat_full}>
             <div
-              className={s.Cart_slose}
+              className={s.Cart_slose + " black_config"}
               onClick={(e) => setWindow(false)}
-              style={{ color: config?.config.colors.color2 }}
             >
               &times;
             </div>
@@ -46,23 +45,22 @@ const Chat = () => {
                   />
                   <div className={s.GreenDot}></div>
                   <div
-                    className={s.DoctorName}
-                    style={{ color: config?.config.colors.color2 }}
+                    className={s.DoctorName + " black_config"}
                   >
                     <b className={s.Font_size14}>
                       Смирнов Владислав Владимирович
                     </b>
-                    <p style={{ color: "#8B9BAB" }} className={s.Font_size14}>
+                    <p className={s.Font_size14 + " gray_config"}>
                       В сети
                     </p>
                   </div>
                 </div>
                 <div
-                  className={s.main_message}
+                  className={s.main_message + " black_config"}
                   style={{ color: config?.config.colors.color2 }}
                 >
                   <div className={s.main_messageText}>
-                    <p style={{ color: "#8B9BAB" }} className={s.Font_size14}>
+                    <p className={s.Font_size14 + " gray_config"}>
                       В сети
                     </p>
                     <div className={s.MessageDoctor}>
@@ -74,7 +72,7 @@ const Chat = () => {
                           Здравствуйте, чем мы можем Вам помочь?
                         </p>
                       </span>
-                      <p className={s.TimeMess} style={{ color: "#8B9BAB" }}>12:15</p>
+                      <p className={s.TimeMess + " gray_config"}>12:15</p>
                     </div>
                     <div className={s.MessageMe}>
                       <span>
@@ -85,7 +83,7 @@ const Chat = () => {
                           Здравствуйте, чем мы можем Вам помочь?
                         </p>
                       </span>
-                      <p className={s.TimeMess} style={{ color: "#8B9BAB" }}>12:15</p>
+                      <p className={s.TimeMess + " gray_config"}>12:15</p>
                     </div>
                   </div>
                 </div>

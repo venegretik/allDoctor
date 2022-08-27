@@ -1,0 +1,39 @@
+.VolumeModalInput input[type="range"] {
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+}
+.VolumeModal li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.VolumeModal li .icon_back {
+    padding: 11px;
+    box-sizing: border-box; 
+    height: 42px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+}
+.VolumeModal{
+    position: relative;
+}
+.VolumeModalInput{
+    position: absolute;
+    top: -190px;
+    left: 50%;
+    transform: translate(-50%,0);
+}
+.VolumeModalBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #ffffff;
+    width: 30px;
+    padding: 10px 0px;
+    border-radius: 15px;
+}
+.VolumeModalBlock img{
+    width: 20px;
+    margin-top: 10px;
+}

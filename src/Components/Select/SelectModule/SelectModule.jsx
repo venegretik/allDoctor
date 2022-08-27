@@ -15,9 +15,11 @@ const SelectModule = (props) => {
     let dispatch = useDispatch();
     const handleClickChange = (changeEvent) => {
         setShowText(changeEvent.target.title);
+        localStorage.setItem(props.array[0].kind, changeEvent.target.title);
         let audioInput = props.array.filter(el => el.kind == "audioinput")
         if (audioInput[0]) {
             dispatch(ProfileUtilityAudioAction(changeEvent.target.id));
+            localStorage.setItem(props.array[0].kind + "id", changeEvent.target.id);
         }
 
     }
@@ -26,11 +28,15 @@ const SelectModule = (props) => {
     }, [deviceAudioId]);
     useEffect(() => {
         if (props.array[0]) {
+            let range = localStorage.getItem(props.array[0].kind);
             // eslint-disable-next-line
-            if (props.array[0].label !== "" && Showtext === "Не найдено") {
-                setShowText(props.array[0].label);
-
+            if(!range){
+                if (props.array[0].label !== "" && Showtext === "Не найдено") {
+                    setShowText(props.array[0].label);
+                }
             }
+            else
+            setShowText(range);
         }
     }, [props.array]);
     let arrayItems = props.array.map(el =>

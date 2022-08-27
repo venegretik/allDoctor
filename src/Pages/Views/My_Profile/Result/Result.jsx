@@ -1,7 +1,6 @@
 import React from "react";
 import s from './Result.module.css';
 import download from "../../../../img/download_file.png";
-import { Link } from "react-router-dom";
 import { Input } from "../../../../Components/Input/Input";
 import { axiosProfileResult } from "../../../../base/asyncActions/Profile";
 import { useEffect, useState } from "react";
@@ -93,7 +92,6 @@ const FormResult = () => {
 
 const Result = () => {
     let dispatch = useDispatch();
-    const config = useSelector(state => state.config.config);
     let file = useSelector((state) => state.profile.file_history)
     useEffect(() => {
 
@@ -133,7 +131,7 @@ const Result = () => {
                         <img src={PDF} alt="" />
                         <b className={s.Font_size16}>{el.name}</b>
                     </div>
-                    <p className={s.Font_size14 + " " + s.gray}>{new Date(el.datetime).toLocaleString(
+                    <p className={s.Font_size14 + " " + s.gray  + " gray_config"}>{new Date(el.datetime).toLocaleString(
                         "ru",
                         {
                             month: "short",
@@ -144,25 +142,25 @@ const Result = () => {
                 </div>
             </div>
             <div className={s.Download_File_right}>
-                <Link to={el.file} target="_blank" download>
-                    <div className={s.Download_File_right_text} style={{ color: config?.config.colors.color2 }}>
+                <a href={el.file} target="_blank" rel="noreferrer" download>
+                    <div className={s.Download_File_right_text + " black_config"}>
                         <img src={download} alt="" />
                         <p className={s.Font_size14}>604КВ</p>
                     </div>
-                </Link>
-                <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>{el.type === 1 ? "лабораторные" : "функциональные"}</p>
+                </a>
+                <p className={s.Font_size14 + " " + s.gray + " gray_config"}>{el.type === 1 ? "лабораторные" : "функциональные"}</p>
             </div>
         </div>
             <div className={s.Form_Line}></div>
         </div>
     )
     return (
-        <div className={s.ResultFull} style={{ color: config?.config.colors.color2 }}>
-            <div className={s.title} >
+        <div className={s.ResultFull + " black_config"}>
+            <div className={s.title + " title_config"} >
                 <h1>Результаты исследований</h1>
             </div>
             <div className={s.formDownload}>
-                <p className={s.Font_size14 + " " + s.gray} style={{ color: config?.config.colors.color4 }}>Загрузить документ</p>
+                <p className={s.Font_size14 + " " + s.gray + " gray_config"}>Загрузить документ</p>
                 <FormResult />
             </div>
             <div className={s.Download_File}>

@@ -7,11 +7,19 @@ import PacientVideo from "../../../img/PacientVideo.png";
 import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import VolumeModal from "../../../Components/Modal/Volume_modal/VolumeModal";
 import ModalUtility from "../../../Components/Modal/ModalUtility/ModalUtility";
 import cup from "../../../img/cup.png";
 import message from "../../../img/chat_message.png";
+import video_mobile from "../../../img/video_mobile.png";
 import ModalUnityChat from "../../../Components/Modal/UtilityModal_Chat/UtilityChat";
 const Video = () => {
+    const availableScreenWidth = window.screen.availWidth;
+    useEffect(() => {
+        if (availableScreenWidth <= 480)
+            document.body.style.overflow = "hidden"
+    }, [availableScreenWidth])
     let status = useSelector((state) => state.profile.utitlityShow);
     return (
         <div className={s.VideoFull + " " + s.Container + " Container"}>
@@ -22,32 +30,31 @@ const Video = () => {
             </div>
             <div className={s.VideoBlock}>
                 <div className={s.VideoBlockImage}>
-                    <img src={PacientVideo} alt="" className={s.ImageVideo}/>
-                    <img src={videoImage} alt="" />
-                    <ul className={s.videoDesctop} style={status?{width:"100%",
-                height:"100vh",transform:"none",left:"0px"}:{width:"500px",
-                height:"auto",transform:"translate(-50%,0%)"}}>
-                        <li style={status?{display:"none"}:{display:"flex"}}>
-                            <div className={s.icon_back}>
-                                <img src={volume} alt="" />
-                            </div>
-                            <p>Громкость</p>
-                        </li>
-                        <li style={status?{display:"none"}:{display:"flex"}}>
+                    <img src={PacientVideo} alt="" className={s.ImageVideo} />
+                    <img src={availableScreenWidth <= 480 ? video_mobile : videoImage} className={s.ImageVideo1} alt="" />
+                    <ul className={s.videoDesctop} style={status ? {
+                        width: "100%",
+                        height: "100vh", transform: "none", left: "0px"
+                    } : {
+                        width: "500px",
+                        height: "auto", transform: "translate(-50%,0%)"
+                    }}>
+                        <VolumeModal/>
+                        <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back}>
                                 <img src={micro_off} alt="" />
                             </div>
                             <p>Выключить микрофон</p>
                         </li>
-                        <li style={status?{display:"none"}:{display:"flex"}}>
+                        <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back}>
                                 <img src={videocam} alt="" />
                             </div>
                             <p>Выключить камеру</p>
                         </li>
-                        <li style={status?{display:"none"}:{display:"flex"}}>
+                        <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back + " " + s.icon_close}>
-                            <img src={close} alt="" />
+                                <img src={close} alt="" />
                             </div>
                             <p>Завершить</p>
                         </li>
@@ -56,7 +63,7 @@ const Video = () => {
                         </li>
                     </ul>
                     <ul className={s.videoMobile}>
-                        
+
                         <li>
                             <div className={s.icon_back}>
                                 <img src={micro_off} alt="" />
@@ -71,7 +78,7 @@ const Video = () => {
                         </li>
                         <li>
                             <div className={s.icon_back + " " + s.icon_close}>
-                            <img src={close} alt="" />
+                                <img src={close} alt="" />
                             </div>
                             <p>Завершить</p>
                         </li>
@@ -99,10 +106,10 @@ const Video = () => {
                     <div className={s.MessageText}>
                         <img src={cup} alt="" />
                         <div className={s.MessageImg}>
-                        <input type="text" placeholder="Введите текст сообщения..." />
-                        <img src={message} alt="" />
+                            <input type="text" placeholder="Введите текст сообщения..." />
+                            <img src={message} alt="" />
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

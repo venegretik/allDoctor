@@ -37,7 +37,7 @@ const ChatModal = () => {
                 {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
                     onDismiss={() => setWindow(false)}>
                     <div>
-                        <div className={s.Cart_slose} onClick={e => setWindow(false)} style={{ color: config?.config.colors.color2 }}>
+                        <div className={s.Cart_slose + " black_config"} onClick={e => setWindow(false)}>
                             &times;
                         </div>
 
@@ -45,25 +45,25 @@ const ChatModal = () => {
                             <div className={s.Chat_message_title}>
                                 <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
                                 <div className={s.GreenDot}></div>
-                                <div className={s.ChatText} style={{ color: config?.config.colors.color2 }}>
+                                <div className={s.ChatText + " black_config"}>
                                     <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
                                     <p className={s.Font_size14}>В сети</p>
                                 </div>
                             </div>
-                            <div className={s.main_message} style={{ color: config?.config.colors.color2 }}>
+                            <div className={s.main_message + " black_config"}>
                                 <div className={s.main_messageText}>
-                                    <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>В сети</p>
+                                    <p className={s.Font_size14  + " gray_config"}>В сети</p>
                                     <div className={s.MessageDoctor}>
                                         <span >
                                             <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>
                                         </span>
-                                        <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                        <p className={"gray_config"}>12:15</p>
                                     </div>
                                     <div className={s.MessageMe} >
                                         <span >
                                             <p className={s.MessageText} style={{ background: config?.config.colors.color3 }}>Здравствуйте, чем мы можем Вам помочь?</p>
                                         </span>
-                                        <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                        <p className={"gray_config"}>12:15</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ const ChatModal = () => {
                     <div className={s.Chat_close} onClick={e => setWindow(false)}>
 
                     </div>
-                    <div className={s.Cart_slose} onClick={e => setWindow(false)} style={{ color: config?.config.colors.color2 }}>
+                    <div className={s.Cart_slose + " black_config"} onClick={e => setWindow(false)}>
                         &times;
                     </div>
 
@@ -95,25 +95,25 @@ const ChatModal = () => {
                         <div className={s.Chat_message_title}>
                             <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
                             <div className={s.GreenDot}></div>
-                            <div className={s.ChatText} style={{ color: config?.config.colors.color2 }}>
+                            <div className={s.ChatText + " black_config"}>
                                 <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
-                                <p className={s.Font_size14}>В сети</p>
+                                <p className={s.Font_size14 + " gray_config"}>В сети</p>
                             </div>
                         </div>
-                        <div className={s.main_message} style={{ color: config?.config.colors.color2 }}>
+                        <div className={s.main_message + " black_config"}>
                             <div className={s.main_messageText}>
-                                <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>В сети</p>
+                                <p className={s.Font_size14 + " gray_config"}>В сети</p>
                                 <div className={s.MessageDoctor}>
                                     <span >
                                         <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>
                                     </span>
-                                    <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                    <p className="gray_config">12:15</p>
                                 </div>
                                 <div className={s.MessageMe} >
                                     <span >
                                         <p className={s.MessageText} style={{ background: config?.config.colors.color3 }}>Здравствуйте, чем мы можем Вам помочь?</p>
                                     </span>
-                                    <p style={{ color: config?.config.colors.color4 }}>12:15</p>
+                                    <p className="gray_config">12:15</p>
                                 </div>
                             </div>
                         </div>

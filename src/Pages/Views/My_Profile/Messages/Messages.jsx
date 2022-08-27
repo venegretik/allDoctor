@@ -42,20 +42,20 @@ const Messages = () => {
     return (
         <div className={s.Messages_full}>
             {NewArray[0] ? NewArray.map((item) =>
-                <div className={s.Messages_block} key={item.notofication_id} style={{color: config?.config.colors.color2}}>
+                <div className={s.Messages_block + " black_config"} key={item.notofication_id}>
                     <div className={s.Messages_close} onClick={e => asyncNotificationDelete(item.notofication_id)}>
                         +
                     </div>
                     <div className={s.Messages_text}>
-                        <h1 className={s.Font_size24}>{item.title}</h1>
+                        <h1 className={s.Font_size24 + " title_config"}>{item.title}</h1>
                         <p className={s.Font_size14}>{item.description}</p>
-                        <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>23 июля 2023, в 12:21</p>
+                        <p className={s.Font_size14 + " gray_config"}>23 июля 2023, в 12:21</p>
                     </div>
                     <div className={s.Messages_line}>
 
                     </div>
                 </div>
-            ) : <h4 className={s.text_notice} style={{color: config?.config.colors.color4}}>Новых уведомлений нет</h4>}
+            ) : <h4 className={s.text_notice + " gray_config"}>Новых уведомлений нет</h4>}
             <div className={s.Message_button}>
                 <div className={s.Message_button_margin} onClick={asyncNotificationShow}>
                     <Button

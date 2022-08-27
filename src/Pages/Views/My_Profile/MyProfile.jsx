@@ -62,11 +62,11 @@ const MyProfile = () => {
               </NavLink>
             </li>
           </ul>
-          <div className={s.links}>
-            <Link to="../private/services">
+          <div className={s.links + " blue_config"}>
+            <Link to="../private/services" className="blue_config">
               <p>Договор об указании услуг</p>
             </Link>
-            <Link to="../private/privacy">
+            <Link to="../private/privacy" className="blue_config">
               <p>Политика конфиденциальности</p>
             </Link>
           </div>

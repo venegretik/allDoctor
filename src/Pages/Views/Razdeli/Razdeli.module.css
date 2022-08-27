@@ -27,7 +27,6 @@
 }
 
 .card_item {
-  background: #eaf2ff;
   border-radius: 30px;
   max-width: 270px;
   overflow: hidden;
@@ -111,7 +110,6 @@
     max-width: 130px;
     border-radius: 10px;
   }
-
   .medicine_cards {
     display: flex;
     gap: 20px;

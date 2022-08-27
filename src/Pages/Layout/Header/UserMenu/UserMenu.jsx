@@ -31,7 +31,7 @@ const UserMenu = () => {
         <div className={s.jare}>
           <div className={s.Header_profile}>
             <Notification />
-            <div onClick={() => setShow(true)} className={s.Profile_text}>
+            <div onClick={() => setShow(true)} className={s.Profile_text + " black_config"}>
               <div className={s.Profile_avatar}>
                 <img src={info.data.photo} alt="" />
               </div>
@@ -50,35 +50,35 @@ const UserMenu = () => {
                   <ul className={s.MenuList}>
                     <li>
                       <Link
-                        className={`${s.MenuLink} ${s.LinkBorder}`}
+                        className={`${s.MenuLink} ${s.LinkBorder} black_config`}
                         to={"profile/local-data"}
                       >
                         Личные данные
                       </Link>
                     </li>
                     <li>
-                      <Link className={s.MenuLink} to={"profile/balance"}>
+                      <Link className={s.MenuLink + " black_config"} to={"profile/balance"}>
                         Баланс
                       </Link>
                     </li>
                     <li>
-                      <Link className={s.MenuLink} to={"profile/utility"}>
+                      <Link className={s.MenuLink + " black_config"} to={"profile/utility"}>
                         Проверка оборудования
                       </Link>
                     </li>
                     <li>
-                      <Link className={s.MenuLink} to={"profile/med-cart"}>
+                      <Link className={s.MenuLink + " black_config"} to={"profile/med-cart"}>
                         Медицинская карта
                       </Link>
                     </li>
                     <li>
-                      <Link className={s.MenuLink} to={"profile/result"}>
+                      <Link className={s.MenuLink + " black_config"} to={"profile/result"}>
                         Результаты исследований
                       </Link>
                     </li>
                     <li>
                       <Link
-                        className={s.MenuLink}
+                        className={s.MenuLink + " black_config"}
                         onClick={() => logout()}
                         to={"/"}
                       >

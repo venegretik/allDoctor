@@ -9,8 +9,8 @@ const AnswerReviews = (props) => {
                 <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
             </div>
             <div className={s.Doctor_message_content}>
-                <b className={s.Font_size24}>{el.name}</b>
-                <p className={s.gray + " " + s.Font_size14}>
+                <b className={s.Font_size24 + " title_config"}>{el.name}</b>
+                <p className={s.gray + " " + s.Font_size14 + " gray_config"}>
                     {new Date(el.datetime).toLocaleString(
                     "ru",
                     {

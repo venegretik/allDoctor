@@ -7,7 +7,7 @@ const Utility = () => {
   return (
     <div className={s.Utility_full}>
       <div className={s.Utility_title}>
-        <h1>Проверка оборудования</h1>
+        <h1 className="title_config">Проверка оборудования</h1>
       </div>
       <UtilityBlock/>
     </div>

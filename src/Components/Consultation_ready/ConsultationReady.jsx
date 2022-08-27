@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import s from "./Consultation.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Loader from "../../Components/Loading/Loader";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
@@ -28,7 +28,6 @@ const ConsultationReady = (props) => {
       window.location.href = response.payment_url;
     }
   };
-  const config = useSelector(state => state.config.config);
   useEffect(() => {
     asyncCons();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,8 +35,7 @@ const ConsultationReady = (props) => {
   return (
     <section>
       {ConsultationUpcoming ? (
-        <div className={s.Doctor_cart} style={{color:config?.config.colors.color1,
-                                              backgroundColor:config?.config.colors.color10}}>
+        <div className={s.Doctor_cart + " white_config BackgroundBlue"}>
           {ConsultationUpcoming.can_cancel ? (
             <CancelRecord
               consultation_id={ConsultationUpcoming.consultation_id}
@@ -57,7 +55,7 @@ const ConsultationReady = (props) => {
             </div>
             <div className={s.Doctor_avatar_info}>
               <Stars num={ConsultationUpcoming.doctor.rate} />
-              <p className={s.Font_size14}>
+              <p className={s.Font_size14 + " white_config"}>
                 {ConsultationUpcoming.doctor.recomends}% пациентов рекомендуют
                 врача
               </p>
@@ -66,8 +64,7 @@ const ConsultationReady = (props) => {
                   "/recording/" +
                   ConsultationUpcoming.doctor.doctor_id +
                   "/Reviews"
-                }
-               style={{color:config?.config.colors.color6}}>
+                }>
                 <p className={s.Font_size14 + " " + s.blueLink} >
                   {ConsultationUpcoming.doctor.reviews} отзывов
                 </p>
@@ -75,7 +72,7 @@ const ConsultationReady = (props) => {
             </div>
           </div>
           <div className={s.Doctor_info}>
-            <div className={s.Doctor_skills} style={{color:config?.config.colors.color6}}>
+            <div className={s.Doctor_skills}>
               {ConsultationUpcoming.doctor.specialization
                 ? ConsultationUpcoming.doctor.specialization.map(
                     (spec, key) => {
@@ -106,8 +103,8 @@ const ConsultationReady = (props) => {
                   })
                 : ""}
             </div>
-            <div className={s.Data} style={{color:config?.config.colors.color2}}>
-              <div className={s.Data_time} style={{backgroundColor:config?.config.colors.color1}}>
+            <div className={s.Data + " black_config"}>
+              <div className={s.Data_time + " BackgroundWhite black_config"}>
                 <svg
                   width="10"
                   height="10"
@@ -131,7 +128,7 @@ const ConsultationReady = (props) => {
                   )}
                 </p>
               </div>
-              <div className={s.Data_consultation} style={{backgroundColor:config?.config.colors.color1}}>
+              <div className={s.Data_consultation  + " BackgroundWhite black_config"}>
                 <svg
                   width="10"
                   height="10"

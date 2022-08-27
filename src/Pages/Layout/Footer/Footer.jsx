@@ -14,8 +14,10 @@ import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
   let Text = useSelector(state => state.config.header_text);
   let config = useSelector(state => state.config.config);
-  return (
-    <section className={s.footer_container} style={{background:config?.config.colors.color10}}>
+  const info = useSelector((state) => state.main.shortName);
+  return info?.data.short_name ?(
+
+    <section className={s.footer_container + " BackgroundBlue"}>
       <footer className={s.footer_full}>
         <div
           style={{
@@ -30,7 +32,7 @@ const Footer = () => {
           <div className={s.footer_img}>
             <img src={config.config.logo_footer} alt="" />
           </div>
-          <div className={s.footer_text}>
+          <div className={s.footer_text + " white_config"}>
             <p>© ВсеДоктора 2022</p>
           </div>
         </div>
@@ -75,6 +77,6 @@ const Footer = () => {
         </ul>
       </div>
     </section>
-  );
+  ) : ("");
 };
 export default Footer;

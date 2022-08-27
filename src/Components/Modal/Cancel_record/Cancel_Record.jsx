@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Cancel_Record.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useState, useEffect } from "react";
 import Button from "../../Button/Button";
 import { BottomSheet } from 'react-spring-bottom-sheet'
@@ -20,8 +20,6 @@ const Cancel_Record = (props) => {
       document.body.style.overflow = "hidden"
     }
   }, [showWindow])
-
-  const config = useSelector((state) => state.config.config);
   const availableScreenWidth = window.screen.availWidth;
   return (
     <div>
@@ -47,15 +45,13 @@ const Cancel_Record = (props) => {
                   &times;
                 </div>
                 <h1
-                  className={s.Font_size40}
-                  style={{ color: config?.config.colors.color2 }}
+                  className={s.Font_size40 + " black_config"}
                 >
                   {props.text}
                 </h1>
                 {props.typeModal === "record" ? (
                   <p
-                    className={s.Font_size16}
-                    style={{ color: config?.config.colors.color2 }}
+                    className={s.Font_size16 + " black_config"}
                   >
                     После удаления врача он не будет иметь доступ к вашей
                     медицинской карте
@@ -98,15 +94,13 @@ const Cancel_Record = (props) => {
                   &times;
                 </div>
                 <h1
-                  className={s.Font_size40}
-                  style={{ color: config?.config.colors.color2 }}
+                  className={s.Font_size40 + " black_config"}
                 >
                   {props.text}
                 </h1>
                 {props.typeModal === "record" ? (
                   <p
-                    className={s.Font_size16}
-                    style={{ color: config?.config.colors.color2 }}
+                    className={s.Font_size16 + " black_config"}
                   >
                     После удаления врача он не будет иметь доступ к вашей
                     медицинской карте

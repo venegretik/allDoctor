@@ -3,6 +3,7 @@ import s from "./Main.module.css";
 import ConsultationReady from "../../../Components/Consultation_ready/ConsultationReady";
 import DoctorsOnDuty from "../../../Components/DoctorsOnDuty/DoctorsOnDuty";
 import { useEffect } from "react";
+import { getShortInfo } from "../../../base/asyncActions/getMainPageInfo";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import SliderArrow from "../../../Components/Sliders/SliderArrow/SliderArrow";
 import SliderDots from "../../../Components/Sliders/SliderDots/SliderDots";
@@ -14,6 +15,7 @@ const Main = (props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(getConfigHeaderAction("Главная"));
+    dispatch(getShortInfo());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const config = useSelector((state) => state.config.config);

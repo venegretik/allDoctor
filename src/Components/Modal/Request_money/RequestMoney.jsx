@@ -1,14 +1,14 @@
 import React from "react";
 import s from "./RequestMoney.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { useState } from "react";
 import arrow from "../../../img/arrow-left.png";
 import { Input } from "../../Input/Input";
 import Button from "../../Button/Button";
 import { axiosProfileFriend } from "../../../base/asyncActions/Profile";
 import FormErrors from "../../FormError/FormError";
+import { BottomSheet } from 'react-spring-bottom-sheet'
 const RequestMoney = (props) => {
-  const config = useSelector((state) => state.config.config);
   let dispatch = useDispatch();
 
   let [showWindow, setWindow] = useState(false);
@@ -47,21 +47,26 @@ const RequestMoney = (props) => {
       },
     },
   };
+  const availableScreenWidth = window.screen.availWidth;
   return (
+
+
     <div>
       <div className={s.blue} onClick={(e) => setWindow(true)}>
         <img src={arrow} alt="" />
-        <p>Вывести средства</p>
+        <p className={"blue_config "} >Вывести средства</p>
       </div>
-      {showWindow ? (
-        <div className={s.Cancel_Record_full} style={{ color: config?.config.colors.color2 }}>
+      {showWindow ? <> 
+        {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
+                    onDismiss={() => setWindow(false)}>
+                    <div className={"black_config"}>
           <div className={s.background} onClick={() => setWindow(false)}></div>
-          <div className={s.Cancel_Record_block}>
+          <div className={s.mob_block}>
             <div className={s.Cart_close} onClick={(e) => setWindow(false)}>
               +
             </div>
-            <h1 className={s.Font_size24}>Запросить средства</h1>
-            <p className={s.Font_size14} style={{ color: config?.config.colors.color4 }}>
+            <h1 className={s.Font_size24 + " title_config"}>Запросить средства</h1>
+            <p className={s.Font_size14 + " gray_config"}>
               Сумма будет доступна в течении 3х рабочих дней
             </p>
             <div className={s.Cancel_Record}>
@@ -81,7 +86,35 @@ const RequestMoney = (props) => {
             </div>
           </div>
         </div>
-      ) : (
+                </BottomSheet> :(
+        <div className={s.Cancel_Record_full + " black_config"}>
+          <div className={s.background} onClick={() => setWindow(false)}></div>
+          <div className={s.Cancel_Record_block}>
+            <div className={s.Cart_close} onClick={(e) => setWindow(false)}>
+              +
+            </div>
+            <h1 className={s.Font_size24 + " title_config"}>Запросить средства</h1>
+            <p className={s.Font_size14 + " gray_config"}>
+              Сумма будет доступна в течении 3х рабочих дней
+            </p>
+            <div className={s.Cancel_Record}>
+              <form onSubmit={(e) => sendForm(e)}>
+                <Input
+                  placeholder={"Сумма"}
+                  name={"summ"}
+                  type="text"
+                  required
+                  pattern={"^[0-9]+$"}
+                />
+                {/* КОМПОНЕНТ ОШИБКИ */}
+                <FormErrors error={errorMessage.error.message} />
+                {/* КОМПОНЕНТ ОШИБКИ */}
+                <Button class={"btn orange"} text={"Запросить"} />
+              </form>
+            </div>
+          </div>
+        </div>
+        ) }</> : (
         ""
       )}
     </div>

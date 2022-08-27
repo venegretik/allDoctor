@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import arrow from "../../../img/arrow.png";
 import "../Select.css";
@@ -11,10 +11,15 @@ const SelectConsultation = (props) => {
   const page = useSelector(state => state.consultation.page);
   const [isShown, setIsShown] = useState(false);
   const config = useSelector((state) => state.config.config);
-  const [Showtext, setShowText] = useState("Педиатр");
+  const [Showtext, setShowText] = useState("...");
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
+  useEffect(() => {
+    if(props.array[0])
+    setShowText(props.array[0].title)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [props.array])
   const handleClickChange = (changeEvent) => {
     setShowText(changeEvent.target.title);
     if (props.selectType === "specialization")
@@ -25,8 +30,8 @@ const SelectConsultation = (props) => {
       dispatch(props.func(changeEvent.target.value, page, date_to, date_from));
   }
   let arrayItems = props.array.map(el =>
-    <label htmlFor={el.branch_id} key={el.branch_id}>
-      <input type="radio" name="main-categories" title={el.title} id={el.branch_id} value={el.branch_id} onChange={handleClickChange} />
+    <label htmlFor={el.specialization_id} key={el.specialization_id}>
+      <input type="radio" name="main-categories" title={el.title} id={el.specialization_id} value={el.specialization_id} onChange={handleClickChange} />
       {el.title}
     </label>)
   return (

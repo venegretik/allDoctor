@@ -39,8 +39,8 @@ const Reviews = (props) => {
                                 day: "numeric",
                             }
                         )}</p>
-                    <h2 className={s.Font_size24}>{el.fistname}</h2>
-                    <p className={s.Staj + " " + s.gray + " " + s.Font_size14}>Прошёл консультацию: {el.consultation_date}</p>
+                    <h2 className={s.Font_size24 + " title_config"}>{el.fistname}</h2>
+                    <p className={s.Staj + " " + s.gray + " " + s.Font_size14 + " gray_config"}>Прошёл консультацию: {el.consultation_date}</p>
                     <div className={s.Doctor_info_content}>
                         <div className={s.Doctor_info_favorite}>
                             <b>Понравилось</b>

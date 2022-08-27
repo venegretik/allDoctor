@@ -43,7 +43,7 @@ const SliderDots = () => {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <a target={el.url ? "blank" : ""} href={el.url ? el.url : "#"}>
+              <a target={el.url ? "blank" : ""} href={el.url ? el.url : "#cancel"}>
                 <img src={el.image} alt="" />
               </a>
             </SwiperSlide>

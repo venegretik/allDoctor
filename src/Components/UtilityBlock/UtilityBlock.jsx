@@ -8,11 +8,12 @@ import { useEffect, useState, useRef } from "react";
 const UtilityBlock = () => {
     const [Id, setId] = useState("");
     const [statusModule, setStatusModule] = useState(false);
+    let audioId = localStorage.getItem("audioinputid");
     let inputElement = useRef(null),
-    [videoStatus, setvideoStatus] = useState(""),
-    [videoArray, setvideoArray] = useState([]),
-    [audioArray, setaudioArray] = useState([]),
-    [outputArray, setoutputArray] = useState([]);
+        [videoStatus, setvideoStatus] = useState(""),
+        [videoArray, setvideoArray] = useState([]),
+        [audioArray, setaudioArray] = useState([]),
+        [outputArray, setoutputArray] = useState([]);
 
     useEffect(() => {
         //код закрывающий все треки
@@ -42,10 +43,9 @@ const UtilityBlock = () => {
         setoutputArray([...devices.filter(el => el.kind === "audiooutput")]);
         navigator.mediaDevices.getUserMedia({
             //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
-            audio: { deviceId: { exact: Id !== "" ? Id : "default" } }
+            audio: { deviceId: { exact: audioId ? audioId : "default" } }
         }).then((stream) => {
             window.localStream = stream;
-            console.log(stream.getAudioTracks())
             let audioContext = new AudioContext();
             let analyser = audioContext.createAnalyser();
             let microphone = audioContext.createMediaStreamSource(stream);
@@ -80,7 +80,7 @@ const UtilityBlock = () => {
     }
 
     //вебка
-    async function startWebcam() {
+    let startWebcam = async () => {
         navigator.mediaDevices.getUserMedia({
             video: true
         }).then((stream) => {
@@ -109,53 +109,53 @@ const UtilityBlock = () => {
         }
     }
     return (
-        <div>
-            <div className={s.Utility_text}>
-                <p>Настройки видео</p>
-                <SelectModule array={videoArray} />
-            </div>
-            <div className={s.Utility_Check_video} >
-                <video ref={inputElement} muted style={videoStatus ? {
-                    width: "100%",
-                    height: "250px"
-                } : { display: "none" }} controls autoPlay />
-                {!videoStatus ? <div className={s.Utility_Check_video_content} >
-                    <img src={photo} alt="" />
-                    <button onClick={startWebcam}>Проверить видео</button>
-                </div> : ""}
+            <div className={"black_config"}>
+                <div className={s.Utility_text}>
+                    <p>Настройки видео</p>
+                    <SelectModule array={videoArray} />
+                </div>
+                <div className={s.Utility_Check_video} >
+                    <video ref={inputElement} allow="accelerometer; autoplay; encrypted-media; camera 'self';" muted style={videoStatus ? {
+                        width: "100%",
+                        height: "250px"
+                    } : { display: "none" }} controls autoPlay />
+                    {!videoStatus ? <div className={s.Utility_Check_video_content} >
+                        <img src={photo} alt="" />
+                        <button onClick={startWebcam}>Проверить видео</button>
+                    </div> : ""}
 
-            </div>
-            <div className={s.Utility_configuration_full}>
-                <p className={s.check_volume}>Настройки звука</p>
-                <div className={s.Utility_configuration}>
-                    <div className={s.Utility_configuration_video}>
-                        <p>Устройство ввода</p>
-                        <SelectModule array={audioArray} />
-                        <Slide />
+                </div>
+                <div className={s.Utility_configuration_full}>
+                    <p className={s.check_volume}>Настройки звука</p>
+                    <div className={s.Utility_configuration}>
+                        <div className={s.Utility_configuration_video}>
+                            <p>Устройство ввода</p>
+                            <SelectModule array={audioArray} />
+                            <Slide />
+                        </div>
+                        <div className={s.Utility_configuration_volume}>
+                            <p>Устройство вывода</p>
+                            <SelectModule array={outputArray} />
+                            <Slide />
+                        </div>
                     </div>
-                    <div className={s.Utility_configuration_volume}>
-                        <p>Устройство вывода</p>
-                        <SelectModule array={outputArray} />
-                        <Slide />
+                </div>
+                <div className={s.Utility_volume}>
+                    <p>Проверка микрофона</p>
+                    <div className="pids-wrapper">
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
+                        <div className="pid"></div>
                     </div>
                 </div>
             </div>
-            <div className={s.Utility_volume}>
-                <p>Проверка микрофона</p>
-                <div className="pids-wrapper">
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                    <div className="pid"></div>
-                </div>
-            </div>
-        </div>
     )
 }
 export default UtilityBlock;

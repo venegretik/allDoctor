@@ -3,7 +3,7 @@ import { defaultUrl } from "../configUrl";
 import { doctorArrayAction, branchArrayAction, branchOfflineArrayAction, DoctorMyArray, DoctorMyDelete } from "../Reducers/doctorReducer";
 
 //Получение докторов по должности
-export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") => {
+export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate",specialization_id) => {
     return async function (dispatch) {
         const token = localStorage.getItem('token');
         if (token)
@@ -12,7 +12,8 @@ export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") =>
             params: {
                 branch_id: specialization,
                 sort: sort,
-                page: totalPage
+                page: totalPage,
+                specialization_id: specialization_id
             }
         })
         const responceObj = {
@@ -20,7 +21,9 @@ export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate") =>
             page: response.data.data.pagination.current_page,
             totalPage: response.data.data.pagination.total_page,
             specialization_id: specialization,
-            sort: sort
+            sort: sort,
+            spec_array: response.data.data.specializations,
+            spec_id: specialization_id
         }
 
         dispatch(doctorArrayAction(responceObj));

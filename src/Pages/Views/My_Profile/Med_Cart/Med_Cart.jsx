@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
     
 const Med_Cart = () => {
-    const config = useSelector(state => state.config.config);
     let dispatch = useDispatch();
     let medCart = useSelector((state) => state.profile.med_cart);
     useEffect(() => {
@@ -24,9 +23,9 @@ const Med_Cart = () => {
                 <td data-label="DUE DATE">{el.specialty}</td>
                 <td data-label="AMOUNT">{el.doctor}</td>
                 <td data-label="PERIOD">{el.diagnosis}</td>
-                <td className={s.MedCenter}>{el.icd_code}<Link to={el.file ? el.file : ""} target="_blank" download>
+                <td className={s.MedCenter}>{el.icd_code}<a href={el.file ? el.file : ""} target="_blank" rel="noreferrer" download>
                     Скачать
-                </Link></td>
+                </a></td>
             </tr>)
         let medical = medCart.medical_commissions.map(el =>
             <tr key={++keyNum} className={s.Font_size16}>
@@ -49,8 +48,8 @@ const Med_Cart = () => {
         </tr>)
         return (
             medCart.vaccinations ?
-                <div className={s.Med_Cart} style={{color: config?.config.colors.color2}}>
-                    <div className={s.Med_Cart_Title}>
+                <div className={s.Med_Cart + " black_config"}>
+                    <div className={s.Med_Cart_Title + " title_config"}>
                         <h1>Медицинская карта</h1>
                     </div>
                     <div className={s.Med_Cart_info_full}>
@@ -100,9 +99,9 @@ const Med_Cart = () => {
                                 </li>
                             </ul>
                         </div>
-                        <Link to={medCart.file} target="_blank" download style={{color: config?.config.colors.color10}}>
+                        <a href={medCart.file} rel="noreferrer" target="_blank" download>
 
-                            <div className={s.Download_file}>
+                            <div className={s.Download_file + " black_config"}>
                                 <div className={s.Download_img}>
                                     <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
                                 </div>
@@ -110,7 +109,7 @@ const Med_Cart = () => {
                                     <p className={s.Font_size14}>Скачать заключение врача</p>
                                 </div>
                             </div>
-                        </Link>
+                        </a>
                     </div>
                     <div className={s.Med_Cart_table}>
                         <table>

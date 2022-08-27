@@ -10,7 +10,6 @@ import { getPuymentInfo } from "../../base/asyncActions/Payment";
 import Button from "../Button/Button";
 import { consultationModalAction } from "../../base/Reducers/ConsultationReducer";
 const Calendar = (props) => {
-    const config = useSelector((state) => state.config.config);
     const dispatch = useDispatch(),
         [DateStr, setDate] = useState(""),
         [RedPayment, setRedPayment] = useState(false),
@@ -30,6 +29,13 @@ const Calendar = (props) => {
     }, [])
     let Modal = async () => {
         let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id, DateStr))
+        
+        if (status) {
+            dispatch(consultationModalAction(status));
+        }
+    }
+    let ModalPayment = async () => {
+        let status = await dispatch(getPuymentInfo(Number(props.doctor_id), slot_id))
         
         if (status) {
             dispatch(consultationModalAction(status));
@@ -58,8 +64,7 @@ const Calendar = (props) => {
         setSlot(el.slots);
     }
     slots = Slot.map(
-        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive} style={{background: config?.config.colors.color3,
-            color: config?.config.colors.color4}} key={el.slot_id}>
+        el => !el.available ? <div className={s.Calendar_rasp + " " + s.colorUnactive + " gray_config opacityBlue"} key={el.slot_id}>
             <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
@@ -67,7 +72,7 @@ const Calendar = (props) => {
                     minute: "numeric"
                 }
             )}</p>
-        </div> : slot_id === el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault} style={{background: config?.config.colors.color7}} key={el.slot_id} onClick={e => setId(el.slot_id)}>
+        </div> : slot_id === el.slot_id ? <div className={s.Calendar_rasp + " " + s.colorDefault + " BackgroundOrange"} key={el.slot_id} onClick={e => setId(el.slot_id)}>
             <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                 "ru",
                 {
@@ -76,8 +81,7 @@ const Calendar = (props) => {
                 }
             )}</p>
         </div> :
-            <div className={s.Calendar_rasp + " " + s.colorOnClick} key={el.slot_id} style={{background: config?.config.colors.color10,
-                color: config?.config.colors.color1}} onClick={e => setId(el.slot_id)}>
+            <div className={s.Calendar_rasp + " " + s.colorOnClick + " BackgroundBlue white_config"} key={el.slot_id} onClick={e => setId(el.slot_id)}>
                 <p className={s.Font_size16}>{new Date(el.time).toLocaleString(
                     "ru",
                     {
@@ -89,7 +93,7 @@ const Calendar = (props) => {
     )
     let call = calendar.map(el => <li key={++keyNum}>
         <p>{callendarDay(el.date)}</p>
-        <b style={DateStr === el.date ? {background: config?.config.colors.color7} : {}} className={s.Calendar_active} onClick={e => slotsFunc(el)}>{new Date(el.date).toLocaleString(
+        <b className={DateStr === el.date ? s.Calendar_active + " BackgroundOrange" : s.Calendar_active} onClick={e => slotsFunc(el)}>{new Date(el.date).toLocaleString(
             "ru",
             {
                 day: "numeric",
@@ -99,10 +103,10 @@ const Calendar = (props) => {
 
 
     return (
-        slots[0] ? <div className={s.Calendar_full} style={{color: config?.config.colors.color2}}>
+        slots[0] ? <div className={s.Calendar_full + " black_config"}>
             {RedPayment === true ? <Navigate to={"../payment/" + props.usId + "/" + slot_id} /> : false}
             <div>
-                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>Выберите дату и время для записи:</p>
+                <p className={s.Font_size14 + " gray_config"}>Выберите дату и время для записи:</p>
             </div>
             <div className={s.Calendar_main}>
                 <ul className={s.Font_size14}>
@@ -110,14 +114,20 @@ const Calendar = (props) => {
                 </ul>
             </div>
             <div>
-                <p className={s.Font_size14 + " " + s.gray} style={{color: config?.config.colors.color4}}>Онлайн-расписание на 25 марта:</p>
+                <p className={s.Font_size14 + " gray_config"}>Онлайн-расписание на {new Date(DateStr).toLocaleString(
+                "ru",
+                {
+                    day: "numeric",
+                    month: "long"
+                }
+            )}:</p>
             </div>
             <div className={s.Calendar_rasp_top}>
                 {slots}
             </div>
             <div className={s.Calendar_button}>
                 {props.type_el === "popup" ?
-                    <div onClick={e => Modal()}><Button
+                    <div onClick={e => !props.doctor_id ? Modal() : ModalPayment()}><Button
                         className={s.Injoy1 + " " + s.Font_size14}
                         type={'submit'}
                         class={'btn blue'}

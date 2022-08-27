@@ -22,7 +22,7 @@ export const axiosConsultationHistory = (specialization = 1, totalPage = 1, date
                 specialization_id: specialization,
                 page: totalPage,
                 date_from: date_from,
-                date_to: date_to
+                date_to: date_to,
             }
         }
         );
@@ -32,7 +32,8 @@ export const axiosConsultationHistory = (specialization = 1, totalPage = 1, date
             totalPage: response.data.data.pagination.total_page,
             date_from: date_from,
             date_to: date_to,
-            specialization_id: specialization
+            specialization_id: specialization,
+            spec_array: response.data.data.specializations
         }
         dispatch(consultationHistoryAction(responceObj));
     }

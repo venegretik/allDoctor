@@ -8,10 +8,9 @@ import Loader from "../../../Components/Loading/Loader";
 import search from "../../../img/search.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Chat from "../../../Components/Chat/Chat";
+import '../../../config.css';
 const Razdeli = () => {
     const dispatch = useDispatch();
-    const config = useSelector((state) => state.config.config);
-    
     let Branch = useSelector(state => state.doctorSpec.branch_array);
     const [BranchSort, setShowBranchSort] = useState(Branch);
     useEffect(() => {
@@ -30,10 +29,8 @@ const Razdeli = () => {
         let BranchSort1 = Branch.filter(el => el.keywords.indexOf(e.target.value.toLowerCase()) !== -1);
         setShowBranchSort(BranchSort1);
     }
-    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id} key={el.branch_id} style={{color: config?.config.colors.color5,
-    background:config?.config.colors.color3,
-    borderRadius: "30px"}}>
-        <div className={s.card_item}>
+    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id + "/1"} key={el.branch_id}>
+        <div className={s.card_item + " title_config opacityBlue"}>
             <img src={el.image} alt="" />
             <div className={s.card_text_wrapper}>
                 <div className={s.card_title}>{el.title}</div>
@@ -43,7 +40,7 @@ const Razdeli = () => {
     </ NavLink>)
     return (
         <section className={s.medicine + " " + s.container}>
-            <h2 className={s.medicine_title + " " + s.Font_size40} style={{color: config?.config.colors.color5}}>Разделы медицины</h2>
+            <h2 className={s.medicine_title + " " + s.Font_size40 + " title_config"}>Разделы медицины</h2>
             <div className={s.medicine_input}>
                 <input type="text" placeholder="Поиск по разделам" className={s.Register_form} value={Showtext} onChange={handleChange} />
                 <img src={search} alt="" />

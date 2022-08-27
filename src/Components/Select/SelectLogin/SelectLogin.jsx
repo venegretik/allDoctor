@@ -10,7 +10,6 @@ const SelectLogin = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
   const specialization = useSelector(state => state.doctorSpec.specialization_id);
-  const page = useSelector(state => state.doctorSpec.page);
   const sort = useSelector(state => state.doctorSpec.sort);
   const config = useSelector((state) => state.config.config);
   const [isShown, setIsShown] = useState(false);
@@ -24,9 +23,9 @@ const SelectLogin = (props) => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    if (props.array[0]) {
+    if (props.array[0] && Showtext === "...") {
       if (props.selectType === "specialization") {
-        let filt = props.array.filter(el => el.branch_id === Number(params.id));
+        let filt = props.array.filter(el => el.specialization_id === Number(params.spec_id));
         setShowText(filt[0].title)
         dispatch(getConfigTitleAction(filt[0]?.title));
       }
@@ -36,18 +35,18 @@ const SelectLogin = (props) => {
   const handleClickChange = (changeEvent) => {
     setShowText(changeEvent.target.title);
     if (props.selectType === "specialization") {
-      dispatch(props.func(page, Number(changeEvent.target.value), sort));
+      dispatch(props.func(1 , specialization, sort, changeEvent.target.value));
       dispatch(DoctorMyName(changeEvent.target.title));
       dispatch(getConfigHeaderAction(changeEvent.target.title));
       dispatch(getConfigTitleAction(changeEvent.target.title));
     }
 
     if (props.selectType === "sort")
-      dispatch(props.func(page, specialization, changeEvent.target.value));
+      dispatch(props.func(1 , specialization, changeEvent.target.value));
   }
-  let arrayItems = props.array.map(el =>
-    <label htmlFor={el.branch_id} key={el.branch_id}>
-      <input type="radio" name="main-categories" title={el.title} id={el.branch_id} value={el.branch_id} onChange={handleClickChange} />
+  let arrayItems = props.array?.map(el =>
+    <label htmlFor={el.branch_id ? el.branch_id :el.specialization_id} key={el.branch_id ? el.branch_id :el.specialization_id}>
+      <input type="radio" name="main-categories" title={el.title} id={el.branch_id ? el.branch_id :el.specialization_id} value={el.branch_id ? el.branch_id :el.specialization_id} onChange={handleClickChange} />
       {el.title}
     </label>)
   return (

@@ -3,26 +3,31 @@
   justify-content: space-around;
   list-style: none;
 }
-.SectionDuty p,h1{
+
+.SectionDuty p,
+h1 {
   color: inherit;
 }
+
 .Container {
   padding-left: 31px;
   padding-right: 31px;
 }
+
 .ClassNull {
   text-decoration: none;
 }
-.medicine a {
-}
-.medicine > a {
+
+.medicine>a {
   margin-top: 10px;
 }
+
 .medicine {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .black {
   color: black !important;
 }
@@ -135,13 +140,12 @@
 .medicine_cards {
   display: flex;
   gap: 30px;
-  
+
   justify-content: center;
   flex-wrap: wrap;
 }
 
 .card_item {
-  background: #eaf2ff;
   border-radius: 30px;
   max-width: 270px;
   width: 100%;
@@ -167,12 +171,13 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 21px;
-  
+
 }
 
 .card_text_wrapper {
   padding: 0 30px 50px 30px;
 }
+
 .Font_size24 {
   font-family: "Exo", sans-serif;
   font-size: 24px;
@@ -213,6 +218,7 @@
   .Doctor_cart {
     width: 500px;
   }
+
   .Title_list h1 {
     text-align: center;
   }
@@ -222,36 +228,45 @@
   .Doctor_cart {
     width: 280px;
   }
+
   .card_item {
     max-width: 130px;
     height: 145px;
+    border-radius: 10px;
   }
+
   .card_item img {
     max-width: 130px;
     max-height: 90px;
     height: auto;
   }
+
   .card_title {
     font-size: 14px;
     line-height: 14px;
     margin-top: 0px;
     margin-bottom: 5px;
   }
+
   .card_subtitle {
     font-size: 10px;
     line-height: 13px;
   }
+
   .card_text_wrapper {
     padding: 0px 10px;
   }
+
   .Doctor_avatar_info p {
     display: none;
   }
+
   .Title_list h1 {
     margin-top: 30px;
     text-align: center;
     margin-bottom: 0px;
   }
+
   .Doctor_avatar_img {
     width: 70px;
   }
@@ -314,10 +329,12 @@
     cursor: pointer;
     border-radius: 16px;
   }
+
   .Container {
     padding-left: 10px;
     padding-right: 10px;
   }
+
   .Doctor_avatar {
     width: 80px;
   }
@@ -325,7 +342,8 @@
   .Doctor_info {
     width: 180px;
   }
-  .medicine_title{
+
+  .medicine_title {
     margin-bottom: 0px;
   }
 }

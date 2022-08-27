@@ -98,7 +98,14 @@
     bottom: 0px;
     padding:20px;
   }
-
+  .Cart_close{
+    display: none;
+  }
+.mob_block{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
   .Font_size24 {
     font-family: "Exo", sans-serif;
     font-size: 14px !important;
@@ -117,4 +124,12 @@
   .Cancel_Record button {
     width: 100%;
   }
+  .background{
+  position: fixed;
+  background-color:unset;
+  z-index: 21;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+}
 }

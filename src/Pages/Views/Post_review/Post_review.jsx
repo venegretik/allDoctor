@@ -35,7 +35,6 @@ const PostRewiew = () => {
     const star4 = useSelector(state => state.review.star4);
     const star5 = useSelector(state => state.review.star5);
     const idCons = useSelector(state => state.review.idCons);
-    const config = useSelector((state) => state.config.config);
     const review = useSelector((state) => state.review);
     const sendForm = async (e) => {
         e.preventDefault()
@@ -61,9 +60,9 @@ const PostRewiew = () => {
     }
     
     return (statusRewiew ? <Navigate to={"/recording/" + params.doctor_id + "/Reviews"}/> :<div className={s.Container + " Container"}>
-    <div className={s.Review_full} style={{ color: config?.config.colors.color2 }}>
+    <div className={s.Review_full  + " black_config"}>
         <div className={s.Review_title}>
-            <h1 className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Оставить отзыв</h1>
+            <h1 className={s.Font_size24  + " title_config"}>Оставить отзыв</h1>
         </div>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
@@ -72,7 +71,7 @@ const PostRewiew = () => {
                 </div>
             </div>
             <div className={s.Doctor_info + " " + s.black} >
-                <p className={s.gray + " " + s.Font_size14} style={{ color: config?.config.colors.color4 }}>{review.specialization.join(' • ')}</p>
+                <p className={s.gray + " " + s.Font_size14  + " gray_config"}>{review.specialization.join(' • ')}</p>
                 <h2 className={s.Font_size24}>{review.firstname + " " + review.lastname + " " + review.secondname}</h2>
                 <p className={s.Staj + " " + s.Font_size14}>{review.regalia.join(' • ')}</p>
             </div>
@@ -80,31 +79,31 @@ const PostRewiew = () => {
         <div className={s.Grade}>
             <ul>
                 <li>
-                    <b className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Тщательное обследование</b>
+                    <b className={s.Font_size24  + " title_config"}>Тщательное обследование</b>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                         <StarComponent func={Star1Action} el_id={1} />
                     </div>
                 </li>
                 <li>
-                    <b className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Эффективность лечения</b>
+                    <b className={s.Font_size24  + " title_config"}>Эффективность лечения</b>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                         <StarComponent func={Star2Action} el_id={2} />
                     </div>
                 </li>
                 <li>
-                    <b className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Отношение к пациенту</b>
+                    <b className={s.Font_size24  + " title_config"}>Отношение к пациенту</b>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                         <StarComponent func={Star3Action} el_id={3} />
                     </div>
                 </li>
                 <li>
-                    <b className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Информирование пациента</b>
+                    <b className={s.Font_size24  + " title_config"}>Информирование пациента</b>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                         <StarComponent func={Star4Action} el_id={4} />
                     </div>
                 </li>
                 <li>
-                    <b className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Посоветуете ли Вы врача?</b>
+                    <b className={s.Font_size24  + " title_config"}>Посоветуете ли Вы врача?</b>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                         <StarComponent func={Star5Action} el_id={5} />
                     </div>
@@ -114,19 +113,19 @@ const PostRewiew = () => {
         <div className={s.Rewiew_add}>
             <form onSubmit={(e) => sendForm(e)}>
                 <div className={s.select_consultation}>
-                    <p className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Выберите консультацию</p>
+                    <p className={s.Font_size24  + " title_config"}>Выберите консультацию</p>
                     <SelectReview required array={review.consultations} />
                 </div>
                 <div className={s.select_consultation + " " + s.select_margin}>
-                    <p className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Ваша история</p>
+                    <p className={s.Font_size24  + " title_config"}>Ваша история</p>
                     <textarea name="comment" className={s.Font_size14} required minLength={10}  placeholder="Расскажите, как обратились к врачу, как прошла консультация, помогло ли лечение" />
                 </div>
                 <div className={s.select_consultation + " " + s.select_margin}>
-                    <p className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Понравилось</p>
+                    <p className={s.Font_size24  + " title_config"}>Понравилось</p>
                     <textarea name="like" className={s.Font_size14} required minLength={10} placeholder="Здесь можно указать главные плюсы" />
                 </div>
                 <div className={s.select_consultation + " " + s.select_margin}>
-                    <p className={s.Font_size24} style={{ color: config?.config.colors.color5 }}>Не понравилось</p>
+                    <p className={s.Font_size24  + " title_config"}>Не понравилось</p>
                     <textarea name="not_like" className={s.Font_size14} required minLength={10} placeholder="Какие недостатки вы отметили?" />
                 </div>
                 <div className={s.otziv}>

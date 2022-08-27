@@ -10,7 +10,6 @@ import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
   let dispatch = useDispatch();
   const profile = useSelector((state) => state.profile);
-  const config = useSelector(state => state.config.config);
   useEffect(() => {
     dispatch(axiosProfile());
     dispatch(getConfigHeaderAction("Профиль"))
@@ -39,7 +38,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink
               }
               to="../local-data"
             >
@@ -49,7 +48,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink
               }
               to="../message"
             >
@@ -59,7 +58,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink
               }
               to="../balance"
             >
@@ -69,7 +68,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink
               }
               to="../med-cart"
             >
@@ -79,7 +78,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink
               }
               to="../result"
             >
@@ -87,20 +86,20 @@ const Local_Data = () => {
             </NavLink>
           </li>
         </ul>
-        <div className={s.links}>
-          <Link to="../../private/services">
+        <div className={s.links + " blue_config"}>
+          <Link className=" blue_config" to="../../private/services">
             <p>Договор об указании услуг</p>
           </Link>
-          <Link to="../../private/privacy">
+          <Link className=" blue_config" to="../../private/privacy">
             <p>Политика конфиденциальности</p>
           </Link>
         </div>
       </div>
-      <div className={s.My_content_title} style={{color: config?.config.colors.color2}}>
+      <div className={s.My_content_title  + " title_config"}>
         <h1>Личные данные</h1>
       </div>
       {profile.lastname ? (
-        <div className={s.My_content_container} style={{color: config?.config.colors.color2}}>
+        <div className={s.My_content_container  + " black_config"}>
           <div className={s.My_content_top} >
             <div className={s.My_content_top_image}>
               <img src={profile.photo} alt="" />

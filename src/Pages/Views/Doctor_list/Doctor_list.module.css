@@ -12,7 +12,6 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #22e112;
   position: absolute;
   right: 10px;
   bottom: 15px;
@@ -109,6 +108,7 @@
 
 .Doctor_button {
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .Select_all {
@@ -247,6 +247,7 @@
   }
   .Sort_select {
     display: flex;
+    gap: 5px;
     flex-direction: column;
   }
 
@@ -256,6 +257,7 @@
 
   .Skill_select {
     display: flex;
+    gap: 5px;
     flex-direction: column;
   }
 
@@ -440,7 +442,7 @@
   .Payment_block button{
     width: 100%;
     margin-top: 5px;
-    padding: 13.5px 20px;
+    padding: 17px 20px;
   }
   .Doctor {
     margin-top: 0px;

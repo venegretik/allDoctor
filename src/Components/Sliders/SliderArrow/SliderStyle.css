@@ -98,9 +98,7 @@
 }
 @media (max-width: 600px) {
   .swiperCardImg {
-    max-width: 50px;
     margin: 0 auto 12px auto;
-    height: 50px !important;
     object-fit: contain !important;
   }
   .swiperCard {
@@ -124,5 +122,17 @@
     line-height: 21px;
     color: #2e373d;
     margin-bottom: 25px;
+  }
+}
+@media(max-width:768px){
+  .swiperCard {
+    max-width: 240px;
+    width: 100%;
+    border: 2px solid #eaf2ff;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+    min-height: 200px;
+    height: 100%;
+    text-decoration: none;
   }
 }

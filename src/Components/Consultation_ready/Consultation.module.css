@@ -55,7 +55,6 @@
 
 .Doctor_info {
   display: flex;
-  color: #ffffff;
   max-width: 305px;
   flex-direction: column;
 }

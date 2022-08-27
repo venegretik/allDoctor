@@ -10,13 +10,11 @@ import { axiosConsultationHistory, axiosConsultationDelete, consultationHistoryC
 import { axiosBranch } from "../../base/asyncActions/getDoctors";
 import SelectConsultation from "../Select/SelectConsultation/SelectConsultation";
 import SelectCalendar from "../Select/SelectCalendar/SelectCalendar";
-import { Link } from "react-router-dom";
 const ConsultationHistory = () => {
-    const branch = useSelector(state => state.doctorSpec.branch_array);
+    const branch = useSelector(state => state.consultation.spec_array);
     const page = useSelector(state => state.consultation.page);
     const date_from = useSelector(state => state.consultation.date_from);
     const date_to = useSelector(state => state.consultation.date_to);
-    const config = useSelector((state) => state.config.config);
     const totalPage = useSelector(state => state.consultation.totalPage);
     let specialization_id = useSelector(state => state.consultation.specialization_id);
     let consultationHistory = useSelector((state) => state.consultation.consultationHistory);
@@ -32,8 +30,8 @@ const ConsultationHistory = () => {
     }
     
     let history = consultationHistory.map(
-        (el, key) => <div className={s.Doctor_full} key={key} style={{color: config?.config.colors.color2}}>
-            {el.can_cancel ? <div className={s.Cart_close + " " + s.black} onClick={() => { DoctorDelete(el.consultation_id) }}>
+        (el, key) => <div className={s.Doctor_full  + " black_config"} key={key}>
+            {el.can_cancel ? <div className={s.Cart_close} onClick={() => { DoctorDelete(el.consultation_id) }}>
                 +
             </div> : ""}
 
@@ -43,23 +41,23 @@ const ConsultationHistory = () => {
                         <div className={s.Doctor_avatar}>
                             <div className={s.Doctor_avatar_img}>
                                 <img src={el.doctor.photo} alt="" />
-                                {el.doctor.is_online && <div style={{background: config?.config.colors.color8}} className={s.DoctorOnline}></div>}
+                                {el.doctor.is_online && <div className={s.DoctorOnline + " green_config"}></div>}
                             </div>
-                            <div className={s.Doctor_avatar_info + " " + s.black}>
+                            <div className={s.Doctor_avatar_info}>
                                 <Stars num={el.doctor.rate} />
                             </div>
                         </div>
                     </div>
                     <div className={s.Doctor_info + " " + s.black}>
-                        <p className={s.gray} style={{color: config?.config.colors.color4}}>{el.doctor.specialization.join(" • ")}</p>
+                        <p className={s.gray + " gray_config"}>{el.doctor.specialization.join(" • ")}</p>
                         <h2 className={s.Font_size24}>{el.doctor.firstname + " " + el.doctor.lastname + " " + el.doctor.secondname}</h2>
                         <p className={s.Staj}>{el.doctor.regalia.join(" • ")}</p>
                         <div className={s.Doctor_buy}>
-                            <p className={s.gray} style={{color: config?.config.colors.color4}}>Стоимость консультации:</p>
+                            <p className={s.gray + " gray_config"}>Стоимость консультации:</p>
                             <p className={s.buy}>{el.price} ₽</p>
                         </div>
                         <div className={s.Consultation_info_text}>
-                            <p className={s.gray} style={{color: config?.config.colors.color4}}>Консультация состоится:</p>
+                            <p className={s.gray + " gray_config"}>Консультация состоится:</p>
                             <p className={s.buy}>{new Date(el.datetime).toLocaleString(
                                 "ru",
                                 {
@@ -73,16 +71,16 @@ const ConsultationHistory = () => {
                     </div>
                 </div>
                 <div className={s.Consultation_info}>
-                    <Link to={el.file} target="_blank" download>
-                        <div className={s.Download_file}>
+                    <a href={el.file} rel="noreferrer" target="_blank" download>
+                        <div className={s.Download_file + " opacityBlue"}>
                             <div className={s.Download_img}>
                                 <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
                             </div>
-                            <div className={s.Download_text}>
-                                <p className={s.Font_size14} style={{color: config?.config.colors.color10}}>Скачать заключение врача</p>
+                            <div className={s.Download_text + " blue_config"}>
+                                <p className={s.Font_size14}>Скачать заключение врача</p>
                             </div>
                         </div>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>
@@ -90,16 +88,16 @@ const ConsultationHistory = () => {
     return (
         <div>
             <div className={s.History}>
-                <div className={s.History_title}>
+                <div className={s.History_title + " title_config"}>
                     <h1>История</h1>
                 </div>
-                <div className={s.History_select} style={{color: config?.config.colors.color2}}>
+                <div className={s.History_select  + " black_config"}>
                     <div className={s.History_special}>
-                        <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>Специализация</p>
+                        <p className={s.Font_size14 + " gray_config"}>Специализация</p>
                         <SelectConsultation array={branch} selectType={"history"} func={consultationHistoryCons} />
                     </div>
                     <div className={s.History_date}>
-                        <p className={s.Font_size14} style={{color: config?.config.colors.color4}}>Дата приёма</p>
+                        <p className={s.Font_size14 + " gray_config"}>Дата приёма</p>
                         <SelectCalendar />
                     </div>
                 </div>
