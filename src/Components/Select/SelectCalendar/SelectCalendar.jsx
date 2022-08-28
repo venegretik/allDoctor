@@ -20,6 +20,17 @@ const SelectCalendar = (props) => {
         setIsShown((current) => !current);
         setNum(0);
     };
+    if (window.history && window.history.pushState) {
+        window.onpopstate = function (event) {
+            if (isShown) {
+                setIsShown(false);
+                window.history.pushState('forward', null, '');
+                window.history.forward(1);
+            }
+        };
+        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
+        window.history.forward(1);
+    }
     useEffect(() => {
         if (!isShown) {
             document.body.style.overflow = "auto";

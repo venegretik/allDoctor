@@ -48,10 +48,6 @@ const DoctorList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
-    if (spec_array[0])
-      spec_array.unshift({ specialization_id: 0, title: "Все" })
-  }, [spec_array])
-  useEffect(() => {
     setBranchTitle(Title);
     dispatch(getConfigHeaderAction(Title));
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -30,7 +30,7 @@ export const consultationReducer = (state = defaultState, action) => {
                 specialization_id: action.consultation_array.specialization_id,
                 date_from: action.consultation_array.date_from,
                 date_to: action.consultation_array.date_to,
-                spec_array: action.consultation_array.spec_array
+                spec_array: [{branch_id:0,title:"Все"} , ...action.consultation_array.spec_array]
             }
         case HISTORYCONS_ARRAY:
             return {

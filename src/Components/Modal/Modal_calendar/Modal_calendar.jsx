@@ -9,6 +9,17 @@ import { BottomSheet } from 'react-spring-bottom-sheet'
 const ModalCalendar = (props) => {
     let dispatch = useDispatch();
     let [showWindow, setWindow] = useState(false);
+    if (window.history && window.history.pushState) {
+        window.onpopstate = function (event) {
+            if (showWindow) {
+                setWindow(false);
+                window.history.pushState('forward', null, '');
+                window.history.forward(1);
+            }
+        };
+        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
+        window.history.forward(1);
+    }
     let statusModal = useSelector((state) => state.consultation.statusModal)
     useEffect(() => {
         if (statusModal)

@@ -30,8 +30,8 @@ const SelectConsultation = (props) => {
     if (props.selectType === "history")
       dispatch(props.func(changeEvent.target.value, page, date_to, date_from));
   }
-  let arrayItems = props.array.map(el =>
-    <label htmlFor={el.specialization_id} key={el.specialization_id}>
+  let arrayItems = props.array.map((el, key) =>
+    <label htmlFor={el.specialization_id} key={key}>
       <input type="radio" name="main-categories" title={el.title} id={el.specialization_id} value={el.specialization_id} onChange={handleClickChange} />
       {el.title}
     </label>)

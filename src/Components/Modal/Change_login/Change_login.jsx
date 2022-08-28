@@ -19,6 +19,17 @@ const ChangeLogin = (props) => {
       setModal(true);
       setIsShown(1);
     }
+    if (window.history && window.history.pushState) {
+        window.onpopstate = function (event) {
+            if (Modal) {
+              setModal(false);
+                window.history.pushState('forward', null, '');
+                window.history.forward(1);
+            }
+        };
+        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
+        window.history.forward(1);
+    }
   useEffect(() => {
     if (!Modal) {
       document.body.style.overflow = "auto";

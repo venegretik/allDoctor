@@ -5,13 +5,24 @@ import chatMessage from '../../../img/chat_message.png'
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosConsultationChat } from "../../../base/asyncActions/getConsultation";
-import {BottomSheet} from 'react-spring-bottom-sheet'
+import { BottomSheet } from 'react-spring-bottom-sheet'
 const ChatModal = () => {
     let dispatch = useDispatch();
     const config = useSelector((state) => state.config.config);
     let [showWindow, setWindow] = useState(false);
     let [chatShow, setChat] = useState(false);
     let num = 0;
+    if (window.history && window.history.pushState) {
+        window.onpopstate = function (event) {
+            if (showWindow) {
+                setWindow(false);
+                window.history.pushState('forward', null, '');
+                window.history.forward(1);
+            }
+        };
+        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
+        window.history.forward(1);
+    }
     const availableScreenWidth = window.screen.availWidth;
     useEffect(() => {
         if (availableScreenWidth <= 480) {
@@ -26,10 +37,10 @@ const ChatModal = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [showWindow])
-    let itemChat = config?.module.chat.reasons.map(el => <li key={num++} style={{ color: config?.config.colors.color2, backgroundColor: config?.config.colors.color7 }} onClick={e =>setChat(true)}><button>{el}</button></li>);
+    let itemChat = config?.module.chat.reasons.map(el => <li key={num++} style={{ color: config?.config.colors.color2, backgroundColor: config?.config.colors.color7 }} onClick={e => setChat(true)}><button>{el}</button></li>);
     return (
         <div className={s.Chat_icon}>
-        {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
+            {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
             <div className={s.Chat_mod} onClick={e => setWindow(true)}>
                 <img src={chat} alt="" />
                 <p>Чат</p>
@@ -53,7 +64,7 @@ const ChatModal = () => {
                             </div>
                             <div className={s.main_message + " black_config"}>
                                 <div className={s.main_messageText}>
-                                    <p className={s.Font_size14  + " gray_config"}>В сети</p>
+                                    <p className={s.Font_size14 + " gray_config"}>В сети</p>
                                     <div className={s.MessageDoctor}>
                                         <span >
                                             <p className={s.MessageText} style={{ background: config?.config.colors.color11 }}>Здравствуйте, чем мы можем Вам помочь?</p>

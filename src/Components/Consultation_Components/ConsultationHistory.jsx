@@ -25,10 +25,6 @@ const ConsultationHistory = () => {
         dispatch(axiosConsultationHistory());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    useEffect(() => {
-        if(branch[0])
-        branch.unshift({branch_id:0,title:"Все"})
-    }, [branch])
     let DoctorDelete = (consultation_id) => {
         dispatch(axiosConsultationDelete(consultation_id));
     }

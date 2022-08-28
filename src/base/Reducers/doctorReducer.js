@@ -27,7 +27,7 @@ export const doctorReducer = (state = defaultState, action) => {
                 totalPage: action.Doctor_array.totalPage,
                 sort: action.Doctor_array.sort,
                 specialization_id: action.Doctor_array.specialization_id,
-                spec_array:[...action.Doctor_array.spec_array],
+                spec_array:[{branch_id:0,title:"Все"} , ...action.Doctor_array.spec_array],
                 spec_id: action.Doctor_array.spec_id
             }
         case BRANCH_ARRAY:

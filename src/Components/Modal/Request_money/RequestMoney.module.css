@@ -89,6 +89,9 @@
   height: 100%;
 }
 @media (max-width: 480px) {
+  .mob_block{
+    margin-bottom: 15px;
+  }
   .Cancel_Record_block {
     left: 50%;
     top: auto;

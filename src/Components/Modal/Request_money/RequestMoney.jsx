@@ -10,11 +10,20 @@ import FormErrors from "../../FormError/FormError";
 import { BottomSheet } from 'react-spring-bottom-sheet'
 const RequestMoney = (props) => {
   let dispatch = useDispatch();
-
   let [showWindow, setWindow] = useState(false);
+  if (window.history && window.history.pushState) {
+      window.onpopstate = function (event) {
+          if (showWindow) {
+            setWindow(false);
+              window.history.pushState('forward', null, '');
+              window.history.forward(1);
+          }
+      };
+      window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
+      window.history.forward(1);
+  }
   const sendForm = async (e) => {
     e.preventDefault();
-
     const data = await new FormData(e.target);
     let obj = {};
     let response;

@@ -7,6 +7,18 @@ import { BottomSheet } from 'react-spring-bottom-sheet';
 import { ProfileUtilityAction } from "../../../../../base/Reducers/UserReducer";
 const ChangeData = (props) => {
     let [isShow, setShow] = useState(true);
+    if (window.history && window.history.pushState) {
+        window.onpopstate = function (event) {
+            if (isShow) {
+                setShow(false);
+                dispatch(ProfileUtilityAction(false));
+                window.history.pushState('forward', null, '');
+                window.history.forward(1);
+            }
+        };
+        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
+        window.history.forward(1);
+    }
     const dispatch = useDispatch();
     const availableScreenWidth = window.screen.availWidth;
     return (
