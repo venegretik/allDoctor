@@ -58,8 +58,11 @@
 .videoDesctop{
     display: flex!important;
 }
-.VideoBlockImage ul li img{
+.VideoBlockImage ul li>img{
     width: 20px;
+}
+.icon_back img{
+    width: 20px!important;
 }
 .MessageText input{
     width: 100%;
@@ -73,7 +76,7 @@
     position: relative;
 }
 
-.VideoBlockImage img {
+.VideoBlockImage>img {
     width: 100%;
     border-radius: 30px;
 }

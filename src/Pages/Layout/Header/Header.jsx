@@ -9,9 +9,9 @@ import { Navigate } from "react-router";
 const Header = () => {
   let Text = useSelector((state) => state.config.header_text);
   const config = useSelector((state) => state.config.config);
-  const info = useSelector((state) => state.main.shortName);
   const [isHover, setIsHover] = useState(false);
   const [isHover1, setIsHover1] = useState(false);
+  var url = document.location.pathname;
   const [isHover2, setIsHover2] = useState(false);
   const handleMouseEnter = () => {
     setIsHover(true);
@@ -43,10 +43,10 @@ const Header = () => {
     borderBottom: !isHover2 ? `4px solid ${config?.config.colors.color3}` : `4px solid ${config?.config.colors.color10}`,
     color: config?.config.colors.color2
   };
-  return config && !config.token ? (
+  return config && !config.token && url !== "/private/user" && url !== "/private/services" && url !== "/private/privacy" && url !== "/private/personal"  ? (
     <Navigate to="login" />
   ) : (
-    info?.data.short_name ?<div className={s.Header_container + " Container"}>
+    config?.token ?<div className={s.Header_container + " Container"}>
     <header className={s.Header_full}>
       <div className={s.Header_logo}>
         <Link to={"main"}>

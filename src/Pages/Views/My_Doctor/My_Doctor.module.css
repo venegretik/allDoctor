@@ -183,16 +183,21 @@
         width: 90%;
     }
     .Doctor_button button {
-        background: #407BFF;
         border-radius: 16px;
         width: 100%;
-        height: 40px;
+        height: 50px;
         margin-top: 10px;
         border: 0px;
         letter-spacing: 1px;
         text-transform: uppercase;
         color: #FFFFFF;
-        padding: 10px 21px;
+        padding: 13.5px 21px;
+    }
+    .Reviews_buttons_mobile{
+        width: 95%;
+    }
+    .Reviews_buttons_mobile button{
+        width: 100%;
     }
     .Doctor_avatar_info ul li img {
         width: 15px;

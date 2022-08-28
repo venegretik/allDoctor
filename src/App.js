@@ -42,14 +42,14 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => {
-    document.documentElement.style.setProperty('--black', config?.config.colors.color10);
-    document.documentElement.style.setProperty('--blueOpacity', config?.config.colors.color5);
-    document.documentElement.style.setProperty('--title', config?.config.colors.color7);
-    document.documentElement.style.setProperty('--white', config?.config.colors.color7);
-    document.documentElement.style.setProperty('--blue', config?.config.colors.color9);
-    document.documentElement.style.setProperty('--green', config?.config.colors.color1);
-    document.documentElement.style.setProperty('--gray', config?.config.colors.color2);
-    document.documentElement.style.setProperty('--orange', config?.config.colors.color3);
+    document.documentElement.style.setProperty('--black', config?.config.colors.color2);
+    document.documentElement.style.setProperty('--blueOpacity', config?.config.colors.color3);
+    document.documentElement.style.setProperty('--title', config?.config.colors.color5);
+    document.documentElement.style.setProperty('--white', config?.config.colors.color1);
+    document.documentElement.style.setProperty('--blue', config?.config.colors.color10);
+    document.documentElement.style.setProperty('--green', config?.config.colors.color8);
+    document.documentElement.style.setProperty('--gray', config?.config.colors.color4);
+    document.documentElement.style.setProperty('--orange', config?.config.colors.color7);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config]);
   return (

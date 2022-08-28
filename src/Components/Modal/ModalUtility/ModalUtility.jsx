@@ -27,7 +27,8 @@ const ModalUtility = () => {
                 <p>Настройки</p>
             </div>
             {showWindow ? <div className={s.Cancel_Record_full}>
-
+        {showWindow ? <div className="background" onClick={e => {setWindow(false)
+                        dispatch(ProfileUtilityAction(false))}}></div> : ""}
                 <div className={s.Cancel_Record_block}>
                     <div className={s.Cart_close + " " + s.black} onClick={e => {
                         setWindow(false)

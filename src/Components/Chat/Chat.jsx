@@ -12,19 +12,11 @@ const Chat = () => {
   let [showWindow, setWindow] = useState(false);
   let [chatShow, setChat] = useState(false);
   let num = 0;
-  let itemChat = config?.module.chat.reasons.map((el) => (
-    <li
-      key={num++}
-      style={{
-        color: config?.config.colors.color2,
-        backgroundColor: config?.config.colors.color7,
-      }}
-    >
-      {el}
-    </li>
-  ));
+  
+  let itemChat = config?.module.chat.reasons.map(el => <li key={num++} style={{ color: config?.config.colors.color2, backgroundColor: config?.config.colors.color7 }} onClick={e =>setChat(true)}><button>{el}</button></li>);
   return config.module.chat ? (
     <div>
+    {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
       <div className={s.Chat_icon}>
         <img src={chat} alt="" onClick={(e) => setWindow(true)} />
         {showWindow ? (

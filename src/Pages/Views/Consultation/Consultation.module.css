@@ -524,3 +524,9 @@
     }
     
 }
+
+@media(max-width:480px) {
+    .Show_more button{
+        width: 100%;
+    }
+}

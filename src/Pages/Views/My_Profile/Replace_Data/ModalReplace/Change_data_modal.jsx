@@ -57,6 +57,10 @@ const ChangeData = (props) => {
                             </div>
                         </div>
                     </div> </BottomSheet> : <div className={s.Cancel_Record_full}>
+                    {isShow ? <div className="background" onClick={e => {
+                                setShow(false)
+                                dispatch(ProfileUtilityAction(false))
+                            }}></div> : ""}
                     <div className={s.Cancel_Record_block}>
                         <div>
                             <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />

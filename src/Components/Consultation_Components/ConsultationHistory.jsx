@@ -11,7 +11,7 @@ import { axiosBranch } from "../../base/asyncActions/getDoctors";
 import SelectConsultation from "../Select/SelectConsultation/SelectConsultation";
 import SelectCalendar from "../Select/SelectCalendar/SelectCalendar";
 const ConsultationHistory = () => {
-    const branch = useSelector(state => state.consultation.spec_array);
+    let branch = useSelector(state => state.consultation.spec_array);
     const page = useSelector(state => state.consultation.page);
     const date_from = useSelector(state => state.consultation.date_from);
     const date_to = useSelector(state => state.consultation.date_to);
@@ -25,6 +25,10 @@ const ConsultationHistory = () => {
         dispatch(axiosConsultationHistory());
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    useEffect(() => {
+        if(branch[0])
+        branch.unshift({branch_id:0,title:"Все"})
+    }, [branch])
     let DoctorDelete = (consultation_id) => {
         dispatch(axiosConsultationDelete(consultation_id));
     }

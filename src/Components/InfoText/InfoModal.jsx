@@ -18,6 +18,7 @@ const InfoModal = (props) => {
     return (
         <div>
             <div className={s.infoFull}>
+        {isShown ? <div className="background" onClick={e => setIsShown(isShown = !isShown)}></div> : ""}
                 <img src={info} alt="" className={props.classtwo} aria-describedby={props.class} onClick={e => setIsShown(isShown = !isShown)} />
 
                 {isShown ? <div>

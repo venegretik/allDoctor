@@ -60,7 +60,6 @@ const RequestMoney = (props) => {
         {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
                     onDismiss={() => setWindow(false)}>
                     <div className={"black_config"}>
-          <div className={s.background} onClick={() => setWindow(false)}></div>
           <div className={s.mob_block}>
             <div className={s.Cart_close} onClick={(e) => setWindow(false)}>
               +

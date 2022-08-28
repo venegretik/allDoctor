@@ -9,6 +9,7 @@ const UtilityBlock = () => {
     const [Id, setId] = useState("");
     const [statusModule, setStatusModule] = useState(false);
     let audioId = localStorage.getItem("audioinputid");
+    let videoId = localStorage.getItem("videoinputid");
     let inputElement = useRef(null),
         [videoStatus, setvideoStatus] = useState(""),
         [videoArray, setvideoArray] = useState([]),
@@ -37,15 +38,15 @@ const UtilityBlock = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [deviceAudioId]);
     let Device = async () => {
-        const devices = await navigator.mediaDevices.enumerateDevices()
-        setvideoArray([...devices.filter(el => el.kind === "videoinput")]);
-        setaudioArray([...devices.filter(el => el.kind === "audioinput")]);
-        setoutputArray([...devices.filter(el => el.kind === "audiooutput")]);
         navigator.mediaDevices.getUserMedia({
             //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
             audio: { deviceId: { exact: audioId ? audioId : "default" } }
-        }).then((stream) => {
+        }).then(async (stream) => {
             window.localStream = stream;
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            setvideoArray([...devices.filter(el => el.kind === "videoinput")]);
+            setaudioArray([...devices.filter(el => el.kind === "audioinput")]);
+            setoutputArray([...devices.filter(el => el.kind === "audiooutput")]);
             let audioContext = new AudioContext();
             let analyser = audioContext.createAnalyser();
             let microphone = audioContext.createMediaStreamSource(stream);
@@ -70,7 +71,6 @@ const UtilityBlock = () => {
                 colorPids(average);
                 if (statusModule) {
                     //вот эта строка заставляет выключиться текущий поток, нам нужно выключить прошлый
-                    javascriptNode.onaudioprocess = null;
                     setStatusModule(false)
                 }
             }
@@ -82,7 +82,7 @@ const UtilityBlock = () => {
     //вебка
     let startWebcam = async () => {
         navigator.mediaDevices.getUserMedia({
-            video: true
+            video: videoId ? { deviceId: { exact: videoId } } : true
         }).then((stream) => {
             let webcamStream;
             inputElement.current.srcObject = stream;
@@ -109,53 +109,53 @@ const UtilityBlock = () => {
         }
     }
     return (
-            <div className={"black_config"}>
-                <div className={s.Utility_text}>
-                    <p>Настройки видео</p>
-                    <SelectModule array={videoArray} />
-                </div>
-                <div className={s.Utility_Check_video} >
-                    <video ref={inputElement} allow="accelerometer; autoplay; encrypted-media; camera 'self';" muted style={videoStatus ? {
-                        width: "100%",
-                        height: "250px"
-                    } : { display: "none" }} controls autoPlay />
-                    {!videoStatus ? <div className={s.Utility_Check_video_content} >
-                        <img src={photo} alt="" />
-                        <button onClick={startWebcam}>Проверить видео</button>
-                    </div> : ""}
+        <div className={"black_config"}>
+            <div className={s.Utility_text}>
+                <p>Настройки видео</p>
+                <SelectModule array={videoArray} />
+            </div>
+            <div className={s.Utility_Check_video} >
+                <video ref={inputElement} allow="accelerometer; autoplay; encrypted-media; camera 'self';" muted style={videoStatus ? {
+                    width: "100%",
+                    height: "250px"
+                } : { display: "none" }} controls autoPlay />
+                {!videoStatus ? <div className={s.Utility_Check_video_content} >
+                    <img src={photo} alt="" />
+                    <button onClick={startWebcam}>Проверить видео</button>
+                </div> : ""}
 
-                </div>
-                <div className={s.Utility_configuration_full}>
-                    <p className={s.check_volume}>Настройки звука</p>
-                    <div className={s.Utility_configuration}>
-                        <div className={s.Utility_configuration_video}>
-                            <p>Устройство ввода</p>
-                            <SelectModule array={audioArray} />
-                            <Slide />
-                        </div>
-                        <div className={s.Utility_configuration_volume}>
-                            <p>Устройство вывода</p>
-                            <SelectModule array={outputArray} />
-                            <Slide />
-                        </div>
+            </div>
+            <div className={s.Utility_configuration_full}>
+                <p className={s.check_volume}>Настройки звука</p>
+                <div className={s.Utility_configuration}>
+                    <div className={s.Utility_configuration_video}>
+                        <p>Устройство ввода</p>
+                        <SelectModule array={audioArray} />
+                        <Slide />
                     </div>
-                </div>
-                <div className={s.Utility_volume}>
-                    <p>Проверка микрофона</p>
-                    <div className="pids-wrapper">
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
-                        <div className="pid"></div>
+                    <div className={s.Utility_configuration_volume}>
+                        <p>Устройство вывода</p>
+                        <SelectModule array={outputArray} />
+                        <Slide />
                     </div>
                 </div>
             </div>
+            <div className={s.Utility_volume}>
+                <p>Проверка микрофона</p>
+                <div className="pids-wrapper">
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                    <div className="pid"></div>
+                </div>
+            </div>
+        </div>
     )
 }
 export default UtilityBlock;

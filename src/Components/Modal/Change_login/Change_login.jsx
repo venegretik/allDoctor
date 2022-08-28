@@ -155,6 +155,7 @@ const ChangeLogin = (props) => {
           </div>
         </BottomSheet> : ""}
         <div className={s.ChangeLoginFull}>
+        {Modal ? <div className="background" onClick={e => setModal(false)}></div> : ""}
           <div className={s.ChangeLogin}>
             <div className={s.Cart_close + " " + s.black} onClick={e => setModal(false)}>
               &times;

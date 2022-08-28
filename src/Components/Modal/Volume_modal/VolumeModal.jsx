@@ -1,9 +1,7 @@
 import React from "react";
 import s from "./VolumeModal.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import volume from "../../../img/volume_down.png"
-import { useSelector } from "react-redux";
-import { BottomSheet } from "react-spring-bottom-sheet";
 const ModalUnityChat = () => {
     let [showWindow, setWindow] = useState(false);
     return (

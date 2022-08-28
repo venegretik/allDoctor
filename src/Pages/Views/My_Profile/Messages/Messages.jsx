@@ -2,7 +2,7 @@ import React from "react";
 import s from './Messages.module.css';
 import Button from "../../../../Components/Button/Button";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getNotification } from "../../../../base/asyncActions/getMainPageInfo";
 import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
 import { axiosProfileDeleteNot, axiosProfileDeleteNotAll } from "../../../../base/asyncActions/Profile";
@@ -38,7 +38,6 @@ const Messages = () => {
         dispatch(getConfigHeaderAction("Уведомления"))
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    const config = useSelector(state => state.config.config);
     return (
         <div className={s.Messages_full}>
             {NewArray[0] ? NewArray.map((item) =>

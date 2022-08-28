@@ -26,9 +26,10 @@ const ChatModal = () => {
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [showWindow])
-    let itemChat = config?.module.chat.reasons.map(el => <li key={num++} style={{ color: config?.config.colors.color2, backgroundColor: config?.config.colors.color7 }}>{el}</li>);
+    let itemChat = config?.module.chat.reasons.map(el => <li key={num++} style={{ color: config?.config.colors.color2, backgroundColor: config?.config.colors.color7 }} onClick={e =>setChat(true)}><button>{el}</button></li>);
     return (
         <div className={s.Chat_icon}>
+        {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
             <div className={s.Chat_mod} onClick={e => setWindow(true)}>
                 <img src={chat} alt="" />
                 <p>Чат</p>
@@ -36,7 +37,7 @@ const ChatModal = () => {
             {showWindow ? <>
                 {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
                     onDismiss={() => setWindow(false)}>
-                    <div>
+                    <div className={s.MobileChat}>
                         <div className={s.Cart_slose + " black_config"} onClick={e => setWindow(false)}>
                             &times;
                         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -8,7 +8,7 @@ import { getSlider } from "../../../base/asyncActions/getMainPageInfo";
 import { useDispatch } from "react-redux";
 import Loader from "../../Loading/Loader";
 
-const SliderDots = () => {
+const SliderDots = ({ children, onClick, ...props }) => {
   const [Slider, setSlider] = useState([]),
     dispatch = useDispatch(),
     SliderInfo = async () => {
@@ -17,7 +17,12 @@ const SliderDots = () => {
         setSlider(response.data.items);
       }
     };
-
+    const handleClick = useCallback(
+      e => {
+        e.preventDefault();
+      },
+      []
+    );
   useEffect(() => {
     SliderInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,7 +48,7 @@ const SliderDots = () => {
                 backgroundRepeat: "no-repeat",
               }}
             >
-              <a target={el.url ? "blank" : ""} href={el.url ? el.url : "#cancel"}>
+              <a target={el.url ? "blank" : ""} href={el.url ? el.url : null} onClick={el.url ? null :handleClick}>
                 <img src={el.image} alt="" />
               </a>
             </SwiperSlide>

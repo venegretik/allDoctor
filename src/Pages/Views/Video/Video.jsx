@@ -1,7 +1,6 @@
 import React from "react";
 import s from "./Video.module.css";
 import videoImage from "../../../img/video_photo.png";
-import volume from "../../../img/volume_down.png";
 import close from "../../../img/close.png";
 import PacientVideo from "../../../img/PacientVideo.png";
 import micro_off from "../../../img/mic_off.png";
@@ -21,25 +20,26 @@ const Video = () => {
             document.body.style.overflow = "hidden"
     }, [availableScreenWidth])
     let status = useSelector((state) => state.profile.utitlityShow);
+    const config = useSelector((state) => state.config.config);
     return (
         <div className={s.VideoFull + " " + s.Container + " Container"}>
-            <div className={s.VideoTitle}>
+            <div className={s.VideoTitle + " title_config"}>
                 <h1>Белкина Ирина Николаевна</h1>
                 <p>Акушер • Гинеколог • Гинеколог-эндокринолог</p>
                 <p>Стаж 12 лет • Врач высшей категории • 728 консультаций</p>
             </div>
             <div className={s.VideoBlock}>
-                <div className={s.VideoBlockImage}>
+                <div className={s.VideoBlockImage + " black_config"}>
                     <img src={PacientVideo} alt="" className={s.ImageVideo} />
                     <img src={availableScreenWidth <= 480 ? video_mobile : videoImage} className={s.ImageVideo1} alt="" />
-                    <ul className={s.videoDesctop} style={status ? {
+                    <ul className={s.videoDesctop + " black_config"} style={status ? {
                         width: "100%",
                         height: "100vh", transform: "none", left: "0px"
                     } : {
                         width: "500px",
                         height: "auto", transform: "translate(-50%,0%)"
                     }}>
-                        <VolumeModal/>
+                        <VolumeModal />
                         <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back}>
                                 <img src={micro_off} alt="" />
@@ -89,17 +89,19 @@ const Video = () => {
                     <div className={s.VideoChatMessage}>
                         <div className={s.MessageDoctor}>
                             <span >
-                                <p className={s.VideoChatDoctor}>Значимость этих проблем настолько очевидна, что укрепление и развитие внутренней структуры способствует подготовке и реализации приоритизации разума над эмоциями.</p>
+                                <p className={s.VideoChatDoctor + " black_config"}
+                                    style={{ background: config?.config.colors.color11 }}>Значимость этих проблем настолько очевидна, что укрепление и развитие внутренней структуры способствует подготовке и реализации приоритизации разума над эмоциями.</p>
                             </span>
-                            <p>12:15</p>
+                            <p className="gray_config">12:15</p>
                         </div>
                         <span>
 
                             <div className={s.MessageDoctorMy}>
                                 <span >
-                                    <p className={s.VideoChatMy}>Здравствуйте</p>
+                                    <p className={s.VideoChatMy + " black_config"}
+                                        style={{ background: config?.config.colors.color3 }}>Здравствуйте</p>
                                 </span>
-                                <p>12:15</p>
+                                <p className="gray_config">12:15</p>
                             </div>
                         </span>
                     </div>

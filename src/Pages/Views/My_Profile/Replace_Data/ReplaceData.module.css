@@ -192,7 +192,6 @@
 }
 @media(max-width:480px){
     .ReplaceData form button {
-        padding: 13.5px;
         min-width: 130px;
         border-radius: 16px;
         height: auto;

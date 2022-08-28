@@ -67,6 +67,7 @@ const SelectCalendar = (props) => {
             </div>
             {isShown && (
                 <div className={s.Cancel_Record_full}>
+                    {isShown ? <div className="background" onClick={handleClick}></div> : ""}
                     <div className={s.Cancel_Record_block}>
                         <div className={s.Cart_close} onClick={handleClick}>
                             &times;

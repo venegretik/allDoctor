@@ -1,8 +1,16 @@
-.Chat_list ul li {
+.Chat_list ul li button {
+  cursor: pointer;
   background: #f6ae2d;
+  color: black;
+  margin: 0px;
+  text-transform: none;
+  padding: 0px;
+}
+
+.Chat_list ul li{
   border-radius: 16px;
   padding: 4px 15px;
-  color: black;
+  background: #f6ae2d;
   margin-top: 10px;
 }
 

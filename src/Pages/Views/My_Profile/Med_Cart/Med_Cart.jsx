@@ -34,7 +34,7 @@ const Med_Cart = () => {
                     <p>{el.specialty}</p>
                     <p>{el.fio}</p>
                 </span>)}</td>
-                <td data-label="AMOUNT" className={s.MedCenter}>{el.diagnosis}<Link to={el.file ? el.file : ""} target="_blank" download>
+                <td data-label="AMOUNT" className={s.MedCenter}>{el.diagnosis}<Link to={el.file ? el.file : ""} className={"blue_config"} target="_blank" download>
                     Скачать
                 </Link></td>
             </tr>)
@@ -106,7 +106,7 @@ const Med_Cart = () => {
                                     <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
                                 </div>
                                 <div className={s.Download_text}>
-                                    <p className={s.Font_size14}>Скачать заключение врача</p>
+                                    <p className={s.Font_size14 + " blue_config"}>Скачать заключение врача</p>
                                 </div>
                             </div>
                         </a>

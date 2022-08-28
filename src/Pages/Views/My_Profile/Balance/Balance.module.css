@@ -214,4 +214,7 @@
     .Balance_add input {
         margin-right: 10px;
     }
+    .Message_button_margin button{
+        width: 100%;
+    }
 }

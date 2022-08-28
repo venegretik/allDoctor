@@ -6,10 +6,12 @@
     align-items: center;
     position: relative;
 }
-.ReviewsFull{
+
+.ReviewsFull {
     max-width: 770px;
     padding-top: 9px;
 }
+
 .blueLink {
     cursor: pointer;
     color: #407BFF;
@@ -18,9 +20,13 @@
 .Message_button_margin {
     margin-right: 20px;
 }
-.Recording_full p,h1,h2{
+
+.Recording_full p,
+h1,
+h2 {
     color: inherit;
-  }
+}
+
 .DoctorOnline {
     width: 20px;
     height: 20px;
@@ -107,10 +113,12 @@
     font-weight: 700;
     line-height: 21px;
 }
+
 .Comment {
     border-left: 5px solid #EAF2FF;
     padding-left: 5px;
 }
+
 .Doctor_info_unfavorite {
     margin-top: 10px;
 }
@@ -192,11 +200,13 @@
     line-height: 32px;
     letter-spacing: 0px;
 }
-.LineEndComment{
+
+.LineEndComment {
     border-bottom: 1px solid #EAF2FF;
     width: 100%;
     padding-top: 18px;
 }
+
 .Font_size40 {
     font-family: 'Exo', sans-serif;
     font-size: 40px;
@@ -265,36 +275,48 @@
         display: flex;
         margin-right: 10px;
     }
+
     .Doctor_message_avatar img {
         width: 42px;
         border-radius: 50%;
     }
+
     .Doctor_buy {
         margin-top: 8px;
     }
-    .Staj{
+
+    .Staj {
         margin-top: 5px;
     }
-    .Doctor_avatar{
+
+    .Doctor_avatar {
         max-width: 80px;
         width: auto;
         margin-right: 9px;
     }
+
     .Qualification h1 {
         margin-top: 15px;
         margin-bottom: 10px;
     }
+
     .Doctor_avatar_img {
         width: 70px;
+    }
+
+    .Reviews_buttons {
+        width: 100%;
     }
 
     .Doctor_avatar_info ul li img {
         width: 13px;
     }
-    .Reviews_title{
+
+    .Reviews_title {
         margin-bottom: 9px;
         margin-top: 11px;
     }
+
     .Doctor_info h2 {
         font-size: 16px;
     }
@@ -330,8 +352,9 @@
         line-height: 13px !important;
         letter-spacing: 0px !important;
     }
+
     .Recording_full {
-    margin-left: 10px;
-    margin-right: 10px;
-}
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }

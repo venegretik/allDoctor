@@ -67,7 +67,7 @@ const MyDoctor = () => {
         <div className={s.Container + " Container"}>
             {Doctor[0] ? Doctor :<Loader />}
             <div className={s.Reviews_buttons}>
-                <div onClick = {showMore}>
+                <div className={s.Reviews_buttons_mobile} onClick = {showMore}>
                 <Button
                     className={s.Show_more + " " + s.Font_size14}
                     type={'submit'}

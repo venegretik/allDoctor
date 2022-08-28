@@ -23,6 +23,7 @@ const SelectResult = (props) => {
         </label>)
     return (
         <div id="Select-hide" onClick={handleClick}>
+        {isShown ? <div className="background"></div> : ""}
             <div className="Select_content">
                 <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
       color:config?.config.colors.color2}}>{Showtext}</p>

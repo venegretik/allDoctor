@@ -206,7 +206,12 @@
         letter-spacing: 0px !important;
 
     }
-
+    .Message_button_margin{
+        width: 100%;
+    }
+    .Message_button_margin button{
+        width: 100%;
+    }
     .Font_size40 {
         font-family: 'Exo', sans-serif;
         font-size: 16px !important;

@@ -39,7 +39,7 @@ const SectionsMedicine = () => {
           ) : (
             Sections.map((el, key) =>
               key < 7 ? (
-                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/1"}>
+                <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/0"}>
                   <div className={s.card_item  + " opacityBlue"}>
                     <img src={el.image} alt="" />
                     <div className={s.card_text_wrapper}>
@@ -74,7 +74,7 @@ const SectionsMedicine = () => {
             ) : (
               Ofline.map((el, key) =>
                 key < 3 ? (
-                  <Link className={s.ClassNull + " title_config"} key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/1"}>
+                  <Link className={s.ClassNull + " title_config"} key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/0"}>
                     <div className={s.card_item + " opacityBlue"} >
                       <img src={el.image} alt="" />
                       <div className={s.card_text_wrapper}>

@@ -1,8 +1,16 @@
-.Chat_list ul li {
+.Chat_list ul li button {
+  cursor: pointer;
   background: #f6ae2d;
+  color: black;
+  margin: 0px;
+  text-transform: none;
+  padding: 0px;
+}
+
+.Chat_list ul li{
   border-radius: 16px;
   padding: 4px 15px;
-  color: black;
+  background: #f6ae2d;
   margin-top: 10px;
 }
 
@@ -246,15 +254,28 @@
   align-items: center;
 }
 
+.MobileChat {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 30px;
+}
+
 .ChatUtility li .icon_back {
   padding: 11px;
   box-sizing: border-box;
   height: 42px;
   margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.5);
 }
-
+.ChatUtility li .icon_back img{
+  width: 20px;
+}
 @media (max-width:480px) {
   .main_message {
     height: 235px;

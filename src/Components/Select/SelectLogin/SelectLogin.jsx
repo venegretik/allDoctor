@@ -25,9 +25,17 @@ const SelectLogin = (props) => {
   useEffect(() => {
     if (props.array[0] && Showtext === "...") {
       if (props.selectType === "specialization") {
-        let filt = props.array.filter(el => el.specialization_id === Number(params.spec_id));
-        setShowText(filt[0].title)
-        dispatch(getConfigTitleAction(filt[0]?.title));
+        if(Number(params.spec_id) === 0){
+          setShowText('Все');
+          dispatch(DoctorMyName('Все'));
+          dispatch(getConfigHeaderAction('Все'));
+          dispatch(getConfigTitleAction('Все'));
+        }
+        else{
+          let filt = props.array.filter(el => el.specialization_id === Number(params.spec_id));
+          setShowText(filt[0].title)
+          dispatch(getConfigTitleAction(filt[0]?.title));
+        }
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -36,6 +44,7 @@ const SelectLogin = (props) => {
     setShowText(changeEvent.target.title);
     if (props.selectType === "specialization") {
       dispatch(props.func(1 , specialization, sort, changeEvent.target.value));
+      window.history.pushState("", "", "/doctor-list/" + params.id +"/" + changeEvent.target.value); 
       dispatch(DoctorMyName(changeEvent.target.title));
       dispatch(getConfigHeaderAction(changeEvent.target.title));
       dispatch(getConfigTitleAction(changeEvent.target.title));
@@ -44,13 +53,14 @@ const SelectLogin = (props) => {
     if (props.selectType === "sort")
       dispatch(props.func(1 , specialization, changeEvent.target.value));
   }
-  let arrayItems = props.array?.map(el =>
-    <label htmlFor={el.branch_id ? el.branch_id :el.specialization_id} key={el.branch_id ? el.branch_id :el.specialization_id}>
+  let arrayItems = props.array?.map((el, key) =>
+    <label htmlFor={el.branch_id ? el.branch_id :el.specialization_id} key={key}>
       <input type="radio" name="main-categories" title={el.title} id={el.branch_id ? el.branch_id :el.specialization_id} value={el.branch_id ? el.branch_id :el.specialization_id} onChange={handleClickChange} />
       {el.title}
     </label>)
   return (
     <div id="Select-hide" onClick={handleClick} >
+    {isShown ? <div className="background"></div> : ""}
       <div className="Select_content">
         <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
       color:config?.config.colors.color2}}>{Showtext}</p>

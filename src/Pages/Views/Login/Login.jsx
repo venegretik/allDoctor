@@ -27,7 +27,7 @@ const Login = (props) => {
             </li>
           </ul>
         </div>
-        <div style={{maxWidth: '400px', width: '100%'}}>
+        <div style={{maxWidth: '400px', width: '100%', marginBottom:"30px"}}>
           <p className={style.login_form_text} style={{color: config?.config.colors.color4,borderBottom: `4px solid ${config?.config.colors.color10}`}}>ВОЙТИ</p>
           {
             error ? <p style={{color: 'red', marginBottom: '10px'}}>{error}</p> : ''

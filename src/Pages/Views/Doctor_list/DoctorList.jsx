@@ -3,7 +3,7 @@ import s from './Doctor_list.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { axiosDoctor} from "../../../base/asyncActions/getDoctors";
+import { axiosDoctor } from "../../../base/asyncActions/getDoctors";
 import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Stars from "../../../Components/Stars/Stars";
@@ -40,7 +40,7 @@ const DoctorList = () => {
     branch_id: "price_asc"
   }]
   let page = useSelector(state => state.doctorSpec.page);
-  const spec_array = useSelector(state => state.doctorSpec.spec_array);
+  let spec_array = useSelector(state => state.doctorSpec.spec_array);
   const sort = useSelector(state => state.doctorSpec.sort);
   const spec_id = useSelector(state => state.doctorSpec.spec_id);
   useEffect(() => {
@@ -48,12 +48,16 @@ const DoctorList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
+    if (spec_array[0])
+      spec_array.unshift({ specialization_id: 0, title: "Все" })
+  }, [spec_array])
+  useEffect(() => {
     setBranchTitle(Title);
     dispatch(getConfigHeaderAction(Title));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Title])
   const sendRequest = () => {
-    dispatch(axiosDoctor(++page,params.id,sort,spec_id));
+    dispatch(axiosDoctor(++page, params.id, sort, spec_id));
   }
 
   let Doctor = Doctors.map((el, key) =>

@@ -30,7 +30,7 @@ const RazdeliOffline = () => {
         setShowBranchSort(BranchSort1);
     }
     
-    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id + "/1"} key={el.branch_id}>
+    let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id + "/0"} key={el.branch_id}>
         <div className={s.card_item + " title_config opacityBlue"}>
             <img src={el.image} alt="" />
             <div className={s.card_text_wrapper}>
