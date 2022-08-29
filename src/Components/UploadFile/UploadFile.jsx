@@ -45,7 +45,7 @@ class UploadFile extends React.Component {
             type="file"
             onChange={this.onChange}
           />
-          <img src={upload} alt="" />
+          <img alt="" src={upload}  />
         </label>}
       </div>
       

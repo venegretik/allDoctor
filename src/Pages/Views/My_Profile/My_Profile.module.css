@@ -106,7 +106,10 @@
 .links {
     padding-bottom: 40px;
 }
+.close{
+    color: #F14646!important;
 
+}
 .links a p {
     margin-bottom: 5px;
 }

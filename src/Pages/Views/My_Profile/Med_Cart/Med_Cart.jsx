@@ -103,7 +103,7 @@ const Med_Cart = () => {
 
                             <div className={s.Download_file + " black_config"}>
                                 <div className={s.Download_img}>
-                                    <img src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
+                                    <img alt="" src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg"  />
                                 </div>
                                 <div className={s.Download_text}>
                                     <p className={s.Font_size14 + " blue_config"}>Скачать заключение врача</p>

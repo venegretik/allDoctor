@@ -31,7 +31,7 @@ const Razdeli = () => {
     }
     let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id + "/0"} key={el.branch_id}>
         <div className={s.card_item + " title_config opacityBlue"}>
-            <img src={el.image} alt="" />
+            <img alt="" src={el.image}  />
             <div className={s.card_text_wrapper}>
                 <div className={s.card_title}>{el.title}</div>
                 <div className={s.card_subtitle}>{el.description}</div>
@@ -43,7 +43,7 @@ const Razdeli = () => {
             <h2 className={s.medicine_title + " " + s.Font_size40 + " title_config"}>Разделы медицины</h2>
             <div className={s.medicine_input}>
                 <input type="text" placeholder="Поиск по разделам" className={s.Register_form} value={Showtext} onChange={handleChange} />
-                <img src={search} alt="" />
+                <img alt="" src={search}  />
             </div>
             <div className={s.medicine_cards}>
                 {!Branch_list[0] ? (

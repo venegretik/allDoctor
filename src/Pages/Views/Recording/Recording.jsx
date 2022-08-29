@@ -39,7 +39,7 @@ const Recording = () => {
                         <div className={s.Doctor_infos}>
                             <div className={s.Doctor_avatar}>
                                 <div className={s.Doctor_avatar_img}>
-                                    <img src={recording.photo} alt="" />
+                                    <img alt="" src={recording.photo}  />
                                 </div>
                                 <div className={s.Doctor_avatar_info + " " + s.black}>
                                     <Stars num={recording.rate} />

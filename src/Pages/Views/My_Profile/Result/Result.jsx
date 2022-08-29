@@ -125,10 +125,10 @@ const Result = () => {
     let file_array = file.map(
         el => <div className={s.Download_File_PDF} key={++keyNum}><div className={s.Download_File_block}>
             <div className={s.Download_File_left}>
-                <img src={file} alt="" />
+                <img alt="" src={file}  />
                 <div className={s.Download_File_left_text}>
                     <div className={s.Download_file_flex}>
-                        <img src={PDF} alt="" />
+                        <img alt="" src={PDF}  />
                         <b className={s.Font_size16}>{el.name}</b>
                     </div>
                     <p className={s.Font_size14 + " " + s.gray  + " gray_config"}>{new Date(el.datetime).toLocaleString(
@@ -144,7 +144,7 @@ const Result = () => {
             <div className={s.Download_File_right}>
                 <a href={el.file} target="_blank" rel="noreferrer" download>
                     <div className={s.Download_File_right_text + " black_config"}>
-                        <img src={download} alt="" />
+                        <img alt="" src={download}  />
                         <p className={s.Font_size14}>604КВ</p>
                     </div>
                 </a>

@@ -39,13 +39,13 @@ const ConsultationNext = () => {
         <div>
             {consultation[0] ? consultation.map(
                 el => <div className={s.Doctor_full + " black_config"} key={el.consultation_id}>
-                    {el.can_cancel ? <CancelRecord consultation_id={el.consultation_id} text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
+                    {el.can_cancel ? <CancelRecord consultation_id={el.consultation_id} type_modal="cons" text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
                     <div className={s.Doctor_full1}>
                         <div className={s.Doctor}>
                             <div className={s.Doctor_infos}>
                                 <div className={s.Doctor_avatar}>
                                     <div className={s.Doctor_avatar_img}>
-                                        <img src={el.doctor.photo} alt="" />
+                                        <img alt="" src={el.doctor.photo}  />
                                         {el.doctor.is_online && <div className={s.DoctorOnline + " green_config"}></div>}
                                     </div>
                                     <div className={s.Doctor_avatar_info + " " + s.black}>

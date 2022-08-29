@@ -1,12 +1,14 @@
 import React from "react";
 import s from '../Recording.module.css';
+import { useSelector } from "react-redux";
 const AnswerReviews = (props) => {
+    const config = useSelector((state) => state.config.config);
     let answer =[],
     keyNum = 0;
     if(props.arrayAnswer){
         answer = props.arrayAnswer.map(el => <div key={++keyNum} className={s.Doctor_message}>
             <div className={s.Doctor_message_avatar}>
-                <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
+                <img alt="" src={config.config.images.notify}  />
             </div>
             <div className={s.Doctor_message_content}>
                 <b className={s.Font_size24 + " title_config"}>{el.name}</b>

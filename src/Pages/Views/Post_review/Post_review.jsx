@@ -67,7 +67,7 @@ const PostRewiew = () => {
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>
-                    <img src={review.photo} alt="" />
+                    <img alt="" src={review.photo}  />
                 </div>
             </div>
             <div className={s.Doctor_info + " " + s.black} >

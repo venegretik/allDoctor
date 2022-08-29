@@ -49,7 +49,7 @@ const SliderDots = ({ children, onClick, ...props }) => {
               }}
             >
               <a target={el.url ? "blank" : ""} href={el.url ? el.url : null} onClick={el.url ? null :handleClick}>
-                <img src={el.image} alt="" />
+                <img alt="" src={el.image}  />
               </a>
             </SwiperSlide>
           ))}

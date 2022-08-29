@@ -46,7 +46,7 @@ const SliderApp = () => {
                                     <p>{el.description}</p>
                                 </div>
                                 <div className={s.Button_Reviws}>
-                                    <img src={el.image} alt="" />
+                                    <img alt="" src={el.image}  />
                                     <Link to="../login">
                                         <Button
                                             className={s.Reviews_send + " " + s.Font_size14}

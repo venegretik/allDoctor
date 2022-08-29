@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosRecordingCalculator } from "../../base/asyncActions/getReviews";
 import { Navigate } from "react-router-dom";
 import Loader from "../Loading/Loader";
-import { axiosConsultationCalendar } from "../../base/asyncActions/getConsultation";
+import { axiosConsultationCalendar, axiosConsultation } from "../../base/asyncActions/getConsultation";
 import { getPuymentInfo } from "../../base/asyncActions/Payment";
 import Button from "../Button/Button";
 import { consultationModalAction } from "../../base/Reducers/ConsultationReducer";
@@ -29,9 +29,9 @@ const Calendar = (props) => {
     }, [])
     let Modal = async () => {
         let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id, DateStr))
-        
         if (status) {
             dispatch(consultationModalAction(status));
+            dispatch(axiosConsultation());
         }
     }
     let ModalPayment = async () => {

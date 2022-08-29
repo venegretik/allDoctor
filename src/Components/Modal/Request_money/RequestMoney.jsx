@@ -11,7 +11,7 @@ import { BottomSheet } from 'react-spring-bottom-sheet'
 const RequestMoney = (props) => {
   let dispatch = useDispatch();
   let [showWindow, setWindow] = useState(false);
-  if (window.history && window.history.pushState) {
+  if (window.history && window.history.pushState && showWindow) {
       window.onpopstate = function (event) {
           if (showWindow) {
             setWindow(false);
@@ -62,7 +62,7 @@ const RequestMoney = (props) => {
 
     <div>
       <div className={s.blue} onClick={(e) => setWindow(true)}>
-        <img src={arrow} alt="" />
+        <img alt="" src={arrow}  />
         <p className={"blue_config "} >Вывести средства</p>
       </div>
       {showWindow ? <> 

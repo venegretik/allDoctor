@@ -5,9 +5,12 @@
 .blueLink {
   color: #407bff;
 }
-.SectionDuty p,h2{
+
+.SectionDuty p,
+h2 {
   color: inherit;
 }
+
 .DoctorOnline {
   width: 20px;
   height: 20px;
@@ -200,14 +203,16 @@
   .Doctor {
     width: 100%;
   }
+
   .Doctor_button {
     display: flex;
     margin-left: 0px;
     justify-content: center;
   }
+
   .Doctor_button {
     margin-bottom: 50px;
-}
+  }
 }
 
 @media (max-width: 768px) {
@@ -215,6 +220,7 @@
     display: flex;
     flex-direction: column;
   }
+
   .Sort_select {
     margin-left: 0px !important;
     align-items: flex-start;
@@ -223,10 +229,12 @@
   .Skill_select {
     align-items: flex-start;
   }
-  .Doctor_avatar{
+
+  .Doctor_avatar {
     max-width: 132px;
     width: auto;
   }
+
   .Skill {
     margin-top: 0px;
   }
@@ -241,10 +249,12 @@
     width: 200px;
     display: flex;
   }
+
   .Select_all {
     display: flex;
-    gap:20px;
+    gap: 20px;
   }
+
   .Sort_select {
     display: flex;
     gap: 5px;
@@ -415,23 +425,28 @@
     position: relative;
     width: 70px;
   }
+
   .Doctor_avatar {
     max-width: 70px;
     width: auto;
   }
-  .Doctor_avatar_info ul li{
+
+  .Doctor_avatar_info ul li {
     max-width: 20%;
   }
-  .Doctor_avatar_info ul li img{
+
+  .Doctor_avatar_info ul li img {
     max-width: 100%;
   }
-  .Staj{
+
+  .Staj {
     margin-top: 0px;
-}
-.Doctor_buy {
-  margin-top: 4px;
-}
-  
+  }
+
+  .Doctor_buy {
+    margin-top: 4px;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -439,17 +454,27 @@
     margin-left: 20px;
     margin-right: 20px;
   }
-  .Payment_block button{
+
+  .Doctor_button_mobile {
+    width: 90%;
+  }
+
+  .Doctor_button_mobile button {
+    width: 100%;
+  }
+
+  .Payment_block button {
     width: 100%;
     margin-top: 5px;
     padding: 20px 20px;
   }
+
   .Doctor {
     margin-top: 0px;
     padding: 10px 0px;
     margin-bottom: 20px;
   }
-  
+
   .DisplayNone {
     display: none;
   }

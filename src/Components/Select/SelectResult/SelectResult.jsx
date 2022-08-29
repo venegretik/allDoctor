@@ -27,7 +27,7 @@ const SelectResult = (props) => {
             <div className="Select_content">
                 <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
       color:config?.config.colors.color2}}>{Showtext}</p>
-                <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
+                <img alt="" src={arrow} className={isShown ? "Rotate_img" : ""}  />
             </div>
             {isShown && (
                 <div id="Select-menu" >

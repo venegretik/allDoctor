@@ -36,9 +36,9 @@ const Notification = () => {
       className={s.Profile_logo}
     >
       {Notice ? (
-        <img src={message_img} alt="" />
+        <img  src={message_img} alt="" />
       ) : (
-        <img src={newNotice} alt="" />
+        <img  src={newNotice} alt="" />
       )}
       {Show && (
         <div className={s.notice_back}>

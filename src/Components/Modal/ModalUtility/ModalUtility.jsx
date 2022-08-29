@@ -22,7 +22,7 @@ const ModalUtility = () => {
         <div>
             <div className={s.moduleIcon}>
                 <div className={s.icon_back} onClick={e => setWindow(true)}>
-                    <img src={seeting} alt="" />
+                    <img alt="" src={seeting}  />
                 </div>
                 <p>Настройки</p>
             </div>

@@ -4,11 +4,14 @@ import pen from "../../../../img/pen.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
-import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
+import { getConfigHeaderAction } from "../../../../base/Reducers/configReducer";
 import Loader from "../../../../Components/Loading/Loader";
 import { axiosProfile } from "../../../../base/asyncActions/Profile";
 const Local_Data = () => {
   let dispatch = useDispatch();
+  const logout = () => {
+    localStorage.clear();
+  };
   const profile = useSelector((state) => state.profile);
   useEffect(() => {
     dispatch(axiosProfile());
@@ -85,6 +88,17 @@ const Local_Data = () => {
               <p>Результаты использований</p>
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} blue_config` : `${s.navLink + " " + s.close}`
+              }
+              onClick={() => logout()}
+              to={"../../"}
+            >
+              Выйти
+            </NavLink>
+          </li>
         </ul>
         <div className={s.links + " blue_config"}>
           <Link className=" blue_config" to="../../private/services">
@@ -95,14 +109,14 @@ const Local_Data = () => {
           </Link>
         </div>
       </div>
-      <div className={s.My_content_title  + " title_config"}>
+      <div className={s.My_content_title + " title_config"}>
         <h1>Личные данные</h1>
       </div>
       {profile.lastname ? (
-        <div className={s.My_content_container  + " black_config"}>
+        <div className={s.My_content_container + " black_config"}>
           <div className={s.My_content_top} >
             <div className={s.My_content_top_image}>
-              <img src={profile.photo} alt="" />
+              <img alt="" src={profile.photo} />
             </div>
             <div className={s.My_content_top_content}>
               <div className={s.My_content_top_title}>
@@ -114,7 +128,7 @@ const Local_Data = () => {
                     profile.secondname}
                 </h1>
                 <Link to={"../replace-data"}>
-                  <img src={pen} alt="" />
+                  <img alt="" src={pen} />
                 </Link>
               </div>
               <p>{phone}</p>

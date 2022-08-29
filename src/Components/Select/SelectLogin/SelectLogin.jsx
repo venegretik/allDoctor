@@ -55,7 +55,7 @@ const SelectLogin = (props) => {
   }
   let arrayItems = props.array?.map((el, key) =>
     <label htmlFor={el.branch_id ? el.branch_id :el.specialization_id} key={key}>
-      <input type="radio" name="main-categories" title={el.title} id={el.branch_id ? el.branch_id :el.specialization_id} value={el.branch_id ? el.branch_id :el.specialization_id} onChange={handleClickChange} />
+      <input type="radio" name="main-categories" title={el.title} id={el.branch_id || el.branch_id === 0 ? el.branch_id :el.specialization_id} value={el.branch_id || el.branch_id === 0 ? el.branch_id :el.specialization_id} onChange={handleClickChange} />
       {el.title}
     </label>)
   return (
@@ -64,7 +64,7 @@ const SelectLogin = (props) => {
       <div className="Select_content">
         <p style={{border: ` 1px solid ${config?.config.colors.color6}`,
       color:config?.config.colors.color2}}>{Showtext}</p>
-        <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
+        <img alt="" src={arrow} className={isShown ? "Rotate_img" : ""}  />
       </div>
       {isShown && (
         <div id="Select-menu" >

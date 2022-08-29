@@ -9,7 +9,7 @@ import { BottomSheet } from 'react-spring-bottom-sheet'
 const ModalCalendar = (props) => {
     let dispatch = useDispatch();
     let [showWindow, setWindow] = useState(false);
-    if (window.history && window.history.pushState) {
+    if (window.history && window.history.pushState && showWindow) {
         window.onpopstate = function (event) {
             if (showWindow) {
                 setWindow(false);

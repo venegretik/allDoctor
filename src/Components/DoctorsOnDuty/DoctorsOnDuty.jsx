@@ -46,7 +46,7 @@ const DoctorsOnDuty = () => {
                 <div className={s.Doctor_infos}>
                   <div className={s.Doctor_avatar}>
                     <div className={s.Doctor_avatar_img}>
-                      <img src={el.photo} alt="" />
+                      <img alt="" src={el.photo}  />
                       {el.is_online && <div className={s.DoctorOnline + " green_config"}></div>}
                     </div>
                     <div className={s.Doctor_avatar_info + " " + s.black}>

@@ -12,11 +12,12 @@ import {NavLink} from "react-router-dom";
 import { useSelector} from "react-redux";
 import ChatModal from "../../../Components/Modal/Chat_Modal/ChatModal";
 const Footer = () => {
-  let Text = useSelector(state => state.config.header_text);
   let config = useSelector(state => state.config.config);
   const info = useSelector((state) => state.main.shortName);
-  return info?.data.short_name ?(
-
+  let Text = useSelector((state) => state.config.header_text);
+  console.log(Text)
+  const availableScreenWidth = window.screen.availWidth;
+  return availableScreenWidth <= 480 && Text === "Видео" ? ("") : info?.data.short_name  ?(
     <section className={s.footer_container + " BackgroundBlue"}>
       <footer className={s.footer_full}>
         <div
@@ -30,7 +31,7 @@ const Footer = () => {
           className="Container"
         >
           <div className={s.footer_img}>
-            <img src={config.config.logo_footer} alt="" />
+            <img alt="" src={config.config.logo_footer}  />
           </div>
           <div className={s.footer_text + " white_config"}>
             <p>© ВсеДоктора 2022</p>
@@ -43,7 +44,7 @@ const Footer = () => {
                 isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
               }>
             <li>
-              {Text === "Главная" ? <img src={Home} alt="" /> :<img src={HomeAct} alt="" />}
+              {Text === "Главная" ? <img alt="" src={Home}  /> :<img alt="" src={HomeAct}  />}
               <p>Главная</p>
             </li>
           </NavLink>
@@ -51,7 +52,7 @@ const Footer = () => {
                 isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
               }>
             <li>
-            {Text === "Мои записи" ? <img src={NoteAct} alt="" /> : <img src={Note} alt="" />}
+            {Text === "Мои записи" ? <img alt="" src={NoteAct}  /> : <img alt="" src={Note}  />}
               <p>Мои записи</p>
             </li>
           </NavLink>
@@ -62,7 +63,7 @@ const Footer = () => {
                 isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
               }>
             <li>
-            {Text === "Мои врачи" ? <img src={DoctorAct} alt="" /> : <img src={Doctor} alt="" />}
+            {Text === "Мои врачи" ? <img alt="" src={DoctorAct}  /> : <img alt="" src={Doctor}  />}
               <p>Мои врачи</p>
             </li>
           </NavLink>
@@ -70,7 +71,7 @@ const Footer = () => {
                 isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
               }>
             <li>
-            {Text === "Профиль" ? <img src={ProfAct} alt="" /> : <img src={Prof} alt="" />}
+            {Text === "Профиль" ? <img alt="" src={ProfAct}  /> : <img alt="" src={Prof}  />}
               <p>Мой кабинет</p>
             </li>
           </NavLink>

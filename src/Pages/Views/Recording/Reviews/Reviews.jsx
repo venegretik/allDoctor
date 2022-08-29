@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { axiosReview } from "../../../../base/asyncActions/getReviews";
 const Reviews = (props) => {
     let dispatch = useDispatch();
+    const config = useSelector((state) => state.config.config);
     useEffect(() => {
         if (!recording?.reviewsArray[0])
             dispatch(axiosReview(props.usId));
@@ -23,7 +24,7 @@ const Reviews = (props) => {
             <div className={s.Doctor_infos}>
                 <div className={s.Doctor_avatar}>
                     <div className={s.Doctor_avatar_img}>
-                        <img src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png" alt="" />
+                        <img alt="" src={config.config.images.notify}  />
                     </div>
                     <div className={s.Doctor_avatar_info + " " + s.black}>
                         <Stars num={el.rate} />

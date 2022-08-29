@@ -101,7 +101,7 @@ const ReplaceData = () => {
       {isShow ? <ChangeData /> : ""}
       <div className={s.Profile_data}>
         <div className={s.Profile_data_download_img}>
-          <img src={profile.photo} alt="" />
+          <img alt="" src={profile.photo}  />
           <div className={s.upload}>
             <MessageContainer />
           </div>

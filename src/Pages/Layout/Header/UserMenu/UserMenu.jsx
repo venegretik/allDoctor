@@ -33,11 +33,11 @@ const UserMenu = () => {
             <Notification />
             <div onClick={() => setShow(true)} className={s.Profile_text + " black_config"}>
               <div className={s.Profile_avatar}>
-                <img src={info.data.photo} alt="" />
+                <img  src={info.data.photo} alt=""/>
               </div>
               <div className={s.Profile_menu}>
                 <p>{info.data.short_name}</p>
-                <img src={arrow} alt="" />
+                <img  src={arrow} alt="" />
               </div>
             </div>
           </div>

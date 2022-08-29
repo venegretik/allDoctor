@@ -8,14 +8,14 @@ const ModalUnityChat = () => {
         <div className={s.VolumeModal}>
             <li onClick={(e) => setWindow(current => current = !current)}>
                 <div className={s.icon_back}>
-                    <img src={volume} alt="" />
+                    <img alt="" src={volume}  />
                 </div>
                 <p>Громкость</p>
             </li>
             {showWindow ? <div className={s.VolumeModalInput}>
                 <div className={s.VolumeModalBlock}>
                     <input type="range" min="0" max="100" orient="vertical"></input>
-                    <img src={volume} alt="" />
+                    <img alt="" src={volume}  />
                 </div>
             </div> : ""}
         </div>

@@ -19,7 +19,7 @@ const ChangeLogin = (props) => {
       setModal(true);
       setIsShown(1);
     }
-    if (window.history && window.history.pushState) {
+    if (window.history && window.history.pushState && Modal) {
         window.onpopstate = function (event) {
             if (Modal) {
               setModal(false);
@@ -82,7 +82,7 @@ const ChangeLogin = (props) => {
               &times;
             </div>
             <div className={s.ChangeLoginTitle}>
-              <h1 className={s.Font_size24 + " title_config"}>{props.type_el === "phone" ? "Изменить телефон" : "Изменить email"}</h1>
+              <h1 className={s.Font_size24 + " title_config"}>{props.type_el === "phone" ? "Изменить телефон" : "Изменить почту"}</h1>
             </div>
             <div className={s.ChangeLoginMain}>
 
@@ -172,7 +172,7 @@ const ChangeLogin = (props) => {
               &times;
             </div>
             <div className={s.ChangeLoginTitle}>
-              <h1 className={s.Font_size24}>{props.type_el === "phone" ? "Изменить телефон" : "Изменить email"}</h1>
+              <h1 className={s.Font_size24}>{props.type_el === "phone" ? "Изменить телефон" : "Изменить почту"}</h1>
             </div>
             <div className={s.ChangeLoginMain}>
 

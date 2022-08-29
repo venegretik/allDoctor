@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { BottomSheet } from "react-spring-bottom-sheet";
 const ModalUnityChat = () => {
     let [showWindow, setWindow] = useState(false);
-    if (window.history && window.history.pushState) {
+    if (window.history && window.history.pushState  && showWindow) {
         window.onpopstate = function (event) {
             if (showWindow) {
               setWindow(false);
@@ -30,7 +30,7 @@ const ModalUnityChat = () => {
         <div className={s.ChatUtility}>
             <li onClick={(e) => setWindow(true)}>
                 <div className={s.icon_back}>
-                    <img src={volume} alt="" />
+                    <img alt="" src={volume}  />
                 </div>
                 <p>Чат</p>
             </li>
@@ -38,7 +38,7 @@ const ModalUnityChat = () => {
                 onDismiss={() => setWindow(false)}>
                 <div className={s.Chat_message}>
                     <div className={s.Chat_message_title}>
-                        <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                        <img alt="" src={config.config.images.confuse}  />
                         <div className={s.GreenDot}></div>
                         <div className={s.ChatText} style={{ color: config?.config.colors.color2 }}>
                             <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
@@ -65,7 +65,7 @@ const ModalUnityChat = () => {
                     <div className={s.message_send}>
                         <div className={s.message_input}>
                             <input type="text" placeholder="Написать сообщение..." />
-                            <img src={"chatMessage"} className={s.imgAbsol} alt="" />
+                            <img alt="" src={"chatMessage"} className={s.imgAbsol}  />
                         </div>
                     </div>
                 </div>

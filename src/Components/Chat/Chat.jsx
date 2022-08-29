@@ -18,7 +18,7 @@ const Chat = () => {
     <div>
     {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
       <div className={s.Chat_icon}>
-        <img src={chat} alt="" onClick={(e) => setWindow(true)} />
+        <img alt="" src={chat} onClick={(e) => setWindow(true)} />
         {showWindow ? (
           <div className={s.Chat_full}>
             <div
@@ -31,9 +31,8 @@ const Chat = () => {
             {chatShow ? (
               <div className={s.Chat_message}>
                 <div className={s.Chat_message_title}>
-                  <img
-                    src="https://api.telemed.dev-h.ru/images/doctors/doctor1.png"
-                    alt=""
+                  <img alt=""
+                    src={config.config.images.notify}
                   />
                   <div className={s.GreenDot}></div>
                   <div
@@ -82,7 +81,7 @@ const Chat = () => {
                 <div className={s.message_send}>
                   <div className={s.message_input}>
                     <input type="text" placeholder="Написать сообщение..." />
-                    <img src={chatMessage} className={s.imgAbsol} alt="" />
+                    <img alt="" src={chatMessage} className={s.imgAbsol} />
                   </div>
                 </div>
               </div>

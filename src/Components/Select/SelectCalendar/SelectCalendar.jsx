@@ -9,6 +9,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css';
 import { consultationHistoryCons } from "../../../base/asyncActions/getConsultation";
 import * as rdrLocales from 'react-date-range/dist/locale';
+import { BottomSheet } from "react-spring-bottom-sheet";
 const SelectCalendar = (props) => {
     let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
@@ -20,7 +21,7 @@ const SelectCalendar = (props) => {
         setIsShown((current) => !current);
         setNum(0);
     };
-    if (window.history && window.history.pushState) {
+    if (window.history && window.history.pushState && isShown) {
         window.onpopstate = function (event) {
             if (isShown) {
                 setIsShown(false);
@@ -28,9 +29,8 @@ const SelectCalendar = (props) => {
                 window.history.forward(1);
             }
         };
-        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
-        window.history.forward(1);
     }
+    const availableScreenWidth = window.screen.availWidth;
     useEffect(() => {
         if (!isShown) {
             document.body.style.overflow = "auto";
@@ -74,10 +74,26 @@ const SelectCalendar = (props) => {
                         day: "numeric",
                     }
                 )}</p>
-                <img src={arrow} className={isShown ? "Rotate_img" : ""} alt="" />
+                <img alt="" src={arrow} className={isShown ? "Rotate_img" : ""}  />
             </div>
-            {isShown && (
-                <div className={s.Cancel_Record_full}>
+            {isShown && (<>
+                {availableScreenWidth <= 480 ? <BottomSheet open={isShown}
+                    onDismiss={() => handleClick}><div>
+                        {isShown ? <div className="background" onClick={handleClick}></div> : ""}
+                        <div>
+                            <div className={s.Cart_close} onClick={handleClick}>
+                                &times;
+                            </div>
+                            <DateRange
+                                locale={rdrLocales.ru}
+                                showDateDisplay={false}
+                                showMonthAndYearPickers={false}
+                                onChange={item => setState([item.selection])}
+                                moveRangeOnFirstSelection={false}
+                                ranges={state} />
+                        </div>
+                    </div>
+                </BottomSheet> : <div className={s.Cancel_Record_full}>
                     {isShown ? <div className="background" onClick={handleClick}></div> : ""}
                     <div className={s.Cancel_Record_block}>
                         <div className={s.Cart_close} onClick={handleClick}>
@@ -91,8 +107,8 @@ const SelectCalendar = (props) => {
                             moveRangeOnFirstSelection={false}
                             ranges={state} />
                     </div>
-                </div>
-            )}
+                </div>}
+            </>)}
         </div>
     )
 }

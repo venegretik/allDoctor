@@ -2,11 +2,12 @@ import React from "react";
 import s from './Change_data.module.css';
 import { useState } from "react";
 import Button from "../../../../../Components/Button/Button";
-import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useDispatch,useSelector } from "react-redux";
 import { BottomSheet } from 'react-spring-bottom-sheet';
 import { ProfileUtilityAction } from "../../../../../base/Reducers/UserReducer";
 const ChangeData = (props) => {
     let [isShow, setShow] = useState(true);
+    const config = useSelector((state) => state.config.config);
     if (window.history && window.history.pushState) {
         window.onpopstate = function (event) {
             if (isShow) {
@@ -32,7 +33,7 @@ const ChangeData = (props) => {
                     <div>
                         <div className={s.Cancel_Record_block}>
                             <div>
-                                <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                                <img alt="" src={config.config.images.confuse}  />
                             </div>
                             <div className={s.Cancel_Record}>
                                 <div onClick={() => {
@@ -75,7 +76,7 @@ const ChangeData = (props) => {
                             }}></div> : ""}
                     <div className={s.Cancel_Record_block}>
                         <div>
-                            <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                            <img alt="" src={config.config.images.confuse}  />
                         </div>
                         <div className={s.Cancel_Record}>
                             <div onClick={() => {

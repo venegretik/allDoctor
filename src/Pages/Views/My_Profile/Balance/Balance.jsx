@@ -187,7 +187,7 @@ const Balance = () => {
             minLength={"2"}
             defaultValue={referral}
           />
-          <img className={s.Referal_img} src={copy} onClick={CopyText} alt="" />
+          <img alt="" className={s.Referal_img} src={copy} onClick={CopyText}  />
         </div>
       </div>
       <div className={s.History}>

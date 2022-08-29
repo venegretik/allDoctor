@@ -1,8 +1,9 @@
 import React from "react";
 import s from "./Cancel_Record.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import Button from "../../Button/Button";
+import { axiosConsultation } from "../../../base/asyncActions/getConsultation";
 import { BottomSheet } from 'react-spring-bottom-sheet'
 import 'react-spring-bottom-sheet/dist/style.css'
 const Cancel_Record = (props) => {
@@ -11,7 +12,10 @@ const Cancel_Record = (props) => {
   let DoctorDelete = (consultation_id) => {
     dispatch(props.func(consultation_id));
     setWindow(false);
+    if(props.type_modal === "cons")
+    dispatch(axiosConsultation());
   };
+  const config = useSelector((state) => state.config.config);
   useEffect(() => {
     if (!showWindow) {
       document.body.style.overflow = "auto"
@@ -20,7 +24,7 @@ const Cancel_Record = (props) => {
       document.body.style.overflow = "hidden"
     }
   }, [showWindow])
-    if (window.history && window.history.pushState) {
+    if (window.history && window.history.pushState && showWindow) {
         window.onpopstate = function (event) {
             if (showWindow) {
                 setWindow(false);
@@ -46,9 +50,9 @@ const Cancel_Record = (props) => {
           {availableScreenWidth <= 480 ? <BottomSheet open={showWindow}
             onDismiss={() => setWindow(false)}><div>
               <div className={s.ImgNone}>
-                <img
-                  src="https://api.telemed.dev-h.ru/images/ui/doc3.png"
-                  alt=""
+                <img alt=""
+                  src={config.config.images.confuse}
+                  
                 />
               </div>
               <div className={s.Cancel_Record}>
@@ -95,9 +99,9 @@ const Cancel_Record = (props) => {
 
             <div className={s.Cancel_Record_block}>
               <div className={s.ImgNone}>
-                <img
-                  src="https://api.telemed.dev-h.ru/images/ui/doc3.png"
-                  alt=""
+                <img alt=""
+                  src={config.config.images.confuse}
+                  
                 />
               </div>
               <div className={s.Cancel_Record}>

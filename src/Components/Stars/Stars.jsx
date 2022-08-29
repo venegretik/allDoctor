@@ -7,13 +7,13 @@ const Stars = (props) => {
   let num_star = props.num;
   let half_star = (
     <li>
-      <img src={EmptyStar} alt="" />
+      <img alt="" src={EmptyStar}  />
     </li>
   );
   if (props.num / 2 !== 0) {
     half_star = (
       <li>
-        <img src={Halfstar} alt="" />
+        <img alt="" src={Halfstar}  />
       </li>
     );
   }
@@ -24,7 +24,7 @@ const Stars = (props) => {
   }
   let stars = starArray.map((el) => (
     <li key={el}>
-      <img src={star} alt="" />
+      <img alt="" src={star}  />
     </li>
   ));
   num_star = 5 - props.num;
@@ -35,7 +35,7 @@ const Stars = (props) => {
   }
   let Emptystars = starArray.map((el) => (
     <li key={el}>
-      <img src={EmptyStar} alt="" />
+      <img alt="" src={EmptyStar}  />
     </li>
   ));
   return (

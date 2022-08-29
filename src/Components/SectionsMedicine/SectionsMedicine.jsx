@@ -41,7 +41,7 @@ const SectionsMedicine = () => {
               key < 7 ? (
                 <Link key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/0"}>
                   <div className={s.card_item  + " opacityBlue"}>
-                    <img src={el.image} alt="" />
+                    <img alt="" src={el.image}  />
                     <div className={s.card_text_wrapper}>
                       <div className={s.card_title + " title_config"}>{el.title}</div>
                       <div className={s.card_subtitle + " title_config"}>{el.description}</div>
@@ -55,7 +55,7 @@ const SectionsMedicine = () => {
           )}
           <Link to={"/razdeli"} className=" title_config">
             <div className={s.card_item + " opacityBlue"}>
-              <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
+              <img alt="" src="https://api.telemed.dev-h.ru/images/icons/arrow.svg"  />
               <div className={s.card_text_wrapper}>
                 <div className={s.card_title}>Посмотреть все разделы медицины</div>
               </div>
@@ -76,7 +76,7 @@ const SectionsMedicine = () => {
                 key < 3 ? (
                   <Link className={s.ClassNull + " title_config"} key={el.branch_id} to={"/doctor-list/" + el.branch_id + "/0"}>
                     <div className={s.card_item + " opacityBlue"} >
-                      <img src={el.image} alt="" />
+                      <img alt="" src={el.image}  />
                       <div className={s.card_text_wrapper}>
                         <div className={s.card_title + " title_config"}>{el.title}</div>
                         <div className={s.card_subtitle + " title_config"}>{el.description}</div>
@@ -90,7 +90,7 @@ const SectionsMedicine = () => {
             )}
             <Link to={"/razdeli-offline"}>
               <div className={s.card_item + " opacityBlue"}>
-                <img src="https://api.telemed.dev-h.ru/images/icons/arrow.svg" alt="" />
+                <img alt="" src="https://api.telemed.dev-h.ru/images/icons/arrow.svg"  />
                 <div className={s.card_text_wrapper}>
                   <div className={s.card_title + " title_config"}>Посмотреть все разделы медицины</div>
                 </div>

@@ -16,7 +16,7 @@ const Login = (props) => {
       {log_in ? <Navigate to={'/register'}/> : false }
       <div className={style.login_container}>
         <div className={style.login_text} style={{color: config?.config.colors.color2}}>
-          <img className={style.login_image} src={logo} alt=""/>
+          <img alt="" className={style.login_image} src={logo} />
           <h1 className={style.login_title} style={{color: config?.config.colors.color5}}>Советуйтесь с врачом, а не с форумом</h1>
           <ul className={style.login_list}>
             <li className={style.login_item}>консультации квалифицированных врачей — для себя, детей и родителей</li>

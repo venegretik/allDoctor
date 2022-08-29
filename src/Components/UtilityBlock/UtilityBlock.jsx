@@ -120,7 +120,7 @@ const UtilityBlock = () => {
                     height: "250px"
                 } : { display: "none" }} controls autoPlay />
                 {!videoStatus ? <div className={s.Utility_Check_video_content} >
-                    <img src={photo} alt="" />
+                    <img alt="" src={photo}  />
                     <button onClick={startWebcam}>Проверить видео</button>
                 </div> : ""}
 

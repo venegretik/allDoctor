@@ -35,7 +35,7 @@ const PrivatePolice = (props) => {
       </div>
       <Link to={file ? file : "/"} target="_blank" download style={{color: config?.config.colors.color2}}>
         <div className={s.FileBlock}>
-          <img src={PDF} alt="" />
+          <img alt="" src={PDF}  />
           <div className={s.FileText}>
             <p className={s.Font_size14}>{title}</p>
             <p className={s.Font_size14}>640кб</p>

@@ -48,7 +48,7 @@ const ConsultationReady = (props) => {
           )}
           <div className={s.Doctor_avatar}>
             <div className={s.Doctor_avatar_img}>
-              <img src={ConsultationUpcoming.doctor.photo} alt="" />
+              <img alt="" src={ConsultationUpcoming.doctor.photo}  />
               {ConsultationUpcoming.doctor.is_online && (
                 <div className={s.DoctorOnline}></div>
               )}

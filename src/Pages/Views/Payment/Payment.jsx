@@ -78,7 +78,7 @@ const Payment = () => {
                     <div className={s.Doctor_infos}>
                         <div className={s.Doctor_avatar}>
                             <div className={s.Doctor_avatar_img}>
-                                <img src={payment.photo} alt="" />
+                                <img alt="" src={payment.photo}  />
                             </div>
                             <div className={s.Doctor_avatar_info + " " + s.black}>
                                 <Stars num={payment.rate} />

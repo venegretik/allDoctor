@@ -12,7 +12,7 @@ const ChatModal = () => {
     let [showWindow, setWindow] = useState(false);
     let [chatShow, setChat] = useState(false);
     let num = 0;
-    if (window.history && window.history.pushState) {
+    if (window.history && window.history.pushState && showWindow) {
         window.onpopstate = function (event) {
             if (showWindow) {
                 setWindow(false);
@@ -42,7 +42,7 @@ const ChatModal = () => {
         <div className={s.Chat_icon}>
             {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
             <div className={s.Chat_mod} onClick={e => setWindow(true)}>
-                <img src={chat} alt="" />
+                <img alt="" src={chat}  />
                 <p>Чат</p>
             </div>
             {showWindow ? <>
@@ -55,7 +55,7 @@ const ChatModal = () => {
 
                         {chatShow ? <div className={s.Chat_message}>
                             <div className={s.Chat_message_title}>
-                                <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                                <img alt="" src={config.config.images.confuse}  />
                                 <div className={s.GreenDot}></div>
                                 <div className={s.ChatText + " black_config"}>
                                     <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
@@ -82,7 +82,7 @@ const ChatModal = () => {
                             <div className={s.message_send}>
                                 <div className={s.message_input}>
                                     <input type="text" placeholder="Написать сообщение..." />
-                                    <img src={chatMessage} className={s.imgAbsol} alt="" />
+                                    <img alt="" src={chatMessage} className={s.imgAbsol}  />
                                 </div>
                             </div>
                         </div> : <div className={s.Chat_list}>
@@ -105,7 +105,7 @@ const ChatModal = () => {
 
                     {chatShow ? <div className={s.Chat_message}>
                         <div className={s.Chat_message_title}>
-                            <img src="https://api.telemed.dev-h.ru/images/ui/doc3.png" alt="" />
+                            <img alt="" src={config.config.images.confuse}  />
                             <div className={s.GreenDot}></div>
                             <div className={s.ChatText + " black_config"}>
                                 <b className={s.Font_size14}>Смирнов Владислав Владимирович</b>
@@ -132,7 +132,7 @@ const ChatModal = () => {
                         <div className={s.message_send}>
                             <div className={s.message_input}>
                                 <input type="text" placeholder="Написать сообщение..." />
-                                <img src={chatMessage} className={s.imgAbsol} alt="" />
+                                <img alt="" src={chatMessage} className={s.imgAbsol}  />
                             </div>
                         </div>
                     </div> : <div className={s.Chat_list}>

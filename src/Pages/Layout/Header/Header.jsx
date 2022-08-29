@@ -8,6 +8,9 @@ import { useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router";
 const Header = () => {
   let Text = useSelector((state) => state.config.header_text);
+  if (Text.length > 20) {
+    Text = Text.substring(0, 19) + "...";
+  }
   const config = useSelector((state) => state.config.config);
   const [isHover, setIsHover] = useState(false);
   const [isHover1, setIsHover1] = useState(false);
@@ -43,71 +46,71 @@ const Header = () => {
     borderBottom: !isHover2 ? `4px solid ${config?.config.colors.color3}` : `4px solid ${config?.config.colors.color10}`,
     color: config?.config.colors.color2
   };
-  return config && !config.token && url !== "/private/user" && url !== "/private/services" && url !== "/private/privacy" && url !== "/private/personal"  ? (
+  return config && !config.token && url !== "/private/user" && url !== "/private/services" && url !== "/private/privacy" && url !== "/private/personal" ? (
     <Navigate to="login" />
   ) : (
-    config?.token ?<div className={s.Header_container + " Container"}>
-    <header className={s.Header_full}>
-      <div className={s.Header_logo}>
-        <Link to={"main"}>
-          <img src={config.config.logo} alt="" />
-        </Link>
+    config?.token ? <div className={s.Header_container + " Container"}>
+      <header className={s.Header_full}>
+        <div className={s.Header_logo}>
+          <Link to={"main"}>
+            <img alt="" src={config.config.logo} />
+          </Link>
+        </div>
+        <div className={s.Header_nav}>
+          <nav>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              style={({ isActive }) => isActive ? {
+                borderBottom: `4px solid ${config?.config.colors.color10}`,
+                color: config?.config.colors.color2
+              } : styleBlue}
+              to="main"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+            >
+              Главная
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              style={({ isActive }) => isActive ? {
+                borderBottom: `4px solid ${config?.config.colors.color10}`,
+                color: config?.config.colors.color2
+              } : styleBlue1}
+              to="consultation"
+              onMouseEnter={handleMouseEnter1}
+              onMouseLeave={handleMouseLeave1}
+            >
+              Мои записи
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+              }
+              style={({ isActive }) => isActive ? {
+                borderBottom: `4px solid ${config?.config.colors.color10}`,
+                color: config?.config.colors.color2
+              } : styleBlue2}
+              to="my-doctor"
+              onMouseEnter={handleMouseEnter2}
+              onMouseLeave={handleMouseLeave2}
+            >
+              Мои врачи
+            </NavLink>
+          </nav>
+        </div>
+        <UserMenu type="login" />
+      </header>
+      <div className={s.Menu_mobile}>
+        {Text !== "Главная" ? <img alt="" src={arrow_back} onClick={e => window.history.back()} /> : ""}
+        <div className={s.Menu_mobile_title + " title_config"}>
+          <h1>{Text}</h1>
+        </div>
       </div>
-      <div className={s.Header_nav}>
-        <nav>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-            style={({ isActive }) => isActive ? {
-              borderBottom: `4px solid ${config?.config.colors.color10}`,
-              color: config?.config.colors.color2
-            } : styleBlue}
-            to="main"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            Главная
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-            style={({ isActive }) => isActive ? {
-              borderBottom: `4px solid ${config?.config.colors.color10}`,
-              color: config?.config.colors.color2
-            } : styleBlue1}
-            to="consultation"
-            onMouseEnter={handleMouseEnter1}
-            onMouseLeave={handleMouseLeave1}
-          >
-            Мои записи
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
-            }
-            style={({ isActive }) => isActive ? {
-              borderBottom: `4px solid ${config?.config.colors.color10}`,
-              color: config?.config.colors.color2
-            } : styleBlue2}
-            to="my-doctor"
-            onMouseEnter={handleMouseEnter2}
-            onMouseLeave={handleMouseLeave2}
-          >
-            Мои врачи
-          </NavLink>
-        </nav>
-      </div>
-      <UserMenu type="login" />
-    </header>
-    <div className={s.Menu_mobile}>
-      {Text !== "Главная" ? <img src={arrow_back} alt="" onClick={e => window.history.back()}/> : ""}
-      <div className={s.Menu_mobile_title + " title_config"}>
-        <h1>{Text}</h1>
-      </div>
-    </div>
-  </div> : ""
+    </div> : ""
   );
 };
 export default Header;
