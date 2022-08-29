@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import s from "./Consultation.module.css";
 import { useDispatch } from "react-redux";
 import Loader from "../../Components/Loading/Loader";
+import ModalContainer from "../Modal/ModalContainer";
 import { getConsultationUpcoming } from "../../base/asyncActions/getMainPageInfo";
 import Button from "../../Components/Button/Button";
 import { axiosConsultationDelete } from "../../base/asyncActions/getConsultation";
 import Stars from "../Stars/Stars";
-import CancelRecord from "../Modal/Cancel_record/Cancel_Record";
 import { Link } from "react-router-dom";
 import {
   axiosConsultationStart,
@@ -37,7 +37,7 @@ const ConsultationReady = (props) => {
       {ConsultationUpcoming ? (
         <div className={s.Doctor_cart + " white_config BackgroundBlue"}>
           {ConsultationUpcoming.can_cancel ? (
-            <CancelRecord
+            <ModalContainer typeModalCont="CancelRecord"
               consultation_id={ConsultationUpcoming.consultation_id}
               text={"Вы действительно хотите отменить запись?"}
               typeModal={""}

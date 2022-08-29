@@ -21,7 +21,7 @@
 .Profile_data_download_img:hover .upload{
     display: flex;
 }
-.ReplaceData form {
+.ReplaceData>form {
     margin-top: 30px;
     margin-bottom: 87px;
     display: flex;

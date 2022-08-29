@@ -4,6 +4,7 @@ import { Input } from "../../../../Components/Input/Input";
 import { useSelector } from "react-redux/es/exports";
 import ChangeLogin from "../../../../Components/Modal/Change_login/Change_login";
 import { useDispatch } from "react-redux";
+import ModalContainer from "../../../../Components/Modal/ModalContainer";
 import MessageContainer from "../../../../Components/UploadFile/UploadFile";
 import ChangeData from "./ModalReplace/Change_data_modal";
 import { getShortInfo } from "../../../../base/asyncActions/getMainPageInfo";
@@ -118,7 +119,7 @@ const ReplaceData = () => {
         <p className={s.Font_size16 + " " + s.gray + " gray_config"}>Телефон</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{phone}</p>
-          <ChangeLogin type_el="phone" />
+          <ChangeLogin typeModalCont="ChangeLogin" type_el="phone" />
         </div>
       </div>
       <div className={s.Profile_replace_tel}>
@@ -126,7 +127,7 @@ const ReplaceData = () => {
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
           <p className={s.Font_size14}></p>
-          <ChangeLogin type_el="email" />
+          <ChangeLogin typeModalCont="ChangeLogin" type_el="email" />
         </div>
       </div>
 

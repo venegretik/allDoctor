@@ -5,6 +5,7 @@ import Stars from "../../../Components/Stars/Stars";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosMyDoctor, axiosDoctorDelete } from "../../../base/asyncActions/getDoctors";
 import { Link } from "react-router-dom";
+import ModalContainer from "../../../Components/Modal/ModalContainer";
 import CancelRecord from "../../../Components/Modal/Cancel_record/Cancel_Record";
 import Button from "../../../Components/Button/Button";
 import Loader from "../../../Components/Loading/Loader";
@@ -27,7 +28,7 @@ const MyDoctor = () => {
         }
     }
     let Doctor = Doctors.map(el => <div className={s.Doctor  + " black_config"} key={el.doctor_id}>
-        <CancelRecord consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete} typeModal={"record"}/>
+        <ModalContainer typeModalCont="CancelRecord" consultation_id={el.doctor_id} text={"Вы действительно хотите отменить запись?"} func={axiosDoctorDelete} typeModal={"record"}/>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
                 <div className={s.Doctor_avatar_img}>

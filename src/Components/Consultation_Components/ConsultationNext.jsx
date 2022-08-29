@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import Stars from "../Stars/Stars";
 import Loader from "../Loading/Loader";
+import ModalContainer from "../Modal/ModalContainer";
 import ModalCalendar from "../Modal/Modal_calendar/Modal_calendar";
 import { axiosConsultationDelete, axiosConsultation } from '../../base/asyncActions/getConsultation'
 import { axiosConsultationPuy } from "../../base/asyncActions/getConsultation";
@@ -39,7 +40,7 @@ const ConsultationNext = () => {
         <div>
             {consultation[0] ? consultation.map(
                 el => <div className={s.Doctor_full + " black_config"} key={el.consultation_id}>
-                    {el.can_cancel ? <CancelRecord consultation_id={el.consultation_id} type_modal="cons" text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
+                    {el.can_cancel ? <ModalContainer typeModalCont="CancelRecord" consultation_id={el.consultation_id} type_modal="cons" text={"Вы действительно хотите отменить запись?"} func={axiosConsultationDelete} /> : ""}
                     <div className={s.Doctor_full1}>
                         <div className={s.Doctor}>
                             <div className={s.Doctor_infos}>

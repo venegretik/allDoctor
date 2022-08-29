@@ -1,19 +1,12 @@
-.Cancel_Record_full {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  left: 0px;
-  top: 0px;
-  z-index: 3;
-}
 
 body.Cancel_Record_full {
   overflow: hidden;
 }
-
+.Cancel_Record{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .Cancel_Record h1 {
   margin-top: 32px;
 }
@@ -41,25 +34,6 @@ body.Cancel_Record_full {
   gap: 30px;
 }
 
-.Cancel_Record_block {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 800px;
-  width: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  padding: 0px 60px;
-  transform: translate(-50%, -50%);
-  background-color: #ffffff;
-  min-height: 400px;
-  padding-bottom: 40px;
-  border-radius: 16px;
-  z-index: 21;
-}
-
 .Font_size40 {
   font-family: "Exo", sans-serif;
   font-size: 40px;
@@ -69,16 +43,14 @@ body.Cancel_Record_full {
   text-align: left;
 }
 
-.Cancel_Record {
+.Cancel_Record_full{
   display: flex;
+  padding: 10px;
+  width: 100%;
+  min-width: 520px;
   flex-direction: column;
   align-items: center;
-  margin: 0px auto 0px auto;
-  height: auto;
-  padding: 10px;
-  border-radius: 5px;
 }
-
 .background {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.5);
@@ -151,7 +123,14 @@ body.Cancel_Record_full {
     line-height: 26px !important;
     letter-spacing: 0px !important;
   }
-
+  .Cancel_Record_full{
+    display: flex;
+    padding: 10px;
+    width: 100%;
+    min-width: 480px;
+    flex-direction: column;
+    align-items: center;
+  }
   .Font_size16 {
     font-family: "Exo", sans-serif;
     font-size: 10px !important;
@@ -189,23 +168,10 @@ body.Cancel_Record_full {
     gap: 10px;
   }
 
-  .Cancel_Record_block {
-    position: absolute;
-    left: 50%;
-    padding: 0px 15px;
-    padding-bottom: 20px;
-    min-height: 222px;
-    max-height: 222px;
-    border-radius: 16px 16px 0px 0px;
-    top: auto;
-    transform: translate(-50%, 0%);
-    bottom: 0px;
-  }
-
   .ImgNone {
     display: none;
   }
   .Cancel_Record_full{
-    display: none;
+    min-width: auto;
   }
 }

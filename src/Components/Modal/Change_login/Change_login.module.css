@@ -90,14 +90,15 @@
     flex-direction: column;
     align-items: center;
 }
-
-.ChangeLoginMain_step2 input {
+.ChangeLoginMain_step2 label{
     width: 100%;
+    margin-top: 20px;
     max-width: 400px;
 }
 
-.ChangeLoginMain_step3 input {
+.ChangeLoginMain_step3 label {
     width: 100%;
+    margin-top: 20px;
     max-width: 400px;
 }
 .Cart_close {

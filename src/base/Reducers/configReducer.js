@@ -7,7 +7,8 @@ const defaultState = {
   text_police: "",
   titleBranch:"",
   file: "",
-  title:""
+  title:"",
+  statusModal:false
 }
 
 const GET_CONFIG = 'GET_CONFIG';
@@ -15,6 +16,7 @@ const GET_AUTH = 'GET_AUTH';
 const GET_HEADER = 'GET_HEADER';
 const GET_POLICE = 'GET_POLICE';
 const GET_TITLE = 'GET_TITLE';
+const GET_STATUS = 'GET_STATUS'
 export const configReducer = (state = defaultState, action) => {
   switch (action.type) {
     case GET_CONFIG:
@@ -29,7 +31,8 @@ export const configReducer = (state = defaultState, action) => {
           file: action.text.file}
     case GET_TITLE:
       return {...state, titleBranch: action.text}
-
+    case GET_STATUS:
+      return {...state, statusModal: action.status}
     default:
       return state;
   }
@@ -40,3 +43,4 @@ export const getAuthAction = (number, number_send, is_new_user) => ({ type: GET_
 export const getConfigHeaderAction = (text) => ({ type: GET_HEADER, text })
 export const getConfigTitleAction = (text) => ({ type: GET_TITLE, text })
 export const getConfigPoliceAction = (text) => ({ type: GET_POLICE, text })
+export const getConfigModalStatus = (status) => ({ type: GET_STATUS, status })

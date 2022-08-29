@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Balance.module.css";
 import { useEffect, useState } from "react";
 import Button from "../../../../Components/Button/Button";
+import ModalContainer from "../../../../Components/Modal/ModalContainer";
 import {
   axiosProfileBalance,
   axiosProfileRefferal,
@@ -171,7 +172,7 @@ const Balance = () => {
         </div>
       </form>
       <div className={s.Remove_balance}>
-        <RequestMoney />
+        <ModalContainer typeModalCont = "RequestMoney" />
       </div>
       <div className={s.Referal}>
         <div className={s.Referal_title + " title_config"}>
