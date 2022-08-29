@@ -15,10 +15,9 @@ const UtilityBlock = () => {
         [videoArray, setvideoArray] = useState([]),
         [audioArray, setaudioArray] = useState([]),
         [outputArray, setoutputArray] = useState([]);
-
     useEffect(() => {
         //код закрывающий все треки
-        window.localStream?.getTracks().forEach((track) => {
+        window.localStreamAudio?.getTracks().forEach((track) => {
             track.stop();
         });
         //функция создания трека
@@ -42,7 +41,7 @@ const UtilityBlock = () => {
             //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
             audio: { deviceId: { exact: audioId ? audioId : "default" } }
         }).then(async (stream) => {
-            window.localStream = stream;
+            window.localStreamAudio = stream;
             const devices = await navigator.mediaDevices.enumerateDevices();
             setvideoArray([...devices.filter(el => el.kind === "videoinput")]);
             setaudioArray([...devices.filter(el => el.kind === "audioinput")]);
@@ -84,6 +83,7 @@ const UtilityBlock = () => {
         navigator.mediaDevices.getUserMedia({
             video: videoId ? { deviceId: { exact: videoId } } : true
         }).then((stream) => {
+            window.localStreamVideo = stream;
             let webcamStream;
             inputElement.current.srcObject = stream;
             inputElement.current.play();
@@ -120,7 +120,7 @@ const UtilityBlock = () => {
                     height: "250px"
                 } : { display: "none" }} controls autoPlay />
                 {!videoStatus ? <div className={s.Utility_Check_video_content} >
-                    <img alt="" src={photo}  />
+                    <img alt="" src={photo} />
                     <button onClick={startWebcam}>Проверить видео</button>
                 </div> : ""}
 

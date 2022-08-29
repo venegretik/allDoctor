@@ -19,6 +19,7 @@ const Video = () => {
     const availableScreenWidth = window.screen.availWidth;
     useEffect(() => {
         dispatch(getConfigHeaderAction("Видео"));
+        // eslint-disable-next-line
     }, [])
     let status = useSelector((state) => state.profile.utitlityShow);
     const config = useSelector((state) => state.config.config);

@@ -12,8 +12,8 @@ const Cancel_Record = (props) => {
   let DoctorDelete = (consultation_id) => {
     dispatch(props.func(consultation_id));
     setWindow(false);
-    if(props.type_modal === "cons")
-    dispatch(axiosConsultation());
+    if (props.type_modal === "cons")
+      dispatch(axiosConsultation());
   };
   const config = useSelector((state) => state.config.config);
   useEffect(() => {
@@ -24,17 +24,6 @@ const Cancel_Record = (props) => {
       document.body.style.overflow = "hidden"
     }
   }, [showWindow])
-    if (window.history && window.history.pushState && showWindow) {
-        window.onpopstate = function (event) {
-            if (showWindow) {
-                setWindow(false);
-                window.history.pushState('forward', null, '');
-                window.history.forward(1);
-            }
-        };
-        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
-        window.history.forward(1);
-    }
   const availableScreenWidth = window.screen.availWidth;
   return (
     <div>
@@ -52,7 +41,7 @@ const Cancel_Record = (props) => {
               <div className={s.ImgNone}>
                 <img alt=""
                   src={config.config.images.confuse}
-                  
+
                 />
               </div>
               <div className={s.Cancel_Record}>
@@ -101,7 +90,7 @@ const Cancel_Record = (props) => {
               <div className={s.ImgNone}>
                 <img alt=""
                   src={config.config.images.confuse}
-                  
+
                 />
               </div>
               <div className={s.Cancel_Record}>

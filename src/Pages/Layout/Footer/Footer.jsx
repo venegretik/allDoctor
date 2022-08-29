@@ -15,7 +15,6 @@ const Footer = () => {
   let config = useSelector(state => state.config.config);
   const info = useSelector((state) => state.main.shortName);
   let Text = useSelector((state) => state.config.header_text);
-  console.log(Text)
   const availableScreenWidth = window.screen.availWidth;
   return availableScreenWidth <= 480 && Text === "Видео" ? ("") : info?.data.short_name  ?(
     <section className={s.footer_container + " BackgroundBlue"}>

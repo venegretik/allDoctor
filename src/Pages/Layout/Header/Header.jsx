@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import s from "./Header.module.css";
 import arrow_back from "../../../img/arrow-back.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserMenu } from "./UserMenu/UserMenu";
 import { useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router";
@@ -11,10 +11,21 @@ const Header = () => {
   if (Text.length > 20) {
     Text = Text.substring(0, 19) + "...";
   }
+  var url = document.location.pathname;
+  useEffect(() => {
+    //код закрывающий все треки
+    if(url !== "/profile/utility"){
+      window.localStreamVideo?.getTracks().forEach((track) => {
+        track.stop();
+    });
+      window.localStreamAudio?.getTracks().forEach((track) => {
+          track.stop();
+      });
+    }
+}, [url]);
   const config = useSelector((state) => state.config.config);
   const [isHover, setIsHover] = useState(false);
   const [isHover1, setIsHover1] = useState(false);
-  var url = document.location.pathname;
   const [isHover2, setIsHover2] = useState(false);
   const handleMouseEnter = () => {
     setIsHover(true);
