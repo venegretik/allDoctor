@@ -7,6 +7,7 @@ import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import ModalContainer from "../../../Components/Modal/ModalContainer";
 import VolumeModal from "../../../Components/Modal/Volume_modal/VolumeModal";
 import ModalUtility from "../../../Components/Modal/ModalUtility/ModalUtility";
 import cup from "../../../img/cup.png";
@@ -64,7 +65,7 @@ const Video = () => {
                             <p>Завершить</p>
                         </li>
                         <li>
-                            <ModalUtility />
+                            <ModalContainer typeModalCont="ModalUtility" />
                         </li>
                     </ul>
                     <ul className={s.videoMobile}>

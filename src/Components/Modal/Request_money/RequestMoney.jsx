@@ -22,11 +22,11 @@ const RequestMoney = (props) => {
       errorType.error.fields = {
         summ: [...response.error?.fields.summ]
       }
-      dispatch(getConfigModalStatus(true))
+      props.setWindow(true)
       errorMessage.error.message = { ...response.error?.message }
     }
     else
-    dispatch(getConfigModalStatus(false))
+      props.setWindow(false)
 
   };
   const errorMessage = {
@@ -48,7 +48,7 @@ const RequestMoney = (props) => {
     <div>
       <div className={"black_config"}>
         <div className={s.RequestMoneyFull}>
-          <div className={s.Cart_close} onClick={(e) => dispatch(getConfigModalStatus(false))}>
+          <div className={s.Cart_close} onClick={(e) => props.setWindow(false)}>
             +
           </div>
           <h1 className={s.Font_size24 + " title_config"}>Запросить средства</h1>

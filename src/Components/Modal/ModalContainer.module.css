@@ -52,6 +52,29 @@ body.Cancel_Record_full {
     z-index: 3;
 }
 
+.icon_back {
+    padding: 11px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    max-width: 85px;
+    text-align: center;
+    align-items: center;
+    height: 42px;
+    width: 42px;
+    margin-bottom: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.moduleIcon {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    flex-direction: column;
+}
+
 .Request {
     display: flex;
     align-items: center;
@@ -83,6 +106,7 @@ body.Cancel_Record_full {
         line-height: 19px;
         letter-spacing: 0px;
     }
+
     .Font_size14 {
         font-family: 'Exo', sans-serif;
         font-size: 10px;
@@ -90,6 +114,7 @@ body.Cancel_Record_full {
         line-height: 19px;
         letter-spacing: 0px;
     }
+
     .Font_size24 {
         font-family: 'Exo', sans-serif;
         font-size: 14px !important;

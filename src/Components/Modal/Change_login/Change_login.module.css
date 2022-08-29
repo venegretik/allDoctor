@@ -2,10 +2,6 @@
     width: 100%;
     height: calc(100%);
     background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    left: 0px;
-    z-index: 30;
-    top: 0px;
 }
 .ChangeLoginMain_step2 p{
     cursor: pointer;
@@ -45,20 +41,16 @@
 }
 
 .ChangeLoginMain form {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 .ChangeLogin {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     height: auto;
     max-width: 800px;
     width: 100%;
     padding: 20px;
     height: auto;
-    z-index: 30;
+    z-index: 3;
     background-color: #fff;
     border-radius: 16px;
     display: flex;
@@ -142,10 +134,6 @@
 
     .ChangeLogin {
         bottom: 0px;
-        position: absolute;
-        top:auto;
-        display:none;
-        transform: translate(-50%,0%);
         border-radius: 16px 16px 0px 0px;
         width: 100%;
         height: auto;

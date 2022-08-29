@@ -119,7 +119,7 @@ const ReplaceData = () => {
         <p className={s.Font_size16 + " " + s.gray + " gray_config"}>Телефон</p>
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{phone}</p>
-          <ChangeLogin typeModalCont="ChangeLogin" type_el="phone" />
+          <ModalContainer typeModalCont="ChangeLogin" type_el="phone" />
         </div>
       </div>
       <div className={s.Profile_replace_tel}>
@@ -127,7 +127,7 @@ const ReplaceData = () => {
         <div className={s.Profile_replace_tel_data}>
           <p className={s.Font_size16}>{profile.email}</p>
           <p className={s.Font_size14}></p>
-          <ChangeLogin typeModalCont="ChangeLogin" type_el="email" />
+          <ModalContainer typeModalCont="ChangeLogin" type_el="email" />
         </div>
       </div>
 

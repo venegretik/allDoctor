@@ -173,7 +173,7 @@ const ConsultationReady = (props) => {
                 />
               </Link>
             ) : ConsultationUpcoming.can_reschedule ? (
-              <ModalCalendar />
+              <ModalContainer typeModalCont = "ModalCalendar" />
             ) : ConsultationUpcoming.is_paid ? (
               <div
                 onClick={(e) => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}
@@ -181,7 +181,7 @@ const ConsultationReady = (props) => {
                 <Button class="btn orange" text="Оплатить" />
               </div>
             ) : ConsultationUpcoming.can_reschedule ? (
-              <ModalCalendar />
+              <ModalContainer typeModalCont = "ModalCalendar" />
             ) : (
               ""
             )}

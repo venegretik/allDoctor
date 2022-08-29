@@ -16,21 +16,6 @@ const Cancel_Record = (props) => {
       dispatch(axiosConsultation());
   };
   const config = useSelector((state) => state.config.config);
-  useEffect(() => {
-    const unblock = history.block((location, action) => {
-      console.log('action')
-      debugger
-      if (action === "POP") {
-        return false;
-      }
-      if (window.confirm(`Are you sure you want to go to?`)) {
-        // Unblock the navigation.
-        unblock();
-      }
-    });
-    return () => {
-    };
-  }, []);
   return (
     <div>
       <div className={s.Cancel_Record_full}>
@@ -41,7 +26,7 @@ const Cancel_Record = (props) => {
           />
         </div>
         <div className={s.Cancel_Record}>
-          <div onClick={() => dispatch(getConfigModalStatus(false))} className={s.Cancel_close}>
+          <div onClick={() => props.setWindow(false)} className={s.Cancel_close}>
             &times;
           </div>
           <h1
@@ -68,7 +53,7 @@ const Cancel_Record = (props) => {
                 text={"Да"}
               />
             </div>
-            <div onClick={(e) => dispatch(getConfigModalStatus(false))}>
+            <div onClick={(e) => props.setWindow(false)}>
               <Button
                 className={s.Font_size16}
                 type={"submit"}
