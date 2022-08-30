@@ -46,7 +46,7 @@ const ModalContainer = (props) => {
                         setWindow(true)
                         dispatch(consultationModalAction(false));
                     }}>
-                        {props.type_of === "1" ? <p className={s.link_blue + " blue_config"}>Изменить дату и время приёма</p> : <Button
+                        {props.type_of === "1" ? <p className={s.link_blue + " " + s.Font_size14 + " blue_config"}>Изменить дату и время приёма</p> : <Button
                             type={'submit'}
                             class={'btn orange'}
                             text={'перенести'}

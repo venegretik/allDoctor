@@ -41,7 +41,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} blue_config` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink + " gray_config"
               }
               to="../local-data"
             >
@@ -51,7 +51,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} blue_config` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink + " gray_config"
               }
               to="../message"
             >
@@ -61,7 +61,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} blue_config` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink + " gray_config"
               }
               to="../balance"
             >
@@ -71,7 +71,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} blue_config` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink + " gray_config"
               }
               to="../med-cart"
             >
@@ -81,7 +81,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} blue_config` : s.navLink
+                isActive ? `${s.navLink} blue_config` : s.navLink + " gray_config"
               }
               to="../result"
             >
@@ -91,7 +91,7 @@ const Local_Data = () => {
           <li>
             <NavLink
               className={({ isActive }) =>
-                isActive ? `${s.navLink} blue_config` : `${s.navLink + " " + s.close}`
+                isActive ? `${s.navLink}` : `${s.navLink + " " + s.close}`
               }
               onClick={() => logout()}
               to={"../../"}

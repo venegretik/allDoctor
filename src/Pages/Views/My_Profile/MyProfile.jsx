@@ -15,15 +15,15 @@ const MyProfile = () => {
           <ul>
             <li>
               <NavLink className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink + " gray_config"
               }
                 to="local-data">
                 <p>Личные данные</p>
               </NavLink>
             </li>
-            <li>
+            <li >
               <NavLink className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink + " gray_config"
               }
                 to="message">
                 <p>Уведомления</p>
@@ -31,7 +31,7 @@ const MyProfile = () => {
             </li>
             <li>
               <NavLink className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink + " gray_config"
               }
                 to="balance">
                 <p>Баланс</p>
@@ -39,7 +39,7 @@ const MyProfile = () => {
             </li>
             <li>
               <NavLink className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink + " gray_config"
               }
                 to="utility">
                 <p>Проверка оборудования</p>
@@ -47,7 +47,7 @@ const MyProfile = () => {
             </li>
             <li>
               <NavLink className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink  + " gray_config"
               }
                 to="med-cart">
                 <p>Медицинская карта</p>
@@ -55,7 +55,7 @@ const MyProfile = () => {
             </li>
             <li>
               <NavLink className={({ isActive }) =>
-                isActive ? `${s.navLink} ${s.headerActiveLink}` : s.navLink
+                isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink + " gray_config"
               }
                 to="result">
                 <p>Результаты использований</p>

@@ -67,7 +67,9 @@ body.Cancel_Record_full {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.5);
 }
-
+.link_blue{
+    cursor: pointer;
+}
 .moduleIcon {
     display: flex;
     align-items: center;

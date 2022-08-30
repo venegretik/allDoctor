@@ -55,10 +55,9 @@
         align-items: center;
         width: 100%;
         border-radius: 16px 16px 0px 0px;
-        max-width: 800px;
+        min-width: 320px;
         padding: 0px 10px;
         background-color: #ffffff;
         height: 400px;
     }
-
 }
