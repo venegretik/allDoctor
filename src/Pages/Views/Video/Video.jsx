@@ -9,7 +9,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ModalContainer from "../../../Components/Modal/ModalContainer";
 import VolumeModal from "../../../Components/Modal/Volume_modal/VolumeModal";
-import ModalUtility from "../../../Components/Modal/ModalUtility/ModalUtility";
 import cup from "../../../img/cup.png";
 import message from "../../../img/chat_message.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
@@ -35,7 +34,7 @@ const Video = () => {
                 <div className={s.VideoBlockImage + " black_config"}>
                     <img alt="" src={PacientVideo}  className={s.ImageVideo} />
                     <img alt="" src={availableScreenWidth <= 480 ? video_mobile : videoImage} className={s.ImageVideo1}  />
-                    <div className={s.TimerAbsolute}>
+                    <div className={s.TimerAbsolute + " white_config"}>
                         <p>00:00</p>
                     </div>
                     <ul className={s.videoDesctop + " black_config"} style={status ? {

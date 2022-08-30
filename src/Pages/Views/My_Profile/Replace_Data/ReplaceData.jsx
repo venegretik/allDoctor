@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ReplaceData.module.css";
 import { Input } from "../../../../Components/Input/Input";
 import { useSelector } from "react-redux/es/exports";
-import ChangeLogin from "../../../../Components/Modal/Change_login/Change_login";
+import { getConfigHeaderAction } from "../../../../base/Reducers/configReducer";
 import { useDispatch } from "react-redux";
 import ModalContainer from "../../../../Components/Modal/ModalContainer";
 import MessageContainer from "../../../../Components/UploadFile/UploadFile";
@@ -26,6 +26,10 @@ const ReplaceData = () => {
     setShow(isState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isState]);
+  useEffect(() => {
+    dispatch(getConfigHeaderAction("Редактирование"));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   let [errorType, seterrorType] = useState({
     status: false,
     error: {

@@ -11,7 +11,7 @@ import FormErrors from "../../../Components/FormError/FormError";
 import { Link, Navigate } from "react-router-dom";
 import Chat from "../../../Components/Chat/Chat";
 import Button from "../../../Components/Button/Button";
-import ModalCalendar from "../../../Components/Modal/Modal_calendar/Modal_calendar";
+import ModalContainer from "../../../Components/Modal/ModalContainer";
 const Payment = () => {
     const dispatch = useDispatch();
     useEffect(() => {
@@ -107,7 +107,7 @@ const Payment = () => {
                                     }
                                 )}</p>
                             </div>
-                            <ModalCalendar type_of="1" doctor_id={params.id} usId={params.id} />
+                            <ModalContainer typeModalCont = "ModalCalendar" type_of="1" doctor_id={params.id} usId={params.id} />
                         </div>
                     </div>
                 </div>
