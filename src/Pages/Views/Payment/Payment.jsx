@@ -72,7 +72,7 @@ const Payment = () => {
         payment.firstname ? <div className={s.Container + " Container"}>
             <div className={s.Payment + " black_config"}>
                 <div className={s.Payment_title + " title_config"}>
-                    <h1>Запись на приём</h1>
+                    <h1 className={s.Font_size40}>Запись на приём</h1>
                 </div>
                 <div className={s.Doctor}>
                     <div className={s.Doctor_infos}>

@@ -7,6 +7,7 @@
     margin-left: 35px;
     margin-right: 35px;
 }
+
 input[type=checkbox]:before {
     position: absolute;
     border: 3px solid #407BFF;
@@ -18,6 +19,7 @@ input[type=checkbox]:before {
     left: -20px;
     top: -4px;
 }
+
 input[type=checkbox]:checked:after {
     position: absolute;
     content: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGzSURBVHgBtZW7S8NQFMa/WyOIOOimWwUXN3F2CF38IxwaECcFWxQEpdQiKk5th05FaAd1chTsUjKIo+3mItjNbmaoj0G9ntM0fdnYhNz+ICT3kfOd+90DR6ALPSmn8YUYJKIQCMMPElX6pwoNKTMlas60aAdPSIM2pemZRjAs/JDIqci0BfQDGaNXGmoxzGNRFGRLGN+oKMi8HwtvmNfI8yQNVAdHM+YktkP0sYTRYQQWmJ0Brnbp2aHvfh+oEkMISHrdDsxCq8t/1wMJGJHerEsPCgU442ikMy6UgbqlUICtcXh6AYrlwftcBaYmgJXFAReHXmsan0DiAq5obgv5LTtI/ZUCXNpZMgtz3qzxdAKGvc5v2lnz3NFaZ8/dI3B9j39xFYif92bGWTslyfDJcjcYiqsAW8IijjUM2+MwzJqhAmhluZGzg3VzS/VeqsATmpdNxVa2fA+ND/eSHITQ9+Wz7+7lFepybFEBo4MExpGlE3i4Lt9Y1MhSIWrQ3EPjUI3EoXkmas0qMk9EgV5xRSfhGAbFzPJAdK/oe9Sfx6iFimYT8teIJGrg+3xH1syIdqK/5H+Du4cmYk4AAAAASUVORK5CYII=);
@@ -27,6 +29,7 @@ input[type=checkbox]:checked:after {
     left: -20px;
     top: -4px;
 }
+
 .gray {
     color: #8B9BAB;
 }
@@ -38,9 +41,12 @@ input[type=checkbox]:checked:after {
     justify-content: space-between;
     margin-bottom: 40px;
 }
-.Payment p,h1,h2{
+
+.Payment p,
+h1,
+h2 {
     color: inherit;
-  }
+}
 
 .Doctor_list {
     display: flex;
@@ -105,11 +111,11 @@ input[type=checkbox]:checked:after {
 
 .buy {
     margin-bottom: 8px;
-    font-weight: 400!important;
+    font-weight: 400 !important;
     margin-top: 4px;
 }
 
-.link_blue{
+.link_blue {
     color: #407BFF;
     cursor: pointer;
 }
@@ -124,9 +130,9 @@ input[type=checkbox]:checked:after {
 }
 
 .Summ input {
-    border: 1px solid #EAF2FF!important;
+    border: 1px solid #EAF2FF !important;
     border-radius: 16px;
-    background: #FFFFFF!important;
+    background: #FFFFFF !important;
     width: 100%;
     height: 44px;
 }
@@ -144,22 +150,27 @@ input[type=checkbox]:checked:after {
 .Oplata span {
     display: flex;
 }
-.Total_sum{
+
+.Total_sum {
     max-width: 570px;
     margin-bottom: 71px;
 }
+
 .Total_sum span {
     display: flex;
     margin-top: 15px;
     margin-bottom: 20px;
 }
-.Oplata span{
+
+.Oplata span {
     margin-top: 11px;
 }
-.Balance{
+
+.Balance {
     margin-top: 10px;
     margin-left: 20px;
 }
+
 .Total_sum button {
     width: 240px;
     border: 0px;
@@ -167,12 +178,13 @@ input[type=checkbox]:checked:after {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 38px;
-    text-align: center; 
+    text-align: center;
     height: 60px;
     padding: 22px 41px;
     background: #407BFF;
     border-radius: 16px;
 }
+
 .Font_size24 {
     font-family: 'Exo', sans-serif;
     font-size: 24px;
@@ -209,12 +221,23 @@ input[type=checkbox]:checked:after {
     letter-spacing: 0px;
     text-align: left;
 }
-@media(max-width:768px){
+
+@media(max-width:980px) {
+    .Payment_title {
+        margin-top: 40px;
+        margin-bottom: 25px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media(max-width:768px) {
     .Payment_title {
         margin-top: 0px;
         margin-bottom: 25px;
     }
 }
+
 @media(max-width:480px) {
     .Font_size24 {
         font-family: 'Exo', sans-serif;
@@ -224,33 +247,42 @@ input[type=checkbox]:checked:after {
         letter-spacing: 0px !important;
 
     }
-    .Doctor_avatar_img{
+
+    .Doctor_avatar_img {
         width: 70px;
     }
-    .Doctor_avatar{
+
+    .Doctor_avatar {
         margin-right: 10px;
         max-width: 70px;
         width: 100%;
     }
+
     .Oplata span {
         margin-top: 5px;
     }
-    .Balance{
+
+    .Balance {
         margin-bottom: 12px;
     }
-    .Doctor_avatar_info ul{
+
+    .Doctor_avatar_info ul {
         max-width: 70px;
     }
-    .Doctor_avatar_info ul li{
+
+    .Doctor_avatar_info ul li {
         width: 20%;
     }
-    .Doctor_avatar_info ul li img{
+
+    .Doctor_avatar_info ul li img {
         width: 100%;
     }
+
     .Summ {
         margin-top: 20px;
         margin-bottom: 20px;
     }
+
     .Total_sum button {
         width: 100%;
         border: 0px;
@@ -263,14 +295,17 @@ input[type=checkbox]:checked:after {
         padding: 13.5px 41px;
         border-radius: 16px;
     }
-    .Staj{
+
+    .Staj {
         margin-top: 6px;
         margin-bottom: 4px;
     }
-    .buy{
+
+    .buy {
         margin-bottom: 2px;
         margin-top: 3px;
     }
+
     .Font_size40 {
         font-family: 'Exo', sans-serif;
         font-size: 16px !important;
@@ -278,10 +313,12 @@ input[type=checkbox]:checked:after {
         line-height: 53px !important;
         letter-spacing: 0px !important;
     }
-    .Payment{
+
+    .Payment {
         margin-right: 10px;
         margin-left: 10px;
     }
+
     .Font_size14 {
         font-family: 'Exo', sans-serif;
         font-size: 10px !important;
@@ -297,7 +334,8 @@ input[type=checkbox]:checked:after {
         line-height: 13px !important;
         letter-spacing: 0px !important;
     }
-    .Payment_title{
+
+    .Payment_title {
         display: none;
     }
 }

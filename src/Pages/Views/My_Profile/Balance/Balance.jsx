@@ -104,8 +104,8 @@ const Balance = () => {
       <div className={s.History_content}>
         <p className={s.Font_size14}>{el.action.type}</p>
         <div className={s.History_content_text}>
-          <b>{el.action.message}</b>
-          <b>-{el.summ}₽</b>
+          <b className={s.Font_size24}>{el.action.message}</b>
+          <b className={s.Font_size24}>-{el.summ}₽</b>
         </div>
       </div>
     </div>

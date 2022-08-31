@@ -122,7 +122,9 @@
     background: #EAF2FF;
     border-radius: 24px;
 }
-
+thead{
+    background: #F9F9F9;
+}
 .Download_img {
     border-bottom: 2px #9DC3FF solid;
 }

@@ -40,7 +40,7 @@ const ConsultationHistory = () => {
                     <div className={s.Doctor_infos}>
                         <div className={s.Doctor_avatar}>
                             <div className={s.Doctor_avatar_img}>
-                                <img alt="" src={el.doctor.photo} alt="" />
+                                <img alt="" src={el.doctor.photo} />
                                 {el.doctor.is_online && <div className={s.DoctorOnline + " green_config"}></div>}
                             </div>
                             <div className={s.Doctor_avatar_info}>
@@ -74,7 +74,7 @@ const ConsultationHistory = () => {
                     <a href={el.file} rel="noreferrer" target="_blank" download>
                         <div className={s.Download_file + " opacityBlue"}>
                             <div className={s.Download_img}>
-                                <img alt="" src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" alt="" />
+                                <img alt="" src="https://api.telemed.dev-h.ru/images/ui/download_guy.svg" />
                             </div>
                             <div className={s.Download_text + " blue_config"}>
                                 <p className={s.Font_size14}>Скачать заключение врача</p>

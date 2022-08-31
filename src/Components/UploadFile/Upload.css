@@ -7,7 +7,7 @@ input[type="file"] {
 }
 
 .upload_file{
-    background: #407BFF;
+    background: #F6AE2D;
     border-radius: 16px;
     border: 0px;
     max-width: 400px;
@@ -15,7 +15,8 @@ input[type="file"] {
     text-transform: uppercase;
     display: none;
     margin-top: 14px;
-    color: #FFFFFF;
+    color: #000;
+    font-weight: 700;
     padding: 19px 44px;
 }
 @media(max-width:980px){

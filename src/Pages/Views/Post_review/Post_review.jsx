@@ -62,7 +62,7 @@ const PostRewiew = () => {
     return (statusRewiew ? <Navigate to={"/recording/" + params.doctor_id + "/Reviews"}/> :<div className={s.Container + " Container"}>
     <div className={s.Review_full  + " black_config"}>
         <div className={s.Review_title}>
-            <h1 className={s.Font_size24  + " title_config"}>Оставить отзыв</h1>
+            <h1 className={s.Font_size40  + " title_config"}>Оставить отзыв</h1>
         </div>
         <div className={s.Doctor_infos}>
             <div className={s.Doctor_avatar}>
