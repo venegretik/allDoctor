@@ -105,6 +105,15 @@
   }
 }
 
+@media (max-width: 768px) {
+  .medicine_title {
+    display: none;
+  }
+  .medicine_input{
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width: 680px) {
   .Register_form {
     margin-bottom: 24px;

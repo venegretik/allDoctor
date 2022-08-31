@@ -94,15 +94,28 @@
 .card_text_wrapper {
   padding: 0 30px 50px 30px;
 }
-@media(max-width:980px){
+
+@media(max-width:980px) {
   .medicine_title {
     text-align: center !important;
   }
-  .medicine_input{
+
+  .medicine_input {
     margin: 0px auto;
     margin-bottom: 40px;
   }
 }
+
+@media (max-width: 768px) {
+  .medicine_title {
+    display: none;
+  }
+
+  .medicine_input {
+    margin-bottom: 10px;
+  }
+}
+
 @media (max-width: 680px) {
   .Register_form {
     margin-bottom: 24px;
@@ -118,6 +131,7 @@
     max-width: 130px;
     border-radius: 10px;
   }
+
   .medicine_cards {
     display: flex;
     gap: 20px;
@@ -139,10 +153,12 @@
   .card_text_wrapper {
     padding: 10px;
   }
-  .medicine_title{
+
+  .medicine_title {
     font-size: 24px;
     line-height: 24px;
   }
+
   .card_title {
     font-size: 14px;
     margin-top: 5px;

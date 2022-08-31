@@ -8,7 +8,7 @@ const SelectReview = (props) => {
     let dispatch = useDispatch();
     const [isShown, setIsShown] = useState(false);
     const config = useSelector((state) => state.config.config);
-    const [Showtext, setShowText] = useState("Выберите текст");
+    const [Showtext, setShowText] = useState("Выберите консультацию");
     const handleClick = (event) => {
         setIsShown((current) => !current);
     };
