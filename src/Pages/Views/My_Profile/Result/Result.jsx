@@ -44,6 +44,8 @@ const FormResult = () => {
                 }
             }))
         }
+        else
+            dispatch(axiosProfileResult(1, 0, true));
     };
     let [errorMessage, seterrorMessage] = useState({
         status: false,
@@ -102,8 +104,8 @@ const Result = () => {
     let [statusDoc, setStatus] = useState(false);
     useEffect(() => {
         async function fetchMyAPI() {
-                let statusDoctor = await dispatch(axiosProfileResult(1,0,true));
-                setStatus(statusDoctor.status);
+            let statusDoctor = await dispatch(axiosProfileResult(1, 0, true));
+            setStatus(statusDoctor.status);
             dispatch(getConfigHeaderAction("Результаты"))
         }
         fetchMyAPI()

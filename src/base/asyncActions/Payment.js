@@ -14,7 +14,7 @@ export const getPuymentInfo = (id, slot, DateStr) => {
       dispatch(paymentInfoAction(response.data.data, slot));
       if (DateStr)
         dispatch(paymentDateTimeAction(DateStr));
-      return response.data
+      return response.data;
     }
   };
 };
@@ -28,8 +28,6 @@ export const getPuymentPost = (obj) => {
         }
       });
       dispatch(paymentInfoAction(response.data.data));
-      if (!response.data.status)
-        alert(response.data.error.message)
       return response.data;
     }
   };

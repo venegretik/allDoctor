@@ -93,7 +93,6 @@ export const axiosConsultationCalendar = (consultation_id, slot_id, DateStr = 1)
             }
         });
         dispatch(paymentDateTimeAction(DateStr))
-        debugger;
         return response.data.status
     }
 }

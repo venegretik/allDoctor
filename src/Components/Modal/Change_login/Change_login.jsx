@@ -104,7 +104,7 @@ const ChangeLogin = (props) => {
                 <div className={s.ChangeLoginMain_step2}>
                   <Input pattern={'[0-9]{4}'} required placeholder={props.type_el === "phone" ? 'Код из SMS' : 'Код из Электронной почты'} type={'text'} className={'input'}
                     maxLength={4} name="code" />
-                  <FormErrors className={s.Font_size14} error={Error} />
+                  <FormErrors error={Error} />
                   <p className={s.Font_size14 + " blue_config"}>Отправить код повторно
                     <Timer time={timerNum}/></p>
                   <div className={s.ChangeLoginButton} >
