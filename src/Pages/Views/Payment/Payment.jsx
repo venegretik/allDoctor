@@ -1,7 +1,7 @@
 import React from "react";
 import s from './Payment.module.css';
 import { useState, useEffect } from "react";
-import {getPuymentPost } from "../../../base/asyncActions/Payment";
+import { getPuymentPost } from "../../../base/asyncActions/Payment";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
@@ -36,10 +36,10 @@ const Payment = () => {
         let obj = {};
 
         [...data].forEach(e => { obj[e[0]] = e[1] })
-        obj.doctor_id = params.id;
-        obj.use_balance = Boolean(obj.use_balance);
-        obj.slot_id = params.slot;
-        
+        obj.doctor_id = Number(params.id);
+        obj.use_balance = Boolean(obj.use_balance.value);
+        obj.slot_id = payment.slot_id;
+
         let response = await dispatch(getPuymentPost(obj));
         if (response.status) {
             window.location.href = response.data.payment_url;
@@ -52,20 +52,26 @@ const Payment = () => {
             }));
         }
     }
+    const changeInput = (e) => {
+        setShowText(e.target.value);
+    }
     const handleChange = (e) => {
         setShowText(e.target.value);
         let obj = {};
-        obj.doctor_id = params.id;
-        obj.slot_id = params.slot;
-        obj.promocode = e.target.value;
-        dispatch(getPuymentPost(obj));
+        obj.doctor_id = Number(params.id);
+        obj.slot_id = payment.slot_id;
+        obj.promocode = Number(e.target.value);
+        if (Showtext === e.target.value) {
+            dispatch(getPuymentPost(obj));
+        }
     }
     const handleChangeCheck = (e) => {
         let obj = {};
         setcheck(e.target.value);
-        obj.doctor_id = params.id;
-        obj.slot_id = params.slot;
+        obj.doctor_id = Number(params.id);
+        obj.slot_id = payment.slot_id;
         obj.use_balance = e.target.value;
+        obj.promocode = Number(Showtext);
         dispatch(getPuymentPost(obj));
     }
     return (
@@ -78,7 +84,7 @@ const Payment = () => {
                     <div className={s.Doctor_infos}>
                         <div className={s.Doctor_avatar}>
                             <div className={s.Doctor_avatar_img}>
-                                <img alt="" src={payment.photo}  />
+                                <img alt="" src={payment.photo} />
                             </div>
                             <div className={s.Doctor_avatar_info + " " + s.black}>
                                 <Stars num={payment.rate} />
@@ -107,7 +113,7 @@ const Payment = () => {
                                     }
                                 )}</p>
                             </div>
-                            <ModalContainer typeModalCont = "ModalCalendar" type_of="1" doctor_id={params.id} usId={params.id} />
+                            <ModalContainer typeModalCont="ModalCalendar" type_of="1" doctor_id={Number(params.id)} usId={Number(params.id)} />
                         </div>
                     </div>
                 </div>
@@ -116,13 +122,19 @@ const Payment = () => {
                         <Input
                             type="text"
                             placeholder="Промо или реферальный код"
-                            name={'promocode'} value={Showtext} onChange={handleChange} />
-                            
+                            name={'promocode'} value={Showtext} onChange={async (e) => {
+                                changeInput(e);
+                                setTimeout(function () {
+                                    handleChange(e)
+                                }, 1000)
+
+                            }} />
+
                     </div>
                     <div className={s.Oplata + " black_config"}>
                         <p className={s.Font_size24}>Баланс: {payment.checkout.price} ₽</p>
                         <div className={s.Balance}>
-                            <input type="checkbox" id="Register_checkbox" name={'use_balance'} className={s.custom_checkbox} onChange={handleChangeCheck} />
+                            <input type="checkbox" id="Register_checkbox" value={true} name={'use_balance'} className={s.custom_checkbox} onChange={handleChangeCheck} />
                             <p className={s.Font_size14}>Оплатить с баланса</p>
                         </div>
                         {check ? <span><p className={s.Font_size16}>Списано с баланса: </p><b className={s.Font_size16}> -{payment.checkout.used_balance} ₽</b></span> : ""}
@@ -138,7 +150,7 @@ const Payment = () => {
                 <FormErrors error={errorMessage.error.message} />
                 {/* КОМПОНЕНТ ОШИБКИ */}
             </div>
-            <Chat/>
+            <Chat />
         </div> : <Navigate to={`../recording/${params.id}/Default`} />
 
     )

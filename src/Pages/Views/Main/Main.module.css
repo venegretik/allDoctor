@@ -23,6 +23,7 @@ h1 {
 }
 
 .medicine {
+  align-items: center;
   display: flex;
   flex-direction: column;
 }
@@ -139,6 +140,7 @@ h1 {
 .medicine_cards {
   display: flex;
   gap: 30px;
+  justify-content: center;
   flex-wrap: wrap;
 }
 

@@ -12,11 +12,16 @@ import '../../../config.css';
 const Razdeli = () => {
     const dispatch = useDispatch();
     let Branch = useSelector(state => state.doctorSpec.branch_array);
+    let [statusDoc, setStatus] = useState(false);
     const [BranchSort, setShowBranchSort] = useState(Branch);
     useEffect(() => {
-        dispatch(axiosBranch());
+        async function fetchMyAPI() {
+        let statusDoctor = await dispatch(axiosBranch());
+        setStatus(statusDoctor.status);
         window.scrollTo(0, 0);
         dispatch(getConfigHeaderAction("Разделы медицины"))
+        }
+        fetchMyAPI()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
@@ -46,7 +51,7 @@ const Razdeli = () => {
                 <img alt="" src={search}  />
             </div>
             <div className={s.medicine_cards}>
-                {!Branch_list[0] ? (
+                {!statusDoc ? (
                     <Loader />
                 ) : (Branch_list)}
             </div>

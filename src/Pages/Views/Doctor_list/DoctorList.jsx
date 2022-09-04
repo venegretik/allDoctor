@@ -3,7 +3,7 @@ import s from './Doctor_list.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { axiosDoctor, axiosBranch,axiosBranchOffline } from "../../../base/asyncActions/getDoctors";
+import { axiosDoctor, axiosBranch, axiosBranchOffline } from "../../../base/asyncActions/getDoctors";
 import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Stars from "../../../Components/Stars/Stars";
@@ -23,6 +23,7 @@ const DoctorList = () => {
   }
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
+  let [statusDoc, setStatus] = useState(false);
   const branch_array = useSelector(state => state.doctorSpec.branch_array);
   const branch_offline_array = useSelector(state => state.doctorSpec.branch_offline_array);
   let Name = useSelector(state => state.doctorSpec.specialization_name);
@@ -46,24 +47,28 @@ const DoctorList = () => {
   const sort = useSelector(state => state.doctorSpec.sort);
   const spec_id = useSelector(state => state.doctorSpec.spec_id);
   useEffect(() => {
-    dispatch(axiosDoctor(page, Number(params.id), "rate", Number(params.spec_id)));
-    dispatch(axiosBranch())
-    dispatch(axiosBranchOffline())
+    async function fetchMyAPI() {
+      let statusDoctor = await dispatch(axiosDoctor(page, Number(params.id), "rate", Number(params.spec_id)));
+      dispatch(axiosBranch());
+      setStatus(statusDoctor.status);
+      dispatch(axiosBranchOffline());
+    }
+    fetchMyAPI()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
     let Text_Branch = branch_array.filter(el => el.branch_id === Number(params.id))
-    if(!Text_Branch[0])
-        Text_Branch = branch_offline_array.filter(el => el.branch_id === Number(params.id))
-    if(Text_Branch[0])
-    setBranchTitle1(Text_Branch[0].title)
+    if (!Text_Branch[0])
+      Text_Branch = branch_offline_array.filter(el => el.branch_id === Number(params.id))
+    if (Text_Branch[0])
+      setBranchTitle1(Text_Branch[0].title)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [branch_array])
   useEffect(() => {
     setBranchTitle(Title);
-    dispatch(getConfigHeaderAction(BranchTitle1 +": " +Title));
+    dispatch(getConfigHeaderAction(BranchTitle1 + ": " + Title));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [Title,BranchTitle1])
+  }, [Title, BranchTitle1])
   const sendRequest = () => {
     dispatch(axiosDoctor(++page, params.id, sort, spec_id));
   }
@@ -73,7 +78,7 @@ const DoctorList = () => {
       <div className={s.Doctor_infos}>
         <div className={s.Doctor_avatar}>
           <div className={s.Doctor_avatar_img}>
-            <img alt="" src={el.photo}  />
+            <img alt="" src={el.photo} />
           </div>
           <div className={s.Doctor_avatar_info + " " + s.black}>
             <Stars num={el.rate} />
@@ -139,7 +144,7 @@ const DoctorList = () => {
             </div>
           </div>
         </div>
-        {Doctor[0] ? Doctor : <Loader />}
+        {statusDoc ? Doctor : <Loader />}
       </section>
       <div className={s.Doctor_button}>
         <div className={s.Doctor_button_mobile} onClick={sendRequest}>

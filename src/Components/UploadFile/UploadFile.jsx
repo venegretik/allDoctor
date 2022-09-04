@@ -3,6 +3,7 @@ import "./Upload.css";
 import { connect } from "react-redux";
 import { axiosProfilePhotoUpload, axiosProfileUpload } from "../../base/asyncActions/Profile";
 import upload from "../../img/upload.png";
+import { ProfileUploadFileAction } from "../../base/Reducers/UserReducer";
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
@@ -24,7 +25,7 @@ class UploadFile extends React.Component {
     if(this.props.type !== "button")
     this.props.axiosProfilePhotoUpload(filesArr);
     else{
-      this.props.axiosProfileUpload(this.props.data);
+      this.props.ProfileUploadFileAction(filesArr[0])
     }
     this.setState({ files: [...this.state.files, ...filesArr] });
   }
@@ -37,7 +38,6 @@ class UploadFile extends React.Component {
         {this.props.type === "button" ? <label className="custom-file-upload upload_file">
           <input
             type="file"
-            accept=".png, .jpeg, .webp"
             onChange={this.onChange}
           />выбрать файл
         </label> :<label className="custom-file-upload">
@@ -59,6 +59,9 @@ let mapDispatchToProps = (dispatch) => {
   return {
     axiosProfilePhotoUpload: (photo) => {
       dispatch(axiosProfilePhotoUpload(photo));
+    },
+    ProfileUploadFileAction: (photo) => {
+      dispatch(ProfileUploadFileAction(photo));
     },
     axiosProfileUpload: (obj) => {
     dispatch(axiosProfileUpload(obj))

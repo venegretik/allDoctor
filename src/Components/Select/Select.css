@@ -95,7 +95,6 @@
     padding: 10px 0px;
     padding-left: 16px;
     margin: 0px;
-    margin-bottom: 10px;
     border: 1px solid #9DC3FF;
     border-radius: 7px;
 }
@@ -105,7 +104,6 @@
     white-space: nowrap;
     padding-left: 16px;
     margin: 0px;
-    margin-bottom: 10px;
     border-radius: 10px;
 }
 
@@ -120,6 +118,7 @@
 
 .Select_content {
     position: relative;
+    overflow:hidden;
 }
 
 .Rotate_img {
@@ -141,5 +140,19 @@
     #Select-hide {
         width: 100%;
         max-width: 300px;
+    }
+}
+@media (max-width:480px){
+    #Select-hide p {
+        font-size: 12px;
+    }
+    .Select_content img {
+        position: absolute;
+        top: 5px;
+        border-radius: 10px;
+        right: 1px;
+        background: #fff;
+        padding: 10px 10px;
+        transform: translate(0,0%);
     }
 }

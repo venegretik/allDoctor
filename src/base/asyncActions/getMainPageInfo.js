@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
-import { getShortNameAction } from "../Reducers/mainPageReducer";
+import { getShortNameAction, getNotificationAction } from "../Reducers/mainPageReducer";
 
 const token = localStorage.getItem("token");
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -16,13 +16,14 @@ export const getShortInfo = () => {
 };
 
 export const getNotification = (page = 1) => {
-  return async () => {
+  return async (dispatch) => {
     if (token) {
       const response = await axios.get(`${defaultUrl}user/notification`, {
         params:{
           page: page
         }
       });
+      dispatch(getNotificationAction(response.data))
       return response.data;
     }
   };

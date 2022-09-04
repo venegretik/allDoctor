@@ -31,7 +31,7 @@ const Med_Cart = () => {
             <tr key={++keyNum} className={s.Font_size16}>
                 <td data-label="ACCOUNT">{el.date}</td>
                 <td data-label="DUE DATE">{el.doctors.map(el => <span key={++keyNum} className={s.sostav}>
-                    <p>{el.specialty}</p>
+                    <p>{el.specialty + "-"}</p>
                     <p>{el.fio}</p>
                 </span>)}</td>
                 <td data-label="AMOUNT" className={s.MedCenter}>{el.diagnosis}<Link to={el.file ? el.file : ""} className={"blue_config"} target="_blank" download>

@@ -11,11 +11,16 @@ import { NavLink } from "react-router-dom";
 const RazdeliOffline = () => {
     const dispatch = useDispatch();
     const BranchOffline = useSelector(state => state.doctorSpec.branch_offline_array);
+    let [statusDoc, setStatus] = useState(false);
     const [BranchSort, setShowBranchSort] = useState(BranchOffline);
     useEffect(() => {
-        dispatch(axiosBranchOffline());
-        window.scrollTo(0, 0);
-        dispatch(getConfigHeaderAction("Оффлайн записи"))
+        async function fetchMyAPI() {
+            let statusDoctor = await dispatch(axiosBranchOffline());
+            setStatus(statusDoctor.status);
+            window.scrollTo(0, 0);
+            dispatch(getConfigHeaderAction("Оффлайн записи"));
+        }
+        fetchMyAPI()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     useEffect(() => {
@@ -29,10 +34,10 @@ const RazdeliOffline = () => {
         let BranchSort1 = BranchOffline.filter(el => el.keywords.indexOf(e.target.value.toLowerCase()) !== -1);
         setShowBranchSort(BranchSort1);
     }
-    
+
     let Branch_list = BranchSort.map(el => <NavLink to={"/doctor-list/" + el.branch_id + "/0"} key={el.branch_id}>
         <div className={s.card_item + " title_config opacityBlue"}>
-            <img alt="" src={el.image}  />
+            <img alt="" src={el.image} />
             <div className={s.card_text_wrapper}>
                 <div className={s.card_title}>{el.title}</div>
                 <div className={s.card_subtitle}>{el.description}</div>
@@ -45,14 +50,14 @@ const RazdeliOffline = () => {
             <h2 className={s.medicine_title + " " + s.Font_size40}>Разделы медицины</h2>
             <div className={s.medicine_input}>
                 <input type="text" placeholder="Поиск по разделам" className={s.Register_form} value={Showtext} onChange={handleChange} />
-                <img alt="" src={search}  />
+                <img alt="" src={search} />
             </div>
             <div className={s.medicine_cards}>
-                {!Branch_list[0] ? (
+                {!statusDoc ? (
                     <Loader />
                 ) : (Branch_list)}
             </div>
-            <Chat/>
+            <Chat />
         </section>
     )
 }

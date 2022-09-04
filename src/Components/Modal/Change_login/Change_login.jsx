@@ -13,7 +13,24 @@ const ChangeLogin = (props) => {
   let profile = useSelector((state) => state.profile),
     [Error, setError] = useState(""),
     [isShown, setIsShown] = useState(1),
+    [timerNum, settimerNum] = useState(1),
     dispatch = useDispatch();
+    let phone = "+";
+    for (let i = 0; profile.phone.length > i; i++) {
+      if (i === 1) {
+        phone += " ";
+        phone += profile.phone[i];
+      } else if (i === 4) {
+        phone += " ";
+        phone += profile.phone[i];
+      } else if (i === 7) {
+        phone += " ";
+        phone += profile.phone[i];
+      } else if (i === 9) {
+        phone += " ";
+        phone += profile.phone[i];
+      } else phone += profile.phone[i];
+    }
   const sendForm = async (e) => {
     e.preventDefault();
     const data = await new FormData(e.target);
@@ -21,23 +38,23 @@ const ChangeLogin = (props) => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
-
     if (isShown === 3) {
-      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(obj.code, obj.phone)) : await dispatch(axiosProfileEmailEdit(obj.code, obj.email));
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(obj.code), obj.phone.replace(/[\D]+/g, ""))) : await dispatch(axiosProfileEmailEdit(obj.code, obj.email));
       if (responce.status)
-      props.setWindow(false);
+        props.setWindow(false);
       setError("");
     }
     if (isShown === 2) {
-      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(obj.code)) : await dispatch(axiosProfileEmailEdit(obj.code));
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(obj.code), profile.phone)) : await dispatch(axiosProfileEmailEdit(obj.code, profile.email));
       if (responce.status)
         setIsShown(++isShown);
       else
         setError("Неверный код, попробуйте ещё раз");
     }
     if (isShown === 1) {
-      props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit()) : await dispatch(axiosProfileEmailEdit());
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(0, profile.phone)) : await dispatch(axiosProfileEmailEdit(0, profile.email));
       setIsShown(++isShown);
+      settimerNum(responce.resend_timeout)
     }
 
   };
@@ -56,9 +73,15 @@ const ChangeLogin = (props) => {
             {isShown === 1 ? (
               <form onSubmit={(e) => { sendForm(e) }}>
                 <div className={s.ChangeLoginMain_step1}>
-                  <p className={s.Font_size14}>
-                    {props.type_el === "phone" ? "Мы отправим код подтверждения на ваш текущий " + profile.phone : "Мы отправим код подтверждения на вашу текущую электронную почту " + profile.email}
-                  </p>
+                  <span>
+                    <p className={s.Font_size14 + " gray_config"}>
+                      {props.type_el === "phone" ? "Мы отправим код подтверждения на ваш текущий " : "Мы отправим код подтверждения на вашу текущую электронную почту "}
+                    </p>
+                    <p className={s.Font_size14 + " black_config"}>
+                      {props.type_el === "phone" ? phone : profile.email}
+                    </p>
+                  </span>
+
                   <div className={s.ChangeLoginButton}>
                     <div className={s.ChangeMargin}>
                       <Button
@@ -82,8 +105,8 @@ const ChangeLogin = (props) => {
                   <Input pattern={'[0-9]{4}'} required placeholder={props.type_el === "phone" ? 'Код из SMS' : 'Код из Электронной почты'} type={'text'} className={'input'}
                     maxLength={4} name="code" />
                   <FormErrors className={s.Font_size14} error={Error} />
-                  <p className={s.Font_size14} >Отправить код повторно
-                    <Timer /></p>
+                  <p className={s.Font_size14 + " blue_config"}>Отправить код повторно
+                    <Timer time={timerNum}/></p>
                   <div className={s.ChangeLoginButton} >
                     <div className={s.ChangeMargin}>
                       <Button

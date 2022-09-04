@@ -15,6 +15,7 @@ import { Star1Action, Star2Action, Star3Action, Star4Action, Star5Action } from 
 import Chat from "../../../Components/Chat/Chat";
 const PostRewiew = () => {
     const params = useParams();
+    console.log(params.id)
     let dispatch = useDispatch();
     useEffect(() => {
         dispatch(axiosReviews(params.id));
@@ -34,14 +35,14 @@ const PostRewiew = () => {
     const star3 = useSelector(state => state.review.star3);
     const star4 = useSelector(state => state.review.star4);
     const star5 = useSelector(state => state.review.star5);
-    const idCons = useSelector(state => state.review.idCons);
+    const idCons = useSelector(state => state.review.consultation_id);
     const review = useSelector((state) => state.review);
     const sendForm = async (e) => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
         [...data].forEach(e => { obj[e[0]] = e[1] })
-        obj.consultation_id = idCons;
+        obj.consultation_id = Number(idCons);
         obj.accuracy = star1;
         obj.efficiency = star2;
         obj.attitude = star3;
@@ -59,7 +60,7 @@ const PostRewiew = () => {
         setStatus(true);
     }
     
-    return (statusRewiew ? <Navigate to={"/recording/" + params.doctor_id + "/Reviews"}/> :<div className={s.Container + " Container"}>
+    return (statusRewiew ? <Navigate to={"/recording/" + params.id + "/Reviews"}/> :<div className={s.Container + " Container"}>
     <div className={s.Review_full  + " black_config"}>
         <div className={s.Review_title}>
             <h1 className={s.Font_size40  + " title_config"}>Оставить отзыв</h1>

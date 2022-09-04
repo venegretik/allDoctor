@@ -65,6 +65,7 @@ const RegisterForm = () => {
       <Input
         required
         type={"date"}
+        placeholder={"Дата рождения"}
         label={{
           display: "flex",
           flexDirection: "column-reverse",

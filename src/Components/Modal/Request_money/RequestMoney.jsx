@@ -1,10 +1,8 @@
 import React from "react";
 import s from "./RequestMoney.module.css";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 import { Input } from "../../Input/Input";
 import Button from "../../Button/Button";
-import { getConfigModalStatus } from "../../../base/Reducers/configReducer";
 import { axiosProfileFriend } from "../../../base/asyncActions/Profile";
 import FormErrors from "../../FormError/FormError";
 const RequestMoney = (props) => {
@@ -17,6 +15,7 @@ const RequestMoney = (props) => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
+    obj.summ = Number(obj.summ);
     response = await dispatch(axiosProfileFriend(obj));
     if (!response.status) {
       errorType.error.fields = {
@@ -43,7 +42,6 @@ const RequestMoney = (props) => {
       },
     },
   };
-  const availableScreenWidth = window.screen.availWidth;
   return (
     <div>
       <div className={"black_config"}>
@@ -60,12 +58,12 @@ const RequestMoney = (props) => {
               <Input
                 placeholder={"Сумма"}
                 name={"summ"}
-                type="text"
+                type={"number"}
                 required
                 pattern={"^[0-9]+$"}
               />
               {/* КОМПОНЕНТ ОШИБКИ */}
-              <FormErrors error={errorMessage.error.message} />
+              <FormErrors error={errorMessage.error.message}/>
               {/* КОМПОНЕНТ ОШИБКИ */}
               <Button class={"btn orange"} text={"Запросить"} />
             </form>

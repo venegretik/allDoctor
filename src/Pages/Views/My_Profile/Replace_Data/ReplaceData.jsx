@@ -10,6 +10,7 @@ import ChangeData from "./ModalReplace/Change_data_modal";
 import { getShortInfo } from "../../../../base/asyncActions/getMainPageInfo";
 import Button from "../../../../Components/Button/Button";
 import FormErrors from "../../../../Components/FormError/FormError";
+import { InpDateMask } from "../../../../Components/Input/Input";
 import {
   axiosProfileEdit,
   axiosProfile,
@@ -82,7 +83,7 @@ const ReplaceData = () => {
       }));
     }
   };
-  let phone = "";
+  let phone = "+ ";
   for (let i = 0; profile.phone.length > i; i++) {
     if (i === 1) {
       phone += " (";
@@ -139,8 +140,9 @@ const ReplaceData = () => {
         <Input
           required
           minLength={"2"}
-          pattern={"^[А-Яа-яЁё]+$"}
-          placeholder={"Фамилия"}
+          pattern={"^[А-Яа-яЁё\\s]+$"}
+          placeholder={"Имя"}
+          defaultValue={profile.firstname}
           type={"text"}
           name={"firstname"}
         />
@@ -150,9 +152,10 @@ const ReplaceData = () => {
         <Input
           required
           minLength={"2"}
-          pattern={"^[А-Яа-яЁё]+$"}
-          placeholder={"Имя"}
+          pattern={"^[А-Яа-яЁё\\s]+$"}
+          placeholder={"Фамилия"}
           type={"text"}
+          defaultValue={profile.lastname}
           name={"lastname"}
         />
         {/* КОМПОНЕНТ ОШИБКИ */}
@@ -161,9 +164,10 @@ const ReplaceData = () => {
         <Input
           required
           minLength={"2"}
-          pattern={"^[А-Яа-яЁё]+$"}
+          pattern={"^[А-Яа-яЁё\\s]+$"}
           placeholder={"Отчество"}
           type={"text"}
+          defaultValue={profile.secondname}
           name={"secondname"}
         />
         {/* КОМПОНЕНТ ОШИБКИ */}
@@ -189,7 +193,14 @@ const ReplaceData = () => {
             value={"1"}
           />
         </div>
-        <Input required type={"date"} max={date} name={"birthday"} />
+        <InpDateMask
+        pattern="{1,2}-{1,2}-{4}"
+        required
+        type={"text"}
+        placeholder={"Дата рождения"}
+        max={date}
+        name={"birthday"}
+      />
         {/* КОМПОНЕНТ ОШИБКИ */}
         <FormErrors error={errorType.error?.fields.birthday} />
         {/* КОМПОНЕНТ ОШИБКИ */}

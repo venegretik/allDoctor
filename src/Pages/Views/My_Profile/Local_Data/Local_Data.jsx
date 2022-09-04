@@ -18,7 +18,7 @@ const Local_Data = () => {
     dispatch(getConfigHeaderAction("Профиль"))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  let phone = "";
+  let phone = "+ ";
   for (let i = 0; profile.phone.length > i; i++) {
     if (i === 1) {
       phone += " (";

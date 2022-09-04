@@ -9,15 +9,16 @@ import {
   axiosProfilePay,
   axiosProfileHistory,
 } from "../../../../base/asyncActions/Profile";
+import Loader from "../../../../Components/Loading/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { Input, InpMask } from "../../../../Components/Input/Input";
-import RequestMoney from "../../../../Components/Modal/Request_money/RequestMoney";
 import copy from "../../../../img/copy.png";
 import InfoModal from "../../../../Components/InfoText/InfoModal";
 import FormErrors from "../../../../Components/FormError/FormError";
 import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
 const Balance = () => {
   const [isShown, setIsShown] = useState(false);
+  let [statusDoc, setStatus] = useState(false);
   let dispatch = useDispatch();
   let keyNum = 0;
   const balance = useSelector((state) => state.profile.balance);
@@ -41,15 +42,20 @@ const Balance = () => {
     },
   });
   useEffect(() => {
+    async function fetchMyAPI() {
     dispatch(axiosProfileBalance());
     dispatch(axiosProfileRefferal());
     dispatch(getConfigHeaderAction("Баланс"))
-    if (!history[0]) dispatch(axiosProfileHistory());
+    let statusDoctor = await dispatch(axiosProfileHistory(1));
+    setStatus(statusDoctor.status);
+    }
+    fetchMyAPI()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const CopyText = (e) => {
+  const CopyText = async (e) => {
     var copyText = document.querySelector(".refferal");
-    copyText.select();
+    const code = copyText.innerText;
+    await navigator.clipboard.writeText(code);
 
     /* Copy the text inside the text field */
     document.execCommand("copy");
@@ -67,6 +73,8 @@ const Balance = () => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
+    obj.summ = Number(obj.summ)
+    obj.friend = Number(obj.friend?.replace(/[\D]+/g, ""));
     !isShown
       ? (response = await dispatch(axiosProfilePay(obj)))
       : (response = await dispatch(axiosProfilePay(obj)));
@@ -122,7 +130,7 @@ const Balance = () => {
             required
             minLength={"2"}
             placeholder={"Сумма"}
-            pattern={"^[0-9]+$"}
+            pattern={"^[0-9\\s]+$"}
             type={"number"}
             name={"summ"}
           />
@@ -180,14 +188,7 @@ const Balance = () => {
           <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" classtwo="infoFuncpop" class="infoFunc"/>
         </div>
         <div className={s.Refferal_input}>
-          <Input
-            type={"text"}
-            className="refferal"
-            required
-            pattern={"^[0-9]+$"}
-            minLength={"2"}
-            defaultValue={referral}
-          />
+          <p className={s.balanceRefferal + " gray_config refferal"}>{referral}</p>
           <img alt="" className={s.Referal_img} src={copy} onClick={CopyText}  />
         </div>
       </div>
@@ -196,7 +197,7 @@ const Balance = () => {
           <h1>История</h1>
         </div>
         <div className={s.History_content_full}>
-          {History}
+          {statusDoc ? History : <Loader />}
           <div className={s.Message_button_margin} onClick={ShowClick}>
             <Button
               className={s.Show_more + " " + s.Font_size14}

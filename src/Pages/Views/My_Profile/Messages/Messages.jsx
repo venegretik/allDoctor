@@ -1,21 +1,17 @@
 import React from "react";
 import s from './Messages.module.css';
 import Button from "../../../../Components/Button/Button";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getNotification } from "../../../../base/asyncActions/getMainPageInfo";
-import { getConfigHeaderAction} from "../../../../base/Reducers/configReducer";
+import { getConfigHeaderAction } from "../../../../base/Reducers/configReducer";
 import { axiosProfileDeleteNot, axiosProfileDeleteNotAll } from "../../../../base/asyncActions/Profile";
 const Messages = () => {
     let dispatch = useDispatch();
-    let [num, setInt] = useState(1);
-    const [NewArray, setNewArray] = useState([]);
+    const NewArray = useSelector((state) => state.main.notification);
+    let num = useSelector((state) => state.main.current_page);
     const asyncNotification = async () => {
-        const response = await dispatch(getNotification(num));
-        if (response.status) {
-            setNewArray(response.items);
-
-        }
+        dispatch(getNotification(num));
     };
     const asyncNotificationDelete = async (notofication_id) => {
         const response = await dispatch(axiosProfileDeleteNot(notofication_id))
@@ -25,13 +21,10 @@ const Messages = () => {
     const asyncNotificationDeleteAll = async () => {
         const response = await dispatch(axiosProfileDeleteNotAll())
         if (response.status)
-            dispatch(getNotification(num))
+            dispatch(getNotification(1));
     }
     const asyncNotificationShow = async () => {
-        if (num >= 3)
-            setInt(num)
-        else
-            setInt(++num)
+        dispatch(getNotification(++num))
     };
     useEffect(() => {
         asyncNotification();
@@ -40,10 +33,10 @@ const Messages = () => {
     }, []);
     return (
         <div className={s.Messages_full}>
-            {NewArray[0] ? NewArray.map((item) =>
-                <div className={s.Messages_block + " black_config"} key={item.notofication_id}>
+            {NewArray[0] ? NewArray.map((item, key) =>
+                <div className={s.Messages_block + " black_config"} key={key}>
                     <div className={s.Messages_close} onClick={e => asyncNotificationDelete(item.notofication_id)}>
-                        +
+                        &times;
                     </div>
                     <div className={s.Messages_text}>
                         <h1 className={s.Font_size24 + " title_config"}>{item.title}</h1>

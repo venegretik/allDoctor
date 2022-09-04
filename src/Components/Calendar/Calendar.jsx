@@ -35,15 +35,14 @@ const Calendar = (props) => {
         }
     }
     let ModalPayment = async () => {
-        let status = await dispatch(getPuymentInfo(Number(props.doctor_id), slot_id))
-        
+        let status = await dispatch(getPuymentInfo(Number(props.doctor_id), slot_id, DateStr))
         if (status) {
             dispatch(consultationModalAction(status));
         }
     }
     let OnCheck = async () => {
         let status = await dispatch(getPuymentInfo(props.usId, slot_id));
-        
+
         if (status.status === true)
             setRedPayment(true)
         else
@@ -104,7 +103,7 @@ const Calendar = (props) => {
 
     return (
         slots[0] ? <div className={s.Calendar_full + " black_config"}>
-            {RedPayment === true ? <Navigate to={"../payment/" + props.usId + "/" + slot_id} /> : false}
+            {RedPayment === true ? <Navigate to={"../payment/" + props.usId} /> : false}
             <div>
                 <p className={s.Font_size14 + " gray_config"}>Выберите дату и время для записи:</p>
             </div>
@@ -115,12 +114,12 @@ const Calendar = (props) => {
             </div>
             <div>
                 <p className={s.Font_size14 + " gray_config"}>Онлайн-расписание на {new Date(DateStr).toLocaleString(
-                "ru",
-                {
-                    day: "numeric",
-                    month: "long"
-                }
-            )}:</p>
+                    "ru",
+                    {
+                        day: "numeric",
+                        month: "long"
+                    }
+                )}:</p>
             </div>
             <div className={s.Calendar_rasp_top}>
                 {slots}
@@ -137,21 +136,21 @@ const Calendar = (props) => {
                         <div><Button
                             className={s.Injoy1 + " " + s.Font_size14}
                             type={'submit'}
-                            
+
                             class={'btn blue'}
                             text={'записаться'}
                         /></div> :
-                        //<Link to={"../payment/" + props.usId + "/" + slot_id}>
-                        <div onClick={e=>{
-                            if(slot_id)
-                            OnCheck()
-                        }} ><Button
-                            className={s.Injoy1 + " " + s.Font_size14}
-                            type={'submit'}
-                            class={'btn blue'}
-                            text={'записаться'}
-                        /></div> 
-                    //</Link>
+                        //<Link to={"../payment/" + props.usId}>
+                            <div onClick={e => {
+                                if (slot_id)
+                                    OnCheck()
+                            }} ><Button
+                                    className={s.Injoy1 + " " + s.Font_size14}
+                                    type={'submit'}
+                                    class={'btn blue'}
+                                    text={'записаться'}
+                                /></div>
+                        //</Link>
                 }
             </div>
         </div> : <Loader />

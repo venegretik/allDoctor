@@ -88,7 +88,7 @@ function App() {
             <Route path={"recording/:id/:type"} element={<Recording />} />
             <Route path={"razdeli"} element={<Razdeli />} />
             <Route path={"video"} element={<Video />} />
-            <Route path="payment/:id/:slot" element={<Payment />} />
+            <Route path="payment/:id" element={<Payment />} />
             <Route path={"post-rewiew/:id"} element={<PostRewiew />} />
             <Route path={"*"} element={<NotFound />} />
             <Route path={"razdeli-offline"} element={<RazdeliOffline />} />

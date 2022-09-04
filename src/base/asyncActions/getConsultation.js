@@ -36,6 +36,7 @@ export const axiosConsultationHistory = (specialization = 1, totalPage = 1, date
             spec_array: response.data.data.specializations
         }
         dispatch(consultationHistoryAction(responceObj));
+        return response.data;
     }
 }
 export const consultationHistoryCons = (specialization = 1, totalPage = 1, date_to = "2022-01-25", date_from = "2022-02-25") => {
@@ -92,6 +93,7 @@ export const axiosConsultationCalendar = (consultation_id, slot_id, DateStr = 1)
             }
         });
         dispatch(paymentDateTimeAction(DateStr))
+        debugger;
         return response.data.status
     }
 }

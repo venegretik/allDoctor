@@ -203,16 +203,20 @@ h2 {
   .Doctor {
     width: 100%;
   }
+
   .Skill_title h1 {
     font-size: 40px;
     text-align: center;
   }
-  .Skill{
+
+  .Skill {
     margin-top: 40px;
   }
-  .Skill_title{
+
+  .Skill_title {
     margin-bottom: 30px;
   }
+
   .Doctor_button {
     display: flex;
     margin-left: 0px;
@@ -462,6 +466,11 @@ h2 {
   .Doctor_list {
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  .Skill_select {
+    width: 130px;
+    display: flex;
   }
 
   .Doctor_button_mobile {

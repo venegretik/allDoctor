@@ -1,12 +1,10 @@
 import React from "react";
 import s from "./Cancel_Record.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import history from "../../../history";
 import Button from "../../Button/Button";
-import { getConfigModalStatus } from "../../../base/Reducers/configReducer";
 import { axiosConsultation } from "../../../base/asyncActions/getConsultation";
-import { BottomSheet } from 'react-spring-bottom-sheet'
+import { getConsultationUpcoming } from "../../../base/asyncActions/getMainPageInfo";
+import { axiosMyDoctor } from "../../../base/asyncActions/getDoctors";
 import 'react-spring-bottom-sheet/dist/style.css'
 const Cancel_Record = (props) => {
   let dispatch = useDispatch();
@@ -14,6 +12,10 @@ const Cancel_Record = (props) => {
     dispatch(props.func(consultation_id));
     if (props.type_modal === "cons")
       dispatch(axiosConsultation());
+    if (props.type_modal === "upcoming")
+      dispatch(getConsultationUpcoming());
+    if (props.type_modal === "myDoctor")
+      dispatch(axiosMyDoctor(1, true));
   };
   const config = useSelector((state) => state.config.config);
   return (
@@ -45,7 +47,10 @@ const Cancel_Record = (props) => {
             ""
           )}
           <div className={s.Cancel_Record_button}>
-            <div onClick={() => DoctorDelete(props.consultation_id)}>
+            <div onClick={() => {
+              DoctorDelete(props.consultation_id)
+              props.setWindow(false)
+            }}>
               <Button
                 className={s.Font_size16}
                 type={"submit"}

@@ -80,6 +80,7 @@ body.Cancel_Record_full {
 .Request {
     display: flex;
     align-items: center;
+    cursor: pointer;
     gap: 10px;
 }
 

@@ -22,6 +22,7 @@ const UtilityBlock = () => {
         });
         //функция создания трека
         Device();
+        startWebcam();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Id]);
     //получаем id трека из select для того чтобы поменять устройтво
@@ -87,12 +88,14 @@ const UtilityBlock = () => {
             let webcamStream;
             inputElement.current.srcObject = stream;
             inputElement.current.play();
-            setvideoStatus(true);
             // eslint-disable-next-line
             webcamStream = stream;
         }).catch((error) => {
             console.log(error);
         });
+    }
+    let ShowVideo = () =>{
+        setvideoStatus(true);
     }
 
     function colorPids(vol) {
@@ -121,7 +124,7 @@ const UtilityBlock = () => {
                 } : { display: "none" }} controls autoPlay />
                 {!videoStatus ? <div className={s.Utility_Check_video_content} >
                     <img alt="" src={photo} />
-                    <button onClick={startWebcam}>Проверить видео</button>
+                    <button onClick={ShowVideo}>Проверить видео</button>
                 </div> : ""}
 
             </div>

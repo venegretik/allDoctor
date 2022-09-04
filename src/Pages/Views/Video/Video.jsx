@@ -6,7 +6,7 @@ import PacientVideo from "../../../img/PacientVideo.png";
 import micro_off from "../../../img/mic_off.png";
 import videocam from "../../../img/videocam_off.png";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ModalContainer from "../../../Components/Modal/ModalContainer";
 import VolumeModal from "../../../Components/Modal/Volume_modal/VolumeModal";
 import cup from "../../../img/cup.png";
@@ -14,17 +14,25 @@ import message from "../../../img/chat_message.png";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import video_mobile from "../../../img/video_mobile.png";
 import ModalUnityChat from "../../../Components/Modal/UtilityModal_Chat/UtilityChat";
+import { ProfileAudioAction } from "../../../base/Reducers/UserReducer";
 const Video = () => {
     let dispatch = useDispatch();
+    let [showWindow, setWindow] = useState(false);
     const availableScreenWidth = window.screen.availWidth;
     useEffect(() => {
         dispatch(getConfigHeaderAction("Видео"));
         // eslint-disable-next-line
     }, [])
     let status = useSelector((state) => state.profile.utitlityShow);
+    let VolumeShow = useSelector((state) => state.profile.VolumeShow);
+    useEffect(() => {
+        setWindow(VolumeShow)
+        // eslint-disable-next-line
+    }, [VolumeShow])
     const config = useSelector((state) => state.config.config);
     return (
         <div className={s.VideoFull + " " + s.Container + " Container"}>
+            {showWindow ? <div className={s.background} onClick={e=>dispatch(ProfileAudioAction(false))}></div> : ""}
             <div className={s.VideoTitle + " title_config"}>
                 <h1>Белкина Ирина Николаевна</h1>
                 <p>Акушер • Гинеколог • Гинеколог-эндокринолог</p>
@@ -32,8 +40,8 @@ const Video = () => {
             </div>
             <div className={s.VideoBlock}>
                 <div className={s.VideoBlockImage + " black_config"}>
-                    <img alt="" src={PacientVideo}  className={s.ImageVideo} />
-                    <img alt="" src={availableScreenWidth <= 480 ? video_mobile : videoImage} className={s.ImageVideo1}  />
+                    <img alt="" src={PacientVideo} className={s.ImageVideo} />
+                    <img alt="" src={availableScreenWidth <= 480 ? video_mobile : videoImage} className={s.ImageVideo1} />
                     <div className={s.TimerAbsolute + " white_config"}>
                         <p>00:00</p>
                     </div>
@@ -47,19 +55,19 @@ const Video = () => {
                         <VolumeModal />
                         <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back}>
-                                <img alt="" src={micro_off}  />
+                                <img alt="" src={micro_off} />
                             </div>
                             <p>Выключить микрофон</p>
                         </li>
                         <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back}>
-                                <img  src={videocam}  alt=""/>
+                                <img src={videocam} alt="" />
                             </div>
                             <p>Выключить камеру</p>
                         </li>
                         <li style={status ? { display: "none" } : { display: "flex" }}>
                             <div className={s.icon_back + " " + s.icon_close}>
-                                <img  src={close}  alt=""/>
+                                <img src={close} alt="" />
                             </div>
                             <p>Завершить</p>
                         </li>
@@ -71,19 +79,19 @@ const Video = () => {
 
                         <li>
                             <div className={s.icon_back}>
-                                <img  src={micro_off} alt="" />
+                                <img src={micro_off} alt="" />
                             </div>
                             <p>Выключить микрофон</p>
                         </li>
                         <li>
                             <div className={s.icon_back}>
-                                <img  src={videocam} alt=""  />
+                                <img src={videocam} alt="" />
                             </div>
                             <p>Выключить камеру</p>
                         </li>
                         <li>
                             <div className={s.icon_back + " " + s.icon_close}>
-                                <img  src={close} alt="" />
+                                <img src={close} alt="" />
                             </div>
                             <p>Завершить</p>
                         </li>
@@ -111,10 +119,10 @@ const Video = () => {
                         </span>
                     </div>
                     <div className={s.MessageText}>
-                        <img  src={cup}  alt=""/>
+                        <img src={cup} alt="" />
                         <div className={s.MessageImg}>
                             <input type="text" placeholder="Введите текст сообщения..." />
-                            <img src={message} alt=""/>
+                            <img src={message} alt="" />
                         </div>
 
                     </div>

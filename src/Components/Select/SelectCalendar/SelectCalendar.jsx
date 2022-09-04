@@ -41,13 +41,13 @@ const SelectCalendar = (props) => {
     }, [isShown])
     const [state, setState] = useState([
         {
-            startDate: new Date(),
-            endDate: null,
+            startDate: new Date("10/23/2015"),
+            endDate: new Date("10/23/2015"),
             key: "selection"
         }
     ]);
     useEffect(() => {
-        dispatch(consultationHistoryCons(specialization, page, state[0].startDate, state[0].endDate));
+        dispatch(consultationHistoryCons(specialization, page, state[0].startDate.toISOString().split('T')[0], state[0].endDate.toISOString().split('T')[0]));
         setNum(++isNum);
         if (isNum === 2) {
             setNum(0);
@@ -79,7 +79,6 @@ const SelectCalendar = (props) => {
             {isShown && (<>
                 {availableScreenWidth <= 480 ? <BottomSheet open={isShown}
                     onDismiss={() => handleClick}><div>
-                        {isShown ? <div className="background" onClick={handleClick}></div> : ""}
                         <div className={s.Calendar_mobile}>
                             <div className={s.Cart_close} onClick={handleClick}>
                                 &times;
@@ -94,7 +93,7 @@ const SelectCalendar = (props) => {
                         </div>
                     </div>
                 </BottomSheet> : <div className={s.Cancel_Record_full}>
-                    {isShown ? <div className="background" onClick={handleClick}></div> : ""}
+                    {isShown && availableScreenWidth >= 480 ? <div className="background" onClick={handleClick}></div> : ""}
                     <div className={s.Cancel_Record_block}>
                         <div className={s.Cart_close} onClick={handleClick}>
                             &times;

@@ -8,8 +8,8 @@ import { useSelector } from "react-redux/es/exports";
 import { Navigate } from "react-router";
 const Header = () => {
   let Text = useSelector((state) => state.config.header_text);
-  if (Text.length > 20) {
-    Text = Text.substring(0, 19) + "...";
+  if (Text.length > 15) {
+    Text = Text.substring(0, 14) + "...";
   }
   var url = document.location.pathname;
   useEffect(() => {

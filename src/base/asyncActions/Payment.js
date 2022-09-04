@@ -1,7 +1,7 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
-import { paymentInfoAction } from "../Reducers/paymentReducer";
-export const getPuymentInfo = (id, slot) => {
+import { paymentInfoAction, paymentDateTimeAction } from "../Reducers/paymentReducer";
+export const getPuymentInfo = (id, slot, DateStr) => {
   return async (dispatch) => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -11,7 +11,9 @@ export const getPuymentInfo = (id, slot) => {
         promocode: "",
         use_balance: true
       });
-      dispatch(paymentInfoAction(response.data.data));
+      dispatch(paymentInfoAction(response.data.data, slot));
+      if (DateStr)
+        dispatch(paymentDateTimeAction(DateStr));
       return response.data
     }
   };

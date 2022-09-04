@@ -2,7 +2,7 @@ import React from "react";
 import s from '../../Pages/Views/Consultation/Consultation.module.css';
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Stars from "../Stars/Stars";
 import Loader from "../Loading/Loader";
 import Button from "../Button/Button";
@@ -15,22 +15,26 @@ const ConsultationHistory = () => {
     const page = useSelector(state => state.consultation.page);
     const date_from = useSelector(state => state.consultation.date_from);
     const date_to = useSelector(state => state.consultation.date_to);
+    let [statusDoc, setStatus] = useState(false);
     const totalPage = useSelector(state => state.consultation.totalPage);
     let specialization_id = useSelector(state => state.consultation.specialization_id);
     let consultationHistory = useSelector((state) => state.consultation.consultationHistory);
     let dispatch = useDispatch();
     useEffect(() => {
-        dispatch(axiosBranch());
-        if(!consultationHistory[0])
-        dispatch(axiosConsultationHistory());
+        async function fetchMyAPI() {
+            dispatch(axiosBranch());
+                let statusDoctor = await dispatch(axiosConsultationHistory());
+                setStatus(statusDoctor.status);
+        }
+        fetchMyAPI()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let DoctorDelete = (consultation_id) => {
         dispatch(axiosConsultationDelete(consultation_id));
     }
-    
+
     let history = consultationHistory.map(
-        (el, key) => <div className={s.Doctor_full  + " black_config"} key={key}>
+        (el, key) => <div className={s.Doctor_full + " black_config"} key={key}>
             {el.can_cancel ? <div className={s.Cart_close} onClick={() => { DoctorDelete(el.consultation_id) }}>
                 +
             </div> : ""}
@@ -91,7 +95,7 @@ const ConsultationHistory = () => {
                 <div className={s.History_title + " title_config"}>
                     <h1>История</h1>
                 </div>
-                <div className={s.History_select  + " black_config"}>
+                <div className={s.History_select + " black_config"}>
                     <div className={s.History_special}>
                         <p className={s.Font_size14 + " gray_config"}>Специализация</p>
                         <SelectConsultation array={branch} selectType={"history"} func={consultationHistoryCons} />
@@ -102,7 +106,7 @@ const ConsultationHistory = () => {
                     </div>
                 </div>
             </div>
-            {!history[0] ? (
+            {!statusDoc ? (
                 <Loader />
             ) : (history)}
             <div className={s.Show_more + " " + s.Message_button_margin} onClick={e => {

@@ -10,8 +10,10 @@ import {
   ProfileMedCartAction,
   ProfileResultAction,
   ProfilePhotoAction,
-  ProfileResultSelectAction
+  ProfileResultSelectAction,
+  ProfileResultStartAction
 } from "../Reducers/UserReducer";
+import { getNotificationDeleteAction, getNotificationDeleteAllAction } from "../Reducers/mainPageReducer";
 import { getShortInfo } from "./getMainPageInfo";
 export const axiosProfile = () => {
   return async function (dispatch) {
@@ -72,7 +74,8 @@ export const axiosProfileHistory = (page = 1) => {
     const response = await axios.get(
       `${defaultUrl}user/payment/history?page=${page}`
     );
-    dispatch(ProfileHistoryAction(response.data.data));
+    dispatch(ProfileHistoryAction(response.data.data, page === 1 ? "new" : "old"));
+    return response.data;
   };
 };
 export const axiosProfileMedCart = (obj) => {
@@ -84,7 +87,7 @@ export const axiosProfileMedCart = (obj) => {
     dispatch(ProfileMedCartAction(response.data.data));
   };
 };
-export const axiosProfileResult = (page = 1, type = 0) => {
+export const axiosProfileResult = (page = 1, type = 0, typeStart = false) => {
   return async function (dispatch) {
     const token = localStorage.getItem("token");
     if (token)
@@ -92,7 +95,8 @@ export const axiosProfileResult = (page = 1, type = 0) => {
     const response = await axios.get(
       `${defaultUrl}user/research?page=${page}&type=${type}`
     );
-    dispatch(ProfileResultAction(response.data.data));
+    !typeStart ? dispatch(ProfileResultAction(response.data.data)) : dispatch(ProfileResultStartAction(response.data.data));
+    return response.data
   };
 };
 export const axiosProfileResultSelect = (page = 1, type = 0) => {
@@ -103,7 +107,7 @@ export const axiosProfileResultSelect = (page = 1, type = 0) => {
     const response = await axios.get(
       `${defaultUrl}user/research?page=${page}&type=${type}`
     );
-    dispatch(ProfileResultSelectAction(response.data.data));
+    dispatch(ProfileResultSelectAction(response.data.data, type));
   };
 };
 export const axiosProfileEdit = (obj) => {
@@ -152,7 +156,11 @@ export const axiosProfileUpload = (obj = {}) => {
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const response = await axios.post(`${defaultUrl}user/research`, {
       params: {
-        ...obj,
+        ...obj
+      },
+    }, {
+      headers: {
+        "Content-Type": "multipart/form-data",
       },
     });
     return response.data
@@ -166,6 +174,7 @@ export const axiosProfileDeleteNot = (notification_id) => {
     const response = await axios.delete(
       `${defaultUrl}user/notification/${notification_id}`
     );
+    dispatch(getNotificationDeleteAction(notification_id));
     return response.data;
   };
 };
@@ -175,6 +184,7 @@ export const axiosProfileDeleteNotAll = () => {
     if (token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const response = await axios.delete(`${defaultUrl}user/notification/all`);
+    dispatch(getNotificationDeleteAllAction())
     return response.data;
   };
 };

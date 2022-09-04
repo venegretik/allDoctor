@@ -5,7 +5,6 @@ import Button from "../Button/Button";
 import { axiosLogin, axiosSendCode } from "../../base/asyncActions/Login";
 import { useDispatch, useSelector } from "react-redux";
 import Timer from "../Timer/Timer";
-
 const LoginForm = () => {
   const dispatch = useDispatch();
   const login = useSelector((state) => state.login.send);

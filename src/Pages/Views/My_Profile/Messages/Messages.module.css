@@ -5,10 +5,13 @@
 .Messages_close {
     position: absolute;
     right: 0px;
-    transform: rotate(-45deg);
-    font-size: 18px;
+    top: -5px;
+    cursor: pointer;
+    font-size: 30px;
 }
-
+.Messages_text{
+    padding-right: 30px;
+}
 .Font_size24 {
     font-family: 'Exo', sans-serif;
     font-size: 24px;

@@ -105,10 +105,12 @@
 .links {
     padding-bottom: 40px;
 }
-.close{
-    color: #F14646!important;
+
+.close {
+    color: #F14646 !important;
 
 }
+
 .links a p {
     margin-bottom: 5px;
 }
@@ -116,6 +118,11 @@
 @media(max-width:840px) {
     .My_content_title h1 {
         display: none;
+    }
+
+    .My_content_top {
+        display: flex;
+        justify-content: center;
     }
 
     .My_content_bottom {

@@ -40,7 +40,7 @@ const ConsultationReady = (props) => {
             <ModalContainer typeModalCont="CancelRecord"
               consultation_id={ConsultationUpcoming.consultation_id}
               text={"Вы действительно хотите отменить запись?"}
-              typeModal={""}
+              type_modal={"upcoming"}
               func={axiosConsultationDelete}
             />
           ) : (
@@ -173,7 +173,7 @@ const ConsultationReady = (props) => {
                 />
               </Link>
             ) : ConsultationUpcoming.can_reschedule ? (
-              <ModalContainer typeModalCont = "ModalCalendar" />
+              <ModalContainer typeModalCont = "ModalCalendar"/>
             ) : ConsultationUpcoming.is_paid ? (
               <div
                 onClick={(e) => PuyFunc(ConsultationUpcoming.doctor.doctor_id)}
