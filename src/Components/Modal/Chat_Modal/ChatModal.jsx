@@ -12,17 +12,6 @@ const ChatModal = () => {
     let [showWindow, setWindow] = useState(false);
     let [chatShow, setChat] = useState(false);
     let num = 0;
-    if (window.history && window.history.pushState && showWindow) {
-        window.onpopstate = function (event) {
-            if (showWindow) {
-                setWindow(false);
-                window.history.pushState('forward', null, '');
-                window.history.forward(1);
-            }
-        };
-        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
-        window.history.forward(1);
-    }
     const availableScreenWidth = window.screen.availWidth;
     useEffect(() => {
         if (availableScreenWidth <= 480) {

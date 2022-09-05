@@ -34,12 +34,10 @@ const Payment = () => {
         e.preventDefault()
         const data = await new FormData(e.target);
         let obj = {};
-
         [...data].forEach(e => { obj[e[0]] = e[1] })
         obj.doctor_id = Number(params.id);
-        obj.use_balance = Boolean(obj.use_balance.value);
         obj.slot_id = payment.slot_id;
-
+        obj.use_balance = obj.use_balance ? true : false;
         let response = await dispatch(getPuymentPost(obj));
         if (response.status) {
             window.location.href = response.data.payment_url;
@@ -56,7 +54,6 @@ const Payment = () => {
         setShowText(e.target.value);
     }
     const handleChange = (e) => {
-        setShowText(e.target.value);
         let obj = {};
         obj.doctor_id = Number(params.id);
         obj.slot_id = payment.slot_id;
@@ -122,8 +119,7 @@ const Payment = () => {
                         <Input
                             type="text"
                             placeholder="Промо или реферальный код"
-                            name={'promocode'} value={Showtext} onChange={async (e) => {
-                                changeInput(e);
+                            name={'promocode'} defaultValue={Showtext} onChange={e=>changeInput(e)} onKeyUp={async (e) => {
                                 setTimeout(function () {
                                     handleChange(e)
                                 }, 1000)

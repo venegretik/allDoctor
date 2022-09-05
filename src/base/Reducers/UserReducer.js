@@ -4,7 +4,7 @@ const defaultState = {
     lastname: "",
     secondname: "",
     phone: "",
-    gender: 1,
+    gender: null,
     birthday: "",
     email: "",
     photo: "",

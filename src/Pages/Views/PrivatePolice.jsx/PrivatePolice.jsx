@@ -3,8 +3,9 @@ import s from "./PrivatePolice.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Loader from "../../../Components/Loading/Loader";
 import PDF from "../../../img/filePdf.png";
-import { getConfigHeaderAction} from "../../../base/Reducers/configReducer";
+import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import {
   axiosPrivacy,
   axiosServices,
@@ -30,24 +31,27 @@ const PrivatePolice = (props) => {
   }, []);
   return (
     <div className={s.PrivatePoliceFull + " " + s.Container}>
-      <div style={{color: config?.config.colors.color2}}>
-        <h1 className={s.Font_size24}>{title}</h1>
-      </div>
-      <Link to={file ? file : "/"} target="_blank" download style={{color: config?.config.colors.color2}}>
-        <div className={s.FileBlock}>
-          <img alt="" src={PDF}  />
-          <div className={s.FileText}>
-            <p className={s.Font_size14}>{title}</p>
-            <p className={s.Font_size14}>640кб</p>
-          </div>
+      {title ? <div>
+        <div style={{ color: config?.config.colors.color2 }}>
+          <h1 className={s.Font_size24}>{title}</h1>
         </div>
-      </Link>
-      <div>
-        <div
-          className={s.Font_size14}
-          dangerouslySetInnerHTML={{ __html: HTML }}
-        ></div>
-      </div>
+        <Link to={file ? file : "/"} target="_blank" download style={{ color: config?.config.colors.color2 }}>
+          <div className={s.FileBlock}>
+            <img alt="" src={PDF} />
+            <div className={s.FileText}>
+              <p className={s.Font_size14}>{title}</p>
+              <p className={s.Font_size14}>640кб</p>
+            </div>
+          </div>
+        </Link>
+        <div>
+          <div
+            className={s.Font_size14}
+            dangerouslySetInnerHTML={{ __html: HTML }}
+          ></div>
+        </div>
+      </div> : <Loader />}
+
     </div>
   );
 };

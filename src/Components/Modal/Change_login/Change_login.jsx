@@ -105,7 +105,10 @@ const ChangeLogin = (props) => {
                   <Input pattern={'[0-9]{4}'} required placeholder={props.type_el === "phone" ? 'Код из SMS' : 'Код из Электронной почты'} type={'text'} className={'input'}
                     maxLength={4} name="code" />
                   <FormErrors error={Error} />
-                  <p className={s.Font_size14 + " blue_config"}>Отправить код повторно
+                  <p className={s.Font_size14 + " blue_config"} onClick={async e=> {
+                    let responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(0, profile.phone)) : await dispatch(axiosProfileEmailEdit(0, profile.email))
+                    settimerNum(responce.resend_timeout);
+                  }}>Отправить код повторно
                     <Timer time={timerNum}/></p>
                   <div className={s.ChangeLoginButton} >
                     <div className={s.ChangeMargin}>

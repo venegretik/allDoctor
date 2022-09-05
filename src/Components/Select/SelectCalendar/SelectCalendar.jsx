@@ -21,15 +21,6 @@ const SelectCalendar = (props) => {
         setIsShown((current) => !current);
         setNum(0);
     };
-    if (window.history && window.history.pushState && isShown) {
-        window.onpopstate = function (event) {
-            if (isShown) {
-                setIsShown(false);
-                window.history.pushState('forward', null, '');
-                window.history.forward(1);
-            }
-        };
-    }
     const availableScreenWidth = window.screen.availWidth;
     useEffect(() => {
         if (!isShown) {
@@ -41,15 +32,19 @@ const SelectCalendar = (props) => {
     }, [isShown])
     const [state, setState] = useState([
         {
-            startDate: new Date("10/23/2015"),
-            endDate: new Date("10/23/2015"),
+            startDate: new Date(),
+            endDate: new Date(),
             key: "selection"
         }
     ]);
     useEffect(() => {
-        dispatch(consultationHistoryCons(specialization, page, state[0].startDate.toISOString().split('T')[0], state[0].endDate.toISOString().split('T')[0]));
+        let startDate = new Date(state[0].startDate);
+        let endDate = new Date(state[0].endDate);
         setNum(++isNum);
         if (isNum === 2) {
+            startDate.setDate(startDate.getDate() + 1)
+            endDate.setDate(endDate.getDate() + 1)
+            dispatch(consultationHistoryCons(specialization, page, endDate.toISOString().split('T')[0], startDate.toISOString().split('T')[0]));
             setNum(0);
             setIsShown(false);
         }

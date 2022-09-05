@@ -6,17 +6,6 @@ import { useSelector } from "react-redux";
 import { BottomSheet } from "react-spring-bottom-sheet";
 const ModalUnityChat = () => {
     let [showWindow, setWindow] = useState(false);
-    if (window.history && window.history.pushState  && showWindow) {
-        window.onpopstate = function (event) {
-            if (showWindow) {
-              setWindow(false);
-                window.history.pushState('forward', null, '');
-                window.history.forward(1);
-            }
-        };
-        window.history.pushState('forward', null, ''); // В IE должны быть эти две строки
-        window.history.forward(1);
-    }
     useEffect(() => {
         if (!showWindow) {
             document.body.style.overflow = "auto"

@@ -1,6 +1,8 @@
 .FileBlock {
   display: flex;
   margin-top: 20px;
+  width:max-content;
+  max-width: 400px;
   margin-bottom: 20px;
 }
 .PrivatePoliceFull {

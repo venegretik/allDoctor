@@ -23,7 +23,7 @@ export const getNotification = (page = 1) => {
           page: page
         }
       });
-      dispatch(getNotificationAction(response.data))
+      dispatch(getNotificationAction(response.data, page === 1 ? "new" : "old"))
       return response.data;
     }
   };

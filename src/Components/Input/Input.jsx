@@ -7,7 +7,7 @@ export const InpMask = (props) => {
   );
 };
 export const InpDateMask = (props) => {
-  return <InputMask mask='dd/mm/yyyy' onChange={props.onChange} value={props.value} {...props}/>
+  return <InputMask mask='99-99-9999' onChange={props.onChange} value={props.value} {...props}/>
 
 };
 export const Input = (props) => {

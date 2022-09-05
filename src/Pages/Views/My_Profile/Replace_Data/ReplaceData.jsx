@@ -19,8 +19,18 @@ import { useEffect, useState } from "react";
 import { ProfileUtilityAction } from "../../../../base/Reducers/UserReducer";
 const ReplaceData = () => {
   const dispatch = useDispatch(),
-    profile = useSelector((state) => state.profile),
-    date = new Date().toISOString().split("T")[0];
+    [Date1, setDate] = useState(""),
+    profile = useSelector((state) => state.profile);
+  useEffect(() => {
+    let DateStr = new Date(profile.birthday)
+    let options = {
+      day: "numeric",
+      month: "numeric",
+      year: "numeric"
+    }
+    setDate(DateStr.toLocaleString("ru", options));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   let [isShow, setShow] = useState(false);
   let isState = useSelector((state) => state.profile.utitlityShow);
   useEffect(() => {
@@ -60,19 +70,31 @@ const ReplaceData = () => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
+    var dateParts = obj.birthday.split("-");
+    obj.birthday = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
     const response = await dispatch(axiosProfileEdit(obj));
     if (response.status) {
       dispatch(getShortInfo());
       dispatch(ProfileUtilityAction(true));
+      seterrorType(errorType => ({
+        error: {
+          fields: {
+            firstname: [],
+            lastname: [],
+            secondname: [],
+            birthday: []
+          }
+        }
+      }))
     }
     else {
       seterrorType(errorType => ({
         error: {
           fields: {
-            firstname: response.error?.fields.firstname? [...response.error.fields.firstname] : [],
-            lastname: response.error?.fields.lastname? [...response.error.fields.lastname] : [],
-            secondname: response.error?.fields.secondname? [...response.error.fields.secondname] : [],
-            birthday: response.error?.fields.birthday? [...response.error.fields.birthday] : []
+            firstname: response.error?.fields.firstname ? [...response.error.fields.firstname] : [],
+            lastname: response.error?.fields.lastname ? [...response.error.fields.lastname] : [],
+            secondname: response.error?.fields.secondname ? [...response.error.fields.secondname] : [],
+            birthday: response.error?.fields.birthday ? [...response.error.fields.birthday] : []
           }
         }
       }))
@@ -83,6 +105,11 @@ const ReplaceData = () => {
       }));
     }
   };
+  let setText = (e) => {
+
+    setDate(e.target.value)
+    console.log(e.target.value)
+  }
   let phone = "+ ";
   for (let i = 0; profile.phone.length > i; i++) {
     if (i === 1) {
@@ -100,14 +127,14 @@ const ReplaceData = () => {
     } else phone += profile.phone[i];
   }
   return (
-    <div className={s.ReplaceData  + " black_config"} >
-      <div className={s.My_content_title  + " title_config"} >
+    <div className={s.ReplaceData + " black_config"} >
+      <div className={s.My_content_title + " title_config"} >
         <h1>Личные данные</h1>
       </div>
       {isShow ? <ChangeData /> : ""}
       <div className={s.Profile_data}>
         <div className={s.Profile_data_download_img}>
-          <img alt="" src={profile.photo}  />
+          <img alt="" src={profile.photo} />
           <div className={s.upload}>
             <MessageContainer />
           </div>
@@ -140,7 +167,7 @@ const ReplaceData = () => {
         <Input
           required
           minLength={"2"}
-          pattern={"^[А-Яа-яЁё\\s]+$"}
+          pattern={"^[A-Za-zА-Яа-яЁё\\s]+$"}
           placeholder={"Имя"}
           defaultValue={profile.firstname}
           type={"text"}
@@ -152,7 +179,7 @@ const ReplaceData = () => {
         <Input
           required
           minLength={"2"}
-          pattern={"^[А-Яа-яЁё\\s]+$"}
+          pattern={"^[A-Za-zА-Яа-яЁё\\s]+$"}
           placeholder={"Фамилия"}
           type={"text"}
           defaultValue={profile.lastname}
@@ -164,7 +191,7 @@ const ReplaceData = () => {
         <Input
           required
           minLength={"2"}
-          pattern={"^[А-Яа-яЁё\\s]+$"}
+          pattern={"^[A-Za-zА-Яа-яЁё\\s]+$"}
           placeholder={"Отчество"}
           type={"text"}
           defaultValue={profile.secondname}
@@ -179,6 +206,7 @@ const ReplaceData = () => {
             type={"radio"}
             required
             name={"gender"}
+            defaultChecked={profile.gender === 0 ? true : false}
             labeltext={"Мужчина"}
             label={{ color: config?.config.colors.color4 }}
             value={"0"}
@@ -188,19 +216,20 @@ const ReplaceData = () => {
             type={"radio"}
             required
             name={"gender"}
+            defaultChecked={profile.gender === 1 ? true : false}
             labeltext={"Женщина"}
             label={{ color: config?.config.colors.color4 }}
             value={"1"}
           />
         </div>
         <InpDateMask
-        pattern="{1,2}-{1,2}-{4}"
-        required
-        type={"text"}
-        placeholder={"Дата рождения"}
-        max={date}
-        name={"birthday"}
-      />
+          required
+          type={"text"}
+          placeholder={"Дата рождения"}
+          value={Date1}
+          onChange={setText}
+          name={"birthday"}
+        />
         {/* КОМПОНЕНТ ОШИБКИ */}
         <FormErrors error={errorType.error?.fields.birthday} />
         {/* КОМПОНЕНТ ОШИБКИ */}

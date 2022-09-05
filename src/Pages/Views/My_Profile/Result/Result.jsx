@@ -37,7 +37,17 @@ const FormResult = () => {
         else
             obj.file = fileUpload;
         let response = await dispatch(axiosProfileUpload(obj));
+
         if (!response.status) {
+            seterrorType(errorType => ({
+                error: {
+                    fields: {
+                        type: response.error?.fields.type ? [...response.error.fields.type] : [],
+                        name: response.error?.fields.name ? [...response.error.fields.name] : [],
+                        file: response.error?.fields.file ? [...response.error.fields.file] : [],
+                    }
+                }
+            }))
             seterrorMessage(errorMessage => ({
                 error: {
                     message: response.error?.message
@@ -53,13 +63,24 @@ const FormResult = () => {
             message: "",
         },
     });
+    let [errorType, seterrorType] = useState({
+        status: false,
+        error: {
+            fields: {
+                type: [],
+                name: [],
+                file: []
+            },
+        },
+    });
     return (
         <form onSubmit={handleChange}>
             <Input name={"name"}
                 minLength={'2'}
-                pattern={'^[А-Яа-яЁё]+$'}
+                pattern={'^[A-Za-zА-Яа-яЁё\\s]+$'}
                 required
                 type="text" placeholder="Название документа" />
+                <FormErrors error={errorType.error?.fields.name} />
             <div className={s.Form_Radio}>
                 <div className={s.Form_Input} style={{}}>
                     <Input id="Register_radio1" value={'0'} type="radio" name={"type"} labeltext={"Лабороторные"} label={{
@@ -76,9 +97,11 @@ const FormResult = () => {
                     <InfoModal text="texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext" classtwo="infoFuncpop" class="infoFunc" />
                 </div>
             </div>
+                <FormErrors error={errorType.error?.fields.type} />
             <div className={s.Form_Download}>
                 <FileUploader handleChange={handleChangeFile} label="Нажмите или перетащите сюда файл" name="file" classes="drop_area" />
             </div>
+                <FormErrors error={errorType.error?.fields.file} />
             <MessageContainer type={"button"} />
 
             <div className={s.UploadFile}>

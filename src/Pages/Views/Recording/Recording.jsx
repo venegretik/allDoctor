@@ -21,7 +21,6 @@ const Recording = () => {
     }, []);
     
     let recording = useSelector(state => state.recording);
-    const config = useSelector((state) => state.config.config);
     const inputElement = useRef();
     useEffect(() => {
         if (params.type === "Reviews")
@@ -44,7 +43,7 @@ const Recording = () => {
                                 <div className={s.Doctor_avatar_info + " " + s.black}>
                                     <Stars num={recording.rate} />
                                     <p className={s.Font_size14}>{recording.recomends + "%"} пациентов рекомендуют врача</p>
-                                    <p className={s.Font_size14 + " blue_config"} style={{color: config?.config.colors.color10}} onClick={e=>inputElement.current.scrollIntoView()}>{recording.reviews} отзывов</p>
+                                    <p className={s.Font_size14 + " blue_config"} style={{cursor: "pointer"}} onClick={e=>inputElement.current.scrollIntoView()}>{recording.reviews} отзывов</p>
                                 </div>
                             </div>
                             <div className={s.Doctor_info + " " + s.black}>
