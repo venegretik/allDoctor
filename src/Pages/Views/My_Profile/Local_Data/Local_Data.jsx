@@ -3,7 +3,7 @@ import s from "../My_Profile.module.css";
 import pen from "../../../../img/pen.png";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getConfigHeaderAction } from "../../../../base/Reducers/configReducer";
 import Loader from "../../../../Components/Loading/Loader";
 import { axiosProfile } from "../../../../base/asyncActions/Profile";
@@ -12,12 +12,18 @@ const Local_Data = () => {
   const logout = () => {
     localStorage.clear();
   };
+  let [dateParts, setdateParts] = useState(1)
   const profile = useSelector((state) => state.profile);
   useEffect(() => {
     dispatch(axiosProfile());
     dispatch(getConfigHeaderAction("Профиль"))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    let datePartsNew = profile.birthday.split("-");
+    setdateParts(`${datePartsNew[2]}-${datePartsNew[1]}-${datePartsNew[0]}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile]);
   let phone = "+ ";
   for (let i = 0; profile.phone.length > i; i++) {
     if (i === 1) {
@@ -136,7 +142,7 @@ const Local_Data = () => {
           </div>
           <div className={s.My_content_bottom}>
             <span>
-              <p>Дата рождения: {profile.birthday}</p>
+              <p>Дата рождения: {dateParts}</p>
             </span>
             <span>
               <p>Электронная почта: {profile.email}</p>

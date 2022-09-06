@@ -152,7 +152,7 @@
 }
 .UploadFile button{
     display: block;
-    width: auto;
+    width: 100%;
 }
 .gray {
     color: #8B9BAB;

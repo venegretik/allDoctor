@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { ProfileUtilityAudioAction } from "../../../base/Reducers/UserReducer";
+import { ProfileUtilityAudioAction, ProfileUtilityVideoAction } from "../../../base/Reducers/UserReducer";
 import arrow from "../../../img/arrow.png";
 import "../Select.css";
 const SelectModule = (props) => {
@@ -23,6 +23,7 @@ const SelectModule = (props) => {
             localStorage.setItem(props.array[0].kind + "id", changeEvent.target.id);
         }
         if (videoInput[0]) {
+            dispatch(ProfileUtilityVideoAction(changeEvent.target.id));
             localStorage.setItem(props.array[0].kind + "id", changeEvent.target.id);
         }
 

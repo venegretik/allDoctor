@@ -39,6 +39,7 @@ const defaultState = {
   const UTILITY = 'UTILITY';
   const UPLOADFILE = 'UPLOADFILE';
   const RESULT_START = 'RESULT_START';
+  const UTILITYVIDEO = 'UTILITYVIDEO'
   export const profileReducer = (state = defaultState, action) => {
     switch (action.type) {
         case USER_ARRAY:
@@ -96,6 +97,11 @@ const defaultState = {
                 ...state,
                 UtilityAudioId:action.Id
             }
+        case UTILITYVIDEO:
+            return{
+                ...state,
+                UtilityVideoId:action.Id
+            }
         case UPLOADFILE:
             return{
                 ...state,
@@ -119,4 +125,5 @@ export const ProfilePhotoAction = (obj) =>({ type: PHOTO, obj});
 export const ProfileUtilityAction = (Show) =>({ type: UTILITY, Show});
 export const ProfileAudioAction = (Show) =>({ type: SHOWAUDIO, Show});
 export const ProfileUtilityAudioAction = (Id) =>({ type: UTILITYAUDIO, Id});
+export const ProfileUtilityVideoAction = (Id) =>({ type: UTILITYVIDEO, Id});
 export const ProfileUploadFileAction = (file) =>({ type: UPLOADFILE, file});

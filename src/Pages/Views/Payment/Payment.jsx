@@ -19,6 +19,7 @@ const Payment = () => {
         dispatch(getConfigHeaderAction("Оплата"));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+    let [stopPayment, setstopPayment] = useState(false)
     let [errorMessage, seterrorMessage] = useState({
         status: false,
         error: {
@@ -57,18 +58,22 @@ const Payment = () => {
         let obj = {};
         obj.doctor_id = Number(params.id);
         obj.slot_id = payment.slot_id;
-        obj.promocode = Number(e.target.value);
-        if (Showtext === e.target.value) {
-            dispatch(getPuymentPost(obj));
+        obj.use_balance = check;
+        obj.promocode = e.target.value;
+        if (Showtext === e.target.value){
+            if (!stopPayment){
+                setstopPayment(true);
+                dispatch(getPuymentPost(obj));
+            }
         }
     }
     const handleChangeCheck = (e) => {
         let obj = {};
-        setcheck(e.target.value);
         obj.doctor_id = Number(params.id);
         obj.slot_id = payment.slot_id;
-        obj.use_balance = e.target.value;
-        obj.promocode = Number(Showtext);
+        obj.use_balance = e.target.checked;
+        setcheck(obj.use_balance);
+        obj.promocode = Showtext;
         dispatch(getPuymentPost(obj));
     }
     return (
@@ -110,7 +115,7 @@ const Payment = () => {
                                     }
                                 )}</p>
                             </div>
-                            <ModalContainer typeModalCont="ModalCalendar" type_of="1" doctor_id={Number(params.id)} usId={Number(params.id)} />
+                            <ModalContainer promocode={Showtext} use_balance={check} typeModalCont="ModalCalendar" type_of="1" doctor_id={Number(params.id)} usId={Number(params.id)} />
                         </div>
                     </div>
                 </div>
@@ -119,11 +124,11 @@ const Payment = () => {
                         <Input
                             type="text"
                             placeholder="Промо или реферальный код"
-                            name={'promocode'} defaultValue={Showtext} onChange={e=>changeInput(e)} onKeyUp={async (e) => {
+                            name={'promocode'} defaultValue={Showtext} onChange={e => changeInput(e)} onKeyUp={async (e) => {
                                 setTimeout(function () {
                                     handleChange(e)
+                                    setstopPayment(false);
                                 }, 1000)
-
                             }} />
 
                     </div>

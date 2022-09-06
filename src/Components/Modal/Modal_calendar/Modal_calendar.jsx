@@ -1,16 +1,14 @@
 import React from "react";
 import s from './Modal_calendar.module.css';
-import Button from "../../Button/Button";
 import Calendar from "../../Calendar/Calendar";
-import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { consultationModalAction } from "../../../base/Reducers/ConsultationReducer";
-import { BottomSheet } from 'react-spring-bottom-sheet'
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 const ModalCalendar = (props) => {
     let statusModal = useSelector((state) => state.consultation.statusModal)
     useEffect(() => {
         if (statusModal)
             props.setWindow(false);
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [statusModal])
     return (
         <div>
@@ -21,7 +19,7 @@ const ModalCalendar = (props) => {
                 <div>
                     <h1 className={s.title + " title_config"}>Перенести запись</h1>
                 </div>
-                <Calendar doctor_id={props.doctor_id ? props.doctor_id : ""} type_el="popup" />
+                <Calendar promocode={props.promocode} use_balance={props.use_balance} doctor_id={props.doctor_id ? props.doctor_id : ""} type_el="popup" />
             </div>
         </div>
     )

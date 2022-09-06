@@ -7,6 +7,7 @@ import photo from "../../img/photo.png"
 import { useEffect, useState, useRef } from "react";
 const UtilityBlock = () => {
     const [Id, setId] = useState("");
+    const [VideoId, setVideoId] = useState("");
     const [statusModule, setStatusModule] = useState(false);
     let audioId = localStorage.getItem("audioinputid");
     let videoId = localStorage.getItem("videoinputid");
@@ -24,9 +25,10 @@ const UtilityBlock = () => {
         Device();
         startWebcam();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [Id]);
+    }, [Id, VideoId]);
     //получаем id трека из select для того чтобы поменять устройтво
     let deviceAudioId = useSelector(state => state.profile.UtilityAudioId);
+    let deviceVideoId = useSelector(state => state.profile.UtilityVideoId);
     useEffect(() => {
         if (deviceAudioId) {
             if (Id !== deviceAudioId) {
@@ -35,8 +37,17 @@ const UtilityBlock = () => {
             }
             setId(deviceAudioId);
         }
+        else{
+            if (deviceVideoId) {
+                if (VideoId !== deviceVideoId) {
+                    setStatusModule(true)
+                    setVideoId(deviceVideoId);
+                }
+                setId(deviceVideoId);
+            }
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [deviceAudioId]);
+    }, [deviceAudioId, deviceVideoId]);
     let Device = async () => {
         navigator.mediaDevices.getUserMedia({
             //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
@@ -124,7 +135,7 @@ const UtilityBlock = () => {
                 } : { display: "none" }} controls autoPlay />
                 {!videoStatus ? <div className={s.Utility_Check_video_content} >
                     <img alt="" src={photo} />
-                    <button onClick={ShowVideo}>Проверить видео</button>
+                    <button disabled={videoId ? false : true} onClick={ShowVideo}>Проверить видео</button>
                 </div> : ""}
 
             </div>

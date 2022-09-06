@@ -88,9 +88,7 @@ export const axiosConsultationCalendar = (consultation_id, slot_id, DateStr = 1)
         if (token)
             axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
         const response = await axios.post(`${defaultUrl}consultation/${consultation_id}/reschedule`, {
-            params: {
                 slot_id: slot_id
-            }
         });
         dispatch(paymentDateTimeAction(DateStr))
         return response.data.status

@@ -127,10 +127,8 @@ export const axiosProfileEmailEdit = (code = 0, email = null) => {
     if (token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const response = await axios.post(`${defaultUrl}user/email`, {
-      params: {
         code: code,
-        email: email,
-      },
+        email: email
     });
     return response.data
   };
@@ -141,10 +139,8 @@ export const axiosProfilePhoneEdit = (code = 0, phone = null) => {
     if (token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const response = await axios.post(`${defaultUrl}user/phone`, {
-      params: {
         code: code,
-        phone: phone,
-      },
+        phone: phone
     });
     return response.data
   };

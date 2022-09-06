@@ -30,7 +30,7 @@ const ReplaceData = () => {
     }
     setDate(DateStr.toLocaleString("ru", options));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [profile]);
   let [isShow, setShow] = useState(false);
   let isState = useSelector((state) => state.profile.utitlityShow);
   useEffect(() => {
@@ -38,6 +38,7 @@ const ReplaceData = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isState]);
   useEffect(() => {
+    dispatch(axiosProfile());
     dispatch(getConfigHeaderAction("Редактирование"));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -58,10 +59,6 @@ const ReplaceData = () => {
       message: "",
     },
   });
-  useEffect(() => {
-    dispatch(axiosProfile());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   const config = useSelector(state => state.config.config);
   const sendForm = async (e) => {
     e.preventDefault();

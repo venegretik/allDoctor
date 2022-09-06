@@ -35,7 +35,7 @@ const Calendar = (props) => {
         }
     }
     let ModalPayment = async () => {
-        let status = await dispatch(getPuymentInfo(Number(props.doctor_id), slot_id, DateStr))
+        let status = await dispatch(getPuymentInfo(Number(props.doctor_id), slot_id, DateStr, props.use_balance, props.promocode))
         if (status) {
             dispatch(consultationModalAction(status));
         }
