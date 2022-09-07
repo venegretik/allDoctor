@@ -12,7 +12,6 @@ import {
   axiosConsultationStart,
   axiosConsultationPuy,
 } from "../../base/asyncActions/getConsultation";
-import ModalCalendar from "../Modal/Modal_calendar/Modal_calendar";
 const ConsultationReady = (props) => {
   const dispatch = useDispatch();
   const [ConsultationUpcoming, setConsultationUpcoming] = useState(false);

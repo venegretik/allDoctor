@@ -1,10 +1,8 @@
 import React from "react";
 import UtilityBlock from "../../UtilityBlock/UtilityBlock";
 import s from "./ModalUtility.module.css";
-import seeting from "../../../img/seeting.png";
 import { useDispatch } from "react-redux";
 import { ProfileUtilityAction } from "../../../base/Reducers/UserReducer";
-import { useEffect, useState } from "react";
 const ModalUtility = (props) => {
     let dispatch = useDispatch();
     return (

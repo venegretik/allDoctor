@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./VolumeModal.module.css";
-import { useState } from "react";
 import volume from "../../../img/volume_down.png";
 import { useDispatch, useSelector } from "react-redux";
 import { ProfileAudioAction } from "../../../base/Reducers/UserReducer";

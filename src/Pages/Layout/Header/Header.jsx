@@ -14,15 +14,16 @@ const Header = () => {
   var url = document.location.pathname;
   useEffect(() => {
     //код закрывающий все треки
-    if(url !== "/profile/utility"){
+    if (url !== "/profile/utility") {
       window.localStreamVideo?.getTracks().forEach((track) => {
         track.stop();
-    });
-      window.localStreamAudio?.getTracks().forEach((track) => {
-          track.stop();
       });
+      window.localStreamAudio?.getTracks().forEach((track) => {
+        track.stop();
+      });
+      window.localStreamAudioDisabled?.shutdown();
     }
-}, [url]);
+  }, [url]);
   const config = useSelector((state) => state.config.config);
   const [isHover, setIsHover] = useState(false);
   const [isHover1, setIsHover1] = useState(false);

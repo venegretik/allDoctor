@@ -17,10 +17,10 @@ const UtilityBlock = () => {
         [audioArray, setaudioArray] = useState([]),
         [outputArray, setoutputArray] = useState([]);
     useEffect(() => {
-        //код закрывающий все треки
         window.localStreamAudio?.getTracks().forEach((track) => {
             track.stop();
         });
+        window.localStreamAudioDisabled?.shutdown();
         //функция создания трека
         Device();
         startWebcam();
@@ -37,7 +37,7 @@ const UtilityBlock = () => {
             }
             setId(deviceAudioId);
         }
-        else{
+        else {
             if (deviceVideoId) {
                 if (VideoId !== deviceVideoId) {
                     setStatusModule(true)
@@ -61,12 +61,11 @@ const UtilityBlock = () => {
             let audioContext = new AudioContext();
             let analyser = audioContext.createAnalyser();
             let microphone = audioContext.createMediaStreamSource(stream);
-            let javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
+            var javascriptNode = audioContext.createScriptProcessor(2048, 1, 1);
             analyser.smoothingTimeConstant = 0.8;
             analyser.fftSize = 1024;
             microphone.connect(analyser);
             analyser.connect(javascriptNode);
-            console.log(stream.getTracks())
             javascriptNode.connect(audioContext.destination);
             //основная проблема с этим кодом, я не знаю как остановить его выполнение, 
             //трек выключаеться, но этот код продолжает работу(это можно увидеть в настройке звука, начинают очень сильно мигать ячейки)
@@ -85,6 +84,13 @@ const UtilityBlock = () => {
                     setStatusModule(false)
                 }
             }
+            javascriptNode.shutdown =
+                function () {
+                    this.disconnect();
+                    this.onaudioprocess = null;
+                };
+            window.localStreamAudioDisabled = javascriptNode;
+            
         }).catch((error) => {
             console.log(error);
         });
@@ -105,7 +111,7 @@ const UtilityBlock = () => {
             console.log(error);
         });
     }
-    let ShowVideo = () =>{
+    let ShowVideo = () => {
         setvideoStatus(true);
     }
 

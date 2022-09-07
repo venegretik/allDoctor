@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux/es/exports";
 import Stars from "../../../Components/Stars/Stars";
 import { useParams } from "react-router-dom";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
-import { Input } from "../../../Components/Input/Input";
 import FormErrors from "../../../Components/FormError/FormError";
 import { Link, Navigate } from "react-router-dom";
+import { DebounceInput } from "react-debounce-input";
 import Chat from "../../../Components/Chat/Chat";
 import Button from "../../../Components/Button/Button";
 import ModalContainer from "../../../Components/Modal/ModalContainer";
@@ -19,7 +19,6 @@ const Payment = () => {
         dispatch(getConfigHeaderAction("Оплата"));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-    let [stopPayment, setstopPayment] = useState(false)
     let [errorMessage, seterrorMessage] = useState({
         status: false,
         error: {
@@ -51,21 +50,13 @@ const Payment = () => {
             }));
         }
     }
-    const changeInput = (e) => {
-        setShowText(e.target.value);
-    }
     const handleChange = (e) => {
         let obj = {};
         obj.doctor_id = Number(params.id);
         obj.slot_id = payment.slot_id;
         obj.use_balance = check;
         obj.promocode = e.target.value;
-        if (Showtext === e.target.value){
-            if (!stopPayment){
-                setstopPayment(true);
-                dispatch(getPuymentPost(obj));
-            }
-        }
+        dispatch(getPuymentPost(obj));
     }
     const handleChangeCheck = (e) => {
         let obj = {};
@@ -121,14 +112,13 @@ const Payment = () => {
                 </div>
                 <form onSubmit={(e) => sendForm(e)}>
                     <div className={s.Summ}>
-                        <Input
+                        <DebounceInput
+                            debounceTimeout={500}
                             type="text"
                             placeholder="Промо или реферальный код"
-                            name={'promocode'} defaultValue={Showtext} onChange={e => changeInput(e)} onKeyUp={async (e) => {
-                                setTimeout(function () {
-                                    handleChange(e)
-                                    setstopPayment(false);
-                                }, 1000)
+                            name={'promocode'} onChange={async (e) => {
+                                setShowText(e.target.value);
+                                handleChange(e)
                             }} />
 
                     </div>
