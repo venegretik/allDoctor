@@ -20,12 +20,16 @@ const UtilityBlock = () => {
         window.localStreamAudio?.getTracks().forEach((track) => {
             track.stop();
         });
+        window.localStreamVideo?.getTracks().forEach((track) => {
+            track.stop();
+        });
         window.localStreamAudioDisabled?.shutdown();
         //функция создания трека
         Device();
         startWebcam();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Id, VideoId]);
+
     //получаем id трека из select для того чтобы поменять устройтво
     let deviceAudioId = useSelector(state => state.profile.UtilityAudioId);
     let deviceVideoId = useSelector(state => state.profile.UtilityVideoId);
@@ -37,17 +41,17 @@ const UtilityBlock = () => {
             }
             setId(deviceAudioId);
         }
-        else {
-            if (deviceVideoId) {
-                if (VideoId !== deviceVideoId) {
-                    setStatusModule(true)
-                    setVideoId(deviceVideoId);
-                }
-                setId(deviceVideoId);
-            }
-        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [deviceAudioId, deviceVideoId]);
+    }, [deviceAudioId]);
+    useEffect(() => {
+        if (deviceVideoId) {
+            if (VideoId !== deviceVideoId) {
+                setStatusModule(true)
+                setVideoId(deviceVideoId);
+            }
+            setId(deviceVideoId);
+        }
+    }, [deviceVideoId]);
     let Device = async () => {
         navigator.mediaDevices.getUserMedia({
             //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
@@ -90,7 +94,7 @@ const UtilityBlock = () => {
                     this.onaudioprocess = null;
                 };
             window.localStreamAudioDisabled = javascriptNode;
-            
+
         }).catch((error) => {
             console.log(error);
         });

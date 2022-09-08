@@ -18,6 +18,7 @@ const Header = () => {
       window.localStreamVideo?.getTracks().forEach((track) => {
         track.stop();
       });
+
       window.localStreamAudio?.getTracks().forEach((track) => {
         track.stop();
       });
