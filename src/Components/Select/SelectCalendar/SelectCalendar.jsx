@@ -16,7 +16,6 @@ const SelectCalendar = (props) => {
     const config = useSelector((state) => state.config.config);
     let [isNum, setNum] = useState(0);
     const specialization = useSelector(state => state.consultation.specialization_id);
-    const page = useSelector(state => state.consultation.page);
     const handleClick = (event) => {
         setIsShown((current) => !current);
         setNum(0);
@@ -44,7 +43,7 @@ const SelectCalendar = (props) => {
         if (isNum === 2) {
             startDate.setDate(startDate.getDate() + 1)
             endDate.setDate(endDate.getDate() + 1)
-            dispatch(consultationHistoryCons(specialization, page, endDate.toISOString().split('T')[0], startDate.toISOString().split('T')[0]));
+            dispatch(consultationHistoryCons(specialization, 1, endDate.toISOString().split('T')[0], startDate.toISOString().split('T')[0]));
             setNum(0);
             setIsShown(false);
         }

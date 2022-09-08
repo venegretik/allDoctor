@@ -19,7 +19,7 @@ const ModalCalendar = (props) => {
                 <div>
                     <h1 className={s.title + " title_config"}>Перенести запись</h1>
                 </div>
-                <Calendar promocode={props.promocode} use_balance={props.use_balance} doctor_id={props.doctor_id ? props.doctor_id : ""} type_el="popup" />
+                <Calendar {...props} promocode={props.promocode} use_balance={props.use_balance} doctor_id={props.doctor_id ? props.doctor_id : ""} type_el="popup" />
             </div>
         </div>
     )

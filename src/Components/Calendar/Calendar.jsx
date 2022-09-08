@@ -24,11 +24,11 @@ const Calendar = (props) => {
     let slots = [];
     let keyNum = 0;
     useEffect(() => {
-        dispatch(axiosRecordingCalculator());
+        dispatch(axiosRecordingCalculator(props.usId));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     let Modal = async () => {
-        let status = await dispatch(axiosConsultationCalendar(props.usId, slot_id, DateStr))
+        let status = await dispatch(axiosConsultationCalendar(Number(props.usId), slot_id, DateStr))
         if (status) {
             dispatch(consultationModalAction(status));
             dispatch(axiosConsultation());
@@ -41,7 +41,7 @@ const Calendar = (props) => {
         }
     }
     let OnCheck = async () => {
-        let status = await dispatch(getPuymentInfo(props.usId, slot_id));
+        let status = await dispatch(getPuymentInfo(Number(props.usId), slot_id));
 
         if (status.status === true)
             setRedPayment(true)

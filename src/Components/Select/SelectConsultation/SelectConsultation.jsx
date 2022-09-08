@@ -8,7 +8,6 @@ const SelectConsultation = (props) => {
   const specialization = useSelector(state => state.consultation.specialization_id);
   const date_from = useSelector(state => state.consultation.date_from);
   const date_to = useSelector(state => state.consultation.date_to);
-  const page = useSelector(state => state.consultation.page);
   const [isShown, setIsShown] = useState(false);
   const config = useSelector((state) => state.config.config);
   const [Showtext, setShowText] = useState("...");
@@ -24,11 +23,11 @@ const SelectConsultation = (props) => {
   const handleClickChange = (changeEvent) => {
     setShowText(changeEvent.target.title);
     if (props.selectType === "specialization")
-      dispatch(props.func(page, Number(changeEvent.target.value)));
+      dispatch(props.func(1, Number(changeEvent.target.value)));
     if (props.selectType === "sort")
-      dispatch(props.func(page, specialization));
+      dispatch(props.func(1, specialization));
     if (props.selectType === "history")
-      dispatch(props.func(changeEvent.target.value, page, date_to, date_from));
+      dispatch(props.func(changeEvent.target.value, 1, date_to, date_from));
   }
   let arrayItems = props.array.map((el, key) =>
     <label htmlFor={el.specialization_id} key={key}>

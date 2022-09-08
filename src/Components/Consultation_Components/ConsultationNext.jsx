@@ -84,7 +84,7 @@ const ConsultationNext = () => {
                                     class={'btn orange'}
                                     text={'Оплатить'}
                                 />
-                            </div> : el.can_reschedule ? <ModalContainer typeModalCont="ModalCalendar" /> : ""}
+                            </div> : el.can_reschedule ? <ModalContainer usId={el.consultation_id} typeModalCont="ModalCalendar" /> : ""}
                         </div>
                     </div>
                     <div className={s.ButtonMobile}>
@@ -95,7 +95,7 @@ const ConsultationNext = () => {
                                 class={'btn orange'}
                                 text={'Оплатить'}
                             />
-                        </div> : el.can_reschedule ? <ModalContainer typeModalCont="ModalCalendar" /> : el.is_paid ? <div onClick={e => PuyFunc(el.doctor.doctor_id)}>
+                        </div> : el.can_reschedule ? <ModalContainer typeModalCont="ModalCalendar" usId={el.consultation_id}/> : el.is_paid ? <div onClick={e => PuyFunc(el.doctor.doctor_id)}>
                             <Button type="button" class="btn orange" text="Оплатить" />
                         </div> : ""}
                     </div>
