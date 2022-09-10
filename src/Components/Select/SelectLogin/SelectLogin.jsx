@@ -10,6 +10,7 @@ const SelectLogin = (props) => {
   const params = useParams();
   const dispatch = useDispatch();
   const specialization = useSelector(state => state.doctorSpec.specialization_id);
+  const spec_id = useSelector(state => state.doctorSpec.spec_id);
   const sort = useSelector(state => state.doctorSpec.sort);
   const config = useSelector((state) => state.config.config);
   const [isShown, setIsShown] = useState(false);
@@ -51,7 +52,7 @@ const SelectLogin = (props) => {
     }
 
     if (props.selectType === "sort")
-      dispatch(props.func(1 , specialization, changeEvent.target.value));
+      dispatch(props.func(1 , specialization, changeEvent.target.value, spec_id));
   }
   let arrayItems = props.array?.map((el, key) =>
     <label htmlFor={el.branch_id ? el.branch_id :el.specialization_id} key={key}>

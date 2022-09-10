@@ -43,6 +43,7 @@ const DoctorList = () => {
     branch_id: "price_asc"
   }]
   let page = useSelector(state => state.doctorSpec.page);
+  let totalPage = useSelector(state => state.doctorSpec.totalPage);
   let spec_array = useSelector(state => state.doctorSpec.spec_array);
   const sort = useSelector(state => state.doctorSpec.sort);
   const spec_id = useSelector(state => state.doctorSpec.spec_id);
@@ -70,6 +71,7 @@ const DoctorList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [Title, BranchTitle1])
   const sendRequest = () => {
+    if(page<totalPage)
     dispatch(axiosDoctor(++page, params.id, sort, spec_id));
   }
 
