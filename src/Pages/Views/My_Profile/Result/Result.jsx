@@ -24,6 +24,7 @@ const FormResult = () => {
     const UploadFile = useSelector(state => state.profile.UploadFile);
     const handleChangeFile = async (file) => {
         setFile(file)
+        console.log(file)
     }
     const handleChange = async (e) => {
         e.preventDefault();
@@ -77,7 +78,6 @@ const FormResult = () => {
         <form onSubmit={handleChange}>
             <Input name={"name"}
                 minLength={'2'}
-                pattern={'^[A-Za-zА-Яа-яЁё\\s]+$'}
                 required
                 type="text" placeholder="Название документа" />
                 <FormErrors error={errorType.error?.fields.name} />
@@ -99,7 +99,8 @@ const FormResult = () => {
             </div>
                 <FormErrors error={errorType.error?.fields.type} />
             <div className={s.Form_Download}>
-                <FileUploader handleChange={handleChangeFile} label="Нажмите или перетащите сюда файл" name="file" classes="drop_area" />
+                <FileUploader handleChange={handleChangeFile} id={"Upload"} label="Нажмите или перетащите сюда файл" name="file" classes="drop_area" />
+                <label htmlFor="Upload" className={s.labelDownload}>{!fileUpload ? "Нажмите или перетащите сюда файл" : fileUpload.name}</label>
             </div>
                 <FormErrors error={errorType.error?.fields.file} />
             <MessageContainer type={"button"} />
@@ -160,7 +161,6 @@ const Result = () => {
     let file_array = file.map(
         el => <div className={s.Download_File_PDF} key={++keyNum}><div className={s.Download_File_block}>
             <div className={s.Download_File_left}>
-                <img alt="" src={file} />
                 <div className={s.Download_File_left_text}>
                     <div className={s.Download_file_flex}>
                         <img alt="" src={PDF} />

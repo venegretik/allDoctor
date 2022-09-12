@@ -15,10 +15,10 @@ const Header = () => {
   useEffect(() => {
     //код закрывающий все треки
     if (url !== "/profile/utility") {
+      window.scrollTo(0, 0);
       window.localStreamVideo?.getTracks().forEach((track) => {
         track.stop();
       });
-
       window.localStreamAudio?.getTracks().forEach((track) => {
         track.stop();
       });

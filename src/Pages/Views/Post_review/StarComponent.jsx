@@ -5,7 +5,6 @@ const StarComponent = (props) => {
     let dispatch = useDispatch()
     const handleChange = (changeEvent) =>{
         dispatch(props.func(Number(changeEvent.target.title)));
-        console.log(changeEvent.target.title);
     }
     return (
         <fieldset className="rate">

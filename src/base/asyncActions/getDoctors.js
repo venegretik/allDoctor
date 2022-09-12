@@ -1,6 +1,6 @@
 import axios from "axios";
 import { defaultUrl } from "../configUrl";
-import { doctorArrayAction, branchArrayAction, branchOfflineArrayAction, DoctorMyArray,DoctorMyNewArray, DoctorMyDelete } from "../Reducers/doctorReducer";
+import { doctorArrayAction, branchArrayAction, branchOfflineArrayAction, DoctorMyArray, DoctorMyNewArray, DoctorMyDelete } from "../Reducers/doctorReducer";
 
 //Получение докторов по должности
 export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate", specialization_id) => {
@@ -23,7 +23,8 @@ export const axiosDoctor = (totalPage = 1, specialization = 1, sort = "rate", sp
             specialization_id: specialization,
             sort: sort,
             spec_array: response.data.data.specializations,
-            spec_id: specialization_id
+            spec_id: specialization_id,
+            branchTitle: response.data.data.branch_title
         }
 
         dispatch(doctorArrayAction(responceObj, totalPage === 1 ? "new" : "old"));
@@ -41,9 +42,7 @@ export const axiosBranch = () => {
         dispatch(branchArrayAction(response.data.data.items));
         return response.data
     }
-
 }
-
 //Получение оффлайновых разделов
 export const axiosBranchOffline = () => {
     return async function (dispatch) {

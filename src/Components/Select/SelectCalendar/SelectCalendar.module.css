@@ -40,3 +40,8 @@
     flex-direction: column;
     align-items: center;
 }
+@media(max-width:480px){
+    .Cart_close {
+        display: none;
+    }
+}

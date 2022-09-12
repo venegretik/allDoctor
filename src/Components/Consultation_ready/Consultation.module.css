@@ -238,6 +238,7 @@
 
   .Doctor_info button {
     width: 100%;
+    padding: 22px 0px;
   }
   .Data_consultation svg,
   .Data_time svg {

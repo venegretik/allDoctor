@@ -25,8 +25,13 @@ const UtilityBlock = () => {
         });
         window.localStreamAudioDisabled?.shutdown();
         //функция создания трека
-        Device();
-        startWebcam();
+        if (!/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            Device();
+            startWebcam();
+        }
+        else {
+
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [Id, VideoId]);
 
@@ -51,6 +56,7 @@ const UtilityBlock = () => {
             }
             setId(deviceVideoId);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [deviceVideoId]);
     let Device = async () => {
         navigator.mediaDevices.getUserMedia({
@@ -102,9 +108,11 @@ const UtilityBlock = () => {
 
     //вебка
     let startWebcam = async () => {
-        navigator.mediaDevices.getUserMedia({
-            video: videoId ? { deviceId: { exact: videoId } } : true
-        }).then((stream) => {
+        let video = document.querySelector("#video")
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('playsinline', '');
+        navigator.mediaDevices.getUserMedia({ video: videoId ? { deviceId: { exact: videoId } } : true}).then((stream) => {
             window.localStreamVideo = stream;
             let webcamStream;
             inputElement.current.srcObject = stream;
@@ -139,9 +147,9 @@ const UtilityBlock = () => {
                 <SelectModule array={videoArray} />
             </div>
             <div className={s.Utility_Check_video} >
-                <video ref={inputElement} allow="accelerometer; autoplay; encrypted-media; camera 'self';" muted style={videoStatus ? {
-                    width: "100%",
-                    height: "250px"
+                    <video ref={inputElement} id="video" allow="accelerometer; autoplay; encrypted-media; camera 'self';" muted style={videoStatus ? {
+                    width: "320px",
+                    height: "240px"
                 } : { display: "none" }} controls autoPlay />
                 {!videoStatus ? <div className={s.Utility_Check_video_content} >
                     <img alt="" src={photo} />

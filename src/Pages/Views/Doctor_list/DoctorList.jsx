@@ -3,7 +3,7 @@ import s from './Doctor_list.module.css';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { axiosDoctor, axiosBranch, axiosBranchOffline } from "../../../base/asyncActions/getDoctors";
+import { axiosDoctor } from "../../../base/asyncActions/getDoctors";
 import SelectLogin from "../../../Components/Select/SelectLogin/SelectLogin";
 import { getConfigHeaderAction } from "../../../base/Reducers/configReducer";
 import Stars from "../../../Components/Stars/Stars";
@@ -23,11 +23,10 @@ const DoctorList = () => {
   }
   const params = useParams();
   const Doctors = useSelector(state => state.doctorSpec.Doctor_array);
-  let [statusDoc, setStatus] = useState(false);
-  const branch_array = useSelector(state => state.doctorSpec.branch_array);
-  const branch_offline_array = useSelector(state => state.doctorSpec.branch_offline_array);
+  const BranchName = useSelector(state => state.doctorSpec.branch_name);
   let Name = useSelector(state => state.doctorSpec.specialization_name);
   let Title = useSelector(state => state.config.titleBranch);
+  let [statusDoc, setStatus] = useState(false);
   let [BranchTitle, setBranchTitle] = useState(Name);
   let [BranchTitle1, setBranchTitle1] = useState("");
   const arraySort = [{
@@ -50,21 +49,15 @@ const DoctorList = () => {
   useEffect(() => {
     async function fetchMyAPI() {
       let statusDoctor = await dispatch(axiosDoctor(page, Number(params.id), "rate", Number(params.spec_id)));
-      dispatch(axiosBranch());
       setStatus(statusDoctor.status);
-      dispatch(axiosBranchOffline());
     }
     fetchMyAPI()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   useEffect(() => {
-    let Text_Branch = branch_array.filter(el => el.branch_id === Number(params.id))
-    if (!Text_Branch[0])
-      Text_Branch = branch_offline_array.filter(el => el.branch_id === Number(params.id))
-    if (Text_Branch[0])
-      setBranchTitle1(Text_Branch[0].title)
+      setBranchTitle1(BranchName)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [branch_array])
+  }, [BranchName])
   useEffect(() => {
     setBranchTitle(Title);
     dispatch(getConfigHeaderAction(BranchTitle1 + ": " + Title));

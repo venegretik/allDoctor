@@ -23,7 +23,7 @@ const Cancel_Record = (props) => {
       <div className={s.Cancel_Record_full}>
         <div className={s.ImgNone}>
           <img alt=""
-            src={config.config.images.confuse}
+            src={config.config.images.think}
 
           />
         </div>
@@ -38,7 +38,7 @@ const Cancel_Record = (props) => {
           </h1>
           {props.typeModal === "record" ? (
             <p
-              className={s.Font_size16 + " black_config"}
+              className={s.Font_size16 + " gray_config"}
             >
               После удаления врача он не будет иметь доступ к вашей
               медицинской карте

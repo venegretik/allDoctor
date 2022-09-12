@@ -7,7 +7,6 @@ import Stars from "../Stars/Stars";
 import Loader from "../Loading/Loader";
 import Button from "../Button/Button";
 import { axiosConsultationHistory, axiosConsultationDelete, consultationHistoryCons } from '../../base/asyncActions/getConsultation';
-import { axiosBranch } from "../../base/asyncActions/getDoctors";
 import SelectConsultation from "../Select/SelectConsultation/SelectConsultation";
 import SelectCalendar from "../Select/SelectCalendar/SelectCalendar";
 const ConsultationHistory = () => {
@@ -22,7 +21,6 @@ const ConsultationHistory = () => {
     let dispatch = useDispatch();
     useEffect(() => {
         async function fetchMyAPI() {
-            dispatch(axiosBranch());
                 let statusDoctor = await dispatch(axiosConsultationHistory());
                 setStatus(statusDoctor.status);
         }

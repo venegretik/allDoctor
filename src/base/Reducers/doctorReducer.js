@@ -7,6 +7,7 @@ const defaultState = {
     specialization_id: 1,
     specialization_name: "",
     branch_offline_array: [],
+    branch_name:"",
     DoctorMy_array: [],
     spec_array: [],
     spec_id: 1
@@ -27,6 +28,7 @@ export const doctorReducer = (state = defaultState, action) => {
                 page: action.Doctor_array.page,
                 totalPage: action.Doctor_array.totalPage,
                 sort: action.Doctor_array.sort,
+                branch_name:action.Doctor_array.branchTitle,
                 specialization_id: action.Doctor_array.specialization_id,
                 spec_array: [{ branch_id: 0, title: "Все" }, ...action.Doctor_array.spec_array],
                 spec_id: action.Doctor_array.spec_id
@@ -35,6 +37,7 @@ export const doctorReducer = (state = defaultState, action) => {
             return {
                 ...state,
                 branch_array: [...action.branch_array]
+
             }
         case BRANCH_OFFLINE_ARRAY:
             return {

@@ -25,7 +25,7 @@ const SelectReview = (props) => {
     }
     let arrayItems = props.array.map(el =>
         <label htmlFor={el.consultation_id} key={el.consultation_id}>
-            <input type="radio" name="main-categories" title={el.datetime} id={el.consultation_id} value={el.consultation_id} onChange={handleClickChange} />
+            <input type="radio" name="main-categories" title={el.datetime} id={el.consultation_id} value={el.consultation_id} onClick={handleClickChange} />
             {new Date(el.datetime).toLocaleString(
                 "ru",
                 {

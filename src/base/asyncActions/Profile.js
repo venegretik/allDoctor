@@ -126,21 +126,25 @@ export const axiosProfileEmailEdit = (code = 0, email = null) => {
     const token = localStorage.getItem("token");
     if (token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    const response = await axios.post(`${defaultUrl}user/email`, {
-        code: code,
-        email: email
+    const response = await axios.post(`${defaultUrl}user/email`, code === null && email === null ? null:email === null? {
+      code:code
+    }:{
+      email:email,
+      code:code
     });
     return response.data
   };
 };
-export const axiosProfilePhoneEdit = (code = 0, phone = null) => {
+export const axiosProfilePhoneEdit = (code = null, phone = null) => {
   return async function (dispatch) {
     const token = localStorage.getItem("token");
     if (token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
-    const response = await axios.post(`${defaultUrl}user/phone`, {
-        code: code,
-        phone: phone
+    const response = await axios.post(`${defaultUrl}user/phone`, code === null && phone === null ? null:phone === null? {
+      code:code
+    }:{
+      phone:phone,
+      code:code
     });
     return response.data
   };
@@ -151,9 +155,7 @@ export const axiosProfileUpload = (obj = {}) => {
     if (token)
       axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     const response = await axios.post(`${defaultUrl}user/research`, {
-      params: {
         ...obj
-      },
     }, {
       headers: {
         "Content-Type": "multipart/form-data",

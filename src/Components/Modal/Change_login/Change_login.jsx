@@ -47,7 +47,7 @@ const ChangeLogin = (props) => {
       setError("");
     }
     if (isShown === 2) {
-      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(obj.code), profile.phone)) : await dispatch(axiosProfileEmailEdit(Number(obj.code), profile.email));
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(obj.code), null)) : await dispatch(axiosProfileEmailEdit(Number(obj.code), null));
       if (responce.status) {
         setIsShown(++isShown);
         setcode(Number(obj.code))
@@ -56,7 +56,7 @@ const ChangeLogin = (props) => {
         setError("Неверный код, попробуйте ещё раз");
     }
     if (isShown === 1) {
-      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(0, profile.phone)) : await dispatch(axiosProfileEmailEdit(0, profile.email));
+      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(null, null)) : await dispatch(axiosProfileEmailEdit(null, null));
       setIsShown(++isShown);
       settimerNum(responce.resend_timeout)
     }
@@ -110,7 +110,7 @@ const ChangeLogin = (props) => {
                     maxLength={4} name="code" />
                   <FormErrors error={Error} />
                   <p className={s.Font_size14 + " blue_config"} onClick={async e => {
-                    let responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(0, profile.phone)) : await dispatch(axiosProfileEmailEdit(0, profile.email))
+                    let responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(null, null)) : await dispatch(axiosProfileEmailEdit(0, null))
                     settimerNum(responce.resend_timeout);
                   }}>Отправить код повторно
                     <Timer time={timerNum} /></p>

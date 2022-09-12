@@ -72,7 +72,7 @@ const SelectCalendar = (props) => {
             </div>
             {isShown && (<>
                 {availableScreenWidth <= 480 ? <BottomSheet open={isShown}
-                    onDismiss={() => handleClick}><div>
+                    onDismiss={() => setIsShown(false)}><div>
                         <div className={s.Calendar_mobile}>
                             <div className={s.Cart_close} onClick={handleClick}>
                                 &times;

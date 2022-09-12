@@ -58,7 +58,7 @@ const MyProfile = () => {
                 isActive ? `${s.navLink} ${s.headerActiveLink} blue_config` : s.navLink + " gray_config"
               }
                 to="result">
-                <p>Результаты использований</p>
+                <p>Результаты исследований</p>
               </NavLink>
             </li>
           </ul>

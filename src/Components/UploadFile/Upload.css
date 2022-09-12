@@ -5,7 +5,9 @@ input[type="file"] {
     display: inline-block;
     cursor: pointer;
 }
-
+.upload_file input{
+    width: 100%;
+}
 .upload_file{
     background: #F6AE2D;
     border-radius: 16px;

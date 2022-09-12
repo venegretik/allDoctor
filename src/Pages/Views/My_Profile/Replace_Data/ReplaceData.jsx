@@ -32,6 +32,11 @@ const ReplaceData = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [profile]);
   let [isShow, setShow] = useState(false);
+  let [selected, setSelected] = useState('');
+  useEffect(() => {
+    setSelected(Number(profile.gender));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [profile]);
   let isState = useSelector((state) => state.profile.utitlityShow);
   useEffect(() => {
     setShow(isState);
@@ -60,6 +65,9 @@ const ReplaceData = () => {
     },
   });
   const config = useSelector(state => state.config.config);
+  const handleRadio = (e) =>{
+    setSelected(Number(e.target.value))
+  }
   const sendForm = async (e) => {
     e.preventDefault();
     const data = await new FormData(e.target);
@@ -67,6 +75,7 @@ const ReplaceData = () => {
     [...data].forEach((e) => {
       obj[e[0]] = e[1];
     });
+    obj.gender = Number(obj.gender)
     var dateParts = obj.birthday.split("-");
     obj.birthday = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
     const response = await dispatch(axiosProfileEdit(obj));
@@ -203,7 +212,8 @@ const ReplaceData = () => {
             type={"radio"}
             required
             name={"gender"}
-            defaultChecked={profile.gender === 0 ? true : false}
+            checked={selected === 0}
+            onChange={handleRadio}
             labeltext={"Мужчина"}
             label={{ color: config?.config.colors.color4 }}
             value={"0"}
@@ -213,7 +223,8 @@ const ReplaceData = () => {
             type={"radio"}
             required
             name={"gender"}
-            defaultChecked={profile.gender === 1 ? true : false}
+            checked={selected === 1}
+            onChange={handleRadio}
             labeltext={"Женщина"}
             label={{ color: config?.config.colors.color4 }}
             value={"1"}
