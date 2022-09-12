@@ -61,7 +61,7 @@ const UtilityBlock = () => {
     let Device = async () => {
         navigator.mediaDevices.getUserMedia({
             //audio - если у нас есть девайс айди, пишем его, если нет, вставляем дефолт микро
-            audio: { deviceId: { exact: audioId ? audioId : "default" } }
+            audio: audioId ? { deviceId: { exact:  audioId  } } : true
         }).then(async (stream) => {
             window.localStreamAudio = stream;
             const devices = await navigator.mediaDevices.enumerateDevices();
