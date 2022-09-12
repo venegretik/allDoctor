@@ -10,10 +10,15 @@ import Timer from "../../Timer/Timer";
 import FormErrors from "../../FormError/FormError";
 const ChangeLogin = (props) => {
   let profile = useSelector((state) => state.profile),
-    [Error, setError] = useState(""),
     [code, setcode] = useState(""),
     [isShown, setIsShown] = useState(1),
     [timerNum, settimerNum] = useState(1),
+    [errorMessage, seterrorMessage] = useState({
+      status: false,
+      error: {
+        message: "",
+      },
+    }),
     dispatch = useDispatch();
   let phone = "+";
   for (let i = 0; profile.phone.length > i; i++) {
@@ -39,21 +44,31 @@ const ChangeLogin = (props) => {
       obj[e[0]] = e[1];
     });
     if (isShown === 3) {
-      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(code), obj.phone.replace(/[\D]+/g, ""))) : await dispatch(axiosProfileEmailEdit(Number(obj.code), obj.email));
-      if (responce.status) {
+      const response = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(code, obj.phone.replace(/[\D]+/g, ""))) : await dispatch(axiosProfileEmailEdit(code, obj.email));
+      if (response.status) {
         props.setWindow(false);
         dispatch(axiosProfile());
       }
-      setError("");
+      else {
+        seterrorMessage(errorMessage => ({
+          error: {
+            message: response.error?.message
+          }
+        }));
+      }
     }
     if (isShown === 2) {
-      const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(obj.code), null)) : await dispatch(axiosProfileEmailEdit(Number(obj.code), null));
-      if (responce.status) {
+      const response = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(Number(obj.code), null)) : await dispatch(axiosProfileEmailEdit(Number(obj.code), null));
+      if (response.status) {
         setIsShown(++isShown);
-        setcode(Number(obj.code))
+        setcode(response.token)
       }
       else
-        setError("Неверный код, попробуйте ещё раз");
+        seterrorMessage(errorMessage => ({
+          error: {
+            message: response.error?.message
+          }
+        }));
     }
     if (isShown === 1) {
       const responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(null, null)) : await dispatch(axiosProfileEmailEdit(null, null));
@@ -96,7 +111,6 @@ const ChangeLogin = (props) => {
                     </div>
                     <div onClick={e => {
                       props.setWindow(false)
-                      setError("")
                     }}>
                       <Button text="отмена" class="btn white" />
                     </div>
@@ -108,7 +122,7 @@ const ChangeLogin = (props) => {
                 <div className={s.ChangeLoginMain_step2}>
                   <Input pattern={'[0-9]{4}'} required placeholder={props.type_el === "phone" ? 'Код из SMS' : 'Код из Электронной почты'} type={'text'} className={'input'}
                     maxLength={4} name="code" />
-                  <FormErrors error={Error} />
+                    <FormErrors error={errorMessage?.error.message} />
                   <p className={s.Font_size14 + " blue_config"} onClick={async e => {
                     let responce = props.type_el === "phone" ? await dispatch(axiosProfilePhoneEdit(null, null)) : await dispatch(axiosProfileEmailEdit(0, null))
                     settimerNum(responce.resend_timeout);
@@ -123,7 +137,6 @@ const ChangeLogin = (props) => {
                     </div>
                     <div onClick={e => {
                       props.setWindow(false)
-                      setError("")
                     }}>
                       <Button text="отмена" class="btn white" />
                     </div>
@@ -138,6 +151,7 @@ const ChangeLogin = (props) => {
                       placeholder={'Новая электронная почта'}
                       type={'email'}
                       name={'email'} />}
+                  <FormErrors error={errorMessage?.error.message} />
                   <div className={s.ChangeLoginButton}>
                     <div className={s.ChangeMargin}>
                       <Button
@@ -148,7 +162,6 @@ const ChangeLogin = (props) => {
                     </div>
                     <div onClick={e => {
                       props.setWindow(false)
-                      setError("")
                     }}>
                       <Button text="отмена" class="btn white" />
                     </div>

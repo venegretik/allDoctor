@@ -50,6 +50,7 @@ function App() {
     document.documentElement.style.setProperty('--green', config?.config.colors.color8);
     document.documentElement.style.setProperty('--gray', config?.config.colors.color4);
     document.documentElement.style.setProperty('--orange', config?.config.colors.color7);
+    document.title = config?.config.title ? config?.config.title : "Vse-doctora"
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config]);
   return (

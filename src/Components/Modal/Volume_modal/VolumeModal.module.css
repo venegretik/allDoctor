@@ -23,6 +23,10 @@
     position: relative;
 }
 
+.icon_back img{
+    width: 20px;
+}
+
 .VolumeModalInput {
     position: absolute;
     top: -190px;

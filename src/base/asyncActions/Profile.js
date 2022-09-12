@@ -130,7 +130,7 @@ export const axiosProfileEmailEdit = (code = 0, email = null) => {
       code:code
     }:{
       email:email,
-      code:code
+      token:code
     });
     return response.data
   };
@@ -144,7 +144,7 @@ export const axiosProfilePhoneEdit = (code = null, phone = null) => {
       code:code
     }:{
       phone:phone,
-      code:code
+      token:code
     });
     return response.data
   };
