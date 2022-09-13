@@ -11,6 +11,7 @@ import FormErrors from "../../FormError/FormError";
 const ChangeLogin = (props) => {
   let profile = useSelector((state) => state.profile),
     [code, setcode] = useState(""),
+    [email, setemail] = useState(""),
     [isShown, setIsShown] = useState(1),
     [timerNum, settimerNum] = useState(1),
     [errorMessage, seterrorMessage] = useState({
@@ -35,6 +36,9 @@ const ChangeLogin = (props) => {
       phone += " ";
       phone += profile.phone[i];
     } else phone += profile.phone[i];
+  }
+  const textDecor = (e)=>{
+    setemail(e.target.value)
   }
   const sendForm = async (e) => {
     e.preventDefault();
@@ -150,6 +154,8 @@ const ChangeLogin = (props) => {
                     placeholder={props.type_el === "phone" ? 'Новый номер телефона' : 'Новая электронная почта'} type={'tel'} className={'input ' + s.Telephone} name={'phone'} /> : <Input required
                       placeholder={'Новая электронная почта'}
                       type={'email'}
+                      value={email}
+                      onChange={textDecor}
                       name={'email'} />}
                   <FormErrors error={errorMessage?.error.message} />
                   <div className={s.ChangeLoginButton}>

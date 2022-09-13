@@ -30,7 +30,7 @@ const ChatModal = () => {
     return (
         <div className={s.Chat_icon}>
             {showWindow ? <div className="background" onClick={e => setWindow(false)}></div> : ""}
-            <div className={s.Chat_mod} onClick={e => setWindow(true)}>
+            <div className={s.Chat_mod}  onClick={e => config.module.slider.is_active? setWindow(true): false}>
                 <img alt="" src={chat}  />
                 <p>Чат</p>
             </div>
