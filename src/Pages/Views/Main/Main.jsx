@@ -24,9 +24,9 @@ const Main = (props) => {
       <div className={s.Container + " Container"}>
         <ConsultationReady props={props} />
         <DoctorsOnDuty />
-        {config.module.symptoms ? <SliderArrow /> : ""}
+        {config.module.symptoms.is_active ? <SliderArrow /> : ""}
       </div>
-      {config.module.slider ? <SliderDots /> : ""}
+      {config.module.slider.is_active ? <SliderDots /> : ""}
       <div className={s.Container + " Container"}>
         <SectionsMedicine />
       </div>
