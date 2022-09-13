@@ -109,6 +109,7 @@ const UtilityBlock = () => {
     //вебка
     let startWebcam = async () => {
         let video = document.querySelector("#video")
+        video.removeAttribute("controls");
         video.setAttribute('autoplay', '');
         video.setAttribute('muted', '');
         video.setAttribute('playsinline', '');

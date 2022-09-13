@@ -34,6 +34,12 @@
 
 .Utility_Check_video video::-webkit-media-controls {
     display: none !important;
+    -webkit-appearance: none;
+}
+
+.Utility_Check_video video::-webkit-media-controls-play-button {
+    display: none !important;
+    -webkit-appearance: none;
 }
 
 .Utility_configuration_volume>input {
