@@ -1,5 +1,6 @@
 import React from "react";
 import s from './Checkbox.module.css';
+
 const Checkbox = (props) => {
     return (
         <div className={s.Register_checkbox}>
