@@ -1,9 +1,0 @@
-.drop_area>div{
-    display: flex;
-    justify-content: center;
-}
-
-.drop_area{
-    border: 2px dashed #EAF2FF;
-    border-radius: 24px;
-}

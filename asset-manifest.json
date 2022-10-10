@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/allDoctor/static/css/main.122cdc50.css",
+    "main.js": "/allDoctor/static/js/main.bd7f59b4.js",
+    "static/media/video_photo.png": "/allDoctor/static/media/video_photo.75f662143500ae61812e.png",
+    "static/media/video_mobile.png": "/allDoctor/static/media/video_mobile.ceb2506d91792920cf9c.png",
+    "static/media/PacientVideo.png": "/allDoctor/static/media/PacientVideo.6e737d3c24298cd66bae.png",
+    "static/media/logo.png": "/allDoctor/static/media/logo.ab80d635a3cd22774229.png",
+    "static/media/r-stars.svg": "/allDoctor/static/media/r-stars.b9b0a03f674122583309.svg",
+    "static/media/Profile_icon.svg": "/allDoctor/static/media/Profile_icon.a949a6e101b20dc125b2e98b98f52b3f.svg",
+    "index.html": "/allDoctor/index.html",
+    "static/media/Home_icon.svg": "/allDoctor/static/media/Home_icon.3acf516366dd6427138b606672f98020.svg",
+    "static/media/note_icon.svg": "/allDoctor/static/media/note_icon.39021fb77a9bdd468604d02c5f3fbd1c.svg",
+    "static/media/Chat_icon.svg": "/allDoctor/static/media/Chat_icon.aef33273bbe4b270f4ba680d7e7fbe0e.svg",
+    "static/media/Doctor_icon.svg": "/allDoctor/static/media/Doctor_icon.b9d4183d41015ff1ab06f6f9caa9adf9.svg",
+    "static/media/arrow.svg": "/allDoctor/static/media/arrow.d5505310fff62b5285c6.svg",
+    "main.122cdc50.css.map": "/allDoctor/static/css/main.122cdc50.css.map",
+    "main.bd7f59b4.js.map": "/allDoctor/static/js/main.bd7f59b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.122cdc50.css",
+    "static/js/main.bd7f59b4.js"
+  ]
+}
